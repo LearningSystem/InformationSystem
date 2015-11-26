@@ -1,6 +1,0 @@
-c:\users\user\documents\visual studio 2013\Projects\World\World\bin\Debug\World.exe.config
-c:\users\user\documents\visual studio 2013\Projects\World\World\bin\Debug\World.exe
-c:\users\user\documents\visual studio 2013\Projects\World\World\bin\Debug\World.pdb
-c:\users\user\documents\visual studio 2013\Projects\World\World\obj\Debug\World.csprojResolveAssemblyReference.cache
-c:\users\user\documents\visual studio 2013\Projects\World\World\obj\Debug\World.exe
-c:\users\user\documents\visual studio 2013\Projects\World\World\obj\Debug\World.pdb
