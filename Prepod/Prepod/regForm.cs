@@ -15,6 +15,7 @@ namespace Prepod
     public partial class regForm : Form
     {
         SqlConnection conn;
+        string  c;
         string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
         public regForm()
         {

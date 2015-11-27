@@ -40,3 +40,6 @@ C:\Users\User\Desktop\Текущие проекты\ОБУЧЕНИЕ\От саш
 C:\Users\User\Desktop\Текущие проекты\ОБУЧЕНИЕ\От саши\25.11.2015\Prepod\Prepod\obj\Debug\Prepod.TreeForm.resources
 C:\Users\User\Desktop\Текущие проекты\ОБУЧЕНИЕ\От саши\25.11.2015\Prepod\Prepod\obj\Debug\Prepod.treeWork.resources
 C:\Users\User\Desktop\Текущие проекты\ОБУЧЕНИЕ\От саши\25.11.2015\Prepod\Prepod\obj\Debug\Prepod.csproj.GenerateResource.Cache
+D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\bin\Debug\Prepod.exe.config
+D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.exe
+D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.pdb
