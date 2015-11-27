@@ -730,7 +730,7 @@ namespace Prepod
                 textBox1.Enabled = textBox2.Enabled = textBox3.Enabled = true;
                 textBox1.Text = listView2.SelectedItems[0].SubItems[1].Text;
                 textBox2.Text = listView2.SelectedItems[0].SubItems[2].Text;
-                textBox3.Text = listView1.SelectedItems[0].SubItems[3].Text;
+                textBox3.Text = listView2.SelectedItems[0].SubItems[3].Text;
 
             }
             else

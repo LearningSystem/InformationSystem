@@ -351,7 +351,7 @@ namespace Prepod
             SqlCommand comm = new SqlCommand();
             comm.Connection = conn;
             //находим Самостоятельные работы, для которых не сгенерены задачи
-            comm.CommandText = "select [№ вершины], [Сколько каждому] from Вершина where Вершина.[№ дерева] = '"+ treeView1.Tag.ToString() +"' and Вершина.[Тип вершины] = 1 and (select count(*) from [Выполненная задача], Задача, Вершина where [Выполненная задача].[№ студента] = '" + numStudent + "' and Задача.[№ задачи]=[Выполненная задача].[№ задачи] and Задача.[№ вершины]=Вершина.[№ вершины] and Вершина.[№ дерева]='" + treeView1.Tag.ToString() + "') = 0";
+            comm.CommandText = "select [№ вершины], [Сколько каждому] from Вершина where Вершина.[№ дерева] = '" + treeView1.Tag.ToString() + "' and Вершина.[Тип вершины] = 1 and Вершина.[№ вершины] not in (select Вершина.[№ вершины] from [Выполненная задача], Задача, Вершина where [Выполненная задача].[№ студента] = '" + numStudent + "' and Задача.[№ задачи]=[Выполненная задача].[№ задачи] and Задача.[№ вершины]=Вершина.[№ вершины] and Вершина.[№ дерева]='" + treeView1.Tag.ToString() + "')";
             SqlDataReader rdr = comm.ExecuteReader();
             while (rdr.Read())
             {
