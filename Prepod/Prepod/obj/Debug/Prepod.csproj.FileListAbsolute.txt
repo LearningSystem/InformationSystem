@@ -61,3 +61,6 @@ D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod
 D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.TreeForm.resources
 D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.treeWork.resources
 D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\bin\Debug\Prepod.exe.config
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.exe
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.pdb

@@ -35,6 +35,10 @@ namespace Prepod
         {
             //Form3 f3 = new Form3();
             //f3.Show();
+            System.Diagnostics.Process.Start("", numPrepod.ToString() + " " + "");
+            //первый параметр-путь к exe, 
+            //второй-параметры(пробел для разделения,
+            //а ничего не содержащий на тот случай если есть возможность изменения теста.
         }
 
         private void button3_Click(object sender, EventArgs e)
