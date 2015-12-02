@@ -18,20 +18,20 @@ namespace CreateTest_2._0
         XmlTextWriter writer;
         int NumTeacher;
         string PathXml;
-        public string ConnectionString { get; set; }
-        //string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+        //public string ConnectionString { get; set; }
+        public string СonnectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
         public InfoTest(int _NumTeacher, string _PathXml)
         {
             InitializeComponent();
             NumTeacher = _NumTeacher;
             PathXml = _PathXml;
-            var sb = new SqlConnectionStringBuilder
-            {
-                DataSource = "USER-ПК",
-                InitialCatalog = "Education",
-                IntegratedSecurity = true
-            };
-            ConnectionString = sb.ConnectionString;
+            //var sb = new SqlConnectionStringBuilder
+            //{
+            //    DataSource = "USER-ПК",
+            //    InitialCatalog = "Education",
+            //    IntegratedSecurity = true
+            //};
+            //ConnectionString = sb.ConnectionString;
         }
 
 
@@ -76,7 +76,7 @@ namespace CreateTest_2._0
 
         private void InfoTest_Load(object sender, EventArgs e)
         {
-            SqlConnection sconn = new SqlConnection(ConnectionString);
+            SqlConnection sconn = new SqlConnection(СonnectionString);
             using (sconn)
             {
                 sconn.Open();
