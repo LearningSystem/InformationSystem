@@ -17,9 +17,9 @@ namespace Prepod
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new regForm());
-            //Application.Run(new treeWork("1"));
+            Application.Run(new studentWork("1"));
             //Application.Run(new admin());
-            Application.Run(new Estimates("1"));
+            //Application.Run(new Estimates("1"));
         }
     }
 }

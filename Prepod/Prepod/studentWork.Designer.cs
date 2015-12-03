@@ -33,6 +33,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выбратьКурсToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
@@ -44,7 +45,9 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.name = new System.Windows.Forms.ToolStripLabel();
             this.nazad = new System.Windows.Forms.ToolStripButton();
-            this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadTask = new System.Windows.Forms.ToolStripButton();
+            this.bwStream = new System.ComponentModel.BackgroundWorker();
+            this.pg = new System.Windows.Forms.ToolStripProgressBar();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -75,9 +78,17 @@
             // выбратьКурсToolStripMenuItem
             // 
             this.выбратьКурсToolStripMenuItem.Name = "выбратьКурсToolStripMenuItem";
-            this.выбратьКурсToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.выбратьКурсToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.выбратьКурсToolStripMenuItem.Text = "Выбрать курс";
             this.выбратьКурсToolStripMenuItem.Click += new System.EventHandler(this.выбратьКурсToolStripMenuItem_Click);
+            // 
+            // выйтиToolStripMenuItem
+            // 
+            this.выйтиToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
+            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.выйтиToolStripMenuItem.Text = "Выйти";
+            this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.выйтиToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -172,6 +183,8 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.name,
+            this.loadTask,
+            this.pg,
             this.nazad});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -196,13 +209,26 @@
             this.nazad.Text = "Назад";
             this.nazad.Click += new System.EventHandler(this.nazad_Click);
             // 
-            // выйтиToolStripMenuItem
+            // loadTask
             // 
-            this.выйтиToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
-            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
-            this.выйтиToolStripMenuItem.Text = "Выйти";
-            this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.выйтиToolStripMenuItem_Click);
+            this.loadTask.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.loadTask.Image = ((System.Drawing.Image)(resources.GetObject("loadTask.Image")));
+            this.loadTask.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.loadTask.Name = "loadTask";
+            this.loadTask.Size = new System.Drawing.Size(81, 22);
+            this.loadTask.Text = "Сдать задачу";
+            this.loadTask.Click += new System.EventHandler(this.loadTask_Click);
+            // 
+            // bwStream
+            // 
+            this.bwStream.WorkerReportsProgress = true;
+            this.bwStream.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwStream_DoWork);
+            this.bwStream.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwStream_ProgressChanged);
+            // 
+            // pg
+            // 
+            this.pg.Name = "pg";
+            this.pg.Size = new System.Drawing.Size(100, 22);
             // 
             // studentWork
             // 
@@ -247,5 +273,8 @@
         private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.ToolStripButton nazad;
         private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton loadTask;
+        private System.ComponentModel.BackgroundWorker bwStream;
+        private System.Windows.Forms.ToolStripProgressBar pg;
     }
 }

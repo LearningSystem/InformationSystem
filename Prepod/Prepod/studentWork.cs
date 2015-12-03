@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.IO;
 
 namespace Prepod
 {
@@ -26,12 +27,16 @@ namespace Prepod
         SqlDataAdapter adapter;
         DataTable data = new DataTable();
 
+        OpenFileDialog ofd;
+
         List<int> tasks = new List<int>();
 
         public studentWork(string _numStudent)
         {
             InitializeComponent();
             numStudent = _numStudent;
+            loadTask.Enabled = false;
+            pg.Visible = false;
             loadListView();
             loadListViewTasks();
             loadInf(); 
@@ -39,7 +44,7 @@ namespace Prepod
             listView2.Visible = false;
             listView1.Visible = true;
         }
-
+        string fio;
         private void loadInf()
         {
             conn = new SqlConnection(connectionString);
@@ -52,6 +57,7 @@ namespace Prepod
             rdr.Read();
             name.Text = "";
             name.Text = rdr[1].ToString() + " " + rdr[2].ToString() + " " + rdr[3].ToString();
+            fio = name.Text;
             string group = rdr[5].ToString();            
 
             rdr.Close();
@@ -74,11 +80,16 @@ namespace Prepod
             ColumnHeader c3 = new ColumnHeader();
             c3.Text = "Срок сдачи";
             c3.Width = c3.Width + 60;
+            ColumnHeader c4 = new ColumnHeader();
+            c4.Text = "";
+            c4.Width = 0;
+            
 
             listView2.Columns.Add(c);
             listView2.Columns.Add(c1);
             listView2.Columns.Add(c2);
             listView2.Columns.Add(c3);
+            listView2.Columns.Add(c4);
         }
         private void loadListView()
         {
@@ -214,6 +225,7 @@ namespace Prepod
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            pg.Visible = false;
             treeView1.SelectedImageIndex = treeView1.SelectedNode.ImageIndex;
             if (typeNode(treeView1.SelectedNode.Tag.ToString()) == "Самостоятельная работа")
             {
@@ -285,7 +297,7 @@ namespace Prepod
                 listView2.View = View.Details;
                 while (rdr.Read())
                 {
-                    lv = new ListViewItem(new string[] { rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString() }, 1);
+                    lv = new ListViewItem(new string[] { rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString(), rdr[0].ToString() }, 1);
                     lv.Name = rdr[1].ToString();
                     lv.Tag = rdr[6].ToString();
                     listView2.Items.Add(lv);
@@ -306,9 +318,31 @@ namespace Prepod
            
         }
 
+        private void proverka(string num)
+        {
+            conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+
+            comm.CommandText = "select [Ссылка на работу] from [Выполненная задача] where [№ задачи] = '" + listView2.SelectedItems[0].SubItems[4].Text + "' and [№ студента] = '" + numStudent + "'";
+            SqlDataReader rdr = comm.ExecuteReader();
+            rdr.Read();
+            string g = rdr[0].ToString();
+            if (rdr[0].ToString() == "")
+            {
+                loadTask.Enabled = true;
+
+            }
+            else { loadTask.Enabled = false; };
+            rdr.Close();
+            conn.Close();
+        }
+
         private void listView2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             richTextBox1.Clear();
+            proverka(listView2.SelectedItems[0].SubItems[4].ToString());
             richTextBox1.LoadFile(Application.StartupPath + listView2.SelectedItems[0].Tag.ToString());
             listView2.Visible = false;
             richTextBox1.Visible = true;            
@@ -327,7 +361,7 @@ namespace Prepod
             List<string> nodes = new List<string>();
             nodes.Clear();
             int i = 1;
-            //записываем первые три в список
+            //записываем первые count в список
             while (rdr.Read() && i<=count)
             {               
                 nodes.Add(rdr[0].ToString());
@@ -378,6 +412,87 @@ namespace Prepod
             regForm rg = new regForm();
             rg.Show();
             this.Hide();
+        }
+
+        private void loadTask_Click(object sender, EventArgs e)
+        {
+            ofd = new OpenFileDialog();
+            
+            DialogResult res = ofd.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                pg.Visible = true;
+                bwStream.RunWorkerAsync();
+                
+                insertTask(path);
+                
+                loadTask.Enabled = false;
+            }
+        }
+        string path;
+        private void bwStream_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string pathString;
+            string studentFilePuth = Application.StartupPath + "\\StudentFiles";
+            pathString = System.IO.Path.Combine(studentFilePuth, fio);
+            System.IO.Directory.CreateDirectory(pathString);
+            pathString = pathString + "\\" + ofd.SafeFileName;
+            path = pathString.Remove(0, Application.StartupPath.Length);
+
+            FileStream inputstream = new FileStream(ofd.FileName, FileMode.Open, FileAccess.Read, FileShare.None);
+            FileStream outputstream = new FileStream(pathString, FileMode.Create, FileAccess.Write, FileShare.None);
+            bwStream.ReportProgress(0);
+            decimal part;
+            int i = 0;
+            try
+            {
+                byte readbyte = 0;
+                while (inputstream.Position < inputstream.Length)
+                {
+                    i++;
+                    if (i == 100)
+                    {
+                        part = (decimal)inputstream.Position / inputstream.Length * 100;
+                        if (part < 100)
+                            bwStream.ReportProgress((int)part);
+                        i = 0;
+                        if (bwStream.CancellationPending)
+                        {
+                            break;
+                        }
+                    }
+                    readbyte = (byte)inputstream.ReadByte();
+                    outputstream.WriteByte(readbyte);
+                }                               
+                if (!bwStream.CancellationPending)
+                {
+                    bwStream.ReportProgress(100);
+                }
+            }
+            finally
+            {
+                outputstream.Close();
+                inputstream.Close();
+                
+                //insertTask(pathString.Remove(0, Application.StartupPath.Length));
+            }
+        }
+
+        private void insertTask(string path)
+        {
+            conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+
+            comm.CommandText = "update  [Выполненная задача] set [Ссылка на работу] = '" + path + "' where [№ задачи] = '" + listView2.SelectedItems[0].SubItems[4].Text + "' and [№ студента] = '" + numStudent + "'";
+            comm.ExecuteNonQuery();            
+            conn.Close();
+        }
+
+        private void bwStream_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            this.pg.Value = e.ProgressPercentage;
         }
     }
 }
