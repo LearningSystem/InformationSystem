@@ -23,7 +23,7 @@ namespace CreateTest_2._0
                 Application.Run(new InfoTest(num, PathXml));
             }
             else
-                Application.Run(new InfoTest(num,null));
+                Application.Run(new InfoTest(num, null));
         }
     }
 }
