@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 using System.Xml;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace CreateTest_2._0
 {
@@ -17,6 +18,9 @@ namespace CreateTest_2._0
     //2- lstViewIstochnik имеет модификатор public, что противоречит ООП
     public partial class TestCreate : Form
     {
+        SqlConnection conn;
+        public string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+
         int kolvoQuest = 1;
         XmlTextWriter writer;
         RichTextBox txtB1;
@@ -49,10 +53,13 @@ namespace CreateTest_2._0
         public bool Picture = false;
         public string PicturePath = null;
         public int NumItems;
-        public TestCreate(XmlTextWriter _writer)
+
+        string numTest;
+        public TestCreate(XmlTextWriter _writer, string _numTest)
         {
             InitializeComponent();
             writer = _writer;
+            numTest = _numTest;
         }//+
 
         private void TestCreate_Load(object sender, EventArgs e)
@@ -645,7 +652,26 @@ namespace CreateTest_2._0
             writer.Close();
 
             MessageBox.Show("Тест был успешно создан!", "Выход");
+            insertTest();
             Application.Exit();
+        }
+
+        public void insertTest()
+        {
+            conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+
+            string date = dateTimePicker1.Value.ToString().Remove(0,10);
+            int maxBall = Convert.ToInt32(numList1.Value) + Convert.ToInt32(numList2.Value) + Convert.ToInt32(numList3.Value) + Convert.ToInt32(numList4.Value) + Convert.ToInt32(numList5.Value);
+
+            try
+            {
+                comm.CommandText = "Update Тест set [Максимальный балл] = '"+ maxBall.ToString() +"', [Срок сдачи] = '" + date + "' where [№ теста] = '" + numTest + "'";
+                comm.ExecuteNonQuery();
+            }
+            finally { conn.Close(); }   
         }
 
         private void numList1_ValueChanged(object sender, EventArgs e)

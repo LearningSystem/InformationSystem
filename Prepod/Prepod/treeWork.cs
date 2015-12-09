@@ -65,7 +65,7 @@ namespace Prepod
             newTree nT = new newTree(numPrepod);
             nT.Show();
         }
-
+        string numDisc;
         private void моиДеревьяToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listView1.Visible = true;
@@ -91,9 +91,10 @@ namespace Prepod
                 string type = "Курс обучения";
                 tName = rdr[1].ToString();
                 numTree = rdr[0].ToString();
-                lv = new ListViewItem(new string[] { tName, type, numTree, "", "" }, 1);
+                lv = new ListViewItem(new string[] { tName, type, numTree }, 1);
                 lv.Name = tName;
                 listView1.Items.Add(lv);
+                numDisc = rdr[2].ToString();
             }
             rdr.Close();
             conn.Close();
@@ -178,15 +179,44 @@ namespace Prepod
             }
         }
 
+        private void insertTest(string id)
+        {
+            string typeNode = _typeNode("Тест");
+            string numTree = treeView1.Tag.ToString();
+            TreeNode node;
+
+            if (treeView1.Nodes == null)
+            {
+                node = null;
+            }
+            else
+            {
+                node = treeView1.SelectedNode;
+            }
+            insertNode(node, numTree, "Тест", typeNode, "");
+
+            
+            
+        }
+
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (activeList == 1)
             {
-                treeView1.Nodes.Clear();
-                string numTree = listView1.SelectedItems[0].SubItems[2].Text;
-                LoadTree(numTree);
-                treeView1.Tag = numTree;
-                listView1.Items.Clear();
+                if (listView1.SelectedItems[0].SubItems[1].Text == "Тест")
+                {
+                    
+                    insertTest(listView1.SelectedItems[0].SubItems[2].Text);                   
+                    
+                }
+                else
+                {
+                    treeView1.Nodes.Clear();
+                    string numTree = listView1.SelectedItems[0].SubItems[2].Text;
+                    LoadTree(numTree);
+                    treeView1.Tag = numTree;
+                    listView1.Items.Clear();
+                }
             }
             else
             {
@@ -214,7 +244,7 @@ namespace Prepod
                 //находим номер вставленной вершины в БД
                 comm.CommandText = "select SCOPE_IDENTITY()";
                 SqlDataReader rdr = comm.ExecuteReader();
-                string num;
+                string num="";
                 //вставляем в таблицу Связи
                 if (rdr.HasRows)
                 {
@@ -223,6 +253,7 @@ namespace Prepod
                     TreeNode child = new TreeNode(Text);
                     child.Name = Text;
                     child.Tag = num;
+                    
                     if ((type == "2")||(type == "5"))
                         {
                             child.ImageIndex = 1;
@@ -232,6 +263,7 @@ namespace Prepod
                     {
                         
                         treeView1.Nodes.Add(child);
+                        treeView1.SelectedNode = child;
                         cmd = "INSERT INTO Связи ([№ вершины], [№ потомка], Уровень) select " + num + "," + num + ",0 UNION ALL select " + num + ", 0 ,0";
                     }
                     else
@@ -243,6 +275,12 @@ namespace Prepod
                 rdr.Close();
                 comm.CommandText = cmd;
                 comm.ExecuteNonQuery();
+                if (type == "4")
+                {
+                    comm.CommandText = "Update Тест set [№ вершины] = '" + num + "' where [№ теста] = '" + listView1.SelectedItems[0].SubItems[2].Text + "'";
+                    comm.ExecuteNonQuery();
+                   
+                }
             }
             finally
             {
@@ -473,6 +511,10 @@ namespace Prepod
 
         private void loadDir(string Id)
         {
+            listView1.Visible = true;
+            listView2.Visible = false;
+            panel1.Visible = false; 
+
             string numTree = treeView1.Tag.ToString();
 
             listView1.Items.Clear();
@@ -534,20 +576,20 @@ namespace Prepod
             ColumnHeader c = new ColumnHeader();
             c.Text = "Название";
             c.Width = c.Width + 80;
-            ColumnHeader c1 = new ColumnHeader();
-            c1.Text = "Уровень сложности";
-            c1.Width = c1.Width + 60;
             ColumnHeader c2 = new ColumnHeader();
             c2.Text = "Максимальный балл";
             c2.Width = c2.Width + 60;
             ColumnHeader c3 = new ColumnHeader();
             c3.Text = "Срок сдачи";
             c3.Width = c3.Width + 60;
+            ColumnHeader c1 = new ColumnHeader();
+            c1.Text = "";
+            c1.Width = c1.Width + 60;
 
-            listView2.Columns.Add(c);
-            listView2.Columns.Add(c1);
+            listView2.Columns.Add(c);            
             listView2.Columns.Add(c2);
             listView2.Columns.Add(c3);
+            listView2.Columns.Add(c1);
         }
 
         private void loadTasks(string Id)
@@ -566,7 +608,7 @@ namespace Prepod
                 listView2.Items.Clear();
                 while (rdr.Read())
                 {
-                    lv = new ListViewItem(new string[] { rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString() }, 1);
+                    lv = new ListViewItem(new string[] { rdr[1].ToString(), rdr[3].ToString(), rdr[4].ToString() }, 1);
                     lv.Name = rdr[1].ToString();
                     lv.Tag = rdr[0].ToString();
                     listView2.Items.Add(lv);
@@ -584,24 +626,55 @@ namespace Prepod
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            string type = typeNode(treeView1.SelectedNode.Tag.ToString());
             treeView1.SelectedImageIndex = treeView1.SelectedNode.ImageIndex;
             activeList = 2;
             name.Text = treeView1.SelectedNode.Text;
-            loadDir(treeView1.SelectedNode.Tag.ToString());
-            if (typeNode(treeView1.SelectedNode.Tag.ToString()) == "Самостоятельная работа")
+            if (type == "Новый раздел")
+            {
+                loadDir(treeView1.SelectedNode.Tag.ToString());
+            }
+            
+            if (type == "Самостоятельная работа")
             {
                 loadTasks(treeView1.SelectedNode.Tag.ToString());
-            }
-            else
+            }            
+            if (type == "Тест")
             {
-                listView1.Visible = true;
-                listView2.Visible = false;
-                panel1.Visible = false;
-            }
-            
-            
+                loadTest(treeView1.SelectedNode.Tag.ToString());
+            }                                                          
+        }
 
-            
+        private void loadTest(string id)
+        {
+            conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+            comm.CommandText = "select Название, Тема, [Максимальный балл], [Срок сдачи], Ссылка from Тест where [№ вершины] = '" + id + "'";
+
+            ListViewItem lv = new ListViewItem();
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                listView2.Items.Clear();
+                while (rdr.Read())
+                {
+                    lv = new ListViewItem(new string[] { rdr[0].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[1].ToString() }, 1);
+                    lv.Name = rdr[1].ToString();
+                    lv.Tag = rdr[4].ToString();//ссылка на xml файл
+                    listView2.Items.Add(lv);
+
+                }
+                listView2.View = View.Details;
+                listView2.Visible = true;
+                listView1.Visible = false;
+                panel1.Visible = false;
+                
+            }
+            rdr.Close();
+            conn.Close();
         }
 
         private void name_TextChanged(object sender, EventArgs e)
@@ -799,6 +872,38 @@ namespace Prepod
             prepodWork pw = new prepodWork(Convert.ToInt32(numPrepod));
             pw.Show();
             this.Hide();
+        }
+
+        private void test_Click(object sender, EventArgs e)
+        {
+            listView1.Visible = true;
+            listView2.Visible = false;
+            panel1.Visible = false;
+            activeList = 1;
+            listView1.Items.Clear();
+            listView1.View = View.Tile;
+            conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+            comm.CommandText = "select [№ теста], Название, Тема from Тест where [№ преподавателя] = '" + numPrepod + "'and [№ предмета] = '" + numDisc + "'";
+
+            SqlDataReader rdr = comm.ExecuteReader();
+
+            //заполнение listView
+            ListViewItem lv = new ListViewItem();
+            string tName = "";           
+            while (rdr.Read())
+            {
+                string type = "Тест";
+                tName = rdr[1].ToString();
+                string numTest = rdr[0].ToString();
+                lv = new ListViewItem(new string[] { tName, type, numTest }, 1);
+                lv.Name = tName;
+                listView1.Items.Add(lv);
+            }
+            rdr.Close();
+            conn.Close();
         }
 
 

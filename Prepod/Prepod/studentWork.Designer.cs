@@ -44,10 +44,11 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.name = new System.Windows.Forms.ToolStripLabel();
-            this.nazad = new System.Windows.Forms.ToolStripButton();
             this.loadTask = new System.Windows.Forms.ToolStripButton();
-            this.bwStream = new System.ComponentModel.BackgroundWorker();
             this.pg = new System.Windows.Forms.ToolStripProgressBar();
+            this.nazad = new System.Windows.Forms.ToolStripButton();
+            this.bwStream = new System.ComponentModel.BackgroundWorker();
+            this.startTest = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -149,6 +150,7 @@
             this.listView2.SmallImageList = this.imageList1;
             this.listView2.TabIndex = 3;
             this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
             this.listView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView2_MouseDoubleClick);
             // 
             // imageList2
@@ -185,7 +187,8 @@
             this.name,
             this.loadTask,
             this.pg,
-            this.nazad});
+            this.nazad,
+            this.startTest});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(527, 25);
@@ -198,6 +201,21 @@
             this.name.Size = new System.Drawing.Size(86, 22);
             this.name.Text = "toolStripLabel1";
             // 
+            // loadTask
+            // 
+            this.loadTask.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.loadTask.Image = ((System.Drawing.Image)(resources.GetObject("loadTask.Image")));
+            this.loadTask.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.loadTask.Name = "loadTask";
+            this.loadTask.Size = new System.Drawing.Size(81, 22);
+            this.loadTask.Text = "Сдать задачу";
+            this.loadTask.Click += new System.EventHandler(this.loadTask_Click);
+            // 
+            // pg
+            // 
+            this.pg.Name = "pg";
+            this.pg.Size = new System.Drawing.Size(100, 22);
+            // 
             // nazad
             // 
             this.nazad.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -209,26 +227,21 @@
             this.nazad.Text = "Назад";
             this.nazad.Click += new System.EventHandler(this.nazad_Click);
             // 
-            // loadTask
-            // 
-            this.loadTask.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.loadTask.Image = ((System.Drawing.Image)(resources.GetObject("loadTask.Image")));
-            this.loadTask.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.loadTask.Name = "loadTask";
-            this.loadTask.Size = new System.Drawing.Size(81, 22);
-            this.loadTask.Text = "Сдать задачу";
-            this.loadTask.Click += new System.EventHandler(this.loadTask_Click);
-            // 
             // bwStream
             // 
             this.bwStream.WorkerReportsProgress = true;
             this.bwStream.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwStream_DoWork);
             this.bwStream.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwStream_ProgressChanged);
             // 
-            // pg
+            // startTest
             // 
-            this.pg.Name = "pg";
-            this.pg.Size = new System.Drawing.Size(100, 22);
+            this.startTest.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.startTest.Image = ((System.Drawing.Image)(resources.GetObject("startTest.Image")));
+            this.startTest.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.startTest.Name = "startTest";
+            this.startTest.Size = new System.Drawing.Size(122, 22);
+            this.startTest.Text = "Начать выполнение";
+            this.startTest.Click += new System.EventHandler(this.startTest_Click);
             // 
             // studentWork
             // 
@@ -276,5 +289,6 @@
         private System.Windows.Forms.ToolStripButton loadTask;
         private System.ComponentModel.BackgroundWorker bwStream;
         private System.Windows.Forms.ToolStripProgressBar pg;
+        private System.Windows.Forms.ToolStripButton startTest;
     }
 }

@@ -15,11 +15,14 @@ namespace CreateTest_2._0
 {
     public partial class InfoTest : Form
     {
+        SqlConnection conn;
+
         XmlTextWriter writer;
         int NumTeacher;
+        string numTest;
         string PathXml;
         //public string ConnectionString { get; set; }
-        public string СonnectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+        public string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
         public InfoTest(int _NumTeacher, string _PathXml)
         {
             InitializeComponent();
@@ -60,14 +63,48 @@ namespace CreateTest_2._0
             writer.WriteEndElement();
 
             writer.WriteStartElement("Course");
-            writer.WriteString(tBCourseTest.Text);
+            writer.WriteString("");
             writer.WriteEndElement();
 
             writer.WriteStartElement("Questions");
-            TestCreate test = new TestCreate(writer);
+            TestCreate test = new TestCreate(writer, numTest);
+            
+            insertTask();
+
             this.Hide();
             test.Show();
+            
         }
+
+        private void insertTask()
+        {
+            conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+
+            comm.CommandText = "Select [№ предмета] from Предмет where Название = '" + cBDiscip.Text + "'";
+            SqlDataReader rdr = comm.ExecuteReader();
+            string numDisc = "1";
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                numDisc = rdr[0].ToString();
+            }            
+            rdr.Close();
+
+            try
+            {
+                comm.CommandText = "Insert into Тест ([№ преподавателя], [№ предмета], Описание, Тема, Название, Ссылка) Values('" + NumTeacher.ToString() + "','" + numDisc + "', '" + rtBDescTest.Text + "', '" + tBThemeTest.Text + "', '" + tBNameTest.Text + "', '" + tBNameTest.Text + ".xml')";
+                comm.ExecuteNonQuery();
+                comm.CommandText = "select SCOPE_IDENTITY()";
+                rdr = comm.ExecuteReader();
+                rdr.Read();
+                numTest = rdr[0].ToString();
+            }
+            finally { conn.Close(); }    
+        }
+
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -76,7 +113,7 @@ namespace CreateTest_2._0
 
         private void InfoTest_Load(object sender, EventArgs e)
         {
-            SqlConnection sconn = new SqlConnection(СonnectionString);
+            SqlConnection sconn = new SqlConnection(connectionString);
             using (sconn)
             {
                 sconn.Open();

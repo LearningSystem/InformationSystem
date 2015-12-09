@@ -37,8 +37,6 @@
             this.lblThemeTest = new System.Windows.Forms.Label();
             this.tBThemeTest = new System.Windows.Forms.TextBox();
             this.lblDiscipTest = new System.Windows.Forms.Label();
-            this.lblCourseTest = new System.Windows.Forms.Label();
-            this.tBCourseTest = new System.Windows.Forms.TextBox();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.cBDiscip = new System.Windows.Forms.ComboBox();
@@ -118,22 +116,6 @@
             this.lblDiscipTest.TabIndex = 8;
             this.lblDiscipTest.Text = "Дисциплина:";
             // 
-            // lblCourseTest
-            // 
-            this.lblCourseTest.AutoSize = true;
-            this.lblCourseTest.Location = new System.Drawing.Point(536, 270);
-            this.lblCourseTest.Name = "lblCourseTest";
-            this.lblCourseTest.Size = new System.Drawing.Size(34, 13);
-            this.lblCourseTest.TabIndex = 10;
-            this.lblCourseTest.Text = "Курс:";
-            // 
-            // tBCourseTest
-            // 
-            this.tBCourseTest.Location = new System.Drawing.Point(599, 267);
-            this.tBCourseTest.Name = "tBCourseTest";
-            this.tBCourseTest.Size = new System.Drawing.Size(121, 20);
-            this.tBCourseTest.TabIndex = 11;
-            // 
             // btnNext
             // 
             this.btnNext.Location = new System.Drawing.Point(668, 312);
@@ -171,8 +153,6 @@
             this.Controls.Add(this.cBDiscip);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.tBCourseTest);
-            this.Controls.Add(this.lblCourseTest);
             this.Controls.Add(this.lblDiscipTest);
             this.Controls.Add(this.tBThemeTest);
             this.Controls.Add(this.lblThemeTest);
@@ -202,8 +182,6 @@
         private System.Windows.Forms.Label lblThemeTest;
         private System.Windows.Forms.TextBox tBThemeTest;
         private System.Windows.Forms.Label lblDiscipTest;
-        private System.Windows.Forms.Label lblCourseTest;
-        private System.Windows.Forms.TextBox tBCourseTest;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.ComboBox cBDiscip;

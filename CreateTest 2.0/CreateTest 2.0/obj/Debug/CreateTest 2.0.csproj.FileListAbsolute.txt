@@ -30,3 +30,6 @@ C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\CreateTest 2.0
 C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.csproj.GenerateResource.Cache
 C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\CreateTest 2.0\CreateTest 2.0\bin\Debug\CreateTest 2.0.exe
 C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\CreateTest 2.0\CreateTest 2.0\bin\Debug\CreateTest 2.0.pdb
+D:\моя\пгу\Дипломная работа\InformationSystem\CreateTest 2.0\CreateTest 2.0\bin\Debug\CreateTest 2.0.exe.config
+D:\моя\пгу\Дипломная работа\InformationSystem\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.exe
+D:\моя\пгу\Дипломная работа\InformationSystem\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.pdb
