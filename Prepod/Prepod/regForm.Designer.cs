@@ -132,6 +132,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(119, 31);
             this.comboBox1.Name = "comboBox1";
@@ -183,6 +184,7 @@
             this.ClientSize = new System.Drawing.Size(371, 281);
             this.Controls.Add(this.groupBox2);
             this.Name = "regForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Вход для пользователей";
             this.Load += new System.EventHandler(this.regForm_Load);
             this.groupBox1.ResumeLayout(false);

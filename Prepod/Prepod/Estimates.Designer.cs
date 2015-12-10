@@ -117,6 +117,7 @@
             this.ClientSize = new System.Drawing.Size(1028, 339);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Estimates";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Estimates";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();

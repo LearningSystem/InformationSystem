@@ -102,6 +102,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Name = "newTree";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Создание дерева";
             this.Load += new System.EventHandler(this.newTree_Load);
             this.ResumeLayout(false);

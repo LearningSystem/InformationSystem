@@ -79,6 +79,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox1);
             this.Name = "editPredmet";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список предметов";
             this.Load += new System.EventHandler(this.editPredmet_Load);
             this.ResumeLayout(false);

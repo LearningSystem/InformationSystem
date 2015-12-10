@@ -165,6 +165,7 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.treeView1);
             this.Name = "editCPC";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "editCPC";
             this.Load += new System.EventHandler(this.editCPC_Load);
             this.groupBox4.ResumeLayout(false);

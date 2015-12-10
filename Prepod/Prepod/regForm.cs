@@ -35,6 +35,7 @@ namespace Prepod
             comboBox1.Items.Add("Студент");
             comboBox1.Items.Add("Преподаватель");
             comboBox1.Items.Add("Администратор");
+            comboBox1.SelectedIndex = 0;
         }
 
         private void checkStudent()

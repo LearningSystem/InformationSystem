@@ -381,6 +381,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.treeView1);
             this.Name = "TreeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TreeForm";
             this.Activated += new System.EventHandler(this.TreeForm_Load);
             this.Load += new System.EventHandler(this.TreeForm_Load);

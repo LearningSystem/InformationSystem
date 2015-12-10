@@ -47,8 +47,8 @@
             this.loadTask = new System.Windows.Forms.ToolStripButton();
             this.pg = new System.Windows.Forms.ToolStripProgressBar();
             this.nazad = new System.Windows.Forms.ToolStripButton();
-            this.bwStream = new System.ComponentModel.BackgroundWorker();
             this.startTest = new System.Windows.Forms.ToolStripButton();
+            this.bwStream = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -227,12 +227,6 @@
             this.nazad.Text = "Назад";
             this.nazad.Click += new System.EventHandler(this.nazad_Click);
             // 
-            // bwStream
-            // 
-            this.bwStream.WorkerReportsProgress = true;
-            this.bwStream.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwStream_DoWork);
-            this.bwStream.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwStream_ProgressChanged);
-            // 
             // startTest
             // 
             this.startTest.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -242,6 +236,12 @@
             this.startTest.Size = new System.Drawing.Size(122, 22);
             this.startTest.Text = "Начать выполнение";
             this.startTest.Click += new System.EventHandler(this.startTest_Click);
+            // 
+            // bwStream
+            // 
+            this.bwStream.WorkerReportsProgress = true;
+            this.bwStream.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwStream_DoWork);
+            this.bwStream.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwStream_ProgressChanged);
             // 
             // studentWork
             // 
@@ -253,6 +253,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "studentWork";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "studentWork";
             this.Load += new System.EventHandler(this.studentWork_Load);
             this.menuStrip1.ResumeLayout(false);

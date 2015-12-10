@@ -189,6 +189,7 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "editStudent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "editStudent";
             this.Load += new System.EventHandler(this.editStudent_Load);
             this.groupBox1.ResumeLayout(false);

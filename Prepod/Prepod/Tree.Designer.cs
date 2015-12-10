@@ -28,79 +28,79 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode149 = new System.Windows.Forms.TreeNode("Значения (Value)");
-            System.Windows.Forms.TreeNode treeNode150 = new System.Windows.Forms.TreeNode("Определение класса");
-            System.Windows.Forms.TreeNode treeNode151 = new System.Windows.Forms.TreeNode("Спецификаторы доступа к данным класса");
-            System.Windows.Forms.TreeNode treeNode152 = new System.Windows.Forms.TreeNode("Описание класса");
-            System.Windows.Forms.TreeNode treeNode153 = new System.Windows.Forms.TreeNode("Определение поля");
-            System.Windows.Forms.TreeNode treeNode154 = new System.Windows.Forms.TreeNode("Описание поля");
-            System.Windows.Forms.TreeNode treeNode155 = new System.Windows.Forms.TreeNode("Пример описания полей класса");
-            System.Windows.Forms.TreeNode treeNode156 = new System.Windows.Forms.TreeNode("Пример использования полей класса");
-            System.Windows.Forms.TreeNode treeNode157 = new System.Windows.Forms.TreeNode("Поля", new System.Windows.Forms.TreeNode[] {
-            treeNode153,
-            treeNode154,
-            treeNode155,
-            treeNode156});
-            System.Windows.Forms.TreeNode treeNode158 = new System.Windows.Forms.TreeNode("Определение метода");
-            System.Windows.Forms.TreeNode treeNode159 = new System.Windows.Forms.TreeNode("Описание метода");
-            System.Windows.Forms.TreeNode treeNode160 = new System.Windows.Forms.TreeNode("Метод Main");
-            System.Windows.Forms.TreeNode treeNode161 = new System.Windows.Forms.TreeNode("Вызов метода без параметров");
-            System.Windows.Forms.TreeNode treeNode162 = new System.Windows.Forms.TreeNode("Вызов метода с параметрами-значениями");
-            System.Windows.Forms.TreeNode treeNode163 = new System.Windows.Forms.TreeNode("СРС_1 \"Методы без параметром и с параметрами-значениями\"");
-            System.Windows.Forms.TreeNode treeNode164 = new System.Windows.Forms.TreeNode("Минитест");
-            System.Windows.Forms.TreeNode treeNode165 = new System.Windows.Forms.TreeNode("Вызов метода с выходными параметрами");
-            System.Windows.Forms.TreeNode treeNode166 = new System.Windows.Forms.TreeNode("СРС_2 \"Методы с выходными параметрами\"");
-            System.Windows.Forms.TreeNode treeNode167 = new System.Windows.Forms.TreeNode("Минитест");
-            System.Windows.Forms.TreeNode treeNode168 = new System.Windows.Forms.TreeNode("Вызов метода с параметрами ссылками");
-            System.Windows.Forms.TreeNode treeNode169 = new System.Windows.Forms.TreeNode("СРС_3 \"Методы с параметрами\"");
-            System.Windows.Forms.TreeNode treeNode170 = new System.Windows.Forms.TreeNode("Минитест");
-            System.Windows.Forms.TreeNode treeNode171 = new System.Windows.Forms.TreeNode("Вызов метода, параметры метода", new System.Windows.Forms.TreeNode[] {
-            treeNode160,
-            treeNode161,
-            treeNode162,
-            treeNode163,
-            treeNode164,
-            treeNode165,
-            treeNode166,
-            treeNode167,
-            treeNode168,
-            treeNode169,
-            treeNode170});
-            System.Windows.Forms.TreeNode treeNode172 = new System.Windows.Forms.TreeNode("Пример перегрузки метода");
-            System.Windows.Forms.TreeNode treeNode173 = new System.Windows.Forms.TreeNode("Понятние \"Перегрузка метода\"", new System.Windows.Forms.TreeNode[] {
-            treeNode172});
-            System.Windows.Forms.TreeNode treeNode174 = new System.Windows.Forms.TreeNode("Тест по теме \"Методы\"");
-            System.Windows.Forms.TreeNode treeNode175 = new System.Windows.Forms.TreeNode("Методы", new System.Windows.Forms.TreeNode[] {
-            treeNode158,
-            treeNode159,
-            treeNode171,
-            treeNode173,
-            treeNode174});
-            System.Windows.Forms.TreeNode treeNode176 = new System.Windows.Forms.TreeNode("Конструкторы");
-            System.Windows.Forms.TreeNode treeNode177 = new System.Windows.Forms.TreeNode("Свойства");
-            System.Windows.Forms.TreeNode treeNode178 = new System.Windows.Forms.TreeNode("Индексаторы");
-            System.Windows.Forms.TreeNode treeNode179 = new System.Windows.Forms.TreeNode("Элементы класса", new System.Windows.Forms.TreeNode[] {
-            treeNode157,
-            treeNode175,
-            treeNode176,
-            treeNode177,
-            treeNode178});
-            System.Windows.Forms.TreeNode treeNode180 = new System.Windows.Forms.TreeNode("Структура класса", new System.Windows.Forms.TreeNode[] {
-            treeNode150,
-            treeNode151,
-            treeNode152,
-            treeNode179});
-            System.Windows.Forms.TreeNode treeNode181 = new System.Windows.Forms.TreeNode("Экземпляр класса - объект");
-            System.Windows.Forms.TreeNode treeNode182 = new System.Windows.Forms.TreeNode("Иерархия классов");
-            System.Windows.Forms.TreeNode treeNode183 = new System.Windows.Forms.TreeNode("Классы", new System.Windows.Forms.TreeNode[] {
-            treeNode180,
-            treeNode181,
-            treeNode182});
-            System.Windows.Forms.TreeNode treeNode184 = new System.Windows.Forms.TreeNode("Ссылочные ( Reference)", new System.Windows.Forms.TreeNode[] {
-            treeNode183});
-            System.Windows.Forms.TreeNode treeNode185 = new System.Windows.Forms.TreeNode("Типы данных", new System.Windows.Forms.TreeNode[] {
-            treeNode149,
-            treeNode184});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Значения (Value)");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Определение класса");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Спецификаторы доступа к данным класса");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Описание класса");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Определение поля");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Описание поля");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Пример описания полей класса");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Пример использования полей класса");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Поля", new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode6,
+            treeNode7,
+            treeNode8});
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Определение метода");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Описание метода");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Метод Main");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Вызов метода без параметров");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Вызов метода с параметрами-значениями");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("СРС_1 \"Методы без параметром и с параметрами-значениями\"");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Минитест");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Вызов метода с выходными параметрами");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("СРС_2 \"Методы с выходными параметрами\"");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Минитест");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Вызов метода с параметрами ссылками");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("СРС_3 \"Методы с параметрами\"");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Минитест");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Вызов метода, параметры метода", new System.Windows.Forms.TreeNode[] {
+            treeNode12,
+            treeNode13,
+            treeNode14,
+            treeNode15,
+            treeNode16,
+            treeNode17,
+            treeNode18,
+            treeNode19,
+            treeNode20,
+            treeNode21,
+            treeNode22});
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Пример перегрузки метода");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Понятние \"Перегрузка метода\"", new System.Windows.Forms.TreeNode[] {
+            treeNode24});
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Тест по теме \"Методы\"");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Методы", new System.Windows.Forms.TreeNode[] {
+            treeNode10,
+            treeNode11,
+            treeNode23,
+            treeNode25,
+            treeNode26});
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Конструкторы");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Свойства");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Индексаторы");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Элементы класса", new System.Windows.Forms.TreeNode[] {
+            treeNode9,
+            treeNode27,
+            treeNode28,
+            treeNode29,
+            treeNode30});
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Структура класса", new System.Windows.Forms.TreeNode[] {
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode31});
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Экземпляр класса - объект");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Иерархия классов");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Классы", new System.Windows.Forms.TreeNode[] {
+            treeNode32,
+            treeNode33,
+            treeNode34});
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Ссылочные ( Reference)", new System.Windows.Forms.TreeNode[] {
+            treeNode35});
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Типы данных", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode36});
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -109,6 +109,8 @@
             this.right = new System.Windows.Forms.Button();
             this.left = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.button7 = new System.Windows.Forms.Button();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -127,8 +129,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -139,86 +139,86 @@
             this.treeView1.CheckBoxes = true;
             this.treeView1.Location = new System.Drawing.Point(12, 12);
             this.treeView1.Name = "treeView1";
-            treeNode149.Name = "value";
-            treeNode149.Text = "Значения (Value)";
-            treeNode150.Name = "defClass";
-            treeNode150.Text = "Определение класса";
-            treeNode151.Name = "specifiers";
-            treeNode151.Text = "Спецификаторы доступа к данным класса";
-            treeNode152.Name = "desClass";
-            treeNode152.Text = "Описание класса";
-            treeNode153.Name = "defField";
-            treeNode153.Text = "Определение поля";
-            treeNode154.Name = "desField";
-            treeNode154.Text = "Описание поля";
-            treeNode155.Name = "sample1";
-            treeNode155.Text = "Пример описания полей класса";
-            treeNode156.Name = "sample2";
-            treeNode156.Text = "Пример использования полей класса";
-            treeNode157.Name = "fields";
-            treeNode157.Text = "Поля";
-            treeNode158.Name = "defMethod";
-            treeNode158.Text = "Определение метода";
-            treeNode159.Name = "desMethod";
-            treeNode159.Text = "Описание метода";
-            treeNode160.Name = "main";
-            treeNode160.Text = "Метод Main";
-            treeNode161.Name = "withoutParam";
-            treeNode161.Text = "Вызов метода без параметров";
-            treeNode162.Name = "param";
-            treeNode162.Text = "Вызов метода с параметрами-значениями";
-            treeNode163.Name = "srs1";
-            treeNode163.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            treeNode163.Text = "СРС_1 \"Методы без параметром и с параметрами-значениями\"";
-            treeNode164.Name = "test1";
-            treeNode164.Text = "Минитест";
-            treeNode165.Name = "outputParam";
-            treeNode165.Text = "Вызов метода с выходными параметрами";
-            treeNode166.Name = "srs2";
-            treeNode166.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            treeNode166.Text = "СРС_2 \"Методы с выходными параметрами\"";
-            treeNode167.Name = "test2";
-            treeNode167.Text = "Минитест";
-            treeNode168.Name = "paramRef";
-            treeNode168.Text = "Вызов метода с параметрами ссылками";
-            treeNode169.Name = "srs3";
-            treeNode169.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            treeNode169.Text = "СРС_3 \"Методы с параметрами\"";
-            treeNode170.Name = "test3";
-            treeNode170.Text = "Минитест";
-            treeNode171.Name = "methodCall";
-            treeNode171.Text = "Вызов метода, параметры метода";
-            treeNode172.Name = "sample3";
-            treeNode172.Text = "Пример перегрузки метода";
-            treeNode173.Name = "overload";
-            treeNode173.Text = "Понятние \"Перегрузка метода\"";
-            treeNode174.Name = "testMethod";
-            treeNode174.Text = "Тест по теме \"Методы\"";
-            treeNode175.BackColor = System.Drawing.Color.Yellow;
-            treeNode175.Name = "methods";
-            treeNode175.Text = "Методы";
-            treeNode176.Name = "designers";
-            treeNode176.Text = "Конструкторы";
-            treeNode177.Name = "properties";
-            treeNode177.Text = "Свойства";
-            treeNode178.Name = "indexers";
-            treeNode178.Text = "Индексаторы";
-            treeNode179.Name = "elements";
-            treeNode179.Text = "Элементы класса";
-            treeNode180.Name = "struct";
-            treeNode180.Text = "Структура класса";
-            treeNode181.Name = "object";
-            treeNode181.Text = "Экземпляр класса - объект";
-            treeNode182.Name = "hierarchy";
-            treeNode182.Text = "Иерархия классов";
-            treeNode183.Name = "class";
-            treeNode183.Text = "Классы";
-            treeNode184.Name = "reference";
-            treeNode184.Text = "Ссылочные ( Reference)";
-            treeNode185.Name = "dataTypes";
-            treeNode185.Text = "Типы данных";
+            treeNode1.Name = "value";
+            treeNode1.Text = "Значения (Value)";
+            treeNode2.Name = "defClass";
+            treeNode2.Text = "Определение класса";
+            treeNode3.Name = "specifiers";
+            treeNode3.Text = "Спецификаторы доступа к данным класса";
+            treeNode4.Name = "desClass";
+            treeNode4.Text = "Описание класса";
+            treeNode5.Name = "defField";
+            treeNode5.Text = "Определение поля";
+            treeNode6.Name = "desField";
+            treeNode6.Text = "Описание поля";
+            treeNode7.Name = "sample1";
+            treeNode7.Text = "Пример описания полей класса";
+            treeNode8.Name = "sample2";
+            treeNode8.Text = "Пример использования полей класса";
+            treeNode9.Name = "fields";
+            treeNode9.Text = "Поля";
+            treeNode10.Name = "defMethod";
+            treeNode10.Text = "Определение метода";
+            treeNode11.Name = "desMethod";
+            treeNode11.Text = "Описание метода";
+            treeNode12.Name = "main";
+            treeNode12.Text = "Метод Main";
+            treeNode13.Name = "withoutParam";
+            treeNode13.Text = "Вызов метода без параметров";
+            treeNode14.Name = "param";
+            treeNode14.Text = "Вызов метода с параметрами-значениями";
+            treeNode15.Name = "srs1";
+            treeNode15.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            treeNode15.Text = "СРС_1 \"Методы без параметром и с параметрами-значениями\"";
+            treeNode16.Name = "test1";
+            treeNode16.Text = "Минитест";
+            treeNode17.Name = "outputParam";
+            treeNode17.Text = "Вызов метода с выходными параметрами";
+            treeNode18.Name = "srs2";
+            treeNode18.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            treeNode18.Text = "СРС_2 \"Методы с выходными параметрами\"";
+            treeNode19.Name = "test2";
+            treeNode19.Text = "Минитест";
+            treeNode20.Name = "paramRef";
+            treeNode20.Text = "Вызов метода с параметрами ссылками";
+            treeNode21.Name = "srs3";
+            treeNode21.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            treeNode21.Text = "СРС_3 \"Методы с параметрами\"";
+            treeNode22.Name = "test3";
+            treeNode22.Text = "Минитест";
+            treeNode23.Name = "methodCall";
+            treeNode23.Text = "Вызов метода, параметры метода";
+            treeNode24.Name = "sample3";
+            treeNode24.Text = "Пример перегрузки метода";
+            treeNode25.Name = "overload";
+            treeNode25.Text = "Понятние \"Перегрузка метода\"";
+            treeNode26.Name = "testMethod";
+            treeNode26.Text = "Тест по теме \"Методы\"";
+            treeNode27.BackColor = System.Drawing.Color.Yellow;
+            treeNode27.Name = "methods";
+            treeNode27.Text = "Методы";
+            treeNode28.Name = "designers";
+            treeNode28.Text = "Конструкторы";
+            treeNode29.Name = "properties";
+            treeNode29.Text = "Свойства";
+            treeNode30.Name = "indexers";
+            treeNode30.Text = "Индексаторы";
+            treeNode31.Name = "elements";
+            treeNode31.Text = "Элементы класса";
+            treeNode32.Name = "struct";
+            treeNode32.Text = "Структура класса";
+            treeNode33.Name = "object";
+            treeNode33.Text = "Экземпляр класса - объект";
+            treeNode34.Name = "hierarchy";
+            treeNode34.Text = "Иерархия классов";
+            treeNode35.Name = "class";
+            treeNode35.Text = "Классы";
+            treeNode36.Name = "reference";
+            treeNode36.Text = "Ссылочные ( Reference)";
+            treeNode37.Name = "dataTypes";
+            treeNode37.Text = "Типы данных";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode185});
+            treeNode37});
             this.treeView1.Size = new System.Drawing.Size(446, 539);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -303,6 +303,28 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Свойства вершины";
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(10, 42);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(85, 17);
+            this.checkBox4.TabIndex = 12;
+            this.checkBox4.Text = "Литература";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(10, 19);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(155, 17);
+            this.checkBox3.TabIndex = 11;
+            this.checkBox3.Text = "Самостоятельная работа";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // button7
             // 
@@ -464,28 +486,6 @@
             this.textBox5.Size = new System.Drawing.Size(130, 20);
             this.textBox5.TabIndex = 13;
             // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(10, 19);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(155, 17);
-            this.checkBox3.TabIndex = 11;
-            this.checkBox3.Text = "Самостоятельная работа";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(10, 42);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(85, 17);
-            this.checkBox4.TabIndex = 12;
-            this.checkBox4.Text = "Литература";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
-            // 
             // Tree
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -507,6 +507,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.treeView1);
             this.Name = "Tree";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Дерево";
             this.Load += new System.EventHandler(this.Tree_Load);
             this.groupBox1.ResumeLayout(false);
