@@ -524,6 +524,7 @@
             "Не доступен"});
             this.access.Name = "access";
             this.access.Size = new System.Drawing.Size(121, 25);
+            this.access.SelectedIndexChanged += new System.EventHandler(this.access_SelectedIndexChanged);
             // 
             // toolStripSeparator1
             // 

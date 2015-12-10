@@ -223,23 +223,37 @@ namespace Prepod
             searchCPC();            
         }
 
+        private bool dostup(string id)
+        {
+            conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+            comm.CommandText = "select Доступ from Вершина where [№ вершины] = '" + id + "'";
+            SqlDataReader rdr = comm.ExecuteReader();
+            rdr.Read();
+            bool flag = (Convert.ToInt32(rdr[0]) == 1);
+            return flag;
+        }
+
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            bool flag = dostup(treeView1.SelectedNode.Tag.ToString()); //считываем доступ
             startTest.Visible = false;
             pg.Visible = false;
             treeView1.SelectedImageIndex = treeView1.SelectedNode.ImageIndex;
             string type = typeNode(treeView1.SelectedNode.Tag.ToString());
-            if (type == "Самостоятельная работа")
+            if ((type == "Самостоятельная работа") && flag)
             {
                 loadTasks(treeView1.SelectedNode.Tag.ToString());
                 nazad.Enabled = true;
             }
-            if ((type == "Учебные материалы")||(type == "Задача"))
+            if (((type == "Учебные материалы") || (type == "Задача")) && flag)
             {
                 nazad.Enabled = false;
                 loadText(treeView1.SelectedNode.Tag.ToString());                                
             }
-            if (type == "Тест")
+            if ((type == "Тест") && flag)
             {
                 loadTest(treeView1.SelectedNode.Tag.ToString());
             }

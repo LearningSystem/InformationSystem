@@ -193,7 +193,7 @@ namespace Prepod
             {
                 node = treeView1.SelectedNode;
             }
-            insertNode(node, numTree, "Тест", typeNode, "");
+            insertNode(node, numTree, "Тест", typeNode, "", false);
 
             
             
@@ -229,7 +229,7 @@ namespace Prepod
             
         }
 
-        private void insertNode(TreeNode node, string numTree, string Text, string type, string Path)
+        private void insertNode(TreeNode node, string numTree, string Text, string type, string Path, bool flag)
         {
             string cmd = "";
             try
@@ -239,7 +239,7 @@ namespace Prepod
                 conn.Open();
                 SqlCommand comm = new SqlCommand();
                 comm.Connection = conn;
-                comm.CommandText = "insert into Вершина ([№ дерева], Текст, [Тип вершины], Ссылка, [Сколько каждому]) Values ('" + numTree + "', '" + Text + "', '" + type + " ', '" + Path + "', '0')";
+                comm.CommandText = "insert into Вершина ([№ дерева], Текст, [Тип вершины], Ссылка, [Сколько каждому], Доступ) Values ('" + numTree + "', '" + Text + "', '" + type + " ', '" + Path + "', '0', '"+ flag.ToString() +"')";
                 comm.ExecuteNonQuery();
                 //находим номер вставленной вершины в БД
                 comm.CommandText = "select SCOPE_IDENTITY()";
@@ -320,7 +320,7 @@ namespace Prepod
             {
                 node = treeView1.SelectedNode;
             }
-            insertNode(node, numTree, "Новый раздел", typeNode, "");
+            insertNode(node, numTree, "Новый раздел", typeNode, "", true);
         }
 
         private void cpc_Click(object sender, EventArgs e)
@@ -337,7 +337,7 @@ namespace Prepod
             {
                 node = treeView1.SelectedNode;
             }
-            insertNode(node, numTree, "Самостоятельная работа", typeNode, "");
+            insertNode(node, numTree, "Самостоятельная работа", typeNode, "", true);
         }
 
         private void insertTask(string name, string level, string max, string date, string parent, string path)
@@ -387,7 +387,7 @@ namespace Prepod
                         }
                         else
                         {
-                            insertNode(treeView1.SelectedNode, treeView1.Tag.ToString(), Name, typeNode, path);
+                            insertNode(treeView1.SelectedNode, treeView1.Tag.ToString(), Name, typeNode, path, true);
                         }
                     }
                     finally
@@ -624,21 +624,36 @@ namespace Prepod
            
         }
 
+        private bool dostup(string id)
+        {
+            conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+            comm.CommandText = "select Доступ from Вершина where [№ вершины] = '"+ id +"'";
+            SqlDataReader rdr = comm.ExecuteReader();
+            rdr.Read();
+            bool flag = (Convert.ToInt32(rdr[0]) == 1);
+            return flag;
+        }
+
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            bool flag = dostup(treeView1.SelectedNode.Tag.ToString()); //считываем доступ
+            access.SelectedIndex = Convert.ToInt32(flag);
             string type = typeNode(treeView1.SelectedNode.Tag.ToString());
             treeView1.SelectedImageIndex = treeView1.SelectedNode.ImageIndex;
             activeList = 2;
             name.Text = treeView1.SelectedNode.Text;
-            if (type == "Новый раздел")
+            if (type == "Новый раздел") 
             {
                 loadDir(treeView1.SelectedNode.Tag.ToString());
             }
-            
-            if (type == "Самостоятельная работа")
+
+            if (type == "Самостоятельная работа") 
             {
                 loadTasks(treeView1.SelectedNode.Tag.ToString());
-            }            
+            }
             if (type == "Тест")
             {
                 loadTest(treeView1.SelectedNode.Tag.ToString());
@@ -903,6 +918,17 @@ namespace Prepod
                 listView1.Items.Add(lv);
             }
             rdr.Close();
+            conn.Close();
+        }
+
+        private void access_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+            comm.CommandText = "update Вершина set Доступ = '" + access.SelectedIndex.ToString() + "' where [№ вершины] = '" + treeView1.SelectedNode.Tag.ToString() + "'";
+            comm.ExecuteNonQuery();
             conn.Close();
         }
 
