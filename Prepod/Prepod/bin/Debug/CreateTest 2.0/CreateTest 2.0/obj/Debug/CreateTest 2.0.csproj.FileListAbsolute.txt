@@ -1,0 +1,45 @@
+c:\users\user\documents\visual studio 2013\Projects\CreateTest 2.0\CreateTest 2.0\bin\Debug\CreateTest 2.0.exe.config
+c:\users\user\documents\visual studio 2013\Projects\CreateTest 2.0\CreateTest 2.0\bin\Debug\CreateTest 2.0.exe
+c:\users\user\documents\visual studio 2013\Projects\CreateTest 2.0\CreateTest 2.0\bin\Debug\CreateTest 2.0.pdb
+c:\users\user\documents\visual studio 2013\Projects\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2013\Projects\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest_2._0.TestCreate.resources
+c:\users\user\documents\visual studio 2013\Projects\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest_2._0.Properties.Resources.resources
+c:\users\user\documents\visual studio 2013\Projects\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.csproj.GenerateResource.Cache
+c:\users\user\documents\visual studio 2013\Projects\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.exe
+c:\users\user\documents\visual studio 2013\Projects\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.pdb
+C:\Users\User\Documents\Visual Studio 2013\Projects\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest_2._0.AddPartTree.resources
+C:\Users\User\documents\visual studio 2013\Projects\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest_2._0.InfoTest.resources
+C:\Users\User\Desktop\Текущие проекты\CreateTest 2.0\CreateTest 2.0\bin\Debug\CreateTest 2.0.exe.config
+C:\Users\User\Desktop\Текущие проекты\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.exe
+C:\Users\User\Desktop\Текущие проекты\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.pdb
+C:\Users\User\Desktop\Текущие проекты\CreateTest 2.0\CreateTest 2.0\bin\Debug\CreateTest 2.0.exe
+C:\Users\User\Desktop\Текущие проекты\CreateTest 2.0\CreateTest 2.0\bin\Debug\CreateTest 2.0.pdb
+C:\Users\User\Desktop\Текущие проекты\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest_2._0.AddPartTree.resources
+C:\Users\User\Desktop\Текущие проекты\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest_2._0.TestCreate.resources
+C:\Users\User\Desktop\Текущие проекты\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest_2._0.InfoTest.resources
+C:\Users\User\Desktop\Текущие проекты\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest_2._0.Properties.Resources.resources
+C:\Users\User\Desktop\Текущие проекты\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\CreateTest 2.0\CreateTest 2.0\bin\Debug\CreateTest 2.0.exe.config
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.exe
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.pdb
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest_2._0.AddPartTree.resources
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest_2._0.TestCreate.resources
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest_2._0.InfoTest.resources
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest_2._0.Properties.Resources.resources
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\CreateTest 2.0\CreateTest 2.0\bin\Debug\CreateTest 2.0.exe
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\CreateTest 2.0\CreateTest 2.0\bin\Debug\CreateTest 2.0.pdb
+D:\моя\пгу\Дипломная работа\InformationSystem\CreateTest 2.0\CreateTest 2.0\bin\Debug\CreateTest 2.0.exe.config
+D:\моя\пгу\Дипломная работа\InformationSystem\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.exe
+D:\моя\пгу\Дипломная работа\InformationSystem\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.pdb
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\bin\Debug\CreateTest 2.0\CreateTest 2.0\bin\Debug\CreateTest 2.0.exe.config
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\bin\Debug\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.exe
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\bin\Debug\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.pdb
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\bin\Debug\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\bin\Debug\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest_2._0.AddPartTree.resources
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\bin\Debug\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest_2._0.TestCreate.resources
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\bin\Debug\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest_2._0.InfoTest.resources
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\bin\Debug\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest_2._0.Properties.Resources.resources
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\bin\Debug\CreateTest 2.0\CreateTest 2.0\obj\Debug\CreateTest 2.0.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\bin\Debug\CreateTest 2.0\CreateTest 2.0\bin\Debug\CreateTest 2.0.exe
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\bin\Debug\CreateTest 2.0\CreateTest 2.0\bin\Debug\CreateTest 2.0.pdb
