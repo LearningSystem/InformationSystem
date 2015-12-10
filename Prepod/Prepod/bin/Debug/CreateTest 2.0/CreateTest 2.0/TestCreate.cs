@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace CreateTest_2._0
 {

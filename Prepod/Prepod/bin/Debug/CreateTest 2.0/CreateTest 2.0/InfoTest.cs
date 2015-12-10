@@ -23,11 +23,11 @@ namespace CreateTest_2._0
         string PathXml;
         //public string ConnectionString { get; set; }
         public string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-        public InfoTest(int _NumTeacher, string _PathXml)
+        public InfoTest(int _NumTeacher)
         {
             InitializeComponent();
             NumTeacher = _NumTeacher;
-            PathXml = _PathXml;
+            //PathXml = _PathXml;
             //var sb = new SqlConnectionStringBuilder
             //{
             //    DataSource = "USER-ПК",
@@ -95,7 +95,7 @@ namespace CreateTest_2._0
 
             try
             {
-                comm.CommandText = "Insert into Тест ([№ преподавателя], [№ предмета], Описание, Тема, Название, Ссылка) Values('" + NumTeacher.ToString() + "','" + numDisc + "', '" + rtBDescTest.Text + "', '" + tBThemeTest.Text + "', '" + tBNameTest.Text + "', '" + tBNameTest.Text + ".xml')";
+                comm.CommandText = "Insert into Тест ([№ теста],[№ преподавателя], [№ предмета], [Описание], [Тема], [Название], [Ссылка]) Values('" + NumTeacher.ToString() + "','" + numDisc + "', '" + rtBDescTest.Text + "', '" + tBThemeTest.Text + "', '" + tBNameTest.Text + "', '" + tBNameTest.Text + ".xml')";
                 comm.ExecuteNonQuery();
                 comm.CommandText = "select SCOPE_IDENTITY()";
                 rdr = comm.ExecuteReader();
