@@ -16,7 +16,7 @@ namespace CreateTest_2._0
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           // int num = Int32.Parse(args[0].ToString());
+            int num = Int32.Parse(args[0].ToString());
             //if (args[1] != null)
             //{
             //    string PathXml = args[1].ToString();
@@ -24,7 +24,9 @@ namespace CreateTest_2._0
             //}
             //else
             //    Application.Run(new InfoTest(num, null));
-            Application.Run(new InfoTest(1));
+            //Application.Run(new InfoTest(1));
+            Application.Run(new InfoTest(num));
+
         }
     }
 }

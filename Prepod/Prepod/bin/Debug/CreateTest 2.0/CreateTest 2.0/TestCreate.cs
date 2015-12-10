@@ -665,14 +665,18 @@ namespace CreateTest_2._0
             comm.Connection = conn;
 
             string date = dateTimePicker1.Value.ToString().Remove(0,10);
-            int maxBall = Convert.ToInt32(numList1.Value) + Convert.ToInt32(numList2.Value) + Convert.ToInt32(numList3.Value) + Convert.ToInt32(numList4.Value) + Convert.ToInt32(numList5.Value);
-
-            try
+            //int maxBall = Convert.ToInt32(numList1.Value) + Convert.ToInt32(numList2.Value) + Convert.ToInt32(numList3.Value) + Convert.ToInt32(numList4.Value) + Convert.ToInt32(numList5.Value);
+            int maxBall = 0;
+            for (int g = 0; g <= Questions.Count;g++ )
             {
-                comm.CommandText = "Update Тест set [Максимальный балл] = '"+ maxBall.ToString() +"', [Срок сдачи] = '" + date + "' where [№ теста] = '" + numTest + "'";
-                comm.ExecuteNonQuery();
+                maxBall += Questions[g].price;
             }
-            finally { conn.Close(); }   
+                try
+                {
+                    comm.CommandText = "Update Тест set [Максимальный балл] = '" + maxBall.ToString() + "', [Срок сдачи] = '" + date + "' where [№ теста] = '" + numTest + "'";
+                    comm.ExecuteNonQuery();
+                }
+                finally { conn.Close(); }   
         }
 
         private void numList1_ValueChanged(object sender, EventArgs e)
