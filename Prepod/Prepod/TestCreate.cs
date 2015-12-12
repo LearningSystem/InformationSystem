@@ -654,7 +654,8 @@ namespace Prepod
 
             MessageBox.Show("Тест был успешно создан!", "Выход");
             insertTest();
-            Application.Exit();
+            //Application.Exit();
+            this.Hide();
         }
 
         public void insertTest()

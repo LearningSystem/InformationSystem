@@ -67,10 +67,9 @@ namespace Prepod
             writer.WriteEndElement();
 
             writer.WriteStartElement("Questions");
+            insertTask();
             TestCreate test = new TestCreate(writer, numTest);
             
-            insertTask();
-
             this.Hide();
             test.Show();
             
