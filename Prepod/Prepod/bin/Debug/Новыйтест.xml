@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Test>
+  <Discription>апавыола</Discription>
+  <Author> Ромашкина Татьяна Витальевна</Author>
+  <Theme>плапо</Theme>
+  <Discipline>Язык C#</Discipline>
+  <Course />
+  <Questions Number="2">
+    <Question1>
+      <Text>Вопрос1</Text>
+      <TypeAnswer>One</TypeAnswer>
+      <Answers>1|2|3|4</Answers>
+      <RightAnswer>1</RightAnswer>
+      <Part />
+      <Price>0</Price>
+    </Question1>
+    <Question2>
+      <Text>Вопрос2</Text>
+      <TypeAnswer>One</TypeAnswer>
+      <Answers>23|4543|4545|543543</Answers>
+      <RightAnswer>4545</RightAnswer>
+      <Part />
+      <Price>0</Price>
+    </Question2>
+  </Questions>
+  <Time>60</Time>
+  <Report>Да</Report>
+</Test>

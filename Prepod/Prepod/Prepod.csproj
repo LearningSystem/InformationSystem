@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddPartTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPartTree.designer.cs">
+      <DependentUpon>AddPartTree.cs</DependentUpon>
+    </Compile>
     <Compile Include="admin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,12 @@
     <Compile Include="Estimates.Designer.cs">
       <DependentUpon>Estimates.cs</DependentUpon>
     </Compile>
+    <Compile Include="InfoTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoTest.designer.cs">
+      <DependentUpon>InfoTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="prepodWork.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +113,12 @@
     <Compile Include="propTask.Designer.cs">
       <DependentUpon>propTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportForm.designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="studentWork.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +131,20 @@
     <Compile Include="regForm.Designer.cs">
       <DependentUpon>regForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TestAnswers.cs" />
+    <Compile Include="TestCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestCreate.designer.cs">
+      <DependentUpon>TestCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestStart.designer.cs">
+      <DependentUpon>TestStart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TextQuestion.cs" />
     <Compile Include="Tree.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +163,9 @@
     <Compile Include="treeWork.Designer.cs">
       <DependentUpon>treeWork.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddPartTree.resx">
+      <DependentUpon>AddPartTree.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="admin.resx">
       <DependentUpon>admin.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Estimates.resx">
       <DependentUpon>Estimates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoTest.resx">
+      <DependentUpon>InfoTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="prepodWork.resx">
       <DependentUpon>prepodWork.cs</DependentUpon>
@@ -164,11 +202,20 @@
     <EmbeddedResource Include="propTask.resx">
       <DependentUpon>propTask.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="studentWork.resx">
       <DependentUpon>studentWork.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="regForm.resx">
       <DependentUpon>regForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestCreate.resx">
+      <DependentUpon>TestCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestStart.resx">
+      <DependentUpon>TestStart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tree.resx">
       <DependentUpon>Tree.cs</DependentUpon>

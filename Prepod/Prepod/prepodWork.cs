@@ -35,10 +35,9 @@ namespace Prepod
         {
             //Form3 f3 = new Form3();
             //f3.Show();
-            System.Diagnostics.Process.Start(Application.StartupPath+"\\"+"CreateTest 2.0\\CreateTest 2.0\\bin\\Debug\\CreateTest 2.0.exe"+"", numPrepod.ToString());
-            //первый параметр-путь к exe, 
-            //второй-параметры(пробел для разделения,
-            //а ничего не содержащий на тот случай если есть возможность изменения теста.
+            //System.Diagnostics.Process.Start(Application.StartupPath+"\\"+"CreateTest 2.0\\CreateTest 2.0\\bin\\Debug\\CreateTest 2.0.exe"+"", numPrepod.ToString());
+            InfoTest newtest = new InfoTest(numPrepod);
+            newtest.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)

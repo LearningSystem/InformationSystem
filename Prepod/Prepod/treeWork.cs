@@ -221,10 +221,19 @@ namespace Prepod
             }
             else
             {
-                string numNode = listView1.SelectedItems[0].Tag.ToString();
-                listView1.Items.Clear();
-                searchNode(numNode, treeView1.SelectedNode.Nodes);
-                loadDir(numNode);
+                if (listView1.SelectedItems[0].SubItems[1].Text == "Тест")
+                {
+
+                    loadTest(listView1.SelectedItems[0].Tag.ToString());
+
+                }
+                else
+                {
+                    string numNode = listView1.SelectedItems[0].Tag.ToString();
+                    listView1.Items.Clear();
+                    searchNode(numNode, treeView1.SelectedNode.Nodes);
+                    loadDir(numNode);
+                }
                 
             }
             
@@ -679,7 +688,7 @@ namespace Prepod
                 {
                     lv = new ListViewItem(new string[] { rdr[0].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[1].ToString() }, 1);
                     lv.Name = rdr[1].ToString();
-                    lv.Tag = rdr[4].ToString();//ссылка на xml файл
+                    lv.Tag = id;
                     listView2.Items.Add(lv);
 
                 }

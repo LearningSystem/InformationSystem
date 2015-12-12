@@ -561,7 +561,10 @@ namespace Prepod
         private void startTest_Click(object sender, EventArgs e)
         {
             string puthXML = listView2.SelectedItems[0].Tag.ToString(); // ссылка на xml
-            System.Diagnostics.Process.Start(puthEXE,numStudent.ToString()+" "+puthXML);
+            //System.Diagnostics.Process.Start(puthEXE,numStudent.ToString()+" "+puthXML);
+            TestStart gostart = new TestStart(Int32.Parse(numStudent), puthXML);
+            this.Hide();
+            gostart.Show();
         }
     }
 }
