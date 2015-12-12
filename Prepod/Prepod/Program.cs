@@ -25,8 +25,8 @@ namespace Prepod
             //Application.Run(new admin());
             //Application.Run(new regForm());
             //Application.Run(new studentWork("1"));
-            //Application.Run(new prepodWork(1));
-            Application.Run(new regForm());
+            Application.Run(new prepodWork(1));
+            //Application.Run(new regForm());
             //Application.Run(new studentWork("1"));
             //Application.Run(new admin());
             //Application.Run(new Estimates("1"));

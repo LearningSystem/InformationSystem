@@ -282,6 +282,7 @@ namespace Prepod
         }
         private void loadTest(string id)
         {
+            
             conn = new SqlConnection(connectionString);
             conn.Open();
             SqlCommand comm = new SqlCommand();
@@ -303,8 +304,8 @@ namespace Prepod
                 }
                 listView2.View = View.Details;
                 listView2.Visible = true;
-                listView1.Visible = false;                
-
+                listView1.Visible = false;
+                listView2.Tag = "Тест";
             }
             rdr.Close();
             conn.Close();
@@ -359,6 +360,7 @@ namespace Prepod
                 listView2.Visible = true;
                 richTextBox1.Visible = false;                
                 listView1.Visible = false;
+                listView2.Tag = "Задача";
             }
             rdr.Close();
             conn.Close();
@@ -394,12 +396,15 @@ namespace Prepod
 
         private void listView2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            richTextBox1.Clear();
-            proverka(listView2.SelectedItems[0].SubItems[4].ToString());
-            richTextBox1.LoadFile(Application.StartupPath + listView2.SelectedItems[0].Tag.ToString());
-            listView2.Visible = false;
-            richTextBox1.Visible = true;            
-            listView1.Visible = false;
+            if (listView2.Tag.ToString() == "Задача")
+            {
+                richTextBox1.Clear();
+                proverka(listView2.SelectedItems[0].SubItems[4].ToString());
+                richTextBox1.LoadFile(Application.StartupPath + listView2.SelectedItems[0].Tag.ToString());
+                listView2.Visible = false;
+                richTextBox1.Visible = true;
+                listView1.Visible = false;
+            }
         }
 
         private void generateTasks(string id, int count)

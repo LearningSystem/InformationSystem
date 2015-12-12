@@ -36,6 +36,7 @@ namespace Prepod
             listView1.Visible = true;
             listView2.Visible = false;
             panel1.Visible = false;
+            
         }
 
         private void showWindow(bool lv1, bool lv2, bool pnl1, bool rtb1)
@@ -158,7 +159,7 @@ namespace Prepod
                     newNode.ImageIndex = 0;
                     treeView1.Nodes.Add(newNode);
                     treeView1.Update();
-                    treeView1.Select();
+                    //treeView1.Select();
                 }
                 //загрузка всех потомков
                 loadNodes(treeView1.Nodes, numTree);
@@ -812,25 +813,7 @@ namespace Prepod
             rdr.Read();
             textBox4.Text = rdr[0].ToString();
             rdr.Close();
-            conn.Close();            
-            if (listView2.SelectedItems.Count == 1)
-            {
-                textBox1.Enabled = textBox2.Enabled = textBox3.Enabled = true;
-                textBox1.Text = listView2.SelectedItems[0].SubItems[1].Text;
-                textBox2.Text = listView2.SelectedItems[0].SubItems[2].Text;
-                textBox3.Text = listView2.SelectedItems[0].SubItems[3].Text;
-
-            }
-            else
-            {
-                textBox1.Text = "";
-                textBox2.Text = "";
-                textBox3.Text = "";
-                if (listView2.SelectedItems.Count == 0)
-                {
-                    textBox1.Enabled = textBox2.Enabled = textBox3.Enabled = false;
-                }                
-            }            
+            conn.Close();                                
             panel1.Visible = true;
             listView2.Visible = false;
             listView1.Visible = false;
@@ -839,18 +822,19 @@ namespace Prepod
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if ((textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != ""))
+            if ((textBox1.Text != "") && (textBox2.Text != "") && (textBox4.Text != ""))
             {
                 conn = new SqlConnection(connectionString);
                 conn.Open();
                 SqlCommand comm = new SqlCommand();
                 comm.Connection = conn;
-                foreach (ListViewItem task in listView2.SelectedItems)
+                foreach (ListViewItem task in listView2.Items)
                 {
-                    comm.CommandText = "update Задача set Уровень = '" + textBox1.Text + "', [Максимальный балл] = '" + textBox2.Text + "', [Срок сдачи] = '"+ textBox3.Text +"'   where [№ задачи] = '" + task.Tag.ToString() + "'";
-                    comm.ExecuteNonQuery();
-                    
+                    comm.CommandText = "update Задача set Уровень = '" + textBox1.Text + "', [Максимальный балл] = '" + textBox2.Text + "', [Срок сдачи] = '"+ dateTimePicker1.Value.ToShortDateString() +"'   where [№ задачи] = '" + task.Tag.ToString() + "'";
+                    comm.ExecuteNonQuery();                    
                 }
+                comm.CommandText = "update Вершина set [Сколько каждому] = '" + textBox4.Text + "' where [№ вершины] = '" + treeView1.SelectedNode.Tag.ToString() + "'";
+                comm.ExecuteNonQuery();
                 conn.Close();
                 loadTasks(treeView1.SelectedNode.Tag.ToString());
                 panel1.Visible = false;
@@ -859,21 +843,8 @@ namespace Prepod
             }
             else               
             {
-                if (textBox1.Enabled == true) { MessageBox.Show("Введите данные!"); }
-            }
-            if (textBox4.Text != "0")
-            {
-                conn = new SqlConnection(connectionString);
-                conn.Open();
-                SqlCommand comm = new SqlCommand();
-                comm.Connection = conn;
-                comm.CommandText = "update Вершина set [Сколько каждому] = '" + textBox4.Text + "' where [№ вершины] = '" + treeView1.SelectedNode.Tag.ToString() + "'";
-                comm.ExecuteNonQuery();
-                conn.Close();
-                panel1.Visible = false;
-                listView2.Visible = true;
-                listView1.Visible = false;
-            }
+                MessageBox.Show("Введите данные!");
+            }            
         }
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
@@ -931,6 +902,8 @@ namespace Prepod
             comm.ExecuteNonQuery();
             conn.Close();
         }
+
+
 
 
 

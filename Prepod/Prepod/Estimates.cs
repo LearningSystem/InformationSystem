@@ -22,7 +22,8 @@ namespace Prepod
         DataTable data = new DataTable();
 
 
-        string numPrepod;        
+        string numPrepod;
+        string numTree;
         public Estimates(string _numPrepod)
         {
             InitializeComponent();
