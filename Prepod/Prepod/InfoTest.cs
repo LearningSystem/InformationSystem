@@ -95,7 +95,7 @@ namespace Prepod
 
             try
             {
-                comm.CommandText = "Insert into Тест ([№ теста],[№ преподавателя], [№ предмета], [Описание], [Тема], [Название], [Ссылка]) Values('" + NumTeacher.ToString() + "','" + numDisc + "', '" + rtBDescTest.Text + "', '" + tBThemeTest.Text + "', '" + tBNameTest.Text + "', '" + tBNameTest.Text + ".xml')";
+                comm.CommandText = "Insert into Тест ([№ преподавателя], [№ предмета], [Описание], [Тема], [Название], [Ссылка]) Values('" + NumTeacher.ToString() + "','" + numDisc + "', '" + rtBDescTest.Text + "', '" + tBThemeTest.Text + "', '" + tBNameTest.Text + "', '" + tBNameTest.Text + ".xml')";
                 comm.ExecuteNonQuery();
                 comm.CommandText = "select SCOPE_IDENTITY()";
                 rdr = comm.ExecuteReader();
