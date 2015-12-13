@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace Prepod
 {
@@ -16,12 +18,19 @@ namespace Prepod
         string TestTheme = null;
         int StudBall = 0;
         int StudTime=0;
+        int NumStud = -1;
+        int idTest = -1;
         List<TextQuestion> Questions = new List<TextQuestion>();
         List<TestAnswers> Answers = new List<TestAnswers>();
         int[] notRightAnswer;
-        public ReportForm(string _theme, int _ball, int _time, List<TextQuestion> _questions, int[] _mass, List<TestAnswers> _answers)
+
+        string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+
+        public ReportForm(int _idTest,int _NumStud,string _theme, int _ball, int _time, List<TextQuestion> _questions, int[] _mass, List<TestAnswers> _answers)
         {
             InitializeComponent();
+            idTest = _idTest;
+            NumStud = _NumStud;
             TestTheme = _theme;
             StudBall=_ball;
             StudTime=_time;
@@ -208,7 +217,17 @@ namespace Prepod
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
+            //добавить в БД данные
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+            comm.CommandText = "Insert into [Выполненный тест] ([№ теста],[Балл],[Дата сдачи],[Время выполнения],[№ студента]) values (" + "'" + idTest.ToString() + "'" + "," + "'" + StudBall.ToString() + "'" + "," + "'" + System.DateTime.Today.ToShortDateString() + "'" + "," + "'" + (StudTime / 60000000).ToString() + "'" + "," + "'" + NumStud.ToString() + "'" + ")";
+            comm.ExecuteNonQuery();
+
             this.Hide();
+            studentWork studWork = new studentWork(NumStud.ToString());
+            studWork.Show();
         }
         void DoStart()
         {

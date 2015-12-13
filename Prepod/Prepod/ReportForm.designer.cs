@@ -152,6 +152,7 @@
             this.Controls.Add(this.lblNameTest);
             this.Controls.Add(this.lblStudGroup);
             this.Controls.Add(this.lblStudName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReportForm";

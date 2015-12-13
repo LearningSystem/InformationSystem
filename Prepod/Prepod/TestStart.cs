@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.IO;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace Prepod
 {
@@ -52,6 +54,8 @@ namespace Prepod
         Label lbl3;
         Label lbl4;
         Label lbl5;
+
+        string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
         public TestStart(int _numStud,string _pathxml)
         {
@@ -802,16 +806,29 @@ namespace Prepod
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            int idTest = -1;
             SaveAnswers(Int32.Parse(lblNumberQuest.Text));
             if (MessageBox.Show("Вы уверены, что хотите сдать тест?", "Сдача теста", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
+                SqlConnection conn = new SqlConnection(connectionString);
+                conn.Open();
+                SqlCommand comm = new SqlCommand();
+                comm.Connection = conn;
+                comm.CommandText = "Select [№ теста] from [Тест] where [Ссылка] = '" + XmlPath + "'";
+                SqlDataReader rdr = comm.ExecuteReader();
+                while (rdr.Read())
+                {
+                    idTest = Int32.Parse(rdr[0].ToString());
+                }
+                rdr.Close();
+
                 for (int y = 0; y < Questions.Count; y++)
                 {
                     Check(y);
                 }
                 if (Report == true)
                 {
-                    ReportForm RF = new ReportForm(Theme, StudBall, t, Questions, NotRightAnswers, Answers);
+                    ReportForm RF = new ReportForm(idTest,numStud, Theme, StudBall, t, Questions, NotRightAnswers, Answers);
                     RF.Show();
                     this.Hide();
 
@@ -819,6 +836,12 @@ namespace Prepod
                 else
                 {
                     //занести в БД результаты
+                    conn.Open();
+                    comm = new SqlCommand();
+                    comm.Connection = conn;
+                    comm.CommandText = "Insert into [Выполненный тест] ([№ теста],[Балл],[Дата сдачи],[Время выполнения],[№ студента]) values (" + "'" + idTest.ToString() + "'" + "," + "'" + StudBall.ToString() + "'" + "," + "'" + System.DateTime.Today.ToShortDateString() + "'" + "," + "'" + (t / 60000000).ToString() + "'" + "," + "'" + numStud.ToString() + "'" + ")";
+                    comm.ExecuteNonQuery();
+                    // ------
                     Application.Exit();
                 }
             }

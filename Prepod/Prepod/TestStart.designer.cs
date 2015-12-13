@@ -218,6 +218,7 @@
             this.Controls.Add(this.gB3);
             this.Controls.Add(this.rTB);
             this.Controls.Add(this.lstQuestion);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "TestStart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Начало тестирования";

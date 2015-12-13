@@ -53,6 +53,8 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnDone1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numList5 = new System.Windows.Forms.NumericUpDown();
@@ -71,8 +73,6 @@
             this.numTime = new System.Windows.Forms.NumericUpDown();
             this.openFile = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumberList)).BeginInit();
@@ -81,6 +81,7 @@
             this.gB1.SuspendLayout();
             this.lstQuestionMenu.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numList5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numList4)).BeginInit();
@@ -90,7 +91,6 @@
             this.gBOtch.SuspendLayout();
             this.gBTime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numTime)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -337,6 +337,23 @@
             this.tabPage2.Text = "Настройки";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Location = new System.Drawing.Point(416, 126);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(381, 68);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Срок сдачи";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(17, 29);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 0;
+            // 
             // btnDone1
             // 
             this.btnDone1.Location = new System.Drawing.Point(681, 385);
@@ -489,23 +506,6 @@
             this.numTime.Size = new System.Drawing.Size(120, 20);
             this.numTime.TabIndex = 0;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
-            this.groupBox2.Location = new System.Drawing.Point(416, 126);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(381, 68);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Срок сдачи";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(17, 29);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 0;
-            // 
             // TestCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -513,6 +513,7 @@
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(837, 483);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "TestCreate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Создание теста";
@@ -527,6 +528,7 @@
             this.gB1.ResumeLayout(false);
             this.lstQuestionMenu.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numList5)).EndInit();
@@ -537,7 +539,6 @@
             this.gBOtch.ResumeLayout(false);
             this.gBTime.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numTime)).EndInit();
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
