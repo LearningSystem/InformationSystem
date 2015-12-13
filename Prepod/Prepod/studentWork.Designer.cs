@@ -49,6 +49,7 @@
             this.nazad = new System.Windows.Forms.ToolStripButton();
             this.startTest = new System.Windows.Forms.ToolStripButton();
             this.bwStream = new System.ComponentModel.BackgroundWorker();
+            this.успеваемостьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -61,7 +62,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.менюToolStripMenuItem,
-            this.выйтиToolStripMenuItem});
+            this.выйтиToolStripMenuItem,
+            this.успеваемостьToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(729, 24);
@@ -79,7 +81,7 @@
             // выбратьКурсToolStripMenuItem
             // 
             this.выбратьКурсToolStripMenuItem.Name = "выбратьКурсToolStripMenuItem";
-            this.выбратьКурсToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.выбратьКурсToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.выбратьКурсToolStripMenuItem.Text = "Выбрать курс";
             this.выбратьКурсToolStripMenuItem.Click += new System.EventHandler(this.выбратьКурсToolStripMenuItem_Click);
             // 
@@ -243,6 +245,13 @@
             this.bwStream.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwStream_DoWork);
             this.bwStream.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwStream_ProgressChanged);
             // 
+            // успеваемостьToolStripMenuItem
+            // 
+            this.успеваемостьToolStripMenuItem.Name = "успеваемостьToolStripMenuItem";
+            this.успеваемостьToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.успеваемостьToolStripMenuItem.Text = "Успеваемость";
+            this.успеваемостьToolStripMenuItem.Click += new System.EventHandler(this.успеваемостьToolStripMenuItem_Click);
+            // 
             // studentWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,5 +300,6 @@
         private System.ComponentModel.BackgroundWorker bwStream;
         private System.Windows.Forms.ToolStripProgressBar pg;
         private System.Windows.Forms.ToolStripButton startTest;
+        private System.Windows.Forms.ToolStripMenuItem успеваемостьToolStripMenuItem;
     }
 }

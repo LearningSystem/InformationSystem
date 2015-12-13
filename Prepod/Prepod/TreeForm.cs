@@ -21,7 +21,7 @@ namespace Prepod
         string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
 
-        SqlDataAdapter adapter;
+        
         DataTable data = new DataTable();
         TreeNode newNode;
      

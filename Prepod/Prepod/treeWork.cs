@@ -27,6 +27,7 @@ namespace Prepod
         int activeList;
 
         string numPrepod = "";
+        string numTree;
         public treeWork(string _numPrepod)
         {
             InitializeComponent();
@@ -36,7 +37,7 @@ namespace Prepod
             listView1.Visible = true;
             listView2.Visible = false;
             panel1.Visible = false;
-            
+            esimates.Enabled = checkTasks.Enabled = false;
         }
 
         private void showWindow(bool lv1, bool lv2, bool pnl1, bool rtb1)
@@ -204,6 +205,7 @@ namespace Prepod
         {
             if (activeList == 1)
             {
+
                 if (listView1.SelectedItems[0].SubItems[1].Text == "Тест")
                 {
                     
@@ -212,8 +214,9 @@ namespace Prepod
                 }
                 else
                 {
+                    esimates.Enabled = checkTasks.Enabled = true;
                     treeView1.Nodes.Clear();
-                    string numTree = listView1.SelectedItems[0].SubItems[2].Text;
+                    numTree = listView1.SelectedItems[0].SubItems[2].Text;
                     LoadTree(numTree);
                     treeView1.Tag = numTree;
                     listView1.Items.Clear();
@@ -856,16 +859,10 @@ namespace Prepod
             }            
         }
 
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-            
-        }
-
         private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            prepodWork pw = new prepodWork(Convert.ToInt32(numPrepod));
-            pw.Show();
+            regForm rf = new regForm();
+            rf.Show();
             this.Hide();
         }
 
@@ -912,11 +909,34 @@ namespace Prepod
             conn.Close();
         }
 
+        private void удалитьДеревоToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
 
 
+        private void редактированиеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Estimates frm = new Estimates(numPrepod, numTree);
+            frm.Show();
+        }
 
+        private void проверкаЗадачToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            taskWork tw = new taskWork(numPrepod, numTree);
+            tw.Show();
+        }
 
-       
+        private void личныеДанныеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            prepodWork pw = new prepodWork(numPrepod);
+            pw.Show();
+        }
 
+        private void создатьТестToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InfoTest newtest = new InfoTest(Convert.ToInt32(numPrepod));
+            newtest.Show();
+        }   
     }
 }

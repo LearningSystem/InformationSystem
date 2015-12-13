@@ -15,44 +15,26 @@ namespace Prepod
     public partial class prepodWork : Form
     {
         SqlConnection conn;
-        //string connectionString =
-        //        "Data Source=(local);Initial Catalog=Education; user id = sa; password = 1";
+        SqlCommand comm;
+       
         string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+         
 
-        int numPrepod;
-        public prepodWork(int _numPrepod)
+        string numPrepod;
+        public prepodWork(string _numPrepod)
         {
             InitializeComponent();
             numPrepod = _numPrepod;
+
+            conn = new SqlConnection(connectionString);            
+            comm = new SqlCommand();
+            comm.Connection = conn;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //Form3 f3 = new Form3();
-            //f3.Show();
-            //System.Diagnostics.Process.Start(Application.StartupPath+"\\"+"CreateTest 2.0\\CreateTest 2.0\\bin\\Debug\\CreateTest 2.0.exe"+"", numPrepod.ToString());
-            InfoTest newtest = new InfoTest(numPrepod);
-            newtest.Show();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            treeWork tw = new treeWork(numPrepod.ToString());
-            tw.Show();
-            this.Hide();
-        }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-            conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
+        {            
+            conn.Open();                        
             comm.CommandText = "Select * from [Группы преподавателей] where [№ преподавателя] = '" + numPrepod + "'";
             SqlDataReader rdr = comm.ExecuteReader();
             groups.Items.Clear();
@@ -64,7 +46,8 @@ namespace Prepod
                 }
             }
             rdr.Close();
-            comm.CommandText = "select Фамилия, Имя, Отчество, Телефон, Пароль from Преподаватель where Преподаватель.[№ преподавателя] ='" + numPrepod + "'";
+
+            comm.CommandText = "select Фамилия, Имя, Отчество, Пароль from Преподаватель where Преподаватель.[№ преподавателя] ='" + numPrepod + "'";
             try
             {                
                 rdr = comm.ExecuteReader();
@@ -73,12 +56,12 @@ namespace Prepod
                     rdr.Read();
                     textBox1.Text = rdr[0].ToString();
                     textBox2.Text = rdr[1].ToString();
-                    textBox3.Text = rdr[2].ToString();
-                    textBox4.Text = rdr[3].ToString();
-                    textBox5.Text = rdr[4].ToString();
+                    textBox3.Text = rdr[2].ToString();                    
+                    textBox5.Text = rdr[3].ToString();
                 }
                 rdr.Close();
-                comm = new SqlCommand("select * from Группа", conn);
+
+                comm.CommandText = "select * from Группа";
                 rdr = comm.ExecuteReader();
                 while (rdr.Read())
                 {
@@ -86,15 +69,15 @@ namespace Prepod
                 }
                 rdr.Close();
             }
-            finally { }
+            finally { conn.Close(); };
+            
         }
 
         private void button6_Click(object sender, EventArgs e)
-        {            
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
-
+        {
+            conn.Open();
             comm.CommandText = "Select [№ группы] from Группа where Группа.Название = '" + comboBox1.Text + "'";
+
             SqlDataReader rdr = comm.ExecuteReader();
             rdr.Read();
             string numGroup = rdr[0].ToString();
@@ -116,27 +99,29 @@ namespace Prepod
                     groups.Items.Add(rdr[1]);
                 }               
             }
-            rdr.Close();                     
+            rdr.Close();
+            conn.Close();
 
+            
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            string cmd = "Update into Преподаватель (Фамилия, Имя, Отчество, Телефон) Values('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "')";
-            SqlCommand comm = new SqlCommand(cmd, conn);
+            conn.Open();
+            string cmd = "Update Преподаватель set Фамилия = '" + textBox1.Text + "', Имя = '" + textBox2.Text + "', Отчество = '" + textBox3.Text + "', Пароль = '" + textBox5.Text + "'";
+            comm.CommandText = cmd;
             comm.ExecuteNonQuery();
+            conn.Close();
+
+            treeWork tw = new treeWork(numPrepod);
+            tw.Show();
+            this.Hide();
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void prepodWork_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Estimates frm = new Estimates(numPrepod.ToString());
-            frm.Show();
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            regForm rf = new regForm();
-            rf.Show();
+            treeWork tw = new treeWork(numPrepod);
+            tw.Show();
             this.Hide();
         }
     }

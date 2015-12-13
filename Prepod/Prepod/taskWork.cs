@@ -20,15 +20,17 @@ namespace Prepod
         string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
         string numPrepod;
+        string numTree;
 
         SqlDataAdapter adapter;
         DataTable data = new DataTable();
         BindingSource bs = new BindingSource();
 
-        public taskWork(string _numPrepod)
+        public taskWork(string _numPrepod, string _numTree)
         {
             InitializeComponent();
             numPrepod = _numPrepod;
+            numTree = _numTree;
             conn = new SqlConnection(connectionString);
             comm = new SqlCommand();
             comm.Connection = conn;

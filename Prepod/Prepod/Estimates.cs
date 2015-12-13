@@ -25,10 +25,11 @@ namespace Prepod
 
         string numPrepod;
         string numTree;
-        public Estimates(string _numPrepod)
+        public Estimates(string _numPrepod, string _numTree)
         {
             InitializeComponent();
             numPrepod = _numPrepod;
+            numTree = _numTree;
             loadInf();
             group.SelectedIndex = 0;
         }
@@ -49,7 +50,7 @@ namespace Prepod
             }
             rdr.Close();
 
-            comm.CommandText = "Select Вершина.Текст from Вершина Where [Тип вершины] = 1 and [№ дерева] = 4";
+            comm.CommandText = "Select Вершина.Текст from Вершина Where [Тип вершины] = 1 and [№ дерева] = '"+ numTree +"'";
 
             rdr = comm.ExecuteReader();
             while (rdr.Read())
@@ -63,19 +64,23 @@ namespace Prepod
             adapter = new SqlDataAdapter(comm);
             adapter.Fill(data);
 
+            dataGridView1.DataSource = data;
+
+            bs.DataSource = data;
+            bs.Filter = "[№ дерева] = '" + numTree + "'";
 
             conn.Close();
         }
 
         private void group_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bs.DataSource = data;
+            
             bs.Filter = "Группа = '" + group.Text + "'";
         }
 
         private void typeWork_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bs.DataSource = data;
+
             bs.Filter = "[Вид работы] = '" + typeWork.Text + "' and Группа = '" + group.Text + "'";           
         }
 

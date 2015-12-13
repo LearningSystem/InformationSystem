@@ -566,5 +566,11 @@ namespace Prepod
             this.Hide();
             gostart.Show();
         }
+
+        private void успеваемостьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            studEst se = new studEst(numStudent);
+            se.Show();
+        }
     }
 }

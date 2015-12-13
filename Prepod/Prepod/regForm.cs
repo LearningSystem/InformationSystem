@@ -74,8 +74,8 @@ namespace Prepod
             {
                 label6.Visible = false;
                 rdr.Read();
-                prepodWork pw = new prepodWork(Convert.ToInt32(rdr[0].ToString()));
-                pw.Show();
+                treeWork tw = new treeWork(rdr[0].ToString());
+                tw.Show();
                 this.Hide();
             }
             else

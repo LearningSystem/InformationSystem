@@ -16,26 +16,9 @@ namespace Prepod
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
             //Application.Run(new regForm());
-            Application.Run(new taskWork("1"));
-            //Application.Run(new prepodWork(1));
+            Application.Run(new treeWork("1"));
             
-
-            //Application.Run(new regForm());
-            //Application.Run(new studentWork("1"));
-            //Application.Run(new admin());
-            //Application.Run(new regForm());
-            //Application.Run(new studentWork("1"));
-            //Application.Run(new prepodWork(1));
-            //Application.Run(new regForm());
-=======
-            //Application.Run(new prepodWork(1));
-            Application.Run(new regForm());
->>>>>>> b5f6ccca8535d2d155404b87483af3e7729c00ac
-            //Application.Run(new studentWork("1"));
-            //Application.Run(new admin());
-            //Application.Run(new Estimates("1"));
         }
     }
 }

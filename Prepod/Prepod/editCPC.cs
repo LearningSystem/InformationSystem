@@ -23,7 +23,7 @@ namespace Prepod
 
 
         BindingSource bs = new BindingSource();
-        SqlDataAdapter adapter;
+        
         DataTable data = new DataTable();
         public editCPC(string _numTree)
         {
@@ -116,8 +116,7 @@ namespace Prepod
 
 
         private void insertNode(string Name, string path, TreeNode node, TreeNode child)
-        {
-            string cmd = "";
+        {            
             try
             {
                 
