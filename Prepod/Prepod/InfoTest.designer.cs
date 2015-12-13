@@ -162,6 +162,7 @@
             this.Controls.Add(this.lblDescTest);
             this.Controls.Add(this.tBNameTest);
             this.Controls.Add(this.lblNameTest);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "InfoTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Информация о тесте";
