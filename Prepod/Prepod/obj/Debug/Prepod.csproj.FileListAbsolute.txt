@@ -92,3 +92,4 @@ D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod
 D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.ReportForm.resources
 D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.TestCreate.resources
 D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.TestStart.resources
+D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.taskWork.resources

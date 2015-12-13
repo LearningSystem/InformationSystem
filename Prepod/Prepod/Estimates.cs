@@ -20,6 +20,7 @@ namespace Prepod
 
         SqlDataAdapter adapter;
         DataTable data = new DataTable();
+        BindingSource bs = new BindingSource();
 
 
         string numPrepod;
@@ -29,6 +30,7 @@ namespace Prepod
             InitializeComponent();
             numPrepod = _numPrepod;
             loadInf();
+            group.SelectedIndex = 0;
         }
 
         private void loadInf()
@@ -56,41 +58,25 @@ namespace Prepod
             }
             rdr.Close();
 
+            comm.CommandText = "Select * from [Успеваемость по задачам]";
+
+            adapter = new SqlDataAdapter(comm);
+            adapter.Fill(data);
+
+
             conn.Close();
         }
 
         private void group_SelectedIndexChanged(object sender, EventArgs e)
         {
-            data.Clear();
-            conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
-
-            comm.CommandText = "Select * from [Успеваемость по задачам] where Группа = '"+ group.Text +"'";
-
-            adapter = new SqlDataAdapter(comm);
-            adapter.Fill(data);
-            dataGridView1.DataSource = data;
-            
-            conn.Close();
+            bs.DataSource = data;
+            bs.Filter = "Группа = '" + group.Text + "'";
         }
 
         private void typeWork_SelectedIndexChanged(object sender, EventArgs e)
         {
-            data.Clear();
-            conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
-
-            comm.CommandText = "Select * from [Успеваемость по задачам] where [Вид работы] = '" + typeWork.Text + "'";
-
-            adapter = new SqlDataAdapter(comm);
-            adapter.Fill(data);
-            dataGridView1.DataSource = data;
-
-            conn.Close();
+            bs.DataSource = data;
+            bs.Filter = "[Вид работы] = '" + typeWork.Text + "' and Группа = '" + group.Text + "'";           
         }
 
 

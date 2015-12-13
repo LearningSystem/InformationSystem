@@ -17,15 +17,16 @@ namespace Prepod
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new regForm());
-            //Application.Run(new studentWork("1"));
+            Application.Run(new taskWork("1"));
             //Application.Run(new prepodWork(1));
+            
 
             //Application.Run(new regForm());
             //Application.Run(new studentWork("1"));
             //Application.Run(new admin());
             //Application.Run(new regForm());
             //Application.Run(new studentWork("1"));
-            Application.Run(new prepodWork(1));
+            //Application.Run(new prepodWork(1));
             //Application.Run(new regForm());
             //Application.Run(new studentWork("1"));
             //Application.Run(new admin());
