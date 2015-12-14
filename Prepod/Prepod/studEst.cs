@@ -69,9 +69,9 @@ namespace Prepod
 
         private void studEst_FormClosing(object sender, FormClosingEventArgs e)
         {
-            studentWork sw = new studentWork(numStud);
-            sw.Show();
-            this.Hide();
+            //studentWork sw = new studentWork(numStud);
+            //sw.Show();
+            //this.Hide();
         }
 
     }
