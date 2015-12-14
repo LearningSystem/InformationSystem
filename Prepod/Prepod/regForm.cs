@@ -133,5 +133,11 @@ namespace Prepod
                 textBox3.Enabled = true;
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Вы уверены, что хотите выйти?","Выход",MessageBoxButtons.YesNoCancel)==DialogResult.Yes)
+               Application.Exit();
+        }
     }
 }

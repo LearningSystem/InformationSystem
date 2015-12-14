@@ -107,7 +107,7 @@ namespace Prepod
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
         }
 
         private void InfoTest_Load(object sender, EventArgs e)

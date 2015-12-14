@@ -76,8 +76,8 @@ namespace Prepod
                 //    lstQuestion.Items.Add("Вопрос " + h);
                 //}
                 //rTB.ReadOnly = true;
-                //pBTime.Maximum = Time;
-                //pBTime.Minimum = 0;
+                pBTime.Maximum = Time;
+                pBTime.Minimum = 0;
                 //MyTimer.Enabled = true;
                 //MyTimer.Start();
 
@@ -766,8 +766,6 @@ namespace Prepod
         {
             if (First==false)
             {
-                pBTime.Maximum = Time;
-                pBTime.Minimum = 0;
                 MyTimer.Enabled = true;
                 MyTimer.Start();
                 //First = true;
@@ -851,13 +849,16 @@ namespace Prepod
         {
             if (t <= Time)
             {
-                pBTime.Value = pBTime.Value++;//100 минут длится пара
+                pBTime.Value = pBTime.Value+1;//100 минут длится пара
                 pBTime.Update();
                 t++;
             }
             else
             {
                 MyTimer.Stop();
+                MyTimer.Enabled = false;
+                SaveAnswers(Int32.Parse(lblNumberQuest.Text));//ПРОВЕРИТЬ!
+                btnNext_Click(sender, e);
                 MessageBox.Show("Время истекло");
             }
         }
