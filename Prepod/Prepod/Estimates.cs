@@ -15,34 +15,40 @@ namespace Prepod
     public partial class Estimates : Form
     {
         SqlConnection conn;
+        SqlCommand comm;
         string connectionString 
             = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
         SqlDataAdapter adapter;
-        DataTable data = new DataTable();
+        DataTable dataTasks = new DataTable();
+        DataTable dataTests = new DataTable();
         BindingSource bs = new BindingSource();
 
 
         string numPrepod;
         string numTree;
+
+        string viewTable;
         public Estimates(string _numPrepod, string _numTree)
         {
             InitializeComponent();
             numPrepod = _numPrepod;
             numTree = _numTree;
+
+            conn = new SqlConnection(connectionString);
+            comm = new SqlCommand();
+            comm.Connection = conn;
+
             loadInf();
+            tableName.SelectedIndex = 0;
             group.SelectedIndex = 0;
+            
         }
 
         private void loadInf()
-        {
-            conn = new SqlConnection(connectionString);
+        {            
             conn.Open();
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
-
             comm.CommandText = "Select Название from Группа";
-
             SqlDataReader rdr = comm.ExecuteReader();
             while (rdr.Read())
             {
@@ -50,8 +56,7 @@ namespace Prepod
             }
             rdr.Close();
 
-            comm.CommandText = "Select Вершина.Текст from Вершина Where [Тип вершины] = 1 and [№ дерева] = '"+ numTree +"'";
-
+            comm.CommandText = "Select Вершина.Текст from Вершина, [Тип вершины] Where Вершина.[Тип вершины] = [Тип вершины].Код and [Тип вершины].Тип = 'Задача' and [№ дерева] = '"+ numTree +"'";
             rdr = comm.ExecuteReader();
             while (rdr.Read())
             {
@@ -59,16 +64,47 @@ namespace Prepod
             }
             rdr.Close();
 
-            comm.CommandText = "Select * from [Успеваемость по задачам]";
+            //comm.CommandText = "Select Вершина.Текст from Вершина, [Тип вершины] Where Вершина.[Тип вершины] = [Тип вершины].Код and [Тип вершины].Тип = 'Тест' and [№ дерева] = '" + numTree + "'";
+            //rdr = comm.ExecuteReader();
+            //while (rdr.Read())
+            //{
+            //    typeTest.Items.Add(rdr[0].ToString());
+            //}
+            //rdr.Close();
+            conn.Close();
+                                    
+        }
 
+        private void loadDataGrid()
+        {
+            conn.Open();
+            comm.CommandText = "Select * from " + viewTable + " where [№ дерева] = '" + numTree + "'";
             adapter = new SqlDataAdapter(comm);
-            adapter.Fill(data);
 
-            dataGridView1.DataSource = data;
-
-            bs.DataSource = data;
-            bs.Filter = "[№ дерева] = '" + numTree + "'";
-
+            if (viewTable == "[Успеваемость по задачам]")
+            {
+                dataTasks.Clear();
+                adapter.Fill(dataTasks);
+                tasks.DataSource = dataTasks;
+                tasks.Columns[11].Visible = false;
+                tasks.Columns[12].Visible = false;
+                tasks.ReadOnly = true;
+                tasks.Visible = true;
+                tests.Visible = false;
+                bs.DataSource = dataTasks;
+            }
+            else
+            {
+                dataTests.Clear();
+                adapter.Fill(dataTests);
+                tests.DataSource = dataTests;
+                tests.Columns[0].Visible = false;
+                tests.Columns[13].Visible = false;
+                tests.ReadOnly = true;
+                tests.Visible = true;
+                tasks.Visible = false;
+                bs.DataSource = dataTests;
+            }            
             conn.Close();
         }
 
@@ -82,6 +118,24 @@ namespace Prepod
         {
 
             bs.Filter = "[Вид работы] = '" + typeWork.Text + "' and Группа = '" + group.Text + "'";           
+        }
+
+        private void tableName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tableName.SelectedIndex == 0)
+            {
+                typeWork.Enabled = true;
+                //typeTest.Enabled = false;
+                viewTable = "[Успеваемость по задачам]";
+            }                
+            else
+            {
+                //typeTest.Enabled = true;
+                typeWork.Enabled = false;
+                viewTable = "[Успеваемость по тестам]";
+            }
+                
+            loadDataGrid();
         }
 
 

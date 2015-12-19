@@ -117,12 +117,15 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.Menu;
             this.dataGridView1.Location = new System.Drawing.Point(0, 25);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(638, 316);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.dataGridView1_CellParsing);
             // 
             // richTextBox1
             // 
@@ -196,21 +199,21 @@
             // showNew
             // 
             this.showNew.Name = "showNew";
-            this.showNew.Size = new System.Drawing.Size(152, 22);
+            this.showNew.Size = new System.Drawing.Size(151, 22);
             this.showNew.Text = "Новые";
             this.showNew.Click += new System.EventHandler(this.showNew_Click);
             // 
             // showAll
             // 
             this.showAll.Name = "showAll";
-            this.showAll.Size = new System.Drawing.Size(152, 22);
+            this.showAll.Size = new System.Drawing.Size(151, 22);
             this.showAll.Text = "Все задачи";
             this.showAll.Click += new System.EventHandler(this.showAll_Click);
             // 
             // showTask
             // 
             this.showTask.Name = "showTask";
-            this.showTask.Size = new System.Drawing.Size(152, 22);
+            this.showTask.Size = new System.Drawing.Size(151, 22);
             this.showTask.Text = "Проверенные";
             this.showTask.Click += new System.EventHandler(this.showTask_Click);
             // 

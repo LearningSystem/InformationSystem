@@ -22,6 +22,7 @@ namespace Prepod
         string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
         string numStudent;
+        string numTree;
 
         TreeNode newNode;
         SqlDataAdapter adapter;
@@ -44,6 +45,8 @@ namespace Prepod
             listView2.Visible = false;
             listView1.Visible = true;
             startTest.Visible = false;
+            nazad.Enabled = false;
+            estMenu.Enabled = false;
         }
         string fio;
         private void loadInf()
@@ -127,8 +130,7 @@ namespace Prepod
 
             //заполнение listView
             ListViewItem lv = new ListViewItem();
-            string tName = "";
-            string numTree = "";
+            string tName = "";           
             while (rdr.Read())
             {
                 string type = "Курс обучения";
@@ -212,7 +214,7 @@ namespace Prepod
         private void listView1_MouseDoubleClick_1(object sender, MouseEventArgs e)
         {
             treeView1.Nodes.Clear();
-            string numTree = listView1.SelectedItems[0].SubItems[2].Text;
+            numTree = listView1.SelectedItems[0].SubItems[2].Text;
             name.Text = name.Text + " | " + listView1.SelectedItems[0].SubItems[0].Text;
             LoadTree(numTree);
             treeView1.Tag = numTree;
@@ -220,6 +222,7 @@ namespace Prepod
             listView1.Visible = false;
             richTextBox1.Visible = true;
             listView2.Visible = false;
+            estMenu.Enabled = true;
             searchCPC();            
         }
 
@@ -454,7 +457,7 @@ namespace Prepod
         }
         private void studentWork_Load(object sender, EventArgs e)
         {
-            nazad.Enabled = false;
+            
             
         }
 
@@ -568,8 +571,8 @@ namespace Prepod
         }
 
         private void успеваемостьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            studEst se = new studEst(numStudent);
+        {            
+            studEst se = new studEst(numStudent, numTree);
             se.Show();
         }
     }

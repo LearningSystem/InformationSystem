@@ -114,6 +114,15 @@ namespace Prepod
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[7].Visible = false;
             dataGridView1.Columns[8].Visible = false;
+            
+            dataGridView1.Columns[5].DefaultCellStyle.BackColor = Color.LightYellow;
+            for (int i = 0; i <= 8; i++ )
+            {
+                if (i == 5)
+                    dataGridView1.Columns[i].ReadOnly = false;
+                else
+                    dataGridView1.Columns[i].ReadOnly = true;
+            }                
 
             conn.Close();
 
@@ -226,6 +235,17 @@ namespace Prepod
                 cancel.Visible = true;
             }
             else { MessageBox.Show("Задача еще не сдана"); }
+        }
+
+        private void dataGridView1_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
+        {            
+            string numStud = listView1.SelectedItems[0].Tag.ToString();
+            string numTask = dataGridView1[0, e.RowIndex].Value.ToString();
+            conn.Open();
+            comm.CommandText = "update [Выполненная задача] set Балл = '"+ e.Value.ToString() +"' where [№ студента] = '"+ numStud +"' and [№ задачи] = '"+ numTask +"'";
+            comm.ExecuteNonQuery();
+            conn.Close();
+
         }
 
     }
