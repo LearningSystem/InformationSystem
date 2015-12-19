@@ -169,7 +169,7 @@
             // 
             // MyTimer
             // 
-            this.MyTimer.Interval = 60000000;
+            this.MyTimer.Interval = 60000;
             this.MyTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // lblNumberQuest
@@ -207,7 +207,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(869, 439);
             this.Controls.Add(this.btnNextQuestion);
             this.Controls.Add(this.btnPrevQuestion);

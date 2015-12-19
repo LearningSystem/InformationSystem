@@ -67,7 +67,7 @@ namespace Prepod
             //добавления колонок            
             ColumnHeader c = new ColumnHeader();
             c.Text = "ФИО студента";
-            c.Width = c.Width + 80;
+            c.Width = c.Width + 105;
 
             listView1.Columns.Add(c);
         }

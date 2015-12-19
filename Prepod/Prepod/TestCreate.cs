@@ -665,7 +665,7 @@ namespace Prepod
             SqlCommand comm = new SqlCommand();
             comm.Connection = conn;
 
-            string date = dateTimePicker1.Value.ToString().Remove(0,10);
+            string date = dateTimePicker1.Value.ToShortDateString();
             //int maxBall = Convert.ToInt32(numList1.Value) + Convert.ToInt32(numList2.Value) + Convert.ToInt32(numList3.Value) + Convert.ToInt32(numList4.Value) + Convert.ToInt32(numList5.Value);
             int maxBall = 0;
             for (int g = 0; g <= Questions.Count-1;g++ )

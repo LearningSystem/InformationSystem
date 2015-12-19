@@ -124,9 +124,9 @@ namespace Prepod
 
         private void prepodWork_FormClosing(object sender, FormClosingEventArgs e)
         {
-            treeWork tw = new treeWork(numPrepod);
-            tw.Show();
-            this.Hide();
+            //treeWork tw = new treeWork(numPrepod);
+            //tw.Show();
+            //this.Hide();
         }
     }
 }

@@ -41,8 +41,21 @@ namespace Prepod
 
         private void ReportForm_Load(object sender, EventArgs e)
         {
-            lblName.Text="Имя";
-            lblGroup.Text = "Группа";
+            string fio = "";
+            string group = "";
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+            comm.CommandText = "select [Фамилия],[Имя],[Название] from Студент,Группа where Студент.[№ группы]=Группа.[№ группы] and Студент.[№ студента]="+"'"+NumStud.ToString()+"'";
+            SqlDataReader rd = comm.ExecuteReader();
+            while (rd.Read())
+            {
+                fio = rd[0].ToString() + " " + rd[1].ToString();
+                group = rd[2].ToString();
+            }
+            lblName.Text = fio;
+            lblGroup.Text = group;
             lblTheme.Text = TestTheme;
             lblBall.Text = StudBall.ToString();
             DoStart();
