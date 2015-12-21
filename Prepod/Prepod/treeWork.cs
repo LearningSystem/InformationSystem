@@ -444,7 +444,7 @@ namespace Prepod
         private void addNode_Click(object sender, EventArgs e)
         {
 
-            if (treeView1.Nodes.Count == 0)
+            if ((treeView1.Nodes.Count == 0) || (treeView1.SelectedNode == null))
             {
                 newSection.Enabled = true;
                 cpc.Enabled = false;
@@ -734,10 +734,10 @@ namespace Prepod
                 comm.ExecuteNonQuery();
                 for (int j = 1; j < i; j++)
                 {
-                    comm.CommandText = "delete from [Выполненная задача]   where [№ задачи] in (select [№ задачи] from Задача where [№ вершины]='" + mas[j].ToString() + "')";
-                    comm.ExecuteNonQuery();
-                    comm.CommandText = "delete from Задача where [№ вершины]=" + mas[j].ToString() + "";
-                    comm.ExecuteNonQuery();
+                    //comm.CommandText = "delete from [Выполненная задача]   where [№ задачи] in (select [№ задачи] from Задача where [№ вершины]='" + mas[j].ToString() + "')";
+                    //comm.ExecuteNonQuery();
+                    //comm.CommandText = "delete from Задача where [№ вершины]=" + mas[j].ToString() + "";
+                    //comm.ExecuteNonQuery();
                     comm.CommandText = "delete from Вершина where [№ вершины]=" + mas[j].ToString() + "";
                     comm.ExecuteNonQuery();
                 }

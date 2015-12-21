@@ -546,7 +546,7 @@ namespace Prepod
             SqlCommand comm = new SqlCommand();
             comm.Connection = conn;
 
-            comm.CommandText = "update  [Выполненная задача] set [Ссылка на работу] = '" + path + "' where [№ задачи] = '" + listView2.SelectedItems[0].SubItems[4].Text + "' and [№ студента] = '" + numStudent + "'";
+            comm.CommandText = "update  [Выполненная задача] set [Ссылка на работу] = '" + path + "', [Дата сдачи]='"+ DateTime.Today.ToShortDateString() +"' where [№ задачи] = '" + listView2.SelectedItems[0].SubItems[4].Text + "' and [№ студента] = '" + numStudent + "'";
             comm.ExecuteNonQuery();            
             conn.Close();
         }
@@ -572,7 +572,7 @@ namespace Prepod
 
         private void успеваемостьToolStripMenuItem_Click(object sender, EventArgs e)
         {            
-            studEst se = new studEst(numStudent, numTree);
+            studEstimates se = new studEstimates(numStudent, numTree);
             se.Show();
         }
     }

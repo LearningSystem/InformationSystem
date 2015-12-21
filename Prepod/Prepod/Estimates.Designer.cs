@@ -29,21 +29,19 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.tasks = new System.Windows.Forms.DataGridView();
-            this.tests = new System.Windows.Forms.DataGridView();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tableName = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.group = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.typeWork = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tests = new System.Windows.Forms.DataGridView();
+            this.tasks = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tasks)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tests)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tests)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tasks)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -64,23 +62,19 @@
             this.splitContainer1.SplitterDistance = 141;
             this.splitContainer1.TabIndex = 0;
             // 
-            // tasks
+            // toolStrip1
             // 
-            this.tasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tasks.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tasks.Location = new System.Drawing.Point(0, 0);
-            this.tasks.Name = "tasks";
-            this.tasks.Size = new System.Drawing.Size(883, 339);
-            this.tasks.TabIndex = 0;
-            // 
-            // tests
-            // 
-            this.tests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tests.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tests.Location = new System.Drawing.Point(0, 0);
-            this.tests.Name = "tests";
-            this.tests.Size = new System.Drawing.Size(883, 339);
-            this.tests.TabIndex = 1;
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tableName,
+            this.toolStripLabel1,
+            this.group});
+            this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(141, 339);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
             // 
             // tableName
             // 
@@ -105,33 +99,23 @@
             this.group.Size = new System.Drawing.Size(137, 23);
             this.group.SelectedIndexChanged += new System.EventHandler(this.group_SelectedIndexChanged);
             // 
-            // toolStripLabel2
+            // tests
             // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(139, 15);
-            this.toolStripLabel2.Text = "Выберите тип работы";
+            this.tests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tests.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tests.Location = new System.Drawing.Point(0, 0);
+            this.tests.Name = "tests";
+            this.tests.Size = new System.Drawing.Size(883, 339);
+            this.tests.TabIndex = 1;
             // 
-            // typeWork
+            // tasks
             // 
-            this.typeWork.Name = "typeWork";
-            this.typeWork.Size = new System.Drawing.Size(137, 23);
-            this.typeWork.SelectedIndexChanged += new System.EventHandler(this.typeWork_SelectedIndexChanged);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tableName,
-            this.toolStripLabel1,
-            this.group,
-            this.toolStripLabel2,
-            this.typeWork});
-            this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(141, 339);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
+            this.tasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tasks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tasks.Location = new System.Drawing.Point(0, 0);
+            this.tasks.Name = "tasks";
+            this.tasks.Size = new System.Drawing.Size(883, 339);
+            this.tasks.TabIndex = 0;
             // 
             // Estimates
             // 
@@ -147,10 +131,10 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tasks)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tests)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tests)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tasks)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -164,8 +148,6 @@
         private System.Windows.Forms.ToolStripComboBox tableName;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripComboBox group;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
-        private System.Windows.Forms.ToolStripComboBox typeWork;
 
     }
 }

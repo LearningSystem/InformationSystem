@@ -56,13 +56,13 @@ namespace Prepod
             }
             rdr.Close();
 
-            comm.CommandText = "Select Вершина.Текст from Вершина, [Тип вершины] Where Вершина.[Тип вершины] = [Тип вершины].Код and [Тип вершины].Тип = 'Задача' and [№ дерева] = '"+ numTree +"'";
-            rdr = comm.ExecuteReader();
-            while (rdr.Read())
-            {
-                typeWork.Items.Add(rdr[0].ToString());
-            }
-            rdr.Close();
+            //comm.CommandText = "Select Вершина.Текст from Вершина, [Тип вершины] Where Вершина.[Тип вершины] = [Тип вершины].Код and [Тип вершины].Тип = 'Задача' and [№ дерева] = '"+ numTree +"'";
+            //rdr = comm.ExecuteReader();
+            //while (rdr.Read())
+            //{
+            //    typeWork.Items.Add(rdr[0].ToString());
+            //}
+            //rdr.Close();
 
             //comm.CommandText = "Select Вершина.Текст from Вершина, [Тип вершины] Where Вершина.[Тип вершины] = [Тип вершины].Код and [Тип вершины].Тип = 'Тест' and [№ дерева] = '" + numTree + "'";
             //rdr = comm.ExecuteReader();
@@ -117,21 +117,21 @@ namespace Prepod
         private void typeWork_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            bs.Filter = "[Вид работы] = '" + typeWork.Text + "' and Группа = '" + group.Text + "'";           
+            //bs.Filter = "[Вид работы] = '" + typeWork.Text + "' and Группа = '" + group.Text + "'";           
         }
 
         private void tableName_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tableName.SelectedIndex == 0)
             {
-                typeWork.Enabled = true;
+                //typeWork.Enabled = true;
                 //typeTest.Enabled = false;
                 viewTable = "[Успеваемость по задачам]";
             }                
             else
             {
                 //typeTest.Enabled = true;
-                typeWork.Enabled = false;
+                //typeWork.Enabled = false;
                 viewTable = "[Успеваемость по тестам]";
             }
                 

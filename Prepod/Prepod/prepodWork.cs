@@ -69,10 +69,8 @@ namespace Prepod
                 }
                 rdr.Close();
             }
-            finally { conn.Close(); };
-
-            treeWork tw = new treeWork(numPrepod);
-            tw.Show();
+            finally { conn.Close(); };            
+            
             this.Hide();
             
         }
