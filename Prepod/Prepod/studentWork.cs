@@ -572,7 +572,7 @@ namespace Prepod
 
         private void успеваемостьToolStripMenuItem_Click(object sender, EventArgs e)
         {            
-            studEst se = new studEst(numStudent, numTree);
+            studEstimates se = new studEstimates(numStudent, numTree);
             se.Show();
         }
     }

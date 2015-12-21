@@ -138,6 +138,12 @@
     <Compile Include="studEst.Designer.cs">
       <DependentUpon>studEst.cs</DependentUpon>
     </Compile>
+    <Compile Include="studEstimates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="studEstimates.Designer.cs">
+      <DependentUpon>studEstimates.cs</DependentUpon>
+    </Compile>
     <Compile Include="taskWork.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="studEst.resx">
       <DependentUpon>studEst.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="studEstimates.resx">
+      <DependentUpon>studEstimates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="taskWork.resx">
       <DependentUpon>taskWork.cs</DependentUpon>
