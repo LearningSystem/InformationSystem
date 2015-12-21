@@ -87,6 +87,12 @@
     <Compile Include="Estimates.Designer.cs">
       <DependentUpon>Estimates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="InfoTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,12 +137,6 @@
     </Compile>
     <Compile Include="regForm.Designer.cs">
       <DependentUpon>regForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="studEst.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="studEst.Designer.cs">
-      <DependentUpon>studEst.cs</DependentUpon>
     </Compile>
     <Compile Include="studEstimates.cs">
       <SubType>Form</SubType>
@@ -200,6 +200,9 @@
     <EmbeddedResource Include="Estimates.resx">
       <DependentUpon>Estimates.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InfoTest.resx">
       <DependentUpon>InfoTest.cs</DependentUpon>
     </EmbeddedResource>
@@ -229,9 +232,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="regForm.resx">
       <DependentUpon>regForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="studEst.resx">
-      <DependentUpon>studEst.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="studEstimates.resx">
       <DependentUpon>studEstimates.cs</DependentUpon>
