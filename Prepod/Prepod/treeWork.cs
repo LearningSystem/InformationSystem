@@ -57,7 +57,7 @@ namespace Prepod
             ColumnHeader c2 = new ColumnHeader();
             c2.Text = "Номер дерева";
             c2.Width = c2.Width + 60;
-                        
+            
             listView1.Columns.Add(c);
             listView1.Columns.Add(c1);
             listView1.Columns.Add(c2);           
@@ -266,8 +266,8 @@ namespace Prepod
                     TreeNode child = new TreeNode(Text);
                     child.Name = Text;
                     child.Tag = num;
-                    
-                    if ((type == "2")||(type == "5"))
+
+                    if ((type == "2") || (type == "5") || (type == "4"))
                         {
                             child.ImageIndex = 1;
                         }

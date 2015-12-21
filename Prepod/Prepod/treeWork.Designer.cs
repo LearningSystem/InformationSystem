@@ -123,28 +123,28 @@
             // создатьДеревоToolStripMenuItem
             // 
             this.создатьДеревоToolStripMenuItem.Name = "создатьДеревоToolStripMenuItem";
-            this.создатьДеревоToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.создатьДеревоToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.создатьДеревоToolStripMenuItem.Text = "Создать курс";
             this.создатьДеревоToolStripMenuItem.Click += new System.EventHandler(this.создатьДеревоToolStripMenuItem_Click_1);
             // 
             // моиДеревьяToolStripMenuItem
             // 
             this.моиДеревьяToolStripMenuItem.Name = "моиДеревьяToolStripMenuItem";
-            this.моиДеревьяToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.моиДеревьяToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.моиДеревьяToolStripMenuItem.Text = "Мои курсы";
             this.моиДеревьяToolStripMenuItem.Click += new System.EventHandler(this.моиДеревьяToolStripMenuItem_Click);
             // 
             // удалитьДеревоToolStripMenuItem
             // 
             this.удалитьДеревоToolStripMenuItem.Name = "удалитьДеревоToolStripMenuItem";
-            this.удалитьДеревоToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.удалитьДеревоToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.удалитьДеревоToolStripMenuItem.Text = "Удалить курс";
             this.удалитьДеревоToolStripMenuItem.Click += new System.EventHandler(this.удалитьДеревоToolStripMenuItem_Click);
             // 
             // создатьТестToolStripMenuItem
             // 
             this.создатьТестToolStripMenuItem.Name = "создатьТестToolStripMenuItem";
-            this.создатьТестToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.создатьТестToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.создатьТестToolStripMenuItem.Text = "Создать тест";
             this.создатьТестToolStripMenuItem.Click += new System.EventHandler(this.создатьТестToolStripMenuItem_Click);
             // 
@@ -190,10 +190,10 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Panel2.Controls.Add(this.listView2);
             this.splitContainer1.Panel2.Controls.Add(this.listView1);
             this.splitContainer1.Panel2.Controls.Add(this.toolStrip2);
+            this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Size = new System.Drawing.Size(793, 364);
             this.splitContainer1.SplitterDistance = 276;
             this.splitContainer1.TabIndex = 2;
@@ -317,9 +317,9 @@
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 25);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(513, 339);
+            this.panel1.Size = new System.Drawing.Size(513, 364);
             this.panel1.TabIndex = 3;
             this.panel1.Visible = false;
             // 

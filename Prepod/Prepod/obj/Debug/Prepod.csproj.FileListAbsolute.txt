@@ -57,8 +57,6 @@ D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod
 D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.propTask.resources
 D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.studentWork.resources
 D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.regForm.resources
-D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.Tree.resources
-D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.TreeForm.resources
 D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.treeWork.resources
 D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.csproj.GenerateResource.Cache
 C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\bin\Debug\Prepod.exe.config
@@ -93,7 +91,6 @@ D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod
 D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.TestCreate.resources
 D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.TestStart.resources
 D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.taskWork.resources
-D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.studEst.resources
 C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.studEst.resources
 C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.taskWork.resources
 D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.studEstimates.resources
