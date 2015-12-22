@@ -97,25 +97,31 @@ namespace Prepod
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            if ((textBox4.Text != "") && (comboBox1.SelectedIndex >= 0) &&(textBox1.Text !="")&&(textBox2.Text !="")&&(textBox3.Text !=""))
-            {
+        {            
                 switch (comboBox1.SelectedIndex.ToString())
                 {
                     case "0":
                         {
-                            checkStudent();                            
+                            if ((textBox4.Text != "") && (comboBox1.SelectedIndex >= 0) && (textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != ""))
+                            {
+                                checkStudent();
+                            }
                         }break;
                     case "1":
                         {
-                            checkTeacher();
+                            if ((textBox4.Text != "") && (comboBox1.SelectedIndex >= 0) && (textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != ""))
+                            {
+                                checkTeacher();
+                            }
                         }break;
                     case "2":
                         {
-                            checkAdmin();
+                            if (textBox4.Text != "")
+                            {
+                                checkAdmin();
+                            }
                         }break;
-                }
-            }
+                }            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
