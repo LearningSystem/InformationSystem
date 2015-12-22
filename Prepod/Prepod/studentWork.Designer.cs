@@ -39,10 +39,9 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.listView2 = new System.Windows.Forms.ListView();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.listView1 = new System.Windows.Forms.ListView();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.rb = new System.Windows.Forms.RichTextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.name = new System.Windows.Forms.ToolStripLabel();
             this.loadTask = new System.Windows.Forms.ToolStripButton();
@@ -81,7 +80,7 @@
             // выбратьКурсToolStripMenuItem
             // 
             this.выбратьКурсToolStripMenuItem.Name = "выбратьКурсToolStripMenuItem";
-            this.выбратьКурсToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.выбратьКурсToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.выбратьКурсToolStripMenuItem.Text = "Выбрать курс";
             this.выбратьКурсToolStripMenuItem.Click += new System.EventHandler(this.выбратьКурсToolStripMenuItem_Click);
             // 
@@ -120,9 +119,8 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.listView2);
             this.splitContainer1.Panel2.Controls.Add(this.listView1);
-            this.splitContainer1.Panel2.Controls.Add(this.richTextBox1);
+            this.splitContainer1.Panel2.Controls.Add(this.rb);
             this.splitContainer1.Panel2.Controls.Add(this.toolStrip1);
             this.splitContainer1.Size = new System.Drawing.Size(729, 327);
             this.splitContainer1.SplitterDistance = 198;
@@ -149,19 +147,6 @@
             this.imageList1.Images.SetKeyName(0, "directory_mini.bmp");
             this.imageList1.Images.SetKeyName(1, "Documents_mini.png");
             // 
-            // listView2
-            // 
-            this.listView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView2.LargeImageList = this.imageList2;
-            this.listView2.Location = new System.Drawing.Point(0, 25);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(527, 302);
-            this.listView2.SmallImageList = this.imageList1;
-            this.listView2.TabIndex = 3;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
-            this.listView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView2_MouseDoubleClick);
-            // 
             // imageList2
             // 
             this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
@@ -181,14 +166,14 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick_1);
             // 
-            // richTextBox1
+            // rb
             // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 25);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(527, 302);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "";
+            this.rb.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rb.Location = new System.Drawing.Point(0, 25);
+            this.rb.Name = "rb";
+            this.rb.Size = new System.Drawing.Size(527, 302);
+            this.rb.TabIndex = 2;
+            this.rb.Text = "";
             // 
             // toolStrip1
             // 
@@ -287,13 +272,12 @@
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выбратьКурсToolStripMenuItem;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rb;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel name;
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.ToolStripButton nazad;
         private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton loadTask;

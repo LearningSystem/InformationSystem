@@ -37,12 +37,9 @@ namespace Prepod
             InitializeComponent();
             numStudent = _numStudent;
             loadTask.Enabled = false;
-            pg.Visible = false;
-            loadListView();
-            loadListViewTasks();
+            pg.Visible = false;            
             loadInf(); 
-            richTextBox1.Visible = false;
-            listView2.Visible = false;
+            rb.Visible = false;            
             listView1.Visible = true;
             startTest.Visible = false;
             nazad.Enabled = false;
@@ -69,54 +66,21 @@ namespace Prepod
 
         }
 
-        private void loadListViewTasks()
+        private void loadListView(List<String> col)
         {
-            //добавления колонок            
-            ColumnHeader c = new ColumnHeader();
-            c.Text = "Название";
-            c.Width = c.Width + 80;
-            ColumnHeader c1 = new ColumnHeader();
-            c1.Text = "Тема";
-            c1.Width = c1.Width + 60;
-            ColumnHeader c2 = new ColumnHeader();
-            c2.Text = "Максимальный балл";
-            c2.Width = c2.Width + 60;
-            ColumnHeader c3 = new ColumnHeader();
-            c3.Text = "Срок сдачи";
-            c3.Width = c3.Width + 60;
-            ColumnHeader c4 = new ColumnHeader();
-            c4.Text = "";
-            c4.Width = 0;
-            
-
-            listView2.Columns.Add(c);            
-            listView2.Columns.Add(c2);
-            listView2.Columns.Add(c3);
-            listView2.Columns.Add(c1);
-            listView2.Columns.Add(c4);
-        }
-        private void loadListView()
-        {
-            //добавления колонок            
-            ColumnHeader c = new ColumnHeader();
-            c.Text = "Имя";
-            c.Width = c.Width + 80;
-            ColumnHeader c1 = new ColumnHeader();
-            c1.Text = "Тип";
-            c1.Width = c1.Width + 60;
-            ColumnHeader c2 = new ColumnHeader();
-            c2.Text = "Номер дерева";
-            c2.Width = c2.Width + 60;
-
-            listView1.Columns.Add(c);
-            listView1.Columns.Add(c1);
-            listView1.Columns.Add(c2);
+            foreach (ColumnHeader ch in listView1.Columns)
+            {
+                listView1.Columns.Remove(ch);
+            }
+            foreach (string c in col)
+            {
+                listView1.Columns.Add(c, 80);
+            }
         }
 
         private void выбратьКурсToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Visible = false;
-            listView2.Visible = false;
+            rb.Visible = false;            
             listView1.Visible = true;
             listView1.Items.Clear();                        
             listView1.View = View.Tile;
@@ -128,6 +92,12 @@ namespace Prepod
 
             SqlDataReader rdr = comm.ExecuteReader();
 
+            List<String> col = new List<string>();
+            col.Add("Название");
+            col.Add("Тип");
+            col.Add("№ дерева");
+            //заполнение listView
+            loadListView(col);
             //заполнение listView
             ListViewItem lv = new ListViewItem();
             string tName = "";           
@@ -136,8 +106,9 @@ namespace Prepod
                 string type = "Курс обучения";
                 tName = rdr[1].ToString();
                 numTree = rdr[0].ToString();
-                lv = new ListViewItem(new string[] { tName, type, numTree, "", "" }, 1);
-                lv.Name = tName;
+                lv = new ListViewItem(new string[] { tName, type, numTree }, 1);
+                lv.Name = "Курс обучения";
+                lv.Tag = numTree;
                 listView1.Items.Add(lv);
             }
              
@@ -157,7 +128,7 @@ namespace Prepod
             foreach (TreeNode node in nodes)
             {
                 //считываем всех потомков на первом уровне  
-                comm.CommandText = "SELECT Вершина.[№ вершины], Текст, [Тип вершины] FROM Вершина JOIN Связи ON (Вершина.[№ вершины] = Связи.[№ потомка]) WHERE (Связи.[№ вершины] = " + node.Tag + ") AND (Связи.Уровень = 1) and (Вершина.[№ дерева] = " + numTree + ") and (Связи.[№ вершины] <> Связи.[№ потомка])";
+                comm.CommandText = "SELECT Вершина.[№ вершины], Текст, [Тип вершины], Имя FROM Вершина JOIN Связи ON (Вершина.[№ вершины] = Связи.[№ потомка]) WHERE (Связи.[№ вершины] = " + node.Tag + ") AND (Связи.Уровень = 1) and (Вершина.[№ дерева] = " + numTree + ") and (Связи.[№ вершины] <> Связи.[№ потомка])";
                 SqlDataReader rdr = comm.ExecuteReader();
                 rdr.Read();
 
@@ -167,7 +138,8 @@ namespace Prepod
                     {
                         newNode = new TreeNode(rdr[1].ToString());
                         newNode.Tag = rdr[0].ToString();
-                        if ((rdr[2].ToString() == "2") || (rdr[2].ToString() == "5"))
+                        newNode.Name = rdr[3].ToString();
+                        if ((rdr[2].ToString() == "2") || (rdr[2].ToString() == "5") || (rdr[2].ToString() == "4"))
                         {
                             newNode.ImageIndex = 1;
                         }
@@ -189,7 +161,7 @@ namespace Prepod
             SqlCommand comm = new SqlCommand();
             comm.Connection = conn;
             //загружаем корневую вершину
-            comm.CommandText = "select Вершина.[№ вершины], Текст, [Тип вершины] from Вершина where Вершина.[№ вершины] in  (select Связи.[№ вершины] from Связи where [№ потомка] = 0) and [№ дерева] = " + numTree + "";
+            comm.CommandText = "select Вершина.[№ вершины], Текст, [Тип вершины], Имя from Вершина where Вершина.[№ вершины] in  (select Связи.[№ вершины] from Связи where [№ потомка] = 0) and [№ дерева] = " + numTree + "";
             SqlDataReader rdr = comm.ExecuteReader();
             if (rdr.HasRows)
             {
@@ -200,6 +172,7 @@ namespace Prepod
                     newNode = new TreeNode(rdr[1].ToString());
                     newNode.Tag = rdr[0].ToString();
                     newNode.ImageIndex = 0;
+                    newNode.Name = rdr[3].ToString();
                     treeView1.Nodes.Add(newNode);
                     treeView1.Update();
                     treeView1.Select();
@@ -212,18 +185,35 @@ namespace Prepod
         }
    
         private void listView1_MouseDoubleClick_1(object sender, MouseEventArgs e)
-        {
-            treeView1.Nodes.Clear();
-            numTree = listView1.SelectedItems[0].SubItems[2].Text;
-            name.Text = name.Text + " | " + listView1.SelectedItems[0].SubItems[0].Text;
-            LoadTree(numTree);
-            treeView1.Tag = numTree;
-            listView1.Items.Clear();
-            listView1.Visible = false;
-            richTextBox1.Visible = true;
-            listView2.Visible = false;
-            estMenu.Enabled = true;
-            searchCPC();            
+        {            
+            switch (listView1.SelectedItems[0].Name)
+            {
+                case "Курс обучения":
+                    {
+                        treeView1.Nodes.Clear();       
+                        numTree = listView1.SelectedItems[0].SubItems[2].Text;
+                        LoadTree(numTree);
+                        treeView1.Tag = numTree;
+                        name.Text = name.Text + " | " + listView1.SelectedItems[0].SubItems[0].Text;                        
+                        estMenu.Enabled = true;
+                        listView1.Items.Clear();  
+                        searchCPC(); 
+                    }; break;
+                case "Тест":
+                    {
+                        startTest.Enabled = true;
+                        startTest.Visible = true;                                                
+                    }; break;
+                case "Задача":
+                    {
+                        rb.LoadFile(Application.StartupPath + listView1.SelectedItems[0].Tag.ToString());
+                        rb.Visible = true;
+                        listView1.Visible = false;
+                        nazad.Enabled = true;
+                        proverka();
+                    }; break;
+            }
+                                  
         }
 
         private bool dostup(string id)
@@ -236,6 +226,8 @@ namespace Prepod
             SqlDataReader rdr = comm.ExecuteReader();
             rdr.Read();
             bool flag = (Convert.ToInt32(rdr[0]) == 1);
+            rdr.Close();
+            conn.Close();
             return flag;
         }
 
@@ -245,20 +237,42 @@ namespace Prepod
             startTest.Visible = false;
             pg.Visible = false;
             treeView1.SelectedImageIndex = treeView1.SelectedNode.ImageIndex;
-            string type = typeNode(treeView1.SelectedNode.Tag.ToString());
-            if ((type == "Самостоятельная работа") && flag)
+            startTest.Visible = false;
+            loadTask.Visible = false;
+            if (flag)
             {
-                loadTasks(treeView1.SelectedNode.Tag.ToString());
-                nazad.Enabled = true;
-            }
-            if (((type == "Учебные материалы") || (type == "Задача")) && flag)
-            {
-                nazad.Enabled = false;
-                loadText(treeView1.SelectedNode.Tag.ToString());                                
-            }
-            if ((type == "Тест") && flag)
-            {
-                loadTest(treeView1.SelectedNode.Tag.ToString());
+                switch (e.Node.Name.ToString())
+                {
+                    case "Самостоятельная работа":
+                        {
+                            loadTasks(e.Node.Tag.ToString());
+                            nazad.Enabled = true;
+                        }; break;
+                    case "Тест":
+                        {
+                            loadTest(e.Node.Tag.ToString());
+                        }; break;
+                    case "Новый раздел":
+                        {
+
+                        }; break;
+                    default:
+                        {
+                            nazad.Enabled = false;
+                            rb.Visible = true;
+                            listView1.Visible = false;
+                            conn = new SqlConnection(connectionString);
+                            conn.Open();
+                            SqlCommand comm = new SqlCommand();
+                            comm.Connection = conn;
+                            comm.CommandText = "select Ссылка from Вершина where [№ вершины] = '" + e.Node.Tag.ToString() + "'";
+                            SqlDataReader rdr = comm.ExecuteReader();
+                            rdr.Read();
+                            rb.LoadFile(Application.StartupPath + rdr[0].ToString());
+                            rdr.Close();
+                            conn.Close();
+                        }; break;
+                }
             }
         }
 
@@ -275,10 +289,9 @@ namespace Prepod
             string path = rdr[0].ToString();
             if (path != "")
             {
-                richTextBox1.LoadFile(Application.StartupPath + path);
-            }
-            listView2.Visible = false;
-            richTextBox1.Visible = true;
+                rb.LoadFile(Application.StartupPath + path);
+            }            
+            rb.Visible = true;
             listView1.Visible = false;
             rdr.Close();
             conn.Close();
@@ -294,21 +307,29 @@ namespace Prepod
 
             ListViewItem lv = new ListViewItem();
 
+            List<String> col = new List<string>();
+            col.Add("Название");            
+            col.Add("Тема");
+            col.Add("Максимальный балл");
+            col.Add("Срок сдачи");
+            
+            //заполнение listView
+            loadListView(col);
+
             SqlDataReader rdr = comm.ExecuteReader();
             if (rdr.HasRows)
             {
-                listView2.Items.Clear();
+                listView1.Items.Clear();
                 while (rdr.Read())
                 {
-                    lv = new ListViewItem(new string[] { rdr[0].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[1].ToString() }, 1);
-                    lv.Name = rdr[1].ToString();
+                    lv = new ListViewItem(new string[] { rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString() }, 1);
+                    lv.Name = "Тест";
                     lv.Tag = rdr[4].ToString();//ссылка на xml файл
-                    listView2.Items.Add(lv);
+                    listView1.Items.Add(lv);
                 }
-                listView2.View = View.Details;
-                listView2.Visible = true;
-                listView1.Visible = false;
-                listView2.Tag = "Тест";
+                listView1.View = View.Details;                
+                listView1.Visible = true;
+                rb.Visible = false;
             }
             rdr.Close();
             conn.Close();
@@ -343,32 +364,38 @@ namespace Prepod
             conn.Open();
             SqlCommand comm = new SqlCommand();
             comm.Connection = conn;
-            comm.CommandText = "select * from Задача, [Выполненная задача] where Задача.[№ задачи]=[Выполненная задача].[№ задачи] and Задача.[№ вершины]='"+ id +"' and [Выполненная задача].[№ студента] = '"+ numStudent +"'";
+            comm.CommandText = "select Задача.Название, Вершина.Уровень, Вершина.[Максимальный балл], Вершина.[Срок сдачи], Задача.Ссылка, Задача.[№ задачи] from Задача, [Выполненная задача], Вершина where Вершина.[№ вершины] = Задача.[№ вершины] and Задача.[№ задачи]=[Выполненная задача].[№ задачи] and Задача.[№ вершины]='" + id + "' and [Выполненная задача].[№ студента] = '" + numStudent + "'";
 
-            ListViewItem lv = new ListViewItem();            
+            ListViewItem lv = new ListViewItem();
+
+            List<String> col = new List<string>();
+            col.Add("Номер");
+            col.Add("Название");
+            col.Add("Уровень");
+            col.Add("Максимальный балл");
+            col.Add("Срок сдачи");
+
+            //заполнение listView
+            loadListView(col);
 
             SqlDataReader rdr = comm.ExecuteReader();
             if (rdr.HasRows)
             {
-                listView2.Items.Clear();
-                listView2.View = View.Details;
+                listView1.Items.Clear();
+                listView1.View = View.Details;
                 while (rdr.Read())
                 {
-                    lv = new ListViewItem(new string[] { rdr[1].ToString(), rdr[3].ToString(), rdr[4].ToString(), "", rdr[0].ToString() }, 1);
-                    lv.Name = rdr[1].ToString();
-                    lv.Tag = rdr[6].ToString();
-                    listView2.Items.Add(lv);
+                    lv = new ListViewItem(new string[] { rdr[5].ToString(), rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString() }, 1);
+                    lv.Name = "Задача";
+                    lv.Tag = rdr[4].ToString();
+                    listView1.Items.Add(lv);
 
                 }
-                listView2.Visible = true;
-                richTextBox1.Visible = false;                
-                listView1.Visible = false;
-                listView2.Tag = "Задача";
+                listView1.Visible = true;
+                rb.Visible = false;                                
             }
             rdr.Close();
-            conn.Close();
-           
-            
+            conn.Close();                      
         }
 
         private void treeView1_BeforeExpand(object sender, TreeViewCancelEventArgs e)
@@ -376,38 +403,25 @@ namespace Prepod
            
         }
 
-        private void proverka(string num)
+        private void proverka()
         {
             conn = new SqlConnection(connectionString);
             conn.Open();
             SqlCommand comm = new SqlCommand();
             comm.Connection = conn;
 
-            comm.CommandText = "select [Ссылка на работу] from [Выполненная задача] where [№ задачи] = '" + listView2.SelectedItems[0].SubItems[4].Text + "' and [№ студента] = '" + numStudent + "'";
+            comm.CommandText = "select [Дата сдачи] from [Выполненная задача] where [№ задачи] = '" + listView1.SelectedItems[0].SubItems[0].Text + "' and [№ студента] = '" + numStudent + "'";
             SqlDataReader rdr = comm.ExecuteReader();
             rdr.Read();
             string g = rdr[0].ToString();
             if (rdr[0].ToString() == "")
             {
+                loadTask.Visible = true;
                 loadTask.Enabled = true;
-
             }
-            else { loadTask.Enabled = false; };
+            else { loadTask.Visible = false; };
             rdr.Close();
             conn.Close();
-        }
-
-        private void listView2_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (listView2.Tag.ToString() == "Задача")
-            {
-                richTextBox1.Clear();
-                proverka(listView2.SelectedItems[0].SubItems[4].ToString());
-                richTextBox1.LoadFile(Application.StartupPath + listView2.SelectedItems[0].Tag.ToString());
-                listView2.Visible = false;
-                richTextBox1.Visible = true;
-                listView1.Visible = false;
-            }
         }
 
         private void generateTasks(string id, int count)
@@ -463,9 +477,9 @@ namespace Prepod
 
         private void nazad_Click(object sender, EventArgs e)
         {
-            listView2.Visible = true;
-            richTextBox1.Visible = false;
-            listView1.Visible = false;
+            rb.Visible = false;
+            listView1.Visible = true;
+            nazad.Enabled = false;
         }
 
         private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -480,28 +494,34 @@ namespace Prepod
             ofd = new OpenFileDialog();
             
             DialogResult res = ofd.ShowDialog();
+            ofd.Filter = "cs files (*.cs)|*.cs";
             if (res == DialogResult.OK)
             {
-                pg.Visible = true;
-                bwStream.RunWorkerAsync();
-                
-                insertTask(path);
-                
-                loadTask.Enabled = false;
+                if (!File.Exists(Application.StartupPath + "\\StudentFiles\\" + ofd.SafeFileName))
+                {
+                    pg.Visible = true;
+                    bwStream.RunWorkerAsync();
+                    string path = "\\StudentFiles\\" + ofd.SafeFileName;
+                    insertTask(path);
+                    loadTask.Enabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("Такое имя уже существует. Переименуйте файл!");
+                }
             }
         }
-        string path;
+        
         private void bwStream_DoWork(object sender, DoWorkEventArgs e)
         {
             string pathString;
-            string studentFilePuth = Application.StartupPath + "\\StudentFiles";
-            pathString = System.IO.Path.Combine(studentFilePuth, fio);
-            System.IO.Directory.CreateDirectory(pathString);
-            pathString = pathString + "\\" + ofd.SafeFileName;
-            path = pathString.Remove(0, Application.StartupPath.Length);
+            string studentFilePuth = "\\StudentFiles";
+            //pathString = System.IO.Path.Combine(studentFilePuth, fio);
+            //System.IO.Directory.CreateDirectory(pathString);
+            string path = studentFilePuth + "\\" + ofd.SafeFileName;            
 
             FileStream inputstream = new FileStream(ofd.FileName, FileMode.Open, FileAccess.Read, FileShare.None);
-            FileStream outputstream = new FileStream(pathString, FileMode.Create, FileAccess.Write, FileShare.None);
+            FileStream outputstream = new FileStream(Application.StartupPath + path, FileMode.Create, FileAccess.Write, FileShare.None);
             bwStream.ReportProgress(0);
             decimal part;
             int i = 0;
@@ -533,8 +553,7 @@ namespace Prepod
             finally
             {
                 outputstream.Close();
-                inputstream.Close();
-                
+                inputstream.Close();                
                 //insertTask(pathString.Remove(0, Application.StartupPath.Length));
             }
         }
@@ -546,7 +565,7 @@ namespace Prepod
             SqlCommand comm = new SqlCommand();
             comm.Connection = conn;
 
-            comm.CommandText = "update  [Выполненная задача] set [Ссылка на работу] = '" + path + "', [Дата сдачи]='"+ DateTime.Today.ToShortDateString() +"' where [№ задачи] = '" + listView2.SelectedItems[0].SubItems[4].Text + "' and [№ студента] = '" + numStudent + "'";
+            comm.CommandText = "update  [Выполненная задача] set [Ссылка на работу] = '" + path + "', [Дата сдачи]='"+ DateTime.Today.ToShortDateString() +"' where [№ задачи] = '" + listView1.SelectedItems[0].SubItems[0].Text + "' and [№ студента] = '" + numStudent + "'";
             comm.ExecuteNonQuery();            
             conn.Close();
         }
@@ -563,11 +582,11 @@ namespace Prepod
 
         private void startTest_Click(object sender, EventArgs e)
         {
-            string puthXML = listView2.SelectedItems[0].Tag.ToString(); // ссылка на xml
+            string puthXML = listView1.SelectedItems[0].Tag.ToString(); // ссылка на xml
             //System.Diagnostics.Process.Start(puthEXE,numStudent.ToString()+" "+puthXML);
-            TestStart gostart = new TestStart(Int32.Parse(numStudent), puthXML);
+            TestStart goStart = new TestStart(Int32.Parse(numStudent), puthXML);
             this.Hide();
-            gostart.Show();
+            goStart.Show();
         }
 
         private void успеваемостьToolStripMenuItem_Click(object sender, EventArgs e)

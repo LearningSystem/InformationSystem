@@ -19,12 +19,9 @@ namespace Prepod
         //        "Data Source=(local);Initial Catalog=Education; user id = sa; password = 1";
         string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
-
-        SqlDataAdapter adapter;
+        
         DataTable data = new DataTable();
-        TreeNode newNode;
-
-        int activeList;
+        TreeNode newNode;        
 
         string numPrepod = "";
         string numTree;
@@ -65,8 +62,7 @@ namespace Prepod
         {
             listView1.Visible = true;
             rb.Visible = false;
-            panel1.Visible = false;
-            activeList = 1;
+            panel1.Visible = false;            
             listView1.Items.Clear();
             listView1.View = View.Tile;
             conn = new SqlConnection(connectionString);
@@ -869,8 +865,7 @@ namespace Prepod
         {
             listView1.Visible = true;
             rb.Visible = false;
-            panel1.Visible = false;
-            activeList = 1;
+            panel1.Visible = false;            
             listView1.Items.Clear();
             listView1.View = View.Tile;
             conn = new SqlConnection(connectionString);

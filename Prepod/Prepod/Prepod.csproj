@@ -158,11 +158,13 @@
       <DependentUpon>TestStart.cs</DependentUpon>
     </Compile>
     <Compile Include="TextQuestion.cs" />
-    <Compile Include="treeWork.cs">
+    <Compile Include="..\..\..\..\курсач\treeWork.cs">
       <SubType>Form</SubType>
+      <Link>treeWork.cs</Link>
     </Compile>
-    <Compile Include="treeWork.Designer.cs">
+    <Compile Include="..\..\..\..\курсач\treeWork.Designer.cs">
       <DependentUpon>treeWork.cs</DependentUpon>
+      <Link>treeWork.Designer.cs</Link>
     </Compile>
     <EmbeddedResource Include="AddPartTree.resx">
       <DependentUpon>AddPartTree.cs</DependentUpon>
@@ -224,8 +226,9 @@
     <EmbeddedResource Include="TestStart.resx">
       <DependentUpon>TestStart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="treeWork.resx">
+    <EmbeddedResource Include="..\..\..\..\курсач\treeWork.resx">
       <DependentUpon>treeWork.cs</DependentUpon>
+      <Link>treeWork.resx</Link>
     </EmbeddedResource>
     <None Include="EducationDataSet.xsc">
       <DependentUpon>EducationDataSet.xsd</DependentUpon>

@@ -19,8 +19,7 @@ namespace Prepod
 
         XmlTextWriter writer;
         int NumTeacher;
-        string numTest;
-        string PathXml;
+        string numTest;       
         //public string ConnectionString { get; set; }
         public string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
         public InfoTest(int _NumTeacher)

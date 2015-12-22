@@ -19,8 +19,7 @@ namespace Prepod
         //        "Data Source=(local);Initial Catalog=Education; user id = sa; password = 1";
         string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
-        BindingSource bs = new BindingSource();
-        SqlDataAdapter adapter;
+        BindingSource bs = new BindingSource();        
         DataTable data = new DataTable();
         public editPredmet()
         {

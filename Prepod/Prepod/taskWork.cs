@@ -148,7 +148,10 @@ namespace Prepod
                 {
                     string numTask = dataGridView1.CurrentRow.Cells[0].Value.ToString(); //номер задачи
                     string numStud = listView1.SelectedItems[0].Tag.ToString(); //номер студента
-                    //checkTask(numTask, numStud); //тут надо запускать проверку задачи
+                    string[] tasks = new string[1];
+                    tasks[0] = numTask;
+                    //Form1 frm = new Form1(tasks);
+                    //frm.Show();
                     updateData();
                 }
                 else
@@ -165,16 +168,21 @@ namespace Prepod
         private void проверитьВсеНовыеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string numStud = listView1.SelectedItems[0].Tag.ToString();//номер студента
+            string[] tasks = new string[dataGridView1.Rows.Count];
+            int i = 0;
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
                 if (dr.IsNewRow) continue;                
                 if (dr.Cells[6].Value.ToString() == "")
                 {
-                    string numTask = dr.Cells[0].Value.ToString(); //номер задачи                    
+                    string numTask = dr.Cells[0].Value.ToString();
+                    tasks[i] = numTask;//номер задачи                    
                     //checkTask(numTask, numStud); //тут надо запускать проверку задачи                    
                 }
                 updateData();
             }
+            //Form1 frm = new Form1(tasks);
+            //frm.Show();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
