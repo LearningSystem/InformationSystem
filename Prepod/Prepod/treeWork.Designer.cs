@@ -66,7 +66,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.listView2 = new System.Windows.Forms.ListView();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.listView1 = new System.Windows.Forms.ListView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
@@ -75,7 +74,7 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.access = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.propTasks = new System.Windows.Forms.ToolStripButton();
+            this.rb = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -123,28 +122,28 @@
             // создатьДеревоToolStripMenuItem
             // 
             this.создатьДеревоToolStripMenuItem.Name = "создатьДеревоToolStripMenuItem";
-            this.создатьДеревоToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.создатьДеревоToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.создатьДеревоToolStripMenuItem.Text = "Создать курс";
             this.создатьДеревоToolStripMenuItem.Click += new System.EventHandler(this.создатьДеревоToolStripMenuItem_Click_1);
             // 
             // моиДеревьяToolStripMenuItem
             // 
             this.моиДеревьяToolStripMenuItem.Name = "моиДеревьяToolStripMenuItem";
-            this.моиДеревьяToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.моиДеревьяToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.моиДеревьяToolStripMenuItem.Text = "Мои курсы";
             this.моиДеревьяToolStripMenuItem.Click += new System.EventHandler(this.моиДеревьяToolStripMenuItem_Click);
             // 
             // удалитьДеревоToolStripMenuItem
             // 
             this.удалитьДеревоToolStripMenuItem.Name = "удалитьДеревоToolStripMenuItem";
-            this.удалитьДеревоToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.удалитьДеревоToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.удалитьДеревоToolStripMenuItem.Text = "Удалить курс";
             this.удалитьДеревоToolStripMenuItem.Click += new System.EventHandler(this.удалитьДеревоToolStripMenuItem_Click);
             // 
             // создатьТестToolStripMenuItem
             // 
             this.создатьТестToolStripMenuItem.Name = "создатьТестToolStripMenuItem";
-            this.создатьТестToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.создатьТестToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.создатьТестToolStripMenuItem.Text = "Создать тест";
             this.создатьТестToolStripMenuItem.Click += new System.EventHandler(this.создатьТестToolStripMenuItem_Click);
             // 
@@ -190,10 +189,10 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.listView2);
+            this.splitContainer1.Panel2.Controls.Add(this.panel1);
+            this.splitContainer1.Panel2.Controls.Add(this.rb);
             this.splitContainer1.Panel2.Controls.Add(this.listView1);
             this.splitContainer1.Panel2.Controls.Add(this.toolStrip2);
-            this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Size = new System.Drawing.Size(793, 364);
             this.splitContainer1.SplitterDistance = 276;
             this.splitContainer1.TabIndex = 2;
@@ -317,9 +316,9 @@
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 25);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(513, 364);
+            this.panel1.Size = new System.Drawing.Size(513, 339);
             this.panel1.TabIndex = 3;
             this.panel1.Visible = false;
             // 
@@ -423,17 +422,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // listView2
-            // 
-            this.listView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView2.LargeImageList = this.imageList2;
-            this.listView2.Location = new System.Drawing.Point(0, 25);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(513, 339);
-            this.listView2.SmallImageList = this.imageList1;
-            this.listView2.TabIndex = 2;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            // 
             // imageList2
             // 
             this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
@@ -460,8 +448,7 @@
             this.name,
             this.toolStripLabel1,
             this.access,
-            this.toolStripSeparator1,
-            this.propTasks});
+            this.toolStripSeparator1});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(513, 25);
@@ -502,15 +489,14 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // propTasks
+            // rb
             // 
-            this.propTasks.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.propTasks.Image = ((System.Drawing.Image)(resources.GetObject("propTasks.Image")));
-            this.propTasks.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.propTasks.Name = "propTasks";
-            this.propTasks.Size = new System.Drawing.Size(62, 22);
-            this.propTasks.Text = "Свойства";
-            this.propTasks.Click += new System.EventHandler(this.propTasks_Click);
+            this.rb.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rb.Location = new System.Drawing.Point(0, 25);
+            this.rb.Name = "rb";
+            this.rb.Size = new System.Drawing.Size(513, 339);
+            this.rb.TabIndex = 4;
+            this.rb.Text = "";
             // 
             // treeWork
             // 
@@ -574,9 +560,7 @@
         private System.Windows.Forms.ToolStripMenuItem test;
         private System.Windows.Forms.ToolStripComboBox access;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton propTasks;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox2;
@@ -593,5 +577,6 @@
         private System.Windows.Forms.ToolStripMenuItem создатьТестToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkTasks;
         private System.Windows.Forms.ToolStripMenuItem profile;
+        private System.Windows.Forms.RichTextBox rb;
     }
 }
