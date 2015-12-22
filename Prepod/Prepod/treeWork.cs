@@ -134,7 +134,6 @@ namespace Prepod
             conn.Close();
         }
 
-
         private void LoadTree(string numTree)
         {
             conn = new SqlConnection(connectionString);
@@ -191,7 +190,7 @@ namespace Prepod
             {
                 node = treeView1.SelectedNode;
             }
-            insertNode(node, numTree, "Тест", typeNode, "", false);
+            insertNode(node, numTree, "Тест", typeNode, "", true);
 
             
             
@@ -539,26 +538,7 @@ namespace Prepod
                 task.Tag = rdr[6].ToString();
                 task.ImageIndex = 1;
                 treeView1.SelectedNode.Nodes.Add(task);
-            }
-            //ListViewItem lv = new ListViewItem();
-
-            //SqlDataReader rdr = comm.ExecuteReader();
-            //if (rdr.HasRows)
-            //{
-            //    listView2.Items.Clear();
-            //    while (rdr.Read())
-            //    {
-            //        lv = new ListViewItem(new string[] { rdr[1].ToString(), rdr[3].ToString(), rdr[4].ToString() }, 1);
-            //        lv.Name = rdr[1].ToString();
-            //        lv.Tag = rdr[0].ToString();
-            //        listView2.Items.Add(lv);
-
-            //    }
-            //    listView2.View = View.Details;
-            //    listView2.Visible = true;                
-            //    listView1.Visible = false;
-            //    panel1.Visible = false;
-            //}
+            }          
             rdr.Close();
             conn.Close();
            
@@ -677,25 +657,7 @@ namespace Prepod
 
         private void loadTest(string id)
         {
-            //conn = new SqlConnection(connectionString);
-            //conn.Open();
-            //SqlCommand comm = new SqlCommand();
-            //comm.Connection = conn;
-            //comm.CommandText = "select * from Тест where [№ вершины] = '" + id + "'";
-
-            //SqlDataReader rdr = comm.ExecuteReader();
-            //while (rdr.Read())
-            //{
-            //    TreeNode test = new TreeNode();
-            //    test.Name = "Тест";
-            //    test.Tag = rdr[0].ToString();
-            //    test.Text = rdr[2].ToString();
-            //    treeView1.SelectedNode.Nodes.Add(test);
-            //}
-
            
-            //rdr.Close();
-            //conn.Close();
         }
 
         private void name_TextChanged(object sender, EventArgs e)
