@@ -94,3 +94,5 @@ D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod
 C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.studEst.resources
 C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.taskWork.resources
 D:\моя\пгу\Дипломная работа\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.studEstimates.resources
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.Form1.resources
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.studEstimates.resources
