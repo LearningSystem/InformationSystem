@@ -446,7 +446,7 @@ namespace Prepod
             //вставляем сгенерированные задачи в таблицу Выполненная задача
             foreach (string node in nodes) 
             {
-                comm.CommandText = "insert into [Выполненная задача] ([№ задачи], [№ студента], Балл, [Дата сдачи]) Values ('" + node + "', '" + numStudent + "', '', '')";
+                comm.CommandText = "insert into [Выполненная задача] ([№ задачи], [№ студента], [Дата сдачи]) Values ('" + node + "', '" + numStudent + "', '')";
                 comm.ExecuteNonQuery();
             }                      
             conn.Close();
@@ -480,6 +480,7 @@ namespace Prepod
             rb.Visible = false;
             listView1.Visible = true;
             nazad.Enabled = false;
+            pg.Visible = false;
         }
 
         private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)

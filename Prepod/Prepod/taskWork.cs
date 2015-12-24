@@ -237,7 +237,7 @@ namespace Prepod
             string path = dataGridView1.CurrentRow.Cells[8].Value.ToString();
             if (path != "")
             {
-                richTextBox1.LoadFile(Application.StartupPath + path, RichTextBoxStreamType.PlainText);
+                richTextBox1.LoadFile(Application.StartupPath + "\\StudentFiles\\" + path, RichTextBoxStreamType.PlainText);
                 richTextBox1.Visible = true;
                 dataGridView1.Visible = false;
                 cancel.Visible = true;

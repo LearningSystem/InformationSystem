@@ -789,31 +789,38 @@ namespace Prepod
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if ((textBox1.Text != "") && (textBox2.Text != "") && (textBox4.Text != ""))
-            {
                 conn = new SqlConnection(connectionString);
                 conn.Open();
                 SqlCommand comm = new SqlCommand();
                 comm.Connection = conn;
                 if (treeView1.SelectedNode.Name == "Самостоятельная работа")
                 {
-                    comm.CommandText = "update Вершина set [Сколько каждому] = '" + textBox4.Text + "', Уровень = '" + textBox1.Text + "', [Максимальный балл] = '" + textBox2.Text + "', [Срок сдачи] = '" + dateTimePicker1.Value.ToShortDateString() + "' where [№ вершины] = '" + treeView1.SelectedNode.Tag.ToString() + "'";
+                    if ((textBox1.Text != "") && (textBox4.Text != ""))
+                    {
+                        comm.CommandText = "update Вершина set [Сколько каждому] = '" + textBox4.Text + "', Уровень = '" + textBox1.Text + "', [Максимальный балл] = '" + textBox2.Text + "', [Срок сдачи] = '" + dateTimePicker1.Value.ToShortDateString() + "' where [№ вершины] = '" + treeView1.SelectedNode.Tag.ToString() + "'";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Введите данные!");
+                    } 
                 }
                 else
                 {
-                    comm.CommandText = "update Тест set [Максимальный балл] = '" + textBox2.Text + "', [Срок сдачи] = '" + dateTimePicker1.Value.ToShortDateString() + "' where [№ вершины] = '" + treeView1.SelectedNode.Tag.ToString() + "'";
+                    if (textBox2.Text != "") 
+                    {
+                        comm.CommandText = "update Тест set [Максимальный балл] = '" + textBox2.Text + "', [Срок сдачи] = '" + dateTimePicker1.Value.ToShortDateString() + "' where [№ вершины] = '" + treeView1.SelectedNode.Tag.ToString() + "'";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Введите данные!");
+                    } 
                 }
                 comm.ExecuteNonQuery();
                 conn.Close();
                 
                 panel1.Visible = false;
                 rb.Visible = true;
-                listView1.Visible = false;
-            }
-            else
-            {
-                MessageBox.Show("Введите данные!");
-            }            
+                listView1.Visible = false;                                   
         }
 
         private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
