@@ -501,7 +501,8 @@ namespace Prepod
                 {
                     pg.Visible = true;
                     bwStream.RunWorkerAsync();
-                    string path = "\\StudentFiles\\" + ofd.SafeFileName;
+                    //string path = "\\StudentFiles\\" + ofd.SafeFileName;
+                    string path = ofd.SafeFileName;
                     insertTask(path);
                     loadTask.Enabled = false;
                 }

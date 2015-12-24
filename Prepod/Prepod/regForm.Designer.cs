@@ -43,7 +43,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -192,18 +191,9 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Ошибка! Неправильные данные или пароль!";
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 276);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(370, 22);
-            this.statusStrip1.TabIndex = 13;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
             // regForm
             // 
             this.ClientSize = new System.Drawing.Size(370, 298);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox2);
             this.Name = "regForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -214,7 +204,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -235,7 +224,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.StatusStrip statusStrip1;
 
      
     }
