@@ -41,8 +41,8 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -171,16 +171,6 @@
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(83, 210);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(233, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Ошибка! Неправильные данные или пароль!";
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(250, 231);
@@ -191,9 +181,19 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(83, 210);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(233, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Ошибка! Неправильные данные или пароль!";
+            // 
             // regForm
             // 
-            this.ClientSize = new System.Drawing.Size(371, 281);
+            this.ClientSize = new System.Drawing.Size(370, 298);
             this.Controls.Add(this.groupBox2);
             this.Name = "regForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
