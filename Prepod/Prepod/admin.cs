@@ -28,5 +28,12 @@ namespace Prepod
             editPredmet ep = new editPredmet();
             ep.Show();
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            regForm rgForm = new regForm();
+            this.Hide();
+            rgForm.Show();
+        }
     }
 }
