@@ -26,10 +26,11 @@ namespace Prepod
 
         private void regForm_Load(object sender, EventArgs e)
         {
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
+            //textBox1.Text = "";
+            //textBox2.Text = "";
+            //textBox3.Text = "";
+            //textBox4.Text = "";
+            clearColumns();
             label6.Visible = false;
             comboBox1.Items.Clear();
             comboBox1.Items.Add("Студент");
@@ -57,6 +58,7 @@ namespace Prepod
             else
             {
                 label6.Visible = true;
+                clearColumns();
             }
             rdr.Close();
             conn.Close();
@@ -81,6 +83,7 @@ namespace Prepod
             else
             {
                 label6.Visible = true;
+                clearColumns();
             }
             rdr.Close();
             conn.Close();
@@ -144,6 +147,14 @@ namespace Prepod
         {
             if (MessageBox.Show("Вы уверены, что хотите выйти?","Выход",MessageBoxButtons.YesNoCancel)==DialogResult.Yes)
                Application.Exit();
+        }
+
+        private void clearColumns()
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
         }
     }
 }

@@ -54,13 +54,15 @@ namespace Prepod
         public bool Picture = false;
         public string PicturePath = null;
         public int NumItems;
+        public string NameTest;
 
         string numTest;
-        public TestCreate(XmlTextWriter _writer, string _numTest)
+        public TestCreate(XmlTextWriter _writer, string _numTest,string _nameTest)
         {
             InitializeComponent();
             writer = _writer;
             numTest = _numTest;
+            NameTest = _nameTest;
         }//+
 
         private void TestCreate_Load(object sender, EventArgs e)
@@ -70,8 +72,11 @@ namespace Prepod
             lstViewQuestion.Items.Add("Вопрос № " + kolvoQuest);
             tek = new TextQuestion();
             cBOtch.SelectedIndex = 0;
-            btnSaveQ.Visible = false;
-            btnAdd.Visible = true;
+            //btnSaveQ.Visible = false;
+            //btnSaveQ.Visible = true;
+            btnSaveQ.Enabled = false;
+            btnAdd.Enabled = true;
+            //btnAdd.Visible = true;
         }//+
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -637,7 +642,7 @@ namespace Prepod
             writer.WriteEndElement();
             //Завершение записи
             writer.WriteStartElement("Time");
-            //вставка метода вычисления
+
             writer.WriteString(numTime.Value.ToString());
             writer.WriteEndElement();
 
@@ -803,8 +808,10 @@ namespace Prepod
                     if (cB4 != null)
                         cB4.Checked = false;
                     //----------------------------------------------------------------------------
-                    btnSaveQ.Visible = true;
-                    btnAdd.Visible = false;
+                    //btnSaveQ.Visible = true;
+                    btnSaveQ.Enabled=true;
+                    //btnAdd.Visible = false;
+                    btnAdd.Enabled = false;
                     int h = Int32.Parse(lstViewQuestion.SelectedItems[0].Tag.ToString());
                     if (Questions[h].type_question == "Один вариант ответа")
                         cBSelect.SelectedIndex = 0;
@@ -882,8 +889,10 @@ namespace Prepod
                     if (cB4 != null)
                         cB4.Checked = false;
 //-----------------------------------------------------------------------------------------------
-                    btnSaveQ.Visible = false;
-                    btnAdd.Visible = true;
+                    //btnSaveQ.Visible = false;
+                    btnSaveQ.Enabled = false;
+                    //btnAdd.Visible = true;
+                    btnAdd.Enabled = true;
                     if (tq.type_question == "Один вариант ответа")
                         cBSelect.SelectedIndex = 0;
                     if (tq.type_question == "Несколько вариантов ответа")
@@ -1025,6 +1034,10 @@ namespace Prepod
                     break;
                 case DialogResult.Cancel:
                     e.Cancel = true;
+                    break;
+                case DialogResult.No:
+                    writer.Close();
+                    File.Delete(Application.StartupPath + "\\" + NameTest + ".xml");
                     break;
             }
         }

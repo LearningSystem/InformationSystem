@@ -39,39 +39,38 @@ namespace Prepod
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            writer = new XmlTextWriter(tBNameTest.Text + ".xml", Encoding.UTF8);
-            writer.Formatting = Formatting.Indented;
-            writer.WriteStartDocument();
-            writer.WriteStartElement("Test");
+            if (tBNameTest.Text != "" && rtBDescTest.Text != "" && tBAuthorTest.Text != "" && tBThemeTest.Text != "" && cBDiscip.Text != "")
+            {
+                writer = new XmlTextWriter(tBNameTest.Text + ".xml", Encoding.UTF8);
+                writer.Formatting = Formatting.Indented;
+                writer.WriteStartDocument();
+                writer.WriteStartElement("Test");
 
-            writer.WriteStartElement("Discription");
-            writer.WriteString(rtBDescTest.Text);
-            writer.WriteEndElement();
+                writer.WriteStartElement("Discription");
+                writer.WriteString(rtBDescTest.Text);
+                writer.WriteEndElement();
 
-            writer.WriteStartElement("Author");
-            writer.WriteString(tBAuthorTest.Text);
-            writer.WriteEndElement();
+                writer.WriteStartElement("Author");
+                writer.WriteString(tBAuthorTest.Text);
+                writer.WriteEndElement();
 
-            writer.WriteStartElement("Theme");
-            writer.WriteString(tBThemeTest.Text);
-            writer.WriteEndElement();
+                writer.WriteStartElement("Theme");
+                writer.WriteString(tBThemeTest.Text);
+                writer.WriteEndElement();
 
+                writer.WriteStartElement("Discipline");
+                writer.WriteString(cBDiscip.Text);
+                writer.WriteEndElement();
 
-            writer.WriteStartElement("Discipline");
-            writer.WriteString(cBDiscip.Text);
-            writer.WriteEndElement();
+                writer.WriteStartElement("Questions");
+                insertTask();
+                TestCreate test = new TestCreate(writer, numTest, tBNameTest.Text);
 
-            writer.WriteStartElement("Course");
-            writer.WriteString("");
-            writer.WriteEndElement();
-
-            writer.WriteStartElement("Questions");
-            insertTask();
-            TestCreate test = new TestCreate(writer, numTest);
-            
-            this.Hide();
-            test.Show();
-            
+                this.Hide();
+                test.Show();
+            }
+            else
+                MessageBox.Show("Заполнены не все поля!", "Ошибка");
         }
 
         private void insertTask()
@@ -83,7 +82,7 @@ namespace Prepod
 
             comm.CommandText = "Select [№ предмета] from Предмет where Название = '" + cBDiscip.Text + "'";
             SqlDataReader rdr = comm.ExecuteReader();
-            string numDisc = "1";
+            string numDisc = "";
             if (rdr.HasRows)
             {
                 rdr.Read();
@@ -103,10 +102,10 @@ namespace Prepod
             finally { conn.Close(); }    
         }
 
-
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            if(MessageBox.Show("Вы уверены, что хотите выйти?","Выход",MessageBoxButtons.YesNoCancel)==DialogResult.Yes)
+               this.Hide();
         }
 
         private void InfoTest_Load(object sender, EventArgs e)
@@ -140,5 +139,6 @@ namespace Prepod
                 tBAuthorTest.Enabled = false;
             }
         }
+
     }
 }
