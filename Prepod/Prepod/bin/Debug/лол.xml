@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Test>
+  <Discription>234324</Discription>
+  <Author> Ромашкина Татьяна Витальевна</Author>
+  <Theme>ваепав</Theme>
+  <Discipline>Язык C#</Discipline>
+  <Questions Number="1">
+    <Question1>
+      <Text>1</Text>
+      <TypeAnswer>One</TypeAnswer>
+      <Answers>1|2|3|4</Answers>
+      <RightAnswer>4</RightAnswer>
+      <Part />
+      <Price>0</Price>
+    </Question1>
+  </Questions>
+  <Time>100</Time>
+  <Report>Да</Report>
+</Test>
