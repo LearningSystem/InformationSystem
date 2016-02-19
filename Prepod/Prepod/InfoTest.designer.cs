@@ -54,6 +54,7 @@
             // tBNameTest
             // 
             this.tBNameTest.Location = new System.Drawing.Point(144, 38);
+            this.tBNameTest.MaxLength = 10;
             this.tBNameTest.Name = "tBNameTest";
             this.tBNameTest.Size = new System.Drawing.Size(100, 20);
             this.tBNameTest.TabIndex = 1;
@@ -103,6 +104,7 @@
             // tBThemeTest
             // 
             this.tBThemeTest.Location = new System.Drawing.Point(599, 108);
+            this.tBThemeTest.MaxLength = 10;
             this.tBThemeTest.Name = "tBThemeTest";
             this.tBThemeTest.Size = new System.Drawing.Size(121, 20);
             this.tBThemeTest.TabIndex = 7;
@@ -162,7 +164,7 @@
             this.Controls.Add(this.lblDescTest);
             this.Controls.Add(this.tBNameTest);
             this.Controls.Add(this.lblNameTest);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "InfoTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Информация о тесте";

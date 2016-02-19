@@ -62,7 +62,7 @@ namespace Prepod
             InitializeComponent();
             numStud = _numStud;
             XmlPath = _pathxml;
-            xmlReader = new XmlTextReader(XmlPath); //Создаем xmlReader
+            xmlReader = new XmlTextReader(XmlPath);
             xmlReader.Read();
         }
 

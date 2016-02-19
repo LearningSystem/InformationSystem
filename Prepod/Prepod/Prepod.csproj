@@ -58,6 +58,18 @@
     <Compile Include="admin.Designer.cs">
       <DependentUpon>admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePass.Designer.cs">
+      <DependentUpon>ChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WarningPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WarningPass.Designer.cs">
+      <DependentUpon>WarningPass.cs</DependentUpon>
+    </Compile>
     <Compile Include="editCPC.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +181,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="admin.resx">
       <DependentUpon>admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePass.resx">
+      <DependentUpon>ChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WarningPass.resx">
+      <DependentUpon>WarningPass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editCPC.resx">
       <DependentUpon>editCPC.cs</DependentUpon>

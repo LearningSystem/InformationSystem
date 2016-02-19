@@ -239,7 +239,7 @@ namespace Prepod
             comm.ExecuteNonQuery();
 
             this.Hide();
-            studentWork studWork = new studentWork(NumStud.ToString());
+            studentWork studWork = new studentWork(NumStud.ToString(),"");
             studWork.Show();
         }
         void DoStart()

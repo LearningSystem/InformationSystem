@@ -37,6 +37,7 @@ namespace Prepod
             comboBox1.Items.Add("Преподаватель");
             comboBox1.Items.Add("Администратор");
             comboBox1.SelectedIndex = 0;
+            //textBox1.Focus();
         }
 
         private void checkStudent()
@@ -51,7 +52,7 @@ namespace Prepod
             {
                 label6.Visible = false;
                 rdr.Read();
-                studentWork sw = new studentWork(rdr[0].ToString());
+                studentWork sw = new studentWork(rdr[0].ToString(),textBox4.Text);
                 sw.Show();
                 this.Hide();
             }
@@ -124,7 +125,11 @@ namespace Prepod
                                 checkAdmin();
                             }
                         }break;
-                }            
+                }
+            if ((textBox1.Text!="")||(textBox2.Text!="")||(textBox3.Text!="")||(textBox4.Text!=""))
+            {
+                label6.Visible = true;
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

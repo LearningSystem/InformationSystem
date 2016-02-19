@@ -22,6 +22,7 @@ namespace Prepod
         string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
         string numStudent;
+        string passStudent;
         string numTree;
 
         TreeNode newNode;
@@ -32,12 +33,13 @@ namespace Prepod
 
         List<int> tasks = new List<int>();
         string puthEXE = Application.StartupPath+"\\"+"Tests\\Tests\\bin\\Debug\\Tests.exe";
-        public studentWork(string _numStudent)
+        public studentWork(string _numStudent,string _passStudent)
         {
             InitializeComponent();
             numStudent = _numStudent;
+            passStudent = _passStudent;
             loadTask.Enabled = false;
-            pg.Visible = false;            
+            pg.Visible = false;
             loadInf(); 
             rb.Visible = false;            
             listView1.Visible = true;
@@ -63,7 +65,6 @@ namespace Prepod
 
             rdr.Close();
             conn.Close();
-
         }
 
         private void loadListView(List<String> col)
@@ -116,6 +117,11 @@ namespace Prepod
             conn.Close();
             
             loadInf();
+            if (passStudent == "1")
+            {
+                WarningPass chg = new WarningPass();
+                chg.ShowDialog();
+            }
         }
 
         private void loadNodes(TreeNodeCollection nodes, string numTree)
@@ -595,6 +601,12 @@ namespace Prepod
         {            
             studEstimates se = new studEstimates(numStudent, numTree);
             se.Show();
+        }
+
+        private void сменитьПарольToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePass chpass = new ChangePass(numStudent);
+            chpass.Show();
         }
     }
 }

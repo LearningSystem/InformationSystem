@@ -18,3 +18,6 @@ C:\Users\User\Desktop\Текущие проекты\Черный ящик\Black\
 C:\Users\User\Desktop\Текущие проекты\Черный ящик\Black\Black\obj\Debug\Black.Form1.resources
 C:\Users\User\Desktop\Текущие проекты\Черный ящик\Black\Black\obj\Debug\Black.Properties.Resources.resources
 C:\Users\User\Desktop\Текущие проекты\Черный ящик\Black\Black\obj\Debug\Black.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Черный ящик\Black\Black\bin\Debug\Black.exe.config
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Черный ящик\Black\Black\obj\Debug\Black.exe
+C:\Users\User\Desktop\Хранилище gitHub\InformationSystem\Черный ящик\Black\Black\obj\Debug\Black.pdb

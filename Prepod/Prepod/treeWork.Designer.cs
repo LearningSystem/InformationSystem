@@ -66,15 +66,15 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.rb = new System.Windows.Forms.RichTextBox();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.prop = new System.Windows.Forms.ToolStripLabel();
             this.name = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.access = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.rb = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -122,28 +122,28 @@
             // создатьДеревоToolStripMenuItem
             // 
             this.создатьДеревоToolStripMenuItem.Name = "создатьДеревоToolStripMenuItem";
-            this.создатьДеревоToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.создатьДеревоToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.создатьДеревоToolStripMenuItem.Text = "Создать курс";
             this.создатьДеревоToolStripMenuItem.Click += new System.EventHandler(this.создатьДеревоToolStripMenuItem_Click_1);
             // 
             // моиДеревьяToolStripMenuItem
             // 
             this.моиДеревьяToolStripMenuItem.Name = "моиДеревьяToolStripMenuItem";
-            this.моиДеревьяToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.моиДеревьяToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.моиДеревьяToolStripMenuItem.Text = "Мои курсы";
             this.моиДеревьяToolStripMenuItem.Click += new System.EventHandler(this.моиДеревьяToolStripMenuItem_Click);
             // 
             // удалитьДеревоToolStripMenuItem
             // 
             this.удалитьДеревоToolStripMenuItem.Name = "удалитьДеревоToolStripMenuItem";
-            this.удалитьДеревоToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.удалитьДеревоToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.удалитьДеревоToolStripMenuItem.Text = "Удалить курс";
             this.удалитьДеревоToolStripMenuItem.Click += new System.EventHandler(this.удалитьДеревоToolStripMenuItem_Click);
             // 
             // создатьТестToolStripMenuItem
             // 
             this.создатьТестToolStripMenuItem.Name = "создатьТестToolStripMenuItem";
-            this.создатьТестToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.создатьТестToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.создатьТестToolStripMenuItem.Text = "Создать тест";
             this.создатьТестToolStripMenuItem.Click += new System.EventHandler(this.создатьТестToolStripMenuItem_Click);
             // 
@@ -422,12 +422,14 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // imageList2
+            // rb
             // 
-            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
-            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList2.Images.SetKeyName(0, "directory.bmp");
-            this.imageList2.Images.SetKeyName(1, "Documents.png");
+            this.rb.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rb.Location = new System.Drawing.Point(0, 25);
+            this.rb.Name = "rb";
+            this.rb.Size = new System.Drawing.Size(513, 339);
+            this.rb.TabIndex = 4;
+            this.rb.Text = "";
             // 
             // listView1
             // 
@@ -440,6 +442,13 @@
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
+            // 
+            // imageList2
+            // 
+            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList2.Images.SetKeyName(0, "directory.bmp");
+            this.imageList2.Images.SetKeyName(1, "Documents.png");
             // 
             // toolStrip2
             // 
@@ -489,15 +498,6 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // rb
-            // 
-            this.rb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rb.Location = new System.Drawing.Point(0, 25);
-            this.rb.Name = "rb";
-            this.rb.Size = new System.Drawing.Size(513, 339);
-            this.rb.TabIndex = 4;
-            this.rb.Text = "";
-            // 
             // treeWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -510,6 +510,7 @@
             this.Name = "treeWork";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Преподаватель";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.моиДеревьяToolStripMenuItem_Click);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
