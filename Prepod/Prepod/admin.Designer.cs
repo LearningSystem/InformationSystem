@@ -30,7 +30,6 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -51,35 +50,27 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(180, 36);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Редактировать списки предметов";
+            this.button2.Text = "Редактировать списки дисциплин";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(41, 126);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(180, 36);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Посмотреть успеваемость студентов";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(41, 168);
+            this.button4.Location = new System.Drawing.Point(41, 126);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(180, 36);
             this.button4.TabIndex = 3;
             this.button4.Text = "Настройки";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(197, 227);
+            this.btnExit.Location = new System.Drawing.Point(197, 193);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 4;
-            this.btnExit.Text = "Выход";
+            this.btnExit.Text = "Назад";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -87,15 +78,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(284, 227);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "admin";
+            this.Text = "Администрирование";
             this.ResumeLayout(false);
 
         }
@@ -104,7 +94,6 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnExit;
     }

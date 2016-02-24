@@ -64,6 +64,12 @@
     <Compile Include="ChangePass.Designer.cs">
       <DependentUpon>ChangePass.cs</DependentUpon>
     </Compile>
+    <Compile Include="SystemSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSettings.Designer.cs">
+      <DependentUpon>SystemSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="WarningPass.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChangePass.resx">
       <DependentUpon>ChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSettings.resx">
+      <DependentUpon>SystemSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WarningPass.resx">
       <DependentUpon>WarningPass.cs</DependentUpon>

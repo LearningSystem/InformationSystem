@@ -145,3 +145,4 @@ C:\Users\User\Desktop\Текущие проекты\Версия на тести
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\bin\Debug\Prepod.pdb
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.WarningPass.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.ChangePass.resources
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.SystemSettings.resources

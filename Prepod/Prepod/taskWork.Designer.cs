@@ -237,15 +237,15 @@
             // watchTask
             // 
             this.watchTask.Name = "watchTask";
-            this.watchTask.Size = new System.Drawing.Size(160, 22);
+            this.watchTask.Size = new System.Drawing.Size(221, 22);
             this.watchTask.Text = "Условие задачи";
             this.watchTask.Click += new System.EventHandler(this.watchTask_Click);
             // 
             // watchCode
             // 
             this.watchCode.Name = "watchCode";
-            this.watchCode.Size = new System.Drawing.Size(160, 22);
-            this.watchCode.Text = "Код работы";
+            this.watchCode.Size = new System.Drawing.Size(221, 22);
+            this.watchCode.Text = "Исходный код программы";
             this.watchCode.Click += new System.EventHandler(this.watchCode_Click);
             // 
             // toolStripSeparator3

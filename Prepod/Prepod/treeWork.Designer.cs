@@ -172,8 +172,8 @@
             // profile
             // 
             this.profile.Name = "profile";
-            this.profile.Size = new System.Drawing.Size(107, 20);
-            this.profile.Text = "Личные данные";
+            this.profile.Size = new System.Drawing.Size(146, 20);
+            this.profile.Text = "Персональные данные";
             this.profile.Click += new System.EventHandler(this.личныеДанныеToolStripMenuItem_Click);
             // 
             // splitContainer1

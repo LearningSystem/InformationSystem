@@ -35,5 +35,12 @@ namespace Prepod
             this.Hide();
             rgForm.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            SystemSettings set = new SystemSettings();
+            this.Hide();
+            set.Show();
+        }
     }
 }
