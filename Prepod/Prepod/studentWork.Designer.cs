@@ -209,6 +209,8 @@
             // 
             // name
             // 
+            this.name.BackColor = System.Drawing.Color.LawnGreen;
+            this.name.ForeColor = System.Drawing.Color.ForestGreen;
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(86, 22);
             this.name.Text = "toolStripLabel1";

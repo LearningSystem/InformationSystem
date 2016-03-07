@@ -146,3 +146,32 @@ C:\Users\User\Desktop\Текущие проекты\Версия на тести
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.WarningPass.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.ChangePass.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.SystemSettings.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\bin\Debug\Prepod.exe.config
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.exe
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.pdb
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\bin\Debug\Prepod.exe
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\bin\Debug\Prepod.pdb
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.csprojResolveAssemblyReference.cache
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.AddPartTree.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.admin.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.ChangePass.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.SystemSettings.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.WarningPass.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.editCPC.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.editPredmet.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.editStudent.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.Estimates.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.InfoTest.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.prepodWork.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.newTree.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.Properties.Resources.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.propTask.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.ReportForm.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.studentWork.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.regForm.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.studEstimates.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.taskWork.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.TestCreate.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.TestStart.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.treeWork.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.csproj.GenerateResource.Cache

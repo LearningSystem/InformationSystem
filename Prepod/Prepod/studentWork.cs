@@ -61,6 +61,7 @@ namespace Prepod
             name.Text = "";
             name.Text = rdr[1].ToString() + " " + rdr[2].ToString() + " " + rdr[3].ToString();
             fio = name.Text;
+            name.BackColor = Color.LawnGreen;
             string group = rdr[5].ToString();            
 
             rdr.Close();
@@ -208,7 +209,8 @@ namespace Prepod
                 case "Тест":
                     {
                         startTest.Enabled = true;
-                        startTest.Visible = true;                                                
+                        startTest.Visible = true;
+                        startTest.BackColor = Color.Lime;                       
                     }; break;
                 case "Задача":
                     {
@@ -244,7 +246,8 @@ namespace Prepod
             pg.Visible = false;
             treeView1.SelectedImageIndex = treeView1.SelectedNode.ImageIndex;
             startTest.Visible = false;
-            loadTask.Visible = false;
+            loadTask.Enabled = false;
+            loadTask.BackColor = SystemColors.Control;
             if (flag)
             {
                 switch (e.Node.Name.ToString())
@@ -422,10 +425,10 @@ namespace Prepod
             string g = rdr[0].ToString();
             if (rdr[0].ToString() == "")
             {
-                loadTask.Visible = true;
+                loadTask.BackColor = Color.Lime;
                 loadTask.Enabled = true;
             }
-            else { loadTask.Visible = false; };
+            else { loadTask.BackColor = SystemColors.Control; loadTask.Enabled = false; };
             rdr.Close();
             conn.Close();
         }
@@ -512,6 +515,7 @@ namespace Prepod
                     string path = ofd.SafeFileName;
                     insertTask(path);
                     loadTask.Enabled = false;
+                    loadTask.BackColor = SystemColors.Control;
                 }
                 else
                 {
@@ -561,7 +565,9 @@ namespace Prepod
             finally
             {
                 outputstream.Close();
-                inputstream.Close();                
+                inputstream.Close();
+                MessageBox.Show("Задача отправлена!");
+                pg.Visible = false;
                 //insertTask(pathString.Remove(0, Application.StartupPath.Length));
             }
         }
@@ -586,6 +592,7 @@ namespace Prepod
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
             startTest.Visible = true;
+            startTest.BackColor = Color.Lime;
         }
 
         private void startTest_Click(object sender, EventArgs e)
