@@ -19,6 +19,7 @@ namespace Prepod
         XmlReader xmlReader;
         //string XmlPath = "C:\\Users\\User\\Desktop\\Текущие проекты\\CreateTest 2.0\\CreateTest 2.0\\bin\\Debug\\СуперТест3.xml";
         ////string XmlPath = Application.StartupPath + "\\" + "Математика.xml";
+        //ОБЪЕДИНИТЬ МЕТОДЫ Clear и ClearSelectAns!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         string XmlPath=null;
         int numStud = -1;
         public TextQuestion tq = new TextQuestion();
@@ -35,11 +36,8 @@ namespace Prepod
         int[] NotRightAnswers;
         int numberTekQuest = 0;
         Image img;
+        studentWork studworkForm;
 
-        RichTextBox txtB1;
-        RichTextBox txtB2;
-        RichTextBox txtB3;
-        RichTextBox txtB4;
 
         RadioButton rad1;
         RadioButton rad2;
@@ -50,19 +48,16 @@ namespace Prepod
         CheckBox cB2;
         CheckBox cB3;
         CheckBox cB4;
-        Label lbl2;
-        Label lbl3;
-        Label lbl4;
-        Label lbl5;
 
         string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
-        public TestStart(int _numStud,string _pathxml)
+        public TestStart(int _numStud,string _pathxml, studentWork _studworkform)
         {
             InitializeComponent();
             numStud = _numStud;
             XmlPath = _pathxml;
-            xmlReader = new XmlTextReader(XmlPath);
+            studworkForm = _studworkform;
+            xmlReader = new XmlTextReader(XmlPath); //Создаем xmlReader
             xmlReader.Read();
         }
 
@@ -71,15 +66,8 @@ namespace Prepod
             if (MessageBox.Show("Для начала тестирования нажмите ОК","Внимание",MessageBoxButtons.OKCancel)==DialogResult.OK)
             {
                 LoadQuestions();
-                //for(int h=1;h<=Questions.Count;h++)
-                //{
-                //    lstQuestion.Items.Add("Вопрос " + h);
-                //}
-                //rTB.ReadOnly = true;
                 pBTime.Maximum = Time;
                 pBTime.Minimum = 0;
-                //MyTimer.Enabled = true;
-                //MyTimer.Start();
 
                 MouseEventArgs events = new MouseEventArgs(System.Windows.Forms.MouseButtons.Left, 2, lstQuestion.Items[0].Position.X, lstQuestion.Items[0].Position.Y,0);
                 lstQuestion_MouseDoubleClick(lstQuestion.Items[numberTekQuest].Text, events);
@@ -87,7 +75,6 @@ namespace Prepod
             else
             {
                 Application.Exit();
-               // this.Hide();
             }
         }
         
@@ -112,13 +99,8 @@ namespace Prepod
         
         void printRightAnswers()
         {
-            //string[] answ = new string[4];
             xmlReader.Read(); 
-            //answ = xmlReader.Value.Split('|');
-            //tq.rightans[0] = answ[0];
-            //tq.rightans[1] = answ[1];
-            //tq.rightans[2] = answ[2];
-            //tq.rightans[3] = answ[3];
+
             string temp = xmlReader.Value.ToString();
             string tmp = "";
             int k = 1;
@@ -191,15 +173,6 @@ namespace Prepod
             while (xmlReader.Name != "Theme");
             xmlReader.Read();
             Theme = xmlReader.Value.ToString();
-            //do xmlReader.Read();
-            //while (xmlReader.Name != "Time");
-            //Time = Int32.Parse(xmlReader.GetAttribute("Time"));
-            //do xmlReader.Read();
-            //while (xmlReader.Name != "Report");
-            //string tmpRep = xmlReader.GetAttribute("Report");
-            //if (tmpRep == "Да")
-            //    Report = true;
-            //xmlReader.Close();
 
             do xmlReader.Read();
             while (xmlReader.Name != "Questions");
@@ -214,11 +187,7 @@ namespace Prepod
                         xmlReader.Read();
 
                         tq.question = xmlReader.Value.ToString();
-                        //string temps = tq.question;
-                        //while(temps.IndexOf("\\")!=-1)
-                        //{
-                        //    temps=temps.Replace("\\",@"\");
-                        //}
+
                         //------------------------------------------------------------------------
                         do xmlReader.Read(); while (xmlReader.Name != "TypeAnswer");
                         xmlReader.Read();
@@ -358,56 +327,37 @@ namespace Prepod
            {
                Clear();
                #region Создание дин.элементов для одного ответа
-               txtB1 = new RichTextBox();
-               txtB2 = new RichTextBox();
-               txtB3 = new RichTextBox();
-               txtB4 = new RichTextBox();
 
                rad1 = new RadioButton();
                rad2 = new RadioButton();
                rad3 = new RadioButton();
                rad4 = new RadioButton();
                //-------------------------
-               txtB1.Name = "txtBQuest1";
-               txtB1.Location = new Point(32, 53);
-               txtB1.Size = new Size(278, 35);
-               //txtB1.TextChanged += rtBQuestion_TextChanged;
-               gB3.Controls.Add(txtB1);
-
                rad1.Name = "radQuest1";
                rad1.Location = new Point(14, 61);
                rad1.Size = new Size(14, 13);
                gB3.Controls.Add(rad1);
                //-------------------------
-               txtB2.Name = "txtBQuest2";
-               txtB2.Location = new Point(32, 132);
-               txtB2.Size = new Size(278, 35);
-               //txtB2.TextChanged += rtBQuestion_TextChanged;
-               gB3.Controls.Add(txtB2);
-
-               rad2.Name = "radQuest2";
-               rad2.Location = new Point(14, 144);
-               rad2.Size = new Size(14, 13);
-               gB3.Controls.Add(rad2);
+               //rad2.Name = "radQuest2";
+               //rad2.Location = new Point(14, 144);
+               //rad2.Size = new Size(14, 13);
+               //gB3.Controls.Add(rad2);
+               ////-------------------------
+               //rad3.Name = "radQuest3";
+               //rad3.Location = new Point(332, 61);
+               //rad3.Size = new Size(14, 13);
+               //gB3.Controls.Add(rad3);
                //-------------------------
-
-               txtB3.Name = "txtBQuest3";
-               txtB3.Location = new Point(347, 53);
-               txtB3.Size = new Size(278, 35);
-               //txtB3.TextChanged += rtBQuestion_TextChanged;
-               gB3.Controls.Add(txtB3);
-
                rad3.Name = "radQuest3";
-               rad3.Location = new Point(332, 61);
+               rad3.Location = new Point(14, 144);
                rad3.Size = new Size(14, 13);
                gB3.Controls.Add(rad3);
                //-------------------------
-               txtB4.Name = "txtBQuest4";
-               txtB4.Location = new Point(347, 132);
-               txtB4.Size = new Size(278, 35);
-               //txtB4.TextChanged += rtBQuestion_TextChanged;
-               gB3.Controls.Add(txtB4);
-
+               rad2.Name = "radQuest2";
+               rad2.Location = new Point(332, 61);
+               rad2.Size = new Size(14, 13);
+               gB3.Controls.Add(rad2);
+               //-------------------------
                rad4.Name = "radQuest4";
                rad4.Location = new Point(332, 144);
                rad4.Size = new Size(14, 13);
@@ -416,91 +366,45 @@ namespace Prepod
                label7.Visible = false;
                //-------------------------
                #endregion
-               //NumberList.Value = numList1.Value;
+               txtB1.Visible = true;
+               txtB3.Visible = true;
+               txtB2.Visible = true;
+               txtB4.Visible = true;
+               label2.Visible = true;
+               label3.Visible = true;
+               label4.Visible = true;
+               label5.Visible = true;
                txtB1.Text = Questions[_ind].answ1;
                txtB2.Text = Questions[_ind].answ2;
                txtB3.Text = Questions[_ind].answ3;
                txtB4.Text = Questions[_ind].answ4;
-               txtB1.ReadOnly = true;
-               txtB2.ReadOnly = true;
-               txtB3.ReadOnly = true;
-               txtB4.ReadOnly = true;
-               lbl2 = new Label();
-               lbl2.Location=new Point(11,24);
-               lbl2.Size=new Size(49,13);
-               lbl2.Text = "Ответ 1:";
-               gB3.Controls.Add(lbl2);
-               lbl3 = new Label();
-               lbl3.Location = new Point(11, 103);
-               lbl3.Size = new Size(49, 13);
-               lbl3.Text = "Ответ 2:";
-               gB3.Controls.Add(lbl3);
-               lbl4 = new Label();
-               lbl4.Location = new Point(329,24);
-               lbl4.Size = new Size(49, 13);
-               lbl4.Text = "Ответ 3:";
-               gB3.Controls.Add(lbl4);
-               lbl5 = new Label();
-               lbl5.Location = new Point(329,103);
-               lbl5.Size = new Size(49, 13);
-               lbl5.Text = "Ответ 4:";
-               gB3.Controls.Add(lbl5);
            }
            else
                if (Questions[_ind].type_question == "Several")
                {
                    Clear();
                    #region Создание дин.элементов для неск.ответов
-                   txtB1 = new RichTextBox();
-                   txtB2 = new RichTextBox();
-                   txtB3 = new RichTextBox();
-                   txtB4 = new RichTextBox();
 
                    cB1 = new CheckBox();
                    cB2 = new CheckBox();
                    cB3 = new CheckBox();
                    cB4 = new CheckBox();
                    //-------------------------
-                   txtB1.Name = "txtBQuest1";
-                   txtB1.Location = new Point(32, 53);
-                   txtB1.Size = new Size(278, 35);
-                   //txtB1.TextChanged += rtBQuestion_TextChanged;
-                   gB3.Controls.Add(txtB1);
-
                    cB1.Name = "radQuest1";
                    cB1.Location = new Point(14, 61);
                    cB1.Size = new Size(14, 13);
                    gB3.Controls.Add(cB1);
                    //-------------------------
-                   txtB2.Name = "txtBQuest2";
-                   txtB2.Location = new Point(32, 132);
-                   txtB2.Size = new Size(278, 35);
-                   //txtB2.TextChanged += rtBQuestion_TextChanged;
-                   gB3.Controls.Add(txtB2);
-
                    cB2.Name = "radQuest2";
                    cB2.Location = new Point(14, 144);
                    cB2.Size = new Size(14, 13);
                    gB3.Controls.Add(cB2);
                    //-------------------------
-
-                   txtB3.Name = "txtBQuest3";
-                   txtB3.Location = new Point(347, 53);
-                   txtB3.Size = new Size(278, 35);
-                   //txtB3.TextChanged += rtBQuestion_TextChanged;
-                   gB3.Controls.Add(txtB3);
-
                    cB3.Name = "radQuest3";
                    cB3.Location = new Point(332, 61);
                    cB3.Size = new Size(14, 13);
                    gB3.Controls.Add(cB3);
                    //-------------------------
-                   txtB4.Name = "txtBQuest4";
-                   txtB4.Location = new Point(347, 132);
-                   txtB4.Size = new Size(278, 35);
-                   //txtB4.TextChanged += rtBQuestion_TextChanged;
-                   gB3.Controls.Add(txtB4);
-
                    cB4.Name = "radQuest4";
                    cB4.Location = new Point(332, 144);
                    cB4.Size = new Size(14, 13);
@@ -509,110 +413,36 @@ namespace Prepod
                    label7.Visible = false;
                    //-------------------------
                    #endregion
-                   //NumberList.Value = numList2.Value;
+
+                   txtB1.Visible = true;
+                   txtB3.Visible = true;
+                   txtB2.Visible = true;
+                   txtB4.Visible = true;
+                   label2.Visible = true;
+                   label3.Visible = true;
+                   label4.Visible = true;
+                   label5.Visible = true;
                    txtB1.Text = Questions[_ind].answ1;
                    txtB2.Text = Questions[_ind].answ2;
                    txtB3.Text = Questions[_ind].answ3;
                    txtB4.Text = Questions[_ind].answ4;
-                   //txtB1.ReadOnly = true;
-                   //txtB2.ReadOnly = true;
-                   //txtB3.ReadOnly = true;
-                   //txtB4.ReadOnly = true;
-                   //txtB1.Text = Questions[_ind].answ1;
-                   //txtB2.Text = Questions[_ind].answ2;
-                   //txtB3.Text = Questions[_ind].answ3;
-                   //txtB4.Text = Questions[_ind].answ4;
-                   txtB1.ReadOnly = true;
-                   txtB2.ReadOnly = true;
-                   txtB3.ReadOnly = true;
-                   txtB4.ReadOnly = true;
-                   lbl2 = new Label();
-                   lbl2.Location = new Point(11, 24);
-                   lbl2.Size = new Size(49, 13);
-                   lbl2.Text = "Ответ 1:";
-                   gB3.Controls.Add(lbl2);
-                   lbl3 = new Label();
-                   lbl3.Location = new Point(11, 103);
-                   lbl3.Size = new Size(49, 13);
-                   lbl3.Text = "Ответ 2:";
-                   gB3.Controls.Add(lbl3);
-                   lbl4 = new Label();
-                   lbl4.Location = new Point(329, 24);
-                   lbl4.Size = new Size(49, 13);
-                   lbl4.Text = "Ответ 3:";
-                   gB3.Controls.Add(lbl4);
-                   lbl5 = new Label();
-                   lbl5.Location = new Point(329, 103);
-                   lbl5.Size = new Size(49, 13);
-                   lbl5.Text = "Ответ 4:";
-                   gB3.Controls.Add(lbl5);
                }
                else
                    if (Questions[_ind].type_question == "Sequence")
                    {
                        Clear();
                        #region Создание дин.элементов для установки посл
-                       txtB1 = new RichTextBox();
-                       txtB2 = new RichTextBox();
-                       txtB3 = new RichTextBox();
-                       txtB4 = new RichTextBox();
-                       //-------------------------
-                       txtB1.Name = "txtBQuest1";
-                       txtB1.Location = new Point(32, 53);
-                       txtB1.Size = new Size(278, 35);
-                       //txtB1.TextChanged += rtBQuestion_TextChanged;
-                       gB3.Controls.Add(txtB1);
-
-                       txtB2.Name = "txtBQuest2";
-                       txtB2.Location = new Point(32, 132);
-                       txtB2.Size = new Size(278, 35);
-                       //txtB2.TextChanged += rtBQuestion_TextChanged;
-                       gB3.Controls.Add(txtB2);
-
-                       txtB3.Name = "txtBQuest3";
-                       txtB3.Location = new Point(347, 53);
-                       txtB3.Size = new Size(278, 35);
-                       //txtB3.TextChanged += rtBQuestion_TextChanged;
-                       gB3.Controls.Add(txtB3);
-
-                       txtB4.Name = "txtBQuest4";
-                       txtB4.Location = new Point(347, 132);
-                       txtB4.Size = new Size(278, 35);
-                       //txtB4.TextChanged += rtBQuestion_TextChanged;
-                       gB3.Controls.Add(txtB4);
-
                        label6.Visible = false;
                        label7.Visible = false;
                        #endregion
-                       //NumberList.Value = numList3.Value;
-                       //txtB1.Text = Questions[_ind].answ1;
-                       //txtB2.Text = Questions[_ind].answ2;
-                       //txtB3.Text = Questions[_ind].answ3;
-                       //txtB4.Text = Questions[_ind].answ4;
-                       //txtB1.ReadOnly = true;
-                       //txtB2.ReadOnly = true;
-                       //txtB3.ReadOnly = true;
-                       //txtB4.ReadOnly = true;
-                       lbl2 = new Label();
-                       lbl2.Location = new Point(11, 24);
-                       lbl2.Size = new Size(49, 13);
-                       lbl2.Text = "Ответ 1:";
-                       gB3.Controls.Add(lbl2);
-                       lbl3 = new Label();
-                       lbl3.Location = new Point(11, 103);
-                       lbl3.Size = new Size(49, 13);
-                       lbl3.Text = "Ответ 2:";
-                       gB3.Controls.Add(lbl3);
-                       lbl4 = new Label();
-                       lbl4.Location = new Point(329, 24);
-                       lbl4.Size = new Size(49, 13);
-                       lbl4.Text = "Ответ 3:";
-                       gB3.Controls.Add(lbl4);
-                       lbl5 = new Label();
-                       lbl5.Location = new Point(329, 103);
-                       lbl5.Size = new Size(49, 13);
-                       lbl5.Text = "Ответ 4:";
-                       gB3.Controls.Add(lbl5);
+                       txtB1.Visible = true;
+                       txtB3.Visible = true;
+                       txtB2.Visible = true;
+                       txtB4.Visible = true;
+                       label2.Visible = true;
+                       label3.Visible = true;
+                       label4.Visible = true;
+                       label5.Visible = true;
                    }
                    else
                    {
@@ -620,109 +450,33 @@ namespace Prepod
                        {
                            Clear();
                            #region Создание дин.элементов для письменного ответа
-                           txtB1 = new RichTextBox();
-                           txtB1.Name = "txtBQuest1";
-                           txtB1.Location = new Point(32, 53);
-                           txtB1.Size = new Size(278, 35);
-                           //txtB1.TextChanged += rtBQuestion_TextChanged;
-                           gB3.Controls.Add(txtB1);
                            label6.Visible = false;
                            label7.Visible = false;
                            #endregion
-                           //NumberList.Value = numList4.Value;
-                           //txtB1.Text = Questions[_ind].answ1;
-                           //txtB2.Text = Questions[_ind].answ2;
-                           //txtB3.Text = Questions[_ind].answ3;
-                           //txtB4.Text = Questions[_ind].answ4;
-                           //txtB1.ReadOnly = true;
-                           //txtB2.ReadOnly = true;
-                           //txtB3.ReadOnly = true;
-                           //txtB4.ReadOnly = true;
-                           lbl2 = new Label();
-                           lbl2.Location = new Point(11, 24);
-                           lbl2.Size = new Size(49, 13);
-                           lbl2.Text = "Ответ 1:";
-                           gB3.Controls.Add(lbl2);
+                           txtB1.Visible = true;
+                           txtB3.Visible = false;
+                           txtB2.Visible = false;
+                           txtB4.Visible = false;
+                           label2.Visible = true;
+                           label3.Visible = false;
+                           label4.Visible = false;
+                           label5.Visible = false;
                        }
                        else
                        {
                            Clear();
                            #region Создание дин.элементов для ответа сопоставления
-                           txtB1 = new RichTextBox();
-                           txtB2 = new RichTextBox();
-                           txtB3 = new RichTextBox();
-                           txtB4 = new RichTextBox();
-                           //-------------------------
-                           txtB1.Name = "txtBQuest1";
-                           txtB1.Location = new Point(32, 53);
-                           txtB1.Size = new Size(278, 35);
-                           //txtB1.TextChanged += rtBQuestion_TextChanged;
-                           gB3.Controls.Add(txtB1);
-
-                           txtB2.Name = "txtBQuest2";
-                           txtB2.Location = new Point(32, 132);
-                           txtB2.Size = new Size(278, 35);
-                           //txtB2.TextChanged += rtBQuestion_TextChanged;
-                           gB3.Controls.Add(txtB2);
-
-                           txtB3.Name = "txtBQuest3";
-                           txtB3.Location = new Point(347, 53);
-                           txtB3.Size = new Size(278, 35);
-                           //txtB3.TextChanged += rtBQuestion_TextChanged;
-                           gB3.Controls.Add(txtB3);
-
-                           txtB4.Name = "txtBQuest4";
-                           txtB4.Location = new Point(347, 132);
-                           txtB4.Size = new Size(278, 35);
-                           //txtB4.TextChanged += rtBQuestion_TextChanged;
-                           gB3.Controls.Add(txtB4);
-
                            label6.Visible = true;
                            label7.Visible = true;
-                           //Label lbl7 = new Label();
-                           //lbl7.AutoSize = false;
-                           //lbl7.Size = new Size(40, 10);
-                           //lbl7.Location = new Point(243, 53);
-                           //lbl7.Text = "     ";
-                           //gB3.Controls.Add(lbl7);
-
-                           //Label lbl8 = new Label();
-                           //lbl8.AutoSize = false;
-                           //lbl8.Size = new Size(40, 10);
-                           //lbl8.Location = new Point(243, 53);
-                           //lbl8.Text = "     ";
-                           //gB3.Controls.Add(lbl8);
-
                            #endregion
-                           //NumberList.Value = numList5.Value;
-                           //txtB1.Text = Questions[_ind].answ1;
-                           //txtB2.Text = Questions[_ind].answ2;
-                           //txtB3.Text = Questions[_ind].answ3;
-                           //txtB4.Text = Questions[_ind].answ4;
-                           //txtB1.ReadOnly = true;
-                           //txtB2.ReadOnly = true;
-                           //txtB3.ReadOnly = true;
-                           //txtB4.ReadOnly = true;
-                           lbl2 = new Label();
-                           lbl2.Location = new Point(11, 24);
-                           lbl2.Size = new Size(49, 13);
-                           lbl2.Text = "Ответ 1:";
-                           gB3.Controls.Add(lbl2);
-                           lbl3 = new Label();
-                           lbl3.Location = new Point(11, 103);
-                           lbl3.Size = new Size(49, 13);
-                           lbl3.Text = "Ответ 2:";
-                           gB3.Controls.Add(lbl3);
-                           lbl4 = new Label();
-                           lbl4.Location = new Point(329, 24);
-                           lbl4.Size = new Size(49, 13);
-                           lbl4.Text = "Ответ 3:";
-                           gB3.Controls.Add(lbl4);
-                           lbl5 = new Label();
-                           lbl5.Location = new Point(329, 103);
-                           lbl5.Size = new Size(49, 13);
-                           lbl5.Text = "Ответ 4:";
-                           gB3.Controls.Add(lbl5);
+                           txtB1.Visible = true;
+                           txtB3.Visible = true;
+                           txtB2.Visible = true;
+                           txtB4.Visible = true;
+                           label2.Visible = true;
+                           label3.Visible = true;
+                           label4.Visible = true;
+                           label5.Visible = true;
                        }
                    }
            if (File.Exists(Questions[_ind].question)==true)
@@ -740,23 +494,23 @@ namespace Prepod
         
         public void Clear()
         {
-            gB3.Controls.Clear();
-            lbl2 = null;
-            lbl3 = null;
-            lbl4 = null;
-            lbl5 = null;
+            ClearSelectAns();
 
+            gB3.Controls.Remove(rad1);
             rad1 = null;
+            gB3.Controls.Remove(rad2);
             rad2 = null;
+            gB3.Controls.Remove(rad3);
             rad3 = null;
+            gB3.Controls.Remove(rad4);
             rad4 = null;
-            txtB1 = null;
-            txtB2 = null;
-            txtB3 = null;
-            txtB4 = null;
+            gB3.Controls.Remove(cB1);
             cB1 = null;
+            gB3.Controls.Remove(cB2);
             cB2 = null;
+            gB3.Controls.Remove(cB3);
             cB3 = null;
+            gB3.Controls.Remove(cB4);
             cB4 = null;
             rTB.Text = "";
             //добавить стиралку для 2 черт
@@ -764,42 +518,17 @@ namespace Prepod
 
         private void lstQuestion_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (First==false)
+            if (First == false)
             {
                 MyTimer.Enabled = true;
                 MyTimer.Start();
-                //First = true;
-            }
-            int num = 0;
-            int num2 = 0;
-            if (txtB1 != null)
-            {
-               // numberTekQuest = Int32.Parse(sender.ToString());
-               num = Int32.Parse(lstQuestion.SelectedItems[0].Tag.ToString());
-               num2 = Int32.Parse(lblNumberQuest.Text);
-               SaveAnswers(num2);
-               CreateElement(num);
-                if (Answers[num].ans1 != null || Answers[num].ans2 != null || Answers[num].ans3 != null || Answers[num].ans4 != null || Answers[num].answer1 != false || Answers[num].answer2 != false || Answers[num].answer3 != false || Answers[num].answer4 != false)
-                   LoadAnswers(num);
-                lblNumberQuest.Text = num.ToString();
+                NextQuest(0);
+                First = true;
             }
             else
             {
-                if (First == true)
-                {
-                    lblNumberQuest.Text = lstQuestion.SelectedItems[0].Tag.ToString();
-                    CreateElement(Int32.Parse(lblNumberQuest.Text));
-                }
-                else
-                {
-                    //num = Int32.Parse(lstQuestion.SelectedItems[0].Tag.ToString());
-                    lblNumberQuest.Text = "0";
-                    CreateElement(Int32.Parse(lblNumberQuest.Text));
-                }
+                NextQuest(Int32.Parse(lstQuestion.SelectedItems[0].Tag.ToString()));
             }
-            if (First == false)
-                numberTekQuest = 0;
-            First = true;
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -824,14 +553,7 @@ namespace Prepod
                 {
                     Check(y);
                 }
-                if (Report == true)
-                {
-                    ReportForm RF = new ReportForm(idTest,numStud, Theme, StudBall, t, Questions, NotRightAnswers, Answers);
-                    RF.Show();
-                    this.Hide();
-
-                }
-                else
+                try
                 {
                     //занести в БД результаты
                     conn.Open();
@@ -839,9 +561,23 @@ namespace Prepod
                     comm.Connection = conn;
                     comm.CommandText = "Insert into [Выполненный тест] ([№ теста],[Балл],[Дата сдачи],[Время выполнения],[№ студента]) values (" + "'" + idTest.ToString() + "'" + "," + "'" + StudBall.ToString() + "'" + "," + "'" + System.DateTime.Today.ToShortDateString() + "'" + "," + "'" + (t / 60000000).ToString() + "'" + "," + "'" + numStud.ToString() + "'" + ")";
                     comm.ExecuteNonQuery();
-                    // ------
-                    Application.Exit();
                 }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Ошибка!","Результаты теста не сохранены в БД");
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                if (Report == true)
+                   {
+                       ReportForm RF = new ReportForm(idTest, numStud, Theme, StudBall, t, Questions, NotRightAnswers, Answers, studworkForm);
+                       RF.Show();
+                       this.Hide();
+
+                   }
             }
         }
 
@@ -857,7 +593,7 @@ namespace Prepod
             {
                 MyTimer.Stop();
                 MyTimer.Enabled = false;
-                SaveAnswers(Int32.Parse(lblNumberQuest.Text));//ПРОВЕРИТЬ!
+                SaveAnswers(Int32.Parse(lblNumberQuest.Text));
                 btnNext_Click(sender, e);
                 MessageBox.Show("Время истекло");
             }
@@ -908,11 +644,11 @@ namespace Prepod
                 }
                 else
                 {
-                    if (txtB2 != null)
+                    if (txtB3 != null)
                     {
                         Answers[_ind].ans1 = txtB1.Text;
-                        Answers[_ind].ans2 = txtB2.Text;
-                        Answers[_ind].ans3 = txtB3.Text;
+                        Answers[_ind].ans2 = txtB3.Text;
+                        Answers[_ind].ans3 = txtB2.Text;
                         Answers[_ind].ans4 = txtB4.Text;
                     }
                     else
@@ -960,19 +696,14 @@ namespace Prepod
                     rad4.Checked = true;
                 else
                     cB4.Checked = true;
-            //if (Answers[_ind].answer1 != false)
-            //    if (rad1 != null)
-            //        rad1.Checked = true;
-            //    else
-            //        cB1.Checked = true;
             if (Answers[_ind].ans1 != null)
                 txtB1.Text = Answers[_ind].ans1;
             if (Answers[_ind].ans2 != null)
-                if (txtB2!=null)
-                   txtB2.Text = Answers[_ind].ans2;
+                if (txtB3!=null)
+                   txtB3.Text = Answers[_ind].ans2;
             if (Answers[_ind].ans3 != null)
-                if (txtB3 != null)
-                  txtB3.Text = Answers[_ind].ans3;
+                if (txtB2 != null)
+                  txtB2.Text = Answers[_ind].ans3;
             if (Answers[_ind].ans4 != null)
                 if (txtB4 != null)
                    txtB4.Text = Answers[_ind].ans4;
@@ -983,12 +714,6 @@ namespace Prepod
             if (Answers[_ind].answer1 != false || Answers[_ind].answer2 != false || Answers[_ind].answer3 != false || Answers[_ind].answer4 != false)
             {
                 bool Right = true;
-                //int NumberAnswer=0;
-                //for (int u = 0; u <= 3;u++)
-                //{
-                //    if (Questions[_ind].rightans[u]!=null)
-                //        NumberAnswer++;
-                //}
                 for (int u = 0; u <= 3; u++)
                 {
                     if (Questions[_ind].rightans[u] != null)
@@ -1055,19 +780,71 @@ namespace Prepod
             }
         }
 
+        void NextQuest(int _id)
+        {
+            int num = 0;
+            int num2 = 0;
+            //if (txtB1 != null)
+            if(First==true)
+            {
+                num = _id;
+                numberTekQuest = num;
+                num2 = Int32.Parse(lblNumberQuest.Text);
+                SaveAnswers(num2);
+                CreateElement(num);
+                if (Answers[num].ans1 != null || Answers[num].ans2 != null || Answers[num].ans3 != null || Answers[num].ans4 != null || Answers[num].answer1 != false || Answers[num].answer2 != false || Answers[num].answer3 != false || Answers[num].answer4 != false)
+                    LoadAnswers(num);
+                lblNumberQuest.Text = num.ToString();
+            }
+            else
+            {
+                    lblNumberQuest.Text = "0";
+                    CreateElement(Int32.Parse(lblNumberQuest.Text));
+            }
+        }
+
         private void btnPrevQuestion_Click(object sender, EventArgs e)
         {
-            MouseEventArgs events = new MouseEventArgs(System.Windows.Forms.MouseButtons.Left, 2, lstQuestion.Items[numberTekQuest + 1].Position.X, lstQuestion.Items[numberTekQuest + 1].Position.Y, 0);
-            if ((numberTekQuest - 1)!=-1)
-                if (lstQuestion.Items[numberTekQuest - 1] != null)
-              lstQuestion_MouseDoubleClick(lstQuestion.Items[numberTekQuest-1].Text, events);
+            if (numberTekQuest-1!=-1)
+            {
+                NextQuest(numberTekQuest - 1);
+            }
         }
 
         private void btnNextQuestion_Click(object sender, EventArgs e)
         {
-            MouseEventArgs events = new MouseEventArgs(System.Windows.Forms.MouseButtons.Left, 2, lstQuestion.Items[numberTekQuest + 1].Position.X, lstQuestion.Items[numberTekQuest + 1].Position.Y, 0);
-            if (lstQuestion.Items[numberTekQuest + 1] != null)
-                lstQuestion_MouseDoubleClick(lstQuestion.Items[numberTekQuest + 1].Text, events);
+            if (numberTekQuest + 2 <= lstQuestion.Items.Count)
+                NextQuest(numberTekQuest + 1);
+        }
+
+        private void TestStart_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           if (MessageBox.Show("Вы уверены, что хотите отменить выполнение теста? Результаты сохранены не будут.","Предупреждение",MessageBoxButtons.YesNo)==DialogResult.Yes)
+           {
+               this.Hide();
+           }
+        }
+
+        void ClearSelectAns()
+        {
+            if (rad1!=null)
+            {
+                rad1.Checked = false;
+                rad2.Checked = false;
+                rad3.Checked = false;
+                rad4.Checked = false;
+            }
+            if (cB1!=null)
+            {
+                cB1.Checked = false;
+                cB2.Checked = false;
+                cB3.Checked = false;
+                cB4.Checked = false;
+            }
+            txtB1.Text = "";
+            txtB3.Text = "";
+            txtB2.Text = "";
+            txtB4.Text = "";
         }
     }
 }

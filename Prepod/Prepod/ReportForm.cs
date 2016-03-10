@@ -23,10 +23,11 @@ namespace Prepod
         List<TextQuestion> Questions = new List<TextQuestion>();
         List<TestAnswers> Answers = new List<TestAnswers>();
         int[] notRightAnswer;
+        studentWork studentForm;
 
         string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
-        public ReportForm(int _idTest,int _NumStud,string _theme, int _ball, int _time, List<TextQuestion> _questions, int[] _mass, List<TestAnswers> _answers)
+        public ReportForm(int _idTest,int _NumStud,string _theme, int _ball, int _time, List<TextQuestion> _questions, int[] _mass, List<TestAnswers> _answers,studentWork _studentwork)
         {
             InitializeComponent();
             idTest = _idTest;
@@ -37,6 +38,7 @@ namespace Prepod
             Questions = _questions;
             notRightAnswer = _mass;
             Answers = _answers;
+            studentForm = _studentwork;
         }
 
         private void ReportForm_Load(object sender, EventArgs e)
@@ -239,8 +241,8 @@ namespace Prepod
             comm.ExecuteNonQuery();
 
             this.Hide();
-            studentWork studWork = new studentWork(NumStud.ToString(),"");
-            studWork.Show();
+            //studentWork studWork = new studentWork(NumStud.ToString());
+            //studWork.Show();
         }
         void DoStart()
         {

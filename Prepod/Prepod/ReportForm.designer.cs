@@ -155,7 +155,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ReportForm";
+            this.Text = "Отчет";
             this.Load += new System.EventHandler(this.ReportForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

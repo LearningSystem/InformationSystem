@@ -599,7 +599,7 @@ namespace Prepod
         {
             string puthXML = listView1.SelectedItems[0].Tag.ToString(); // ссылка на xml
             //System.Diagnostics.Process.Start(puthEXE,numStudent.ToString()+" "+puthXML);
-            TestStart goStart = new TestStart(Int32.Parse(numStudent), puthXML);
+            TestStart goStart = new TestStart(Int32.Parse(numStudent), puthXML,this);
             this.Hide();
             goStart.Show();
         }
