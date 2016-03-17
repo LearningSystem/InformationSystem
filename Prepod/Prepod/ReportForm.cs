@@ -222,7 +222,8 @@ namespace Prepod
                         for (int y = 0; y <= 9; y++)
                             if (Questions[j].part[y] != null)
                             {
-                                treeViewTest.Nodes[index].Nodes.Add("Рекомендация №" + bl + ": Изучить раздел: " + Questions[j].part[y]);
+                                int partindex=treeViewTest.Nodes[index].Nodes.Add("Рекомендация №" + bl + ": Изучить раздел: " + Questions[j].part[y]).Index;
+                                treeViewTest.Nodes[index].Nodes[partindex].Tag = Questions[j].part[y];
                                 bl++;
                             }
                         //bl++;
@@ -232,17 +233,30 @@ namespace Prepod
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
-            //добавить в БД данные
-            SqlConnection conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
-            comm.CommandText = "Insert into [Выполненный тест] ([№ теста],[Балл],[Дата сдачи],[Время выполнения],[№ студента]) values (" + "'" + idTest.ToString() + "'" + "," + "'" + StudBall.ToString() + "'" + "," + "'" + System.DateTime.Today.ToShortDateString() + "'" + "," + "'" + (StudTime / 60000000).ToString() + "'" + "," + "'" + NumStud.ToString() + "'" + ")";
-            comm.ExecuteNonQuery();
-
-            this.Hide();
+            ////добавить в БД данные
+            //SqlConnection conn = new SqlConnection(connectionString);
+            //conn.Open();
+            //SqlCommand comm = new SqlCommand();
+            //comm.Connection = conn;
+            //comm.CommandText = "Insert into [Выполненный тест] ([№ теста],[Балл],[Дата сдачи],[Время выполнения],[№ студента]) values (" + "'" + idTest.ToString() + "'" + "," + "'" + StudBall.ToString() + "'" + "," + "'" + System.DateTime.Today.ToShortDateString() + "'" + "," + "'" + (StudTime / 60000000).ToString() + "'" + "," + "'" + NumStud.ToString() + "'" + ")";
+            //comm.ExecuteNonQuery();
+            //if (MessageBox.Show("Подтверждение", "Вы уверены, что хотите вернуться в систему?", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            //{
+            //    this.Hide();
+            //    studentForm.Show();
+            //}
             //studentWork studWork = new studentWork(NumStud.ToString());
             //studWork.Show();
+            Exit();
+        }
+
+        void Exit()
+        {
+            if (MessageBox.Show("Вы уверены, что хотите вернуться в систему?","Подтверждение", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                this.Hide();
+                studentForm.Show();
+            }
         }
         void DoStart()
         {
@@ -262,6 +276,29 @@ namespace Prepod
         private void btnOK_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void treeViewTest_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ////if ()
+            //this.SendToBack();
+            //studentForm.Show();
+            //studentForm.BringToFront();
+            //studentForm.Poisk(treeViewTest.SelectedNode.Tag.ToString());
+        }
+
+        private void treeViewTest_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            //if ()
+            this.SendToBack();
+            studentForm.Show();
+            studentForm.BringToFront();
+            studentForm.Poisk(treeViewTest.SelectedNode.Tag.ToString());
+        }
+
+        private void ReportForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Exit();
         }
 
     }

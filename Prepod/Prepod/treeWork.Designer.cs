@@ -40,6 +40,7 @@
             this.esimates = new System.Windows.Forms.ToolStripMenuItem();
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkTasks = new System.Windows.Forms.ToolStripMenuItem();
+            this.данныеДляПроверкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.profile = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
@@ -101,6 +102,7 @@
             this.esimates,
             this.выйтиToolStripMenuItem,
             this.checkTasks,
+            this.данныеДляПроверкиToolStripMenuItem,
             this.profile});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -168,6 +170,13 @@
             this.checkTasks.Size = new System.Drawing.Size(106, 20);
             this.checkTasks.Text = "Проверка задач";
             this.checkTasks.Click += new System.EventHandler(this.проверкаЗадачToolStripMenuItem_Click);
+            // 
+            // данныеДляПроверкиToolStripMenuItem
+            // 
+            this.данныеДляПроверкиToolStripMenuItem.Name = "данныеДляПроверкиToolStripMenuItem";
+            this.данныеДляПроверкиToolStripMenuItem.Size = new System.Drawing.Size(140, 20);
+            this.данныеДляПроверкиToolStripMenuItem.Text = "Данные для проверки";
+            this.данныеДляПроверкиToolStripMenuItem.Click += new System.EventHandler(this.данныеДляПроверкиToolStripMenuItem_Click);
             // 
             // profile
             // 
@@ -579,5 +588,6 @@
         private System.Windows.Forms.ToolStripMenuItem checkTasks;
         private System.Windows.Forms.ToolStripMenuItem profile;
         private System.Windows.Forms.RichTextBox rb;
+        private System.Windows.Forms.ToolStripMenuItem данныеДляПроверкиToolStripMenuItem;
     }
 }

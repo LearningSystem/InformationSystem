@@ -33,6 +33,7 @@ namespace Prepod
 
         List<int> tasks = new List<int>();
         string puthEXE = Application.StartupPath+"\\"+"Tests\\Tests\\bin\\Debug\\Tests.exe";
+        bool find = false;
         public studentWork(string _numStudent,string _passStudent)
         {
             InitializeComponent();
@@ -120,8 +121,11 @@ namespace Prepod
             loadInf();
             if (passStudent == "1")
             {
-                WarningPass chg = new WarningPass();
+                this.SendToBack();
+                WarningPass chg = new WarningPass(numStudent,this);
                 chg.ShowDialog();
+                chg.BringToFront();
+                //chg.Show();
             }
         }
 
@@ -612,8 +616,50 @@ namespace Prepod
 
         private void сменитьПарольToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangePass chpass = new ChangePass(numStudent);
+            ChangePass chpass = new ChangePass(numStudent,this);
             chpass.Show();
         }
+
+        #region Поиск в дереве
+        
+        public void Poisk(string NameRazdel)
+        {
+            find = false;
+            TreeNodeCollection treecol = treeView1.Nodes;
+            string RazdelName = NameRazdel;
+            Poisk(treecol, RazdelName);
+            if (find == false)
+            {
+                MessageBox.Show("Раздел не найден!");
+                
+            }
+        }
+
+
+        public void Poisk(TreeNodeCollection namenode, string FileNames)
+        {
+
+            foreach (TreeNode node in namenode)
+            {
+                if (node != null)
+                {
+                    if (node.Text == FileNames)
+                    {
+                        treeView1.SelectedNode = node;
+                        //node.ForeColor = Color.Blue;
+                        //tabControls.SelectedIndex = 0;
+                        find = true;
+                        //txtBoxVvod.Text = "";
+                        break;
+                    }
+                    else
+                    {
+                        TreeNodeCollection nodeDir = node.Nodes;
+                        Poisk(nodeDir, FileNames);
+                    }
+                }
+            }
+        }
+        #endregion
     }
 }

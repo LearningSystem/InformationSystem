@@ -120,7 +120,6 @@ C:\Users\User\Desktop\Текущие проекты\Prepod\Prepod\obj\Debug\Prep
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\bin\Debug\Prepod.exe.config
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.exe
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.pdb
-C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.csprojResolveAssemblyReference.cache
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.AddPartTree.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.admin.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.editCPC.resources
@@ -175,3 +174,5 @@ D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.T
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.TestStart.resources
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.treeWork.resources
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.DataBlackBox.resources
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.csprojResolveAssemblyReference.cache

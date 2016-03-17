@@ -601,6 +601,9 @@ namespace Prepod
                 //}
             }
             //Application.Exit();
+            //FileInfo inffile = new FileInfo(Application.StartupPath + NameTest + ".xml");
+            File.Copy(Application.StartupPath + NameTest + ".xml", Application.StartupPath + "Тесты//" + NameTest + ".xml");
+            File.Delete(Application.StartupPath + NameTest + ".xml");
             this.Hide();
         }
 
@@ -1157,9 +1160,9 @@ namespace Prepod
         {
             if (openFilePicture.ShowDialog() == DialogResult.OK)
             {
-                string temp = openFile.InitialDirectory + openFile.FileName;
-                PicturePath = temp;
-                img = Image.FromFile(temp);
+                //string temp = openFile.InitialDirectory + openFile.FileName;
+                //PicturePath = temp;
+                //img = Image.FromFile(temp);
                 if (img.Width > 635)
                     MessageBox.Show("Картинка слишком большая!");
                 else

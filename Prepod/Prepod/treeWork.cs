@@ -906,6 +906,12 @@ namespace Prepod
         {
             InfoTest newtest = new InfoTest(Convert.ToInt32(numPrepod));
             newtest.Show();
+        }
+
+        private void данныеДляПроверкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataBlackBox dataBlackBox = new DataBlackBox();
+            dataBlackBox.Show();
         }   
     }
 }

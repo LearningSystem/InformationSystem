@@ -26,7 +26,17 @@ namespace Prepod.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MICROSOFT-PC;Initial Catalog=Education;User ID=sa;Password=1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MICROSOFT-PC;Initial Catalog=Kursach;User ID=sa;Password=1")]
+        public string KursachConnectionString {
+            get {
+                return ((string)(this["KursachConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=USER-PC;Initial Catalog=Education;Integrated Security=true")]
         public string EducationConnectionString {
             get {
                 return ((string)(this["EducationConnectionString"]));

@@ -74,7 +74,7 @@ namespace Prepod
             }
             else
             {
-                Application.Exit();
+                studworkForm.Show();
             }
         }
         
@@ -145,25 +145,44 @@ namespace Prepod
         
         void printPart()
         {
+            string[] answ=new string[10];
             xmlReader.Read();
             string temp = xmlReader.Value.ToString();
-            string tmp = "";
-            int k = 0;
-            if (temp != "")
+            answ=temp.Split('|');
+            //--Рабочая часть, но лучше было реализовать через Split()
+            //string tmp = "";
+            //int k = 0;
+            //if (temp != "")
+            //{
+            //    for (int h = 0; h < temp.Length; h++)
+            //    {
+            //        if (temp[h].ToString() != "|")
+            //        {
+            //            tmp = tmp + temp[h];
+            //        }
+            //        else
+            //        {
+            //            tq.part[k] = tmp;
+            //            tmp = "";
+            //            k++;
+            //        }
+            //    }
+            //}
+            //if (tmp!="")
+            //{
+            //    tq.part[k] = tmp;   
+            //}
+            //-----------------------------------------------------------
+            int h=0;
+            while (h < answ.Count())
             {
-                for (int h = 0; h < temp.Length; h++)
+                if (answ[h] != "")
                 {
-                    if (temp[h].ToString() != "|")
-                    {
-                        tmp = tmp + temp[h];
-                    }
-                    else
-                    {
-                        tq.part[k] = tmp;
-                        tmp = "";
-                        k++;
-                    }
+                    tq.part[h] = answ[h];
+                    h++;
                 }
+                else
+                    h++;
             }
         }
         
@@ -395,16 +414,27 @@ namespace Prepod
                    cB1.Size = new Size(14, 13);
                    gB3.Controls.Add(cB1);
                    //-------------------------
-                   cB2.Name = "radQuest2";
-                   cB2.Location = new Point(14, 144);
-                   cB2.Size = new Size(14, 13);
-                   gB3.Controls.Add(cB2);
+                   //cB2.Name = "radQuest2";
+                   //cB2.Location = new Point(14, 144);
+                   //cB2.Size = new Size(14, 13);
+                   //gB3.Controls.Add(cB2);
+                   ////-------------------------
+                   //cB3.Name = "radQuest3";
+                   //cB3.Location = new Point(332, 61);
+                   //cB3.Size = new Size(14, 13);
+                   //gB3.Controls.Add(cB3);
                    //-------------------------
                    cB3.Name = "radQuest3";
-                   cB3.Location = new Point(332, 61);
+                   cB3.Location = new Point(14, 144);
                    cB3.Size = new Size(14, 13);
                    gB3.Controls.Add(cB3);
                    //-------------------------
+                   cB2.Name = "radQuest2";
+                   cB2.Location = new Point(332, 61);
+                   cB2.Size = new Size(14, 13);
+                   gB3.Controls.Add(cB2);
+
+                   //--------------------------
                    cB4.Name = "radQuest4";
                    cB4.Location = new Point(332, 144);
                    cB4.Size = new Size(14, 13);
@@ -537,6 +567,7 @@ namespace Prepod
             SaveAnswers(Int32.Parse(lblNumberQuest.Text));
             if (MessageBox.Show("Вы уверены, что хотите сдать тест?", "Сдача теста", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
+                MyTimer.Stop();
                 SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
                 SqlCommand comm = new SqlCommand();
@@ -556,11 +587,10 @@ namespace Prepod
                 try
                 {
                     //занести в БД результаты
-                    conn.Open();
-                    comm = new SqlCommand();
-                    comm.Connection = conn;
-                    comm.CommandText = "Insert into [Выполненный тест] ([№ теста],[Балл],[Дата сдачи],[Время выполнения],[№ студента]) values (" + "'" + idTest.ToString() + "'" + "," + "'" + StudBall.ToString() + "'" + "," + "'" + System.DateTime.Today.ToShortDateString() + "'" + "," + "'" + (t / 60000000).ToString() + "'" + "," + "'" + numStud.ToString() + "'" + ")";
-                    comm.ExecuteNonQuery();
+                    //comm = new SqlCommand();
+                    //comm.Connection = conn;
+                    //comm.CommandText = "Insert into [Выполненный тест] ([№ теста],[Балл],[Дата сдачи],[Время выполнения],[№ студента]) values (" + "'" + idTest.ToString() + "'" + "," + "'" + StudBall.ToString() + "'" + "," + "'" + System.DateTime.Today.ToShortDateString() + "'" + "," + "'" + (t / 60000000).ToString() + "'" + "," + "'" + numStud.ToString() + "'" + ")";
+                    //comm.ExecuteNonQuery();
                 }
                 catch(Exception ex)
                 {
@@ -647,8 +677,8 @@ namespace Prepod
                     if (txtB3 != null)
                     {
                         Answers[_ind].ans1 = txtB1.Text;
-                        Answers[_ind].ans2 = txtB3.Text;
-                        Answers[_ind].ans3 = txtB2.Text;
+                        Answers[_ind].ans2 = txtB2.Text;
+                        Answers[_ind].ans3 = txtB3.Text;
                         Answers[_ind].ans4 = txtB4.Text;
                     }
                     else
@@ -822,6 +852,7 @@ namespace Prepod
            if (MessageBox.Show("Вы уверены, что хотите отменить выполнение теста? Результаты сохранены не будут.","Предупреждение",MessageBoxButtons.YesNo)==DialogResult.Yes)
            {
                this.Hide();
+               studworkForm.Show();
            }
         }
 

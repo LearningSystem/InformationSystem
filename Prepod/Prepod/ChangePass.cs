@@ -16,11 +16,14 @@ namespace Prepod
     {
         string numStudent;
         SqlConnection conn;
+        studentWork stud;
         string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-        public ChangePass(string _numStudent)
+        public ChangePass(string _numStudent, studentWork _stud)
         {
-            numStudent = _numStudent;
+            //numStudent = _numStudent;
             InitializeComponent();
+            numStudent = _numStudent;
+            stud = _stud;
         }
 
         private void btnChange_Click(object sender, EventArgs e)
@@ -75,6 +78,8 @@ namespace Prepod
             else
                 MessageBox.Show("Заполните поля!", "Ошибка");
             conn.Close();
+            stud.Activate();
+            stud.BringToFront();
         }
 
         private void TekRtB_TextChanged(object sender, EventArgs e)

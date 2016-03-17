@@ -126,6 +126,8 @@
             this.treeViewTest.Name = "treeViewTest";
             this.treeViewTest.Size = new System.Drawing.Size(357, 271);
             this.treeViewTest.TabIndex = 10;
+            this.treeViewTest.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewTest_NodeMouseDoubleClick);
+            this.treeViewTest.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.treeViewTest_MouseDoubleClick);
             // 
             // lblTest
             // 
@@ -156,6 +158,7 @@
             this.Name = "ReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Отчет";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ReportForm_FormClosing);
             this.Load += new System.EventHandler(this.ReportForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

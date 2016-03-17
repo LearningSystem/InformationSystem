@@ -12,9 +12,13 @@ namespace Prepod
 {
     public partial class WarningPass : Form
     {
-        public WarningPass()
+        string numStudent;
+        studentWork studentWorks;
+        public WarningPass(string _numStud,studentWork _studw)
         {
             InitializeComponent();
+            numStudent = _numStud;
+            studentWorks = _studw;
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, Screen.PrimaryScreen.Bounds.Height - this.Height);
             GeneralTimer.Start();
@@ -22,10 +26,25 @@ namespace Prepod
 
         private void ChangePassword_MouseClick(object sender, MouseEventArgs e)
         {
-            this.Hide();
-            //this.Opacity -= .03;
-            //if (this.Opacity == 0)
-            //    this.Hide();
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Hide();
+                //Form.ActiveForm.SendToBack();
+                studentWorks.SendToBack();
+                //Form.ActiveForm.SendToBack();
+                ChangePass chpass = new ChangePass(numStudent, studentWorks);
+                chpass.Show();
+                chpass.BringToFront();
+                studentWorks.Activate();
+                Form.ActiveForm.SendToBack();
+                //this.Opacity -= .03;
+                //if (this.Opacity == 0)
+                //    this.Hide();
+            }
+            else
+            {
+                this.Hide();
+            }
         }
 
         private void GeneralTimer_Tick(object sender, EventArgs e)

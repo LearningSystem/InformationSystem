@@ -64,11 +64,27 @@
     <Compile Include="ChangePass.Designer.cs">
       <DependentUpon>ChangePass.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataBlackBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataBlackBox.Designer.cs">
+      <DependentUpon>DataBlackBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="SystemSettings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SystemSettings.Designer.cs">
       <DependentUpon>SystemSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewEnterData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewEnterData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ViewExitData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewExitData.xsd</DependentUpon>
     </Compile>
     <Compile Include="WarningPass.cs">
       <SubType>Form</SubType>
@@ -191,6 +207,9 @@
     <EmbeddedResource Include="ChangePass.resx">
       <DependentUpon>ChangePass.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DataBlackBox.resx">
+      <DependentUpon>DataBlackBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SystemSettings.resx">
       <DependentUpon>SystemSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -274,6 +293,28 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="ViewEnterData.xsc">
+      <DependentUpon>ViewEnterData.xsd</DependentUpon>
+    </None>
+    <None Include="ViewEnterData.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ViewEnterData.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ViewEnterData.xss">
+      <DependentUpon>ViewEnterData.xsd</DependentUpon>
+    </None>
+    <None Include="ViewExitData.xsc">
+      <DependentUpon>ViewExitData.xsd</DependentUpon>
+    </None>
+    <None Include="ViewExitData.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ViewExitData.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ViewExitData.xss">
+      <DependentUpon>ViewExitData.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
