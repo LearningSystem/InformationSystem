@@ -175,4 +175,5 @@ D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.T
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.treeWork.resources
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.csproj.GenerateResource.Cache
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.DataBlackBox.resources
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.StartForm.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.csprojResolveAssemblyReference.cache

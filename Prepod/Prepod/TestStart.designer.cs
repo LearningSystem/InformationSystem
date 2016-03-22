@@ -78,7 +78,6 @@
             this.pBTime.Location = new System.Drawing.Point(296, 404);
             this.pBTime.Name = "pBTime";
             this.pBTime.Size = new System.Drawing.Size(458, 23);
-            this.pBTime.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.pBTime.TabIndex = 3;
             // 
             // lblTime

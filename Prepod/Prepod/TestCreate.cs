@@ -587,23 +587,10 @@ namespace Prepod
                 MessageBox.Show("Тест был успешно создан!", "Выход");
                 insertTest();
                 SaveTest = true;
-                //switch (saveFileDialog1.ShowDialog())
-                //{
-                //    case DialogResult.OK:
-                //        {
-                //            EventArgs events = new EventArgs();
-                //            btnTestDone_Click(sender, events);
-                //        }
-                //        break;
-                //    case DialogResult.Cancel:
-                //        //DialogResult.Cancel = true;
-                //        break;
-                //}
             }
-            //Application.Exit();
-            //FileInfo inffile = new FileInfo(Application.StartupPath + NameTest + ".xml");
-            File.Copy(Application.StartupPath + NameTest + ".xml", Application.StartupPath + "Тесты//" + NameTest + ".xml");
-            File.Delete(Application.StartupPath + NameTest + ".xml");
+            //ВСЕ РАВНО ПОТОМ ОТКРЫТЬ!
+            //File.Copy(Application.StartupPath + "\\" + NameTest + ".xml", Application.StartupPath + "\\" +"Тесты\\" + NameTest + ".xml");
+            //File.Delete(Application.StartupPath + "\\" + NameTest + ".xml");
             this.Hide();
         }
 
@@ -1161,8 +1148,9 @@ namespace Prepod
             if (openFilePicture.ShowDialog() == DialogResult.OK)
             {
                 //string temp = openFile.InitialDirectory + openFile.FileName;
-                //PicturePath = temp;
-                //img = Image.FromFile(temp);
+                string temp = openFilePicture.InitialDirectory + openFilePicture.FileName;
+                PicturePath = temp;
+                img = Image.FromFile(temp);
                 if (img.Width > 635)
                     MessageBox.Show("Картинка слишком большая!");
                 else

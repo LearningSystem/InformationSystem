@@ -587,14 +587,14 @@ namespace Prepod
                 try
                 {
                     //занести в БД результаты
-                    //comm = new SqlCommand();
-                    //comm.Connection = conn;
-                    //comm.CommandText = "Insert into [Выполненный тест] ([№ теста],[Балл],[Дата сдачи],[Время выполнения],[№ студента]) values (" + "'" + idTest.ToString() + "'" + "," + "'" + StudBall.ToString() + "'" + "," + "'" + System.DateTime.Today.ToShortDateString() + "'" + "," + "'" + (t / 60000000).ToString() + "'" + "," + "'" + numStud.ToString() + "'" + ")";
-                    //comm.ExecuteNonQuery();
+                    comm = new SqlCommand();
+                    comm.Connection = conn;
+                    comm.CommandText = "Insert into [Выполненный тест] ([№ теста],[Балл],[Дата сдачи],[Время выполнения],[№ студента]) values (" + "'" + idTest.ToString() + "'" + "," + "'" + StudBall.ToString() + "'" + "," + "'" + System.DateTime.Today.ToShortDateString() + "'" + "," + "'" + (t / 60000000).ToString() + "'" + "," + "'" + numStud.ToString() + "'" + ")";
+                    comm.ExecuteNonQuery();
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("Ошибка!","Результаты теста не сохранены в БД");
+                    MessageBox.Show("Результаты теста не сохранены в БД", "Ошибка!");
                     MessageBox.Show(ex.Message);
                 }
                 finally
@@ -608,6 +608,12 @@ namespace Prepod
                        this.Hide();
 
                    }
+                else
+                {
+                    MessageBox.Show("Тест закончен.", "Завершение тестирования");
+                    this.Hide();
+                    studworkForm.Show();
+                }
             }
         }
 
