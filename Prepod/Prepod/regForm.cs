@@ -94,7 +94,7 @@ namespace Prepod
         {
             if (textBox4.Text == "1")
             {
-                admin a = new admin();
+                administrator a = new administrator();
                 a.Show();
                 this.Hide();
             }
@@ -146,6 +146,13 @@ namespace Prepod
                 textBox2.Enabled = true;
                 textBox3.Enabled = true;
             }
+            if (comboBox1.SelectedIndex == 1)
+            {
+                textBox1.Text = "Ромашкина";
+                textBox2.Text = "Татьяна";
+                textBox3.Text = "Витальевна";
+                textBox4.Text = "12345";
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -160,6 +167,11 @@ namespace Prepod
             textBox2.Text = "";
             textBox3.Text = "";
             textBox4.Text = "";
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

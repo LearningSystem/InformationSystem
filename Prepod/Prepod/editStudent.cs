@@ -9,167 +9,135 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.IO;
 
 namespace Prepod
 {
     public partial class editStudent : Form
     {
         SqlConnection conn;
-        //string connectionString =
-        //        "Data Source=(local);Initial Catalog=Education; user id = sa; password = 1";
+        SqlCommand comm;
+        SqlDataReader rdr;
         string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
         BindingSource bs = new BindingSource();
         SqlDataAdapter adapter;
         DataTable data = new DataTable();
+        string type;
+        string id;
+        string folderName;
 
-        public editStudent()
+        public editStudent(Object groups, string tb1, string tb2, string tb3, string type_, string id_, string folderName_)
         {
-            InitializeComponent();
+            InitializeComponent();            
+            conn = new SqlConnection(connectionString);
+            comm = new SqlCommand();
+            textBox1.Text = tb1;
+            textBox2.Text = tb2;
+            textBox3.Text = tb3;
+            loadGroups();
+            group.SelectedValue = groups;
+            type = type_;
+            id = id_;
+            folderName = folderName_;
         }
 
         private void editStudent_Load(object sender, EventArgs e)
         {
-            conn = new SqlConnection(connectionString);
-            conn.Open();
-
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
-            comm.CommandText = "Select * from Группа";
-            comboBox1.Items.Clear();
-            SqlDataReader rdr = comm.ExecuteReader();
-            if (rdr.HasRows)
+            if (type == "update")
             {
-                while (rdr.Read())
-                {
-                    comboBox1.Items.Add(rdr[1]);
-                }
+                button1.Text = "Изменить";
+                groupBox1.Text = "Редактировать данные";
             }
-            rdr.Close();
-
-            comm.CommandText = "Select * from Факультет";
-            comboBox2.Items.Clear();
-            rdr = comm.ExecuteReader();
-            if (rdr.HasRows)
+            else
             {
-                while (rdr.Read())
-                {
-                    comboBox2.Items.Add(rdr[1]);
-                }
+                button1.Text = "Добавить";
+                groupBox1.Text = "Введите данные";
             }
-            rdr.Close();
-                        
-            comm.CommandText = "Select * from [Список группы]";
-
-            adapter = new SqlDataAdapter(comm);
-            adapter.Fill(data);
-            dataGridView1.DataSource = data;
-
-            bs.DataSource = data;
-            bs.Filter = "Группа = '" + comboBox1.Text + "'";
         }
 
-        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
-        {           
-            bs.Filter = "Группа = '" + comboBox1.Text + "'";
+        private void loadGroups()
+        {
+            try
+            {
+                conn.Open();
+                comm.Connection = conn;
+                comm.CommandText = "Select [№ группы] as id, Название from Группа";
+
+                adapter = new SqlDataAdapter(comm);
+                data.Clear();
+                adapter.Fill(data);
+                group.DataSource = data;
+
+                group.DisplayMember = "Название";
+                group.ValueMember = "id";
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
+            finally
+            {
+                conn.Close();                
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
+            if ((textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != ""))
             {
-                conn = new SqlConnection(connectionString);
-                conn.Open();
-                if (textBox1.Text != "")
+                try
                 {
-                    // - - - находим номер факультета - -  -//
-                    SqlCommand comm = new SqlCommand();
+                    conn.Open();
                     comm.Connection = conn;
-                    comm.CommandText = "select Факультет.[№ факультета] from Факультет where Факультет.Название ='" + comboBox2.Text + "'";
-                    SqlDataReader rdr3 = comm.ExecuteReader();
-                    rdr3.Read();
-                    string idFak = rdr3[0].ToString();
-                    rdr3.Close();
+                    string idGroup = group.SelectedValue.ToString();
+                    if (type == "update")
+                    {                        
+                        string dir = getPrepodPuth(group.SelectedValue);
+                        string oldFolder = Application.StartupPath + dir + folderName;                        
+                        string newFolder = Application.StartupPath + dir + "Работы студентов\\" + textBox1.Text + " " + textBox2.Text + " " + textBox3.Text;
+                        DirectoryInfo drInfo = new DirectoryInfo(oldFolder.Remove(oldFolder.Length - 1));
+                        drInfo.MoveTo(newFolder);
+                        comm.CommandText = "update Студент set Фамилия = '" + textBox1.Text + "', Имя = '" + textBox2.Text + "', Отчество = '" + textBox3.Text + "', [№ группы] = '" + group.SelectedValue.ToString() + "', [Ссылка на работы] = 'Работы студентов\\" + textBox1.Text + " " + textBox2.Text + " " + textBox3.Text + "\\' where [№ студента] = '" + id + "'";
+                    }
+                    else
+                    {
+                        string dir = getPrepodPuth(group.SelectedValue);
+                        string path = "Работы студентов\\" + textBox1.Text + " " + textBox2.Text + " " + textBox3.Text + "\\";
+                        comm.CommandText = "Insert into Студент (Фамилия, Имя, Отчество, [№ группы], Пароль, [Ссылка на работы]) Values('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + idGroup + "','1', '"+ path +"')";
 
-                    comm.CommandText = "select Группа.[№ Группы] from Группа where Группа.Название ='" + comboBox1.Text + "'";
-                    rdr3 = comm.ExecuteReader();
-                    rdr3.Read();
-                    string idGroup = rdr3[0].ToString();
-                    rdr3.Close();
-
-                    // ---- Вставка студента
-                    string cmd = "Insert into Студент (Фамилия, Имя, Отчество, [№ группы], [№ факультета]) Values('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + idFak + "','" + idGroup + "')";
-                    comm = new SqlCommand(cmd, conn);
-                    comm.ExecuteNonQuery();
-
-
-                    System.Windows.Forms.MessageBox.Show("Добавление выполнено");
+                        DirectoryInfo drInfo = new DirectoryInfo(Application.StartupPath + dir + "Работы студентов\\" + textBox1.Text + " " + textBox2.Text + " " + textBox3.Text);
+                        drInfo.Create();
+                    }                    
+                    comm.ExecuteNonQuery();                   
                 }
-                else
+                catch (Exception exc)
                 {
-                    MessageBox.Show("Введите данные о студенте");
+                    MessageBox.Show(exc.ToString());
+                }
+                finally
+                {
+                    conn.Close();                   
+                    this.Hide();
                 }
             }
-            finally
-            {
-                data.Clear();
-                adapter.Fill(data);
-                dataGridView1.DataSource = data;
-                conn.Close();
-                textBox1.Text = "";
-                textBox2.Text = "";
-                textBox3.Text = "";
-                bs.Filter = "Группа = '" + comboBox1.Text + "'";
-            }
+            else MessageBox.Show("Заполните все данные!");
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        string getPrepodPuth(object id)
         {
-            try
-            {
-
-                conn = new SqlConnection(connectionString);
-                conn.Open();
-
-                string sname = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                string name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                string oname = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                if (dataGridView1.Rows.Count > 0)
-                {
-                    dataGridView1.Rows[0].Selected = true;
-                }
-                //- - - - - Находим номер студента - - - - - - - //
-                SqlCommand comm = new SqlCommand();
-                comm.Connection = conn;
-                comm.CommandText = "select Студент.[№ студента] from Студент where Студент.Имя ='" + name + "' and Студент.Фамилия ='" + sname + "' and Студент.Отчество ='" + oname + "'";
-                SqlDataReader rdr = comm.ExecuteReader();
-                rdr.Read();
-                string idStud = "-1";
-                if (rdr.HasRows)
-                {
-                    idStud = rdr[0].ToString();
-                }
-
-                rdr.Close();
-
-                //- - - - - Удаляем из таблицы Студент - - - - - - //
-                comm.CommandText = "delete from Студент where [№ студента] ='" + idStud + "'";
-                comm.ExecuteNonQuery();
-            }
-            finally
-            {
-                data.Clear();
-                adapter.Fill(data);
-                dataGridView1.DataSource = data;
-                conn.Close();
-                System.Windows.Forms.MessageBox.Show("Удаление завершено");
-                bs.Filter = "Группа = '" + comboBox1.Text + "'";
-            }
+            comm.CommandText = "select [Путь к папке] from Преподаватель, Группа where Группа.[№ преподавателя] = Преподаватель.[№ преподавателя] and Группа.[№ группы] = '"+ id.ToString() +"'";
+            comm.ExecuteNonQuery();
+            rdr = comm.ExecuteReader();
+            rdr.Read();
+            string path  =rdr[0].ToString();
+            rdr.Close();
+            return path;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void group_SelectedValueChanged(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

@@ -19,10 +19,10 @@ namespace Prepod
 
         private void DataBlackBox_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'viewExitData._ViewExitData' table. You can move, or remove it, as needed.
-            this.viewExitDataTableAdapter.Fill(this.viewExitData._ViewExitData);
-            // TODO: This line of code loads data into the 'viewEnterData._ViewEnterData' table. You can move, or remove it, as needed.
-            this.viewEnterDataTableAdapter.Fill(this.viewEnterData._ViewEnterData);
+            //// TODO: This line of code loads data into the 'viewExitData._ViewExitData' table. You can move, or remove it, as needed.
+            //this.viewExitDataTableAdapter.Fill(this.viewExitData._ViewExitData);
+            //// TODO: This line of code loads data into the 'viewEnterData._ViewEnterData' table. You can move, or remove it, as needed.
+            //this.viewEnterDataTableAdapter.Fill(this.viewEnterData._ViewEnterData);
 
         }
 

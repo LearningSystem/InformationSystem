@@ -152,9 +152,7 @@ D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\bin\Debug\Prepod.e
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\bin\Debug\Prepod.pdb
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.csprojResolveAssemblyReference.cache
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.AddPartTree.resources
-D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.admin.resources
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.ChangePass.resources
-D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.SystemSettings.resources
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.WarningPass.resources
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.editCPC.resources
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.editPredmet.resources
@@ -177,3 +175,7 @@ D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.c
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.DataBlackBox.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.StartForm.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.csprojResolveAssemblyReference.cache
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.administrator.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.DataBlackBox.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.editPrepod.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.StartForm.resources
