@@ -179,3 +179,4 @@ D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.a
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.DataBlackBox.resources
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.editPrepod.resources
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.StartForm.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.menuPrepod.resources

@@ -77,7 +77,7 @@ namespace Prepod
             {
                 label6.Visible = false;
                 rdr.Read();
-                treeWork tw = new treeWork(rdr[0].ToString());
+                menuPrepod tw = new menuPrepod(rdr[0].ToString());
                 tw.Show();
                 this.Hide();
             }

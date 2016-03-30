@@ -15,10 +15,8 @@ namespace Prepod
     public partial class treeWork : Form
     {
         SqlConnection conn;
-        //string connectionString =
-        //        "Data Source=(local);Initial Catalog=Education; user id = sa; password = 1";
+        SqlCommand comm;
         string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-
         
         DataTable data = new DataTable();
         TreeNode newNode;        
@@ -29,11 +27,9 @@ namespace Prepod
         {
             InitializeComponent();
             numPrepod = _numPrepod;
-                        
-            listView1.Visible = true;
-            rb.Visible = false;
-            panel1.Visible = false;
-            esimates.Enabled = checkTasks.Enabled = false;
+            conn = new SqlConnection(connectionString);
+            comm = new SqlCommand();
+            comm.Connection = conn;                                                                      
         }
 
         private void showWindow(bool lv1, bool lv2, bool pnl1, bool rtb1)
@@ -56,52 +52,15 @@ namespace Prepod
         {
             newTree nT = new newTree(numPrepod);
             nT.Show();
-        }
-        string numDisc;
-        private void моиДеревьяToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            listView1.Visible = true;
-            rb.Visible = false;
-            panel1.Visible = false;            
-            listView1.Items.Clear();
-            listView1.View = View.Tile;
-            conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
-            comm.CommandText = "select [№ дерева], Название, [№ предмета] from Дерево where [№ преподавателя] = '" + numPrepod + "'";
+        }        
 
-            SqlDataReader rdr = comm.ExecuteReader();
-
-            List<String> col = new List<string>();
-            col.Add("Название");
-            col.Add("Тип");
-            col.Add("№ дерева");
-            //заполнение listView
-            loadListView(col);
-            ListViewItem lv = new ListViewItem();
-            string tName = "";
-            string numTree = "";
-            while (rdr.Read())
-            {
-                string type = "Курс обучения";
-                tName = rdr[1].ToString();
-                numTree = rdr[0].ToString();
-                lv = new ListViewItem(new string[] { tName, type, numTree }, 1);
-                lv.Name = tName;
-                listView1.Items.Add(lv);
-                numDisc = rdr[2].ToString();
-            }
-            rdr.Close();
-            conn.Close();
-        }
 
         private void loadNodes(TreeNodeCollection nodes, string numTree)
         {
-            conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
+            //conn = new SqlConnection(connectionString);
+            //conn.Open();
+            //SqlCommand comm = new SqlCommand();
+            //comm.Connection = conn;
 
             foreach (TreeNode node in nodes)
             {
@@ -131,37 +90,44 @@ namespace Prepod
                 rdr.Close();
                 loadNodes(node.Nodes, numTree);
             }
-            conn.Close();
+            //conn.Close();
         }
 
         private void LoadTree(string numTree)
-        {
-            conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
-            //загружаем корневую вершину
-            comm.CommandText = "select Вершина.[№ вершины], Текст, [Тип вершины], Имя from Вершина where Вершина.[№ вершины] in  (select Связи.[№ вершины] from Связи where [№ потомка] = 0) and [№ дерева] = " + numTree + "";
-            SqlDataReader rdr = comm.ExecuteReader();
-            if (rdr.HasRows)
+        {       
+            try
             {
-                rdr.Read();
-                string root = rdr[0].ToString();
-                if (treeView1.SelectedNode == null)
+                conn.Open();
+                //загружаем корневую вершину
+                comm.CommandText = "select Вершина.[№ вершины], Текст, [Тип вершины], Имя from Вершина where Вершина.[№ вершины] in  (select Связи.[№ вершины] from Связи where [№ потомка] = 0) and [№ дерева] = " + numTree + "";
+                SqlDataReader rdr = comm.ExecuteReader();
+                if (rdr.HasRows)
                 {
-                    newNode = new TreeNode(rdr[1].ToString());
-                    newNode.Tag = rdr[0].ToString();
-                    newNode.ImageIndex = 0;
-                    newNode.Name = rdr[3].ToString();
-                    treeView1.Nodes.Add(newNode);
-                    treeView1.Update();
-                    //treeView1.Select();
-                }
-                //загрузка всех потомков
-                loadNodes(treeView1.Nodes, numTree);
-            };
-            rdr.Close();
-            conn.Close();
+                    rdr.Read();
+                    string root = rdr[0].ToString();
+                    if (tree.SelectedNode == null)
+                    {
+                        newNode = new TreeNode(rdr[1].ToString());
+                        newNode.Tag = rdr[0].ToString();
+                        newNode.ImageIndex = 0;
+                        newNode.Name = rdr[3].ToString();
+                        tree.Nodes.Add(newNode);
+                        tree.Update();
+                        //treeView1.Select();
+                    }
+                    //загрузка всех потомков
+                    loadNodes(tree.Nodes, numTree);
+                };
+                rdr.Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();                
+            }                        
         }
 
         private void searchNode(string Id, TreeNodeCollection nodes)
@@ -170,7 +136,7 @@ namespace Prepod
             {
                 if (node.Tag.ToString() == Id)
                 {
-                    treeView1.SelectedNode = node;
+                    tree.SelectedNode = node;
                     break;
                 }
             }
@@ -179,16 +145,16 @@ namespace Prepod
         private void insertTest(string id)
         {
             string typeNode = _typeNode("Тест");
-            string numTree = treeView1.Tag.ToString();
+            string numTree = tree.Tag.ToString();
             TreeNode node;
 
-            if (treeView1.Nodes == null)
+            if (tree.Nodes == null)
             {
                 node = null;
             }
             else
             {
-                node = treeView1.SelectedNode;
+                node = tree.SelectedNode;
             }
             insertNode(node, numTree, "Тест", typeNode, "", true);
 
@@ -201,17 +167,18 @@ namespace Prepod
             switch (listView1.SelectedItems[0].SubItems[1].Text)
             {
                 case "Курс обучения":
-                    {
-                        esimates.Enabled = checkTasks.Enabled = true;
-                        treeView1.Nodes.Clear();
-                        numTree = listView1.SelectedItems[0].SubItems[2].Text;
+                    {                        
+                        tree.Nodes.Clear();
+                        numTree = listView1.SelectedItems[0].Tag.ToString();
                         LoadTree(numTree);
-                        treeView1.Tag = numTree;
-                        
+                        tree.Tag = numTree;
+                        tree.Visible = toolsTree.Visible = true;
+                        tabControl1.SelectedTab = property;
+                        splitContainer1.Panel1Collapsed = false;
                     }; break;
                 case "Тест":
                     {
-                        insertTest(listView1.SelectedItems[0].SubItems[2].Text);
+                        //insertTest(listView1.SelectedItems[0].SubItems[2].Text);
                     }; break;                
             }
             listView1.Items.Clear();           
@@ -224,10 +191,7 @@ namespace Prepod
             try
             {
                 //вставляем в таблицу Вершина
-                conn = new SqlConnection(connectionString);
                 conn.Open();
-                SqlCommand comm = new SqlCommand();
-                comm.Connection = conn;
                 comm.CommandText = "insert into Вершина ([№ дерева], Текст, [Тип вершины], Ссылка, [Сколько каждому], Доступ, Имя) Values ('" + numTree + "', '" + Text + "', '" + type + " ', '" + Path + "', '0', '" + flag.ToString() + "', '" + Text + "')";
                 comm.ExecuteNonQuery();
                 //находим номер вставленной вершины в БД
@@ -252,8 +216,8 @@ namespace Prepod
                     if (node == null)
                     {
                         
-                        treeView1.Nodes.Add(child);
-                        treeView1.SelectedNode = child;
+                        tree.Nodes.Add(child);
+                        tree.SelectedNode = child;
                         
                         cmd = "INSERT INTO Связи ([№ вершины], [№ потомка], Уровень) select " + num + "," + num + ",0 UNION ALL select " + num + ", 0 ,0";
                     }
@@ -273,43 +237,56 @@ namespace Prepod
 
                 }
             }
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
+            }
             finally
             {
                 conn.Close();
-                treeView1.Update();
+                tree.Update();
             }
         }
 
         private string _typeNode(string type)
         {
-            conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
-            comm.CommandText = "select * from [Тип вершины] where Тип = '" + type + "'";
-            SqlDataReader rdr = comm.ExecuteReader();
             string typeNode = "";
-            if (rdr.HasRows)
+            try
             {
-                rdr.Read();
-                typeNode = rdr[0].ToString();
+                conn.Open();
+                comm.CommandText = "select * from [Тип вершины] where Тип = '" + type + "'";
+                SqlDataReader rdr = comm.ExecuteReader();
+                
+                if (rdr.HasRows)
+                {
+                    rdr.Read();
+                    typeNode = rdr[0].ToString();
+                }
+                rdr.Close();
             }
-            rdr.Close();
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
+            }
+            finally
+            {                
+                conn.Close();                
+            }            
             return typeNode;
         }
 
         private void newSection_Click(object sender, EventArgs e)
         {
             string typeNode = _typeNode("Новый раздел");
-            string numTree = treeView1.Tag.ToString();
+            string numTree = tree.Tag.ToString();
             TreeNode node;
-            if (treeView1.Nodes == null)
+            if (tree.Nodes == null)
             {
                 node = null;
             }
             else
             {
-                node = treeView1.SelectedNode;
+                node = tree.SelectedNode;
             }
             insertNode(node, numTree, "Новый раздел", typeNode, "", true);
         }
@@ -317,16 +294,16 @@ namespace Prepod
         private void cpc_Click(object sender, EventArgs e)
         {
             string typeNode = _typeNode("Самостоятельная работа");
-            string numTree = treeView1.Tag.ToString();
+            string numTree = tree.Tag.ToString();
             TreeNode node;
             
-            if (treeView1.Nodes == null)
+            if (tree.Nodes == null)
             {
                 node = null;
             }
             else
             {
-                node = treeView1.SelectedNode;
+                node = tree.SelectedNode;
             }
             insertNode(node, numTree, "Самостоятельная работа", typeNode, "", true);
         }
@@ -336,13 +313,14 @@ namespace Prepod
             try
             {
                 //вставляем в таблицу Вершина
-                conn = new SqlConnection(connectionString);
                 conn.Open();
-                SqlCommand comm = new SqlCommand();
-                comm.Connection = conn;
                 comm.CommandText = "insert into Задача (Название, Уровень, [Максимальный балл], [Срок сдачи], [№ вершины], Ссылка) Values ('" + name + "', '" + level + "', '" + max + " ', '" + date + "', '"+ parent +"', '"+ path +"')";
                 comm.ExecuteNonQuery();                                                              
             }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            } 
             finally
             {
                 conn.Close();             
@@ -360,7 +338,7 @@ namespace Prepod
             if (OP.ShowDialog() != DialogResult.Cancel)
             {
                 TreeNode node = new TreeNode();
-                node = treeView1.SelectedNode;
+                node = tree.SelectedNode;
 
                 foreach (String file in OP.FileNames)
                 {
@@ -374,16 +352,16 @@ namespace Prepod
                         
                         if (type == "Задача")
                         {
-                            insertTask(Name, "", "", "", treeView1.SelectedNode.Tag.ToString(), path);
+                            insertTask(Name, "", "", "", tree.SelectedNode.Tag.ToString(), path);
                         }
                         else
                         {
-                            insertNode(treeView1.SelectedNode, treeView1.Tag.ToString(), Name, typeNode, path, true);
+                            insertNode(tree.SelectedNode, tree.Tag.ToString(), Name, typeNode, path, true);
                         }
                     }
                     finally
                     {
-                        treeView1.Update();
+                        tree.Update();
                     }
                 }
                 
@@ -398,7 +376,7 @@ namespace Prepod
         private void задачиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             addFiles("Задача", true);
-            loadTasks(treeView1.SelectedNode.Tag.ToString());
+            loadTasks(tree.SelectedNode.Tag.ToString());
         }
 
         private string indexType(string Id)
@@ -422,7 +400,7 @@ namespace Prepod
         private void addNode_Click(object sender, EventArgs e)
         {
 
-            if ((treeView1.Nodes.Count == 0) || (treeView1.SelectedNode == null))
+            if ((tree.Nodes.Count == 0) || (tree.SelectedNode == null))
             {
                 newSection.Enabled = true;
                 cpc.Enabled = false;
@@ -432,7 +410,7 @@ namespace Prepod
             }
             else
             {
-                switch (indexType(treeView1.SelectedNode.Tag.ToString()))
+                switch (indexType(tree.SelectedNode.Tag.ToString()))
                 {
                     case "5":
                         {
@@ -473,11 +451,11 @@ namespace Prepod
 
         private void updateEnablingButtons()
         {
-            up.Enabled = (treeView1.SelectedNode != null
-                            && treeView1.SelectedNode.PrevNode != null);
+            up.Enabled = (tree.SelectedNode != null
+                            && tree.SelectedNode.PrevNode != null);
 
-            down.Enabled = (treeView1.SelectedNode != null
-                            && treeView1.SelectedNode.NextNode != null);
+            down.Enabled = (tree.SelectedNode != null
+                            && tree.SelectedNode.NextNode != null);
         }
 
         private string _type(string Id)
@@ -521,26 +499,32 @@ namespace Prepod
 
 
         private void loadTasks(string Id)
-        {
-
-            conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
-            comm.CommandText = "select * from Задача where [№ вершины] = '" + Id + "'";
-
-            SqlDataReader rdr = comm.ExecuteReader();
-            while (rdr.Read())
+        {      
+            try
             {
-                TreeNode task = new TreeNode();
-                task.Name = "Задача";
-                task.Text = rdr[1].ToString();
-                task.Tag = rdr[6].ToString();
-                task.ImageIndex = 1;
-                treeView1.SelectedNode.Nodes.Add(task);
-            }          
-            rdr.Close();
-            conn.Close();
+                conn.Open();
+                comm.CommandText = "select * from Задача where [№ вершины] = '" + Id + "'";
+
+                SqlDataReader rdr = comm.ExecuteReader();
+                while (rdr.Read())
+                {
+                    TreeNode task = new TreeNode();
+                    task.Name = "Задача";
+                    task.Text = rdr[1].ToString();
+                    task.Tag = rdr[6].ToString();
+                    task.ImageIndex = 1;
+                    tree.SelectedNode.Nodes.Add(task);
+                }
+                rdr.Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
+            finally
+            {
+                conn.Close();                
+            }
            
         }
 
@@ -564,16 +548,15 @@ namespace Prepod
             {
                 flag = dostup(e.Node.Tag.ToString()); //считываем доступ
             }
+            name.Text = e.Node.Text;
             access.SelectedIndex = Convert.ToInt32(flag);
             
             switch (e.Node.Name.ToString())
             {
                 case "Задача":
                     {
-                        rb.Visible = true;
-                        listView1.Visible = false;
-                        panel1.Visible = false;
-                        rb.LoadFile(Application.StartupPath + e.Node.Tag.ToString());                        
+                        rb.LoadFile(Application.StartupPath + e.Node.Tag.ToString());
+                        tabControl1.SelectedTab = textData;
                     }; break;
                 case "Самостоятельная работа":
                     {
@@ -581,78 +564,80 @@ namespace Prepod
                         loadTasks(e.Node.Tag.ToString());
                         loadInf(e.Node.Tag.ToString(),true);
                         e.Node.Expand();
+                        tabControl1.SelectedTab = list;
                     }; break;
                 case "Тест":
                     {
                         loadInf(e.Node.Tag.ToString(), false);
-                        loadTest(e.Node.Tag.ToString());                        
+                        loadTest(e.Node.Tag.ToString());
+                        tabControl1.SelectedTab = list;
                     }; break;
                 case "Новый раздел":
                     {
-                                                
+                        tabControl1.SelectedTab = property;                      
                     }; break;
                 default:
                     {
-                        rb.Visible = true;
-                        listView1.Visible = false;
-                        panel1.Visible = false;
-
-                        conn = new SqlConnection(connectionString);
-                        conn.Open();
-                        SqlCommand comm = new SqlCommand();
-                        comm.Connection = conn;
-                        comm.CommandText = "select Ссылка from Вершина where [№ вершины] = '" + e.Node.Tag.ToString() + "'";
-                        SqlDataReader rdr = comm.ExecuteReader();
-                        rdr.Read();
-                        rb.LoadFile(Application.StartupPath + rdr[0].ToString());
-                        rdr.Close();
-                        conn.Close();
+                        try
+                        {
+                            conn.Open();
+                            comm.CommandText = "select Ссылка from Вершина where [№ вершины] = '" + e.Node.Tag.ToString() + "'";
+                            SqlDataReader rdr = comm.ExecuteReader();
+                            rdr.Read();
+                            rb.LoadFile(Application.StartupPath + rdr[0].ToString());
+                            rdr.Close();
+                        }
+                        catch (Exception exc)
+                        {
+                            MessageBox.Show(exc.Message.ToString());
+                        }
+                        finally
+                        {                            
+                            conn.Close();
+                        }
                     }; break;
             }
-            treeView1.SelectedImageIndex = treeView1.SelectedNode.ImageIndex;
-            
-            name.Text = treeView1.SelectedNode.Text;                                                
+            tree.SelectedImageIndex = tree.SelectedNode.ImageIndex;                                                                       
         }
 
         private void loadInf(string id, bool flag)
         {
-            conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
-            if (flag)
+            try
             {
-                comm.CommandText = "select [Сколько каждому], Уровень, [Максимальный балл], [Срок сдачи] from Вершина where [№ вершины] = '" + treeView1.SelectedNode.Tag.ToString() + "'";
-                textBox4.Enabled = true;
-                textBox1.Enabled = true;
-                SqlDataReader rdr = comm.ExecuteReader();
-                rdr.Read();
-                textBox4.Text = rdr[0].ToString();
-                textBox1.Text = rdr[1].ToString();
-                textBox2.Text = rdr[2].ToString();
-                rdr.Close();
+                conn.Open();
+                if (flag)
+                {
+                    comm.CommandText = "select [Сколько каждому], Уровень, [Максимальный балл], [Срок сдачи] from Вершина where [№ вершины] = '" + tree.SelectedNode.Tag.ToString() + "'";
+                    name.Enabled = true;
+                    textBox1.Enabled = true;
+                    SqlDataReader rdr = comm.ExecuteReader();
+                    rdr.Read();
+                    name.Text = rdr[0].ToString();
+                    textBox1.Text = rdr[1].ToString();
+                    textBox2.Text = rdr[2].ToString();
+                    rdr.Close();
+                }
+                else
+                {
+                    comm.CommandText = "select [Максимальный балл], [Срок сдачи] from Тест where [№ вершины] = '" + tree.SelectedNode.Tag.ToString() + "'";
+                    name.Enabled = false;
+                    textBox1.Enabled = false;
+                    SqlDataReader rdr = comm.ExecuteReader();
+                    rdr.Read();
+                    name.Text = "";
+                    textBox1.Text = "";
+                    textBox2.Text = rdr[0].ToString();
+                    rdr.Close();
+                }
             }
-            else
+            catch (Exception exc)
             {
-                comm.CommandText = "select [Максимальный балл], [Срок сдачи] from Тест where [№ вершины] = '" + treeView1.SelectedNode.Tag.ToString() + "'";
-                textBox4.Enabled = false;
-                textBox1.Enabled = false;
-                SqlDataReader rdr = comm.ExecuteReader();
-                rdr.Read();
-                textBox4.Text = "";
-                textBox1.Text = "";
-                textBox2.Text = rdr[0].ToString();
-                rdr.Close();
+                MessageBox.Show(exc.Message.ToString());
             }
-
-            
-            //dateTimePicker1 = rdr[3].ToString();
-            
-            conn.Close();
-
-            panel1.Visible = true;
-            rb.Visible = false;
-            listView1.Visible = false;
+            finally
+            {                
+                conn.Close();
+            }
         }
 
         private void loadTest(string id)
@@ -662,21 +647,19 @@ namespace Prepod
 
         private void name_TextChanged(object sender, EventArgs e)
         {
-            treeView1.SelectedNode.Text = name.Text;
+            //tree.SelectedNode.Text = name.Text;
         }
 
         private void delete_Click(object sender, EventArgs e)
         {
-            TreeNode node = treeView1.SelectedNode.Parent;
-            string id = treeView1.SelectedNode.Tag.ToString();
+            TreeNode node = tree.SelectedNode.Parent;
+            string id = tree.SelectedNode.Tag.ToString();
             try
-            {
-                conn = new SqlConnection(connectionString);
-                conn.Open();
-                SqlCommand comm = new SqlCommand();
-                comm.Connection = conn;
+            {                
+                conn.Open();      
                 comm.CommandText = "select Вершина.[№ вершины] from Вершина join Связи on (Вершина.[№ вершины] = Связи.[№ потомка]) where Связи.[№ вершины] = " + id + "";
                 SqlDataReader rdr = comm.ExecuteReader();
+
                 int[] mas = new int[100];
                 int i = 1;
                 while (rdr.Read())
@@ -688,69 +671,66 @@ namespace Prepod
                 comm.CommandText = "delete from Связи where [№ потомка] in (select Вершина.[№ вершины] from Вершина join Связи on (Вершина.[№ вершины] = Связи.[№ потомка]) where Связи.[№ вершины] = " + id + ") or Связи.[№ вершины] = " + id + "";
                 comm.ExecuteNonQuery();
                 for (int j = 1; j < i; j++)
-                {
-                    //comm.CommandText = "delete from [Выполненная задача]   where [№ задачи] in (select [№ задачи] from Задача where [№ вершины]='" + mas[j].ToString() + "')";
-                    //comm.ExecuteNonQuery();
-                    //comm.CommandText = "delete from Задача where [№ вершины]=" + mas[j].ToString() + "";
-                    //comm.ExecuteNonQuery();
+                {       
                     comm.CommandText = "delete from Вершина where [№ вершины]=" + mas[j].ToString() + "";
                     comm.ExecuteNonQuery();
                 }
             }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
+            }
             finally
             {
                 conn.Close();
-                treeView1.SelectedNode.Remove();
-                treeView1.SelectedNode = node;
+                tree.SelectedNode.Remove();
+                tree.SelectedNode = node;
             }
         }
 
         private void up_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode != null
-                && treeView1.SelectedNode.PrevNode != null)
+            if (tree.SelectedNode != null
+                && tree.SelectedNode.PrevNode != null)
             {
                 TreeNodeCollection editNodes;
-                if (treeView1.SelectedNode.Parent != null)
-                    editNodes = treeView1.SelectedNode.Parent.Nodes;
+                if (tree.SelectedNode.Parent != null)
+                    editNodes = tree.SelectedNode.Parent.Nodes;
                 else
-                    editNodes = treeView1.Nodes;
+                    editNodes = tree.Nodes;
 
-                int indexSelectedNode = treeView1.SelectedNode.Index;
-                int indexPreviousNode = treeView1.SelectedNode.PrevNode.Index;
+                int indexSelectedNode = tree.SelectedNode.Index;
+                int indexPreviousNode = tree.SelectedNode.PrevNode.Index;
 
-                TreeNode selectedNode = treeView1.SelectedNode;
+                TreeNode selectedNode = tree.SelectedNode;
 
                 editNodes.RemoveAt(indexSelectedNode);
                 editNodes.Insert(indexPreviousNode, selectedNode);
 
-                treeView1.SelectedNode = selectedNode;
+                tree.SelectedNode = selectedNode;
             }
         }
 
-
-
-
         private void down_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode != null
-                && treeView1.SelectedNode.NextNode != null)
+            if (tree.SelectedNode != null
+                && tree.SelectedNode.NextNode != null)
             {
                 TreeNodeCollection editNodes;
-                if (treeView1.SelectedNode.Parent != null)
-                    editNodes = treeView1.SelectedNode.Parent.Nodes;
+                if (tree.SelectedNode.Parent != null)
+                    editNodes = tree.SelectedNode.Parent.Nodes;
                 else
-                    editNodes = treeView1.Nodes;
+                    editNodes = tree.Nodes;
 
-                int indexSelectedNode = treeView1.SelectedNode.Index;
-                int indexNextNode = treeView1.SelectedNode.NextNode.Index;
+                int indexSelectedNode = tree.SelectedNode.Index;
+                int indexNextNode = tree.SelectedNode.NextNode.Index;
 
-                TreeNode selectedNode = treeView1.SelectedNode;
+                TreeNode selectedNode = tree.SelectedNode;
 
                 editNodes.RemoveAt(indexSelectedNode);
                 editNodes.Insert(indexNextNode, selectedNode);
 
-                treeView1.SelectedNode = selectedNode;
+                tree.SelectedNode = selectedNode;
             }
         }
 
@@ -758,113 +738,104 @@ namespace Prepod
         {
             if (e.KeyValue == 13)
             {
-                conn = new SqlConnection(connectionString);
-                conn.Open();
-                SqlCommand comm = new SqlCommand();
-                comm.Connection = conn;
-                comm.CommandText = "update Вершина set Текст = '"+ name.Text +"' where [№ вершины] = '"+ treeView1.SelectedNode.Tag.ToString() +"'";
-                comm.ExecuteNonQuery();
-                conn.Close();
-                treeView1.Focus();
+                try
+                {
+                    conn.Open();
+                    comm.CommandText = "update Вершина set Текст = '" + name.Text + "' where [№ вершины] = '" + tree.SelectedNode.Tag.ToString() + "'";
+                    comm.ExecuteNonQuery();
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message.ToString());
+                }
+                finally
+                {
+                    conn.Close();
+                    tree.Focus();
+                }                                
             }
-        }
-
-        private void propTasks_Click(object sender, EventArgs e)
-        {
-            conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
-            comm.CommandText = "select [Сколько каждому] from Вершина where [№ вершины] = '"+ treeView1.SelectedNode.Tag.ToString() +"'";
-            SqlDataReader rdr = comm.ExecuteReader();
-            rdr.Read();
-            textBox4.Text = rdr[0].ToString();
-            rdr.Close();
-            conn.Close();                                
-            panel1.Visible = true;
-            rb.Visible = false;
-            listView1.Visible = false;
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-                conn = new SqlConnection(connectionString);
-                conn.Open();
-                SqlCommand comm = new SqlCommand();
-                comm.Connection = conn;
-                if (treeView1.SelectedNode.Name == "Самостоятельная работа")
-                {
-                    if ((textBox1.Text != "") && (textBox4.Text != ""))
-                    {
-                        comm.CommandText = "update Вершина set [Сколько каждому] = '" + textBox4.Text + "', Уровень = '" + textBox1.Text + "', [Максимальный балл] = '" + textBox2.Text + "', [Срок сдачи] = '" + dateTimePicker1.Value.ToShortDateString() + "' where [№ вершины] = '" + treeView1.SelectedNode.Tag.ToString() + "'";
-                    }
-                    else
-                    {
-                        MessageBox.Show("Введите данные!");
-                    } 
-                }
-                else
-                {
-                    if (textBox2.Text != "") 
-                    {
-                        comm.CommandText = "update Тест set [Максимальный балл] = '" + textBox2.Text + "', [Срок сдачи] = '" + dateTimePicker1.Value.ToShortDateString() + "' where [№ вершины] = '" + treeView1.SelectedNode.Tag.ToString() + "'";
-                    }
-                    else
-                    {
-                        MessageBox.Show("Введите данные!");
-                    } 
-                }
-                comm.ExecuteNonQuery();
-                conn.Close();
-                
-                panel1.Visible = false;
-                rb.Visible = true;
-                listView1.Visible = false;                                   
+                //conn = new SqlConnection(connectionString);
+                //conn.Open();
+                //SqlCommand comm = new SqlCommand();
+                //comm.Connection = conn;
+                //if (tree.SelectedNode.Name == "Самостоятельная работа")
+                //{
+                //    if ((textBox1.Text != "") && (name.Text != ""))
+                //    {
+                //        comm.CommandText = "update Вершина set [Сколько каждому] = '" + name.Text + "', Уровень = '" + textBox1.Text + "', [Максимальный балл] = '" + textBox2.Text + "', [Срок сдачи] = '" + dateTimePicker1.Value.ToShortDateString() + "' where [№ вершины] = '" + tree.SelectedNode.Tag.ToString() + "'";
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show("Введите данные!");
+                //    } 
+                //}
+                //else
+                //{
+                //    if (textBox2.Text != "") 
+                //    {
+                //        comm.CommandText = "update Тест set [Максимальный балл] = '" + textBox2.Text + "', [Срок сдачи] = '" + dateTimePicker1.Value.ToShortDateString() + "' where [№ вершины] = '" + tree.SelectedNode.Tag.ToString() + "'";
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show("Введите данные!");
+                //    } 
+                //}
+                //comm.ExecuteNonQuery();
+                //conn.Close();                                  
         }
 
         private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            regForm rf = new regForm();
+            menuPrepod rf = new menuPrepod(numPrepod);
             rf.Show();
             this.Hide();
         }
 
         private void test_Click(object sender, EventArgs e)
         {
-            listView1.Visible = true;
-            rb.Visible = false;
-            panel1.Visible = false;            
+            tabControl1.SelectedTab = list;                                   
             listView1.Items.Clear();
             listView1.View = View.Tile;
-            conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
-            comm.CommandText = "select [№ теста], Название, Тема from Тест where [№ преподавателя] = '" + numPrepod + "'and [№ предмета] = '" + numDisc + "'";
-
-            SqlDataReader rdr = comm.ExecuteReader();
-
-            //заполнение listView
-            List<string> col = new List<string>();
-            col.Add("Название");
-            col.Add("Тип");
-            col.Add("№ теста");
-            loadListView(col);
-
-            ListViewItem lv = new ListViewItem();
-            string tName = "";           
-            while (rdr.Read())
+            
+            try
             {
-                string type = "Тест";
-                tName = rdr[1].ToString();
-                string numTest = rdr[0].ToString();
-                lv = new ListViewItem(new string[] { tName, type, numTest }, 1);
-                lv.Name = tName;
-                listView1.Items.Add(lv);
+                conn.Open();
+                comm.CommandText = "select [№ теста], Название, Тема from Тест where [№ преподавателя] = '" + numPrepod + "'";
+
+                SqlDataReader rdr = comm.ExecuteReader();
+
+                //заполнение listView
+                List<string> col = new List<string>();
+                col.Add("Название");
+                col.Add("Тип");
+                col.Add("№ теста");
+                loadListView(col);
+
+                ListViewItem lv = new ListViewItem();
+                string tName = "";
+                while (rdr.Read())
+                {
+                    string type = "Тест";
+                    tName = rdr[1].ToString();
+                    string numTest = rdr[0].ToString();
+                    lv = new ListViewItem(new string[] { tName, type, numTest }, 1);
+                    lv.Name = tName;
+                    listView1.Items.Add(lv);
+                }
+                rdr.Close();
             }
-            rdr.Close();
-            conn.Close();
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
+            }
+            finally
+            {                
+                conn.Close();
+            }            
         }
 
         private void access_SelectedIndexChanged(object sender, EventArgs e)
@@ -873,7 +844,7 @@ namespace Prepod
             conn.Open();
             SqlCommand comm = new SqlCommand();
             comm.Connection = conn;
-            comm.CommandText = "update Вершина set Доступ = '" + access.SelectedIndex.ToString() + "' where [№ вершины] = '" + treeView1.SelectedNode.Tag.ToString() + "'";
+            comm.CommandText = "update Вершина set Доступ = '" + access.SelectedIndex.ToString() + "' where [№ вершины] = '" + tree.SelectedNode.Tag.ToString() + "'";
             comm.ExecuteNonQuery();
             conn.Close();
         }
@@ -912,6 +883,61 @@ namespace Prepod
         {
             DataBlackBox dataBlackBox = new DataBlackBox();
             dataBlackBox.Show();
+        }
+
+        private void менюToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            newTree nT = new newTree(numPrepod);
+            nT.Show();
+        }
+
+        private void открытьКурсToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            splitContainer1.Panel1Collapsed = true;
+            tree.Visible = toolsTree.Visible = false;
+            rb.Clear();            
+            tree.Visible = false;            
+            tabControl1.SelectedTab = list;
+                        
+            listView1.Items.Clear();
+            listView1.View = View.Tile;
+
+            try
+            {
+                conn.Open();
+                comm.CommandText = "select [№ дерева], Название from Дерево where [№ преподавателя] = '" + numPrepod + "'";
+
+                SqlDataReader rdr = comm.ExecuteReader();
+
+                List<String> col = new List<string>();
+                col.Add("Название");
+                col.Add("Тип");
+                col.Add("№ дерева");
+                //заполнение listView
+                loadListView(col);
+                ListViewItem lv = new ListViewItem();
+                string tName = "";
+                string numTree = "";
+                while (rdr.Read())
+                {
+                    string type = "Курс обучения";
+                    tName = rdr[1].ToString();
+                    numTree = rdr[0].ToString();
+                    lv = new ListViewItem(new string[] { tName, type, numTree }, 1);
+                    lv.Name = tName;
+                    lv.Tag = numTree;
+                    listView1.Items.Add(lv);
+                }
+                rdr.Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
         }   
     }
 }

@@ -33,19 +33,13 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.создатьДеревоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.моиДеревьяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.удалитьДеревоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.создатьТестToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.esimates = new System.Windows.Forms.ToolStripMenuItem();
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkTasks = new System.Windows.Forms.ToolStripMenuItem();
-            this.данныеДляПроверкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.profile = new System.Windows.Forms.ToolStripMenuItem();
+            this.открытьКурсToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьКурсОбученияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.tree = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolsTree = new System.Windows.Forms.ToolStrip();
             this.addNode = new System.Windows.Forms.ToolStripDropDownButton();
             this.newSection = new System.Windows.Forms.ToolStripMenuItem();
             this.cpc = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,41 +49,48 @@
             this.delete = new System.Windows.Forms.ToolStripButton();
             this.up = new System.Windows.Forms.ToolStripButton();
             this.down = new System.Windows.Forms.ToolStripButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.property = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.name = new System.Windows.Forms.TextBox();
+            this.access = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textData = new System.Windows.Forms.TabPage();
             this.rb = new System.Windows.Forms.RichTextBox();
+            this.list = new System.Windows.Forms.TabPage();
             this.listView1 = new System.Windows.Forms.ListView();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.prop = new System.Windows.Forms.ToolStripLabel();
-            this.name = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.access = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.toolStrip2.SuspendLayout();
+            this.toolsTree.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.property.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.textData.SuspendLayout();
+            this.list.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 388);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 373);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(793, 22);
             this.statusStrip1.TabIndex = 0;
@@ -99,11 +100,9 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.менюToolStripMenuItem,
-            this.esimates,
             this.выйтиToolStripMenuItem,
-            this.checkTasks,
-            this.данныеДляПроверкиToolStripMenuItem,
-            this.profile});
+            this.открытьКурсToolStripMenuItem,
+            this.удалитьКурсОбученияToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(793, 24);
@@ -112,49 +111,10 @@
             // 
             // менюToolStripMenuItem
             // 
-            this.менюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.создатьДеревоToolStripMenuItem,
-            this.моиДеревьяToolStripMenuItem,
-            this.удалитьДеревоToolStripMenuItem,
-            this.создатьТестToolStripMenuItem});
             this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
-            this.менюToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.менюToolStripMenuItem.Text = "Меню";
-            // 
-            // создатьДеревоToolStripMenuItem
-            // 
-            this.создатьДеревоToolStripMenuItem.Name = "создатьДеревоToolStripMenuItem";
-            this.создатьДеревоToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.создатьДеревоToolStripMenuItem.Text = "Создать курс";
-            this.создатьДеревоToolStripMenuItem.Click += new System.EventHandler(this.создатьДеревоToolStripMenuItem_Click_1);
-            // 
-            // моиДеревьяToolStripMenuItem
-            // 
-            this.моиДеревьяToolStripMenuItem.Name = "моиДеревьяToolStripMenuItem";
-            this.моиДеревьяToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.моиДеревьяToolStripMenuItem.Text = "Мои курсы";
-            this.моиДеревьяToolStripMenuItem.Click += new System.EventHandler(this.моиДеревьяToolStripMenuItem_Click);
-            // 
-            // удалитьДеревоToolStripMenuItem
-            // 
-            this.удалитьДеревоToolStripMenuItem.Name = "удалитьДеревоToolStripMenuItem";
-            this.удалитьДеревоToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.удалитьДеревоToolStripMenuItem.Text = "Удалить курс";
-            this.удалитьДеревоToolStripMenuItem.Click += new System.EventHandler(this.удалитьДеревоToolStripMenuItem_Click);
-            // 
-            // создатьТестToolStripMenuItem
-            // 
-            this.создатьТестToolStripMenuItem.Name = "создатьТестToolStripMenuItem";
-            this.создатьТестToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.создатьТестToolStripMenuItem.Text = "Создать тест";
-            this.создатьТестToolStripMenuItem.Click += new System.EventHandler(this.создатьТестToolStripMenuItem_Click);
-            // 
-            // esimates
-            // 
-            this.esimates.Name = "esimates";
-            this.esimates.Size = new System.Drawing.Size(96, 20);
-            this.esimates.Text = "Успеваемость";
-            this.esimates.Click += new System.EventHandler(this.редактированиеToolStripMenuItem_Click);
+            this.менюToolStripMenuItem.Size = new System.Drawing.Size(146, 20);
+            this.менюToolStripMenuItem.Text = "Создать курс обучения";
+            this.менюToolStripMenuItem.Click += new System.EventHandler(this.менюToolStripMenuItem_Click);
             // 
             // выйтиToolStripMenuItem
             // 
@@ -164,26 +124,18 @@
             this.выйтиToolStripMenuItem.Text = "Выйти";
             this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.выйтиToolStripMenuItem_Click);
             // 
-            // checkTasks
+            // открытьКурсToolStripMenuItem
             // 
-            this.checkTasks.Name = "checkTasks";
-            this.checkTasks.Size = new System.Drawing.Size(106, 20);
-            this.checkTasks.Text = "Проверка задач";
-            this.checkTasks.Click += new System.EventHandler(this.проверкаЗадачToolStripMenuItem_Click);
+            this.открытьКурсToolStripMenuItem.Name = "открытьКурсToolStripMenuItem";
+            this.открытьКурсToolStripMenuItem.Size = new System.Drawing.Size(137, 20);
+            this.открытьКурсToolStripMenuItem.Text = "Мои курсы обучения";
+            this.открытьКурсToolStripMenuItem.Click += new System.EventHandler(this.открытьКурсToolStripMenuItem_Click);
             // 
-            // данныеДляПроверкиToolStripMenuItem
+            // удалитьКурсОбученияToolStripMenuItem
             // 
-            this.данныеДляПроверкиToolStripMenuItem.Name = "данныеДляПроверкиToolStripMenuItem";
-            this.данныеДляПроверкиToolStripMenuItem.Size = new System.Drawing.Size(140, 20);
-            this.данныеДляПроверкиToolStripMenuItem.Text = "Данные для проверки";
-            this.данныеДляПроверкиToolStripMenuItem.Click += new System.EventHandler(this.данныеДляПроверкиToolStripMenuItem_Click);
-            // 
-            // profile
-            // 
-            this.profile.Name = "profile";
-            this.profile.Size = new System.Drawing.Size(146, 20);
-            this.profile.Text = "Персональные данные";
-            this.profile.Click += new System.EventHandler(this.личныеДанныеToolStripMenuItem_Click);
+            this.удалитьКурсОбученияToolStripMenuItem.Name = "удалитьКурсОбученияToolStripMenuItem";
+            this.удалитьКурсОбученияToolStripMenuItem.Size = new System.Drawing.Size(147, 20);
+            this.удалитьКурсОбученияToolStripMenuItem.Text = "Удалить курс обучения";
             // 
             // splitContainer1
             // 
@@ -193,30 +145,27 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
-            this.splitContainer1.Panel1.Controls.Add(this.toolStrip1);
+            this.splitContainer1.Panel1.Controls.Add(this.tree);
+            this.splitContainer1.Panel1.Controls.Add(this.toolsTree);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Panel2.Controls.Add(this.rb);
-            this.splitContainer1.Panel2.Controls.Add(this.listView1);
-            this.splitContainer1.Panel2.Controls.Add(this.toolStrip2);
-            this.splitContainer1.Size = new System.Drawing.Size(793, 364);
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainer1.Size = new System.Drawing.Size(793, 349);
             this.splitContainer1.SplitterDistance = 276;
             this.splitContainer1.TabIndex = 2;
             // 
-            // treeView1
+            // tree
             // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.ImageIndex = 0;
-            this.treeView1.ImageList = this.imageList1;
-            this.treeView1.Location = new System.Drawing.Point(0, 25);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(276, 339);
-            this.treeView1.TabIndex = 1;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.tree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tree.ImageIndex = 0;
+            this.tree.ImageList = this.imageList1;
+            this.tree.Location = new System.Drawing.Point(0, 25);
+            this.tree.Name = "tree";
+            this.tree.SelectedImageIndex = 0;
+            this.tree.Size = new System.Drawing.Size(276, 324);
+            this.tree.TabIndex = 1;
+            this.tree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // imageList1
             // 
@@ -225,18 +174,18 @@
             this.imageList1.Images.SetKeyName(0, "directory_mini.bmp");
             this.imageList1.Images.SetKeyName(1, "Documents_mini.png");
             // 
-            // toolStrip1
+            // toolsTree
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolsTree.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addNode,
             this.delete,
             this.up,
             this.down});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(276, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
+            this.toolsTree.Location = new System.Drawing.Point(0, 0);
+            this.toolsTree.Name = "toolsTree";
+            this.toolsTree.Size = new System.Drawing.Size(276, 25);
+            this.toolsTree.TabIndex = 0;
+            this.toolsTree.Text = "toolStrip1";
             // 
             // addNode
             // 
@@ -319,136 +268,243 @@
             this.down.Text = "Вниз";
             this.down.Click += new System.EventHandler(this.down_Click);
             // 
-            // panel1
+            // tabControl1
             // 
-            this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 25);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(513, 339);
-            this.panel1.TabIndex = 3;
-            this.panel1.Visible = false;
+            this.tabControl1.Controls.Add(this.property);
+            this.tabControl1.Controls.Add(this.textData);
+            this.tabControl1.Controls.Add(this.list);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(513, 349);
+            this.tabControl1.TabIndex = 0;
             // 
-            // groupBox2
+            // property
             // 
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Location = new System.Drawing.Point(27, 17);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(198, 203);
-            this.groupBox2.TabIndex = 20;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Свойства СРС";
+            this.property.Controls.Add(this.groupBox1);
+            this.property.Location = new System.Drawing.Point(4, 22);
+            this.property.Name = "property";
+            this.property.Padding = new System.Windows.Forms.Padding(3);
+            this.property.Size = new System.Drawing.Size(505, 323);
+            this.property.TabIndex = 1;
+            this.property.Text = "Свойства";
+            this.property.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.groupBox4);
+            this.groupBox1.Controls.Add(this.groupBox5);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(499, 317);
+            this.groupBox1.TabIndex = 22;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Свойства вершины";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.dateTimePicker1);
+            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.button2);
+            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.textBox2);
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.textBox3);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox4.Location = new System.Drawing.Point(3, 113);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(493, 184);
+            this.groupBox4.TabIndex = 21;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Свойства СРС";
+            this.groupBox4.Visible = false;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(34, 170);
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(190, 112);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(135, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(135, 21);
             this.dateTimePicker1.TabIndex = 13;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 20);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(130, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Сколько задач каждому";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 149);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 13);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Срок сдачи";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(34, 36);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(135, 20);
-            this.textBox4.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 110);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Максимальный балл";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(34, 126);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(135, 20);
-            this.textBox2.TabIndex = 11;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 59);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(6, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Уровень сложности";
+            this.label1.Size = new System.Drawing.Size(144, 15);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Сколько задач каждому";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(6, 117);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 15);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Срок сдачи";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(34, 75);
+            this.textBox1.Location = new System.Drawing.Point(190, 25);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(135, 20);
-            this.textBox1.TabIndex = 9;
+            this.textBox1.Size = new System.Drawing.Size(53, 23);
+            this.textBox1.TabIndex = 0;
             // 
-            // button2
+            // label3
             // 
-            this.button2.Location = new System.Drawing.Point(249, 287);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Отмена";
-            this.button2.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(6, 86);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(128, 15);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Максимальный балл";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(190, 83);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(53, 23);
+            this.textBox2.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(6, 57);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(123, 15);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Уровень сложности";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(190, 54);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(53, 23);
+            this.textBox3.TabIndex = 9;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(150, 287);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(295, 144);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "ОК";
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Отмена";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label11);
+            this.groupBox5.Controls.Add(this.name);
+            this.groupBox5.Controls.Add(this.access);
+            this.groupBox5.Controls.Add(this.label12);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox5.Location = new System.Drawing.Point(3, 19);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(493, 94);
+            this.groupBox5.TabIndex = 22;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Основное";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(6, 21);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(120, 15);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "Название вершины";
+            // 
+            // name
+            // 
+            this.name.Location = new System.Drawing.Point(190, 18);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(297, 23);
+            this.name.TabIndex = 12;
+            this.name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.name_KeyDown);
+            // 
+            // access
+            // 
+            this.access.FormattingEnabled = true;
+            this.access.Location = new System.Drawing.Point(190, 47);
+            this.access.Name = "access";
+            this.access.Size = new System.Drawing.Size(135, 24);
+            this.access.TabIndex = 14;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.Location = new System.Drawing.Point(6, 50);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(169, 15);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "Доступность для студентов";
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(180, 144);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "ОК";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // textData
+            // 
+            this.textData.Controls.Add(this.rb);
+            this.textData.Location = new System.Drawing.Point(4, 22);
+            this.textData.Name = "textData";
+            this.textData.Padding = new System.Windows.Forms.Padding(3);
+            this.textData.Size = new System.Drawing.Size(505, 323);
+            this.textData.TabIndex = 0;
+            this.textData.Text = "Данные";
+            this.textData.UseVisualStyleBackColor = true;
             // 
             // rb
             // 
             this.rb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rb.Location = new System.Drawing.Point(0, 25);
+            this.rb.Location = new System.Drawing.Point(3, 3);
             this.rb.Name = "rb";
-            this.rb.Size = new System.Drawing.Size(513, 339);
+            this.rb.Size = new System.Drawing.Size(499, 317);
             this.rb.TabIndex = 4;
             this.rb.Text = "";
+            // 
+            // list
+            // 
+            this.list.Controls.Add(this.listView1);
+            this.list.Location = new System.Drawing.Point(4, 22);
+            this.list.Name = "list";
+            this.list.Size = new System.Drawing.Size(505, 323);
+            this.list.TabIndex = 2;
+            this.list.Text = "Выборка";
+            this.list.UseVisualStyleBackColor = true;
             // 
             // listView1
             // 
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.LargeImageList = this.imageList2;
-            this.listView1.Location = new System.Drawing.Point(0, 25);
+            this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(513, 339);
+            this.listView1.Size = new System.Drawing.Size(505, 323);
             this.listView1.SmallImageList = this.imageList1;
-            this.listView1.TabIndex = 1;
+            this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
             // 
@@ -459,83 +515,39 @@
             this.imageList2.Images.SetKeyName(0, "directory.bmp");
             this.imageList2.Images.SetKeyName(1, "Documents.png");
             // 
-            // toolStrip2
-            // 
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.prop,
-            this.name,
-            this.toolStripLabel1,
-            this.access,
-            this.toolStripSeparator1});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(513, 25);
-            this.toolStrip2.TabIndex = 0;
-            this.toolStrip2.Text = "toolStrip2";
-            // 
-            // prop
-            // 
-            this.prop.Name = "prop";
-            this.prop.Size = new System.Drawing.Size(62, 22);
-            this.prop.Text = "Название:";
-            // 
-            // name
-            // 
-            this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(180, 25);
-            this.name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.name_KeyDown);
-            this.name.TextChanged += new System.EventHandler(this.name_TextChanged);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(46, 22);
-            this.toolStripLabel1.Text = "Доступ";
-            // 
-            // access
-            // 
-            this.access.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.access.Items.AddRange(new object[] {
-            "Не доступен",
-            "Доступен"});
-            this.access.Name = "access";
-            this.access.Size = new System.Drawing.Size(121, 25);
-            this.access.SelectedIndexChanged += new System.EventHandler(this.access_SelectedIndexChanged);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
             // treeWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(793, 410);
+            this.ClientSize = new System.Drawing.Size(793, 395);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(809, 433);
             this.Name = "treeWork";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Преподаватель";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.моиДеревьяToolStripMenuItem_Click);
+            this.Load += new System.EventHandler(this.открытьКурсToolStripMenuItem_Click);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
+            this.toolsTree.ResumeLayout(false);
+            this.toolsTree.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.property.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.textData.ResumeLayout(false);
+            this.list.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -546,48 +558,45 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem создатьДеревоToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem моиДеревьяToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem удалитьДеревоToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem esimates;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip toolsTree;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.ToolStripButton delete;
         private System.Windows.Forms.ToolStripButton up;
         private System.Windows.Forms.ToolStripButton down;
-        private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripLabel prop;
-        private System.Windows.Forms.ToolStripTextBox name;
+        private System.Windows.Forms.TreeView tree;
         private System.Windows.Forms.ToolStripDropDownButton addNode;
         private System.Windows.Forms.ToolStripMenuItem newSection;
         private System.Windows.Forms.ToolStripMenuItem cpc;
         private System.Windows.Forms.ToolStripMenuItem doc;
         private System.Windows.Forms.ToolStripMenuItem task;
         private System.Windows.Forms.ToolStripMenuItem test;
-        private System.Windows.Forms.ToolStripComboBox access;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem;
+        private System.Windows.Forms.RichTextBox rb;
+        private System.Windows.Forms.ToolStripMenuItem открытьКурсToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьКурсОбученияToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage property;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ToolStripMenuItem создатьТестToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem checkTasks;
-        private System.Windows.Forms.ToolStripMenuItem profile;
-        private System.Windows.Forms.RichTextBox rb;
-        private System.Windows.Forms.ToolStripMenuItem данныеДляПроверкиToolStripMenuItem;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.ComboBox access;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TabPage textData;
+        private System.Windows.Forms.TabPage list;
+        private System.Windows.Forms.ListView listView1;
     }
 }

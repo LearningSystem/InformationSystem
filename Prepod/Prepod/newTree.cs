@@ -14,9 +14,7 @@ namespace Prepod
 {
     public partial class newTree : Form
     {
-        SqlConnection conn;
-        //string connectionString =
-        //        "Data Source=(local);Initial Catalog=Education; user id = sa; password = 1";
+        SqlConnection conn;        
         string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
         string numPrepod = "";
@@ -25,79 +23,48 @@ namespace Prepod
             InitializeComponent();
             numPrepod = numPrepod_;
 
-        }
-        string numPredmet = "";
+        }       
 
         private void button1_Click(object sender, EventArgs e)
         {           
-            if ((textBox1.Text != "") && (comboBox1.Text != ""))
+            if ((textBox1.Text != ""))
             {
-                conn = new SqlConnection(connectionString);
-                conn.Open();
-                SqlCommand comm = new SqlCommand();
-                comm.Connection = conn;
-                comm.CommandText = "insert into Дерево ([№ предмета], Название, [№ преподавателя]) Values ('"+ numPredmet +"', '"+ textBox1.Text +"', '"+ numPrepod +"')";
-                comm.ExecuteNonQuery();
-                conn.Close();
-                this.Hide();
+                try
+                {
+                    conn = new SqlConnection(connectionString);
+                    conn.Open();
+                    SqlCommand comm = new SqlCommand();
+                    comm.Connection = conn;
+                    comm.CommandText = "insert into Дерево (Название, [№ преподавателя]) Values ('" + textBox1.Text + "', '" + numPrepod + "')";
+                    comm.ExecuteNonQuery();
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message.ToString());
+                }
+                finally
+                {
+                    conn.Close();
+                    this.Hide();
+                }                
             }
             else
             {
-                if (textBox1.Text == "")
-                {
-                    System.Windows.Forms.MessageBox.Show("Введите название!");
-                }
-                if (comboBox1.Text == "")
-                {
-                    System.Windows.Forms.MessageBox.Show("Выберите предмет!");
-                }
+                System.Windows.Forms.MessageBox.Show("Введите название!");
             }
             
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
-
-            comm.CommandText = "select [№ предмета] from Предмет where Название = '" + comboBox1.Text + "'";
-            SqlDataReader rdr = comm.ExecuteReader();
-            rdr.Read();
-            numPredmet = rdr[0].ToString();
-            rdr.Close();
-            conn.Close();
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
-            comboBox1.Text = "";
+            textBox1.Text = "";            
             this.Hide();
         }
 
         private void newTree_Load(object sender, EventArgs e)
         {
-            conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
-
-            comm.CommandText = "Select Название from Предмет";
-            comboBox1.Items.Clear();
-            SqlDataReader rdr = comm.ExecuteReader();
-            if (rdr.HasRows)
-            {
-                while (rdr.Read())
-                {
-                    comboBox1.Items.Add(rdr[0]);
-
-                }
-            }
-            rdr.Close();
-            conn.Close();
+            textBox1.Text = "";
         }
     }
 }
