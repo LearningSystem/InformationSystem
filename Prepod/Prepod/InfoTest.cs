@@ -39,7 +39,7 @@ namespace Prepod
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (tBNameTest.Text != "" && rtBDescTest.Text != "" && tBAuthorTest.Text != "" && tBThemeTest.Text != "" && cBDiscip.Text != "")
+            if (tBNameTest.Text != "" && rtBDescTest.Text != "" && tBAuthorTest.Text != "" && tBThemeTest.Text != "" )
             {
                 writer = new XmlTextWriter(tBNameTest.Text + ".xml", Encoding.UTF8);
                 writer.Formatting = Formatting.Indented;
@@ -59,12 +59,12 @@ namespace Prepod
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("Discipline");
-                writer.WriteString(cBDiscip.Text);
+                writer.WriteString("C#");
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("Questions");
                 insertTask();
-                TestCreate test = new TestCreate(writer, numTest, tBNameTest.Text);
+                TestCreate test = new TestCreate(writer, numTest, tBNameTest.Text,NumTeacher);
 
                 this.Hide();
                 test.Show();
@@ -80,26 +80,30 @@ namespace Prepod
             SqlCommand comm = new SqlCommand();
             comm.Connection = conn;
 
-            comm.CommandText = "Select [№ предмета] from Предмет where Название = '" + cBDiscip.Text + "'";
-            SqlDataReader rdr = comm.ExecuteReader();
-            string numDisc = "";
-            if (rdr.HasRows)
-            {
-                rdr.Read();
-                numDisc = rdr[0].ToString();
-            }            
-            rdr.Close();
+            //comm.CommandText = "Select [№ предмета] from Предмет where Название = '" + cBDiscip.Text + "'";
+           // SqlDataReader rdr = comm.ExecuteReader();
+            //string numDisc = "";
+            //if (rdr.HasRows)
+            //{
+            //    rdr.Read();
+            //    numDisc = rdr[0].ToString();
+            //}            
+            //rdr.Close();
 
             try
             {
-                comm.CommandText = "Insert into Тест ([№ преподавателя], [№ предмета], [Описание], [Тема], [Название], [Ссылка]) Values('" + NumTeacher.ToString() + "','" + numDisc + "', '" + rtBDescTest.Text + "', '" + tBThemeTest.Text + "', '" + tBNameTest.Text + "', '" + tBNameTest.Text + ".xml')";
+                comm.CommandText = "Insert into Тест ([№ преподавателя], [Описание], [Тема], [Название], [Ссылка]) Values('" + NumTeacher.ToString() + "', '" + rtBDescTest.Text + "', '" + tBThemeTest.Text + "', '" + tBNameTest.Text + "','"+ "\\" +"Тесты\\"  + tBNameTest.Text + ".xml')";
                 comm.ExecuteNonQuery();
                 comm.CommandText = "select SCOPE_IDENTITY()";
-                rdr = comm.ExecuteReader();
+                SqlDataReader rdr = comm.ExecuteReader();
                 rdr.Read();
                 numTest = rdr[0].ToString();
+                rdr.Close();
             }
-            finally { conn.Close(); }    
+            finally 
+            { 
+                conn.Close();
+            }    
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -124,16 +128,17 @@ namespace Prepod
                 }
                 dr.Close();
 
-                scommand = new SqlCommand();
-                scommand.Connection = sconn;
-                scommand.CommandText = @"Select [Предмет].[Название] From [Предмет],[Дерево],[Преподаватель] Where [Преподаватель].[№ преподавателя]=[Дерево].[№ преподавателя] and [Дерево].[№ предмета]=[Предмет].[№ предмета] and [Преподаватель].[№ преподавателя]=" + "'" + NumTeacher.ToString() + "'";
-                dr = scommand.ExecuteReader();
-                while (dr.Read())
-                {
-                    cBDiscip.Items.Add(dr[0].ToString());
-                }
+            //    scommand = new SqlCommand();
+            //    scommand.Connection = sconn;
+            //    scommand.CommandText = @"Select [Предмет].[Название] From [Предмет],[Дерево],[Преподаватель] Where [Преподаватель].[№ преподавателя]=[Дерево].[№ преподавателя] and [Дерево].[№ предмета]=[Предмет].[№ предмета] and [Преподаватель].[№ преподавателя]=" + "'" + NumTeacher.ToString() + "'";
+            //    dr = scommand.ExecuteReader();
+            //    while (dr.Read())
+            //    {
+            //        cBDiscip.Items.Add(dr[0].ToString());
+            //    }
             }
-            cBDiscip.SelectedIndex = 0;
+            //cBDiscip.SelectedIndex = 0;
+                //cBDiscip.Text="С#";
             if (tBAuthorTest.Text!="")
             {
                 tBAuthorTest.Enabled = false;

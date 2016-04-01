@@ -36,10 +36,8 @@
             this.tBAuthorTest = new System.Windows.Forms.TextBox();
             this.lblThemeTest = new System.Windows.Forms.Label();
             this.tBThemeTest = new System.Windows.Forms.TextBox();
-            this.lblDiscipTest = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.cBDiscip = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblNameTest
@@ -109,15 +107,6 @@
             this.tBThemeTest.Size = new System.Drawing.Size(121, 20);
             this.tBThemeTest.TabIndex = 7;
             // 
-            // lblDiscipTest
-            // 
-            this.lblDiscipTest.AutoSize = true;
-            this.lblDiscipTest.Location = new System.Drawing.Point(497, 190);
-            this.lblDiscipTest.Name = "lblDiscipTest";
-            this.lblDiscipTest.Size = new System.Drawing.Size(73, 13);
-            this.lblDiscipTest.TabIndex = 8;
-            this.lblDiscipTest.Text = "Дисциплина:";
-            // 
             // btnNext
             // 
             this.btnNext.Location = new System.Drawing.Point(668, 312);
@@ -138,24 +127,13 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // cBDiscip
-            // 
-            this.cBDiscip.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBDiscip.FormattingEnabled = true;
-            this.cBDiscip.Location = new System.Drawing.Point(599, 182);
-            this.cBDiscip.Name = "cBDiscip";
-            this.cBDiscip.Size = new System.Drawing.Size(121, 21);
-            this.cBDiscip.TabIndex = 14;
-            // 
             // InfoTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(755, 347);
-            this.Controls.Add(this.cBDiscip);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.lblDiscipTest);
             this.Controls.Add(this.tBThemeTest);
             this.Controls.Add(this.lblThemeTest);
             this.Controls.Add(this.tBAuthorTest);
@@ -184,9 +162,7 @@
         private System.Windows.Forms.TextBox tBAuthorTest;
         private System.Windows.Forms.Label lblThemeTest;
         private System.Windows.Forms.TextBox tBThemeTest;
-        private System.Windows.Forms.Label lblDiscipTest;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.ComboBox cBDiscip;
     }
 }
