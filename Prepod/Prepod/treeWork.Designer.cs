@@ -441,10 +441,14 @@
             // access
             // 
             this.access.FormattingEnabled = true;
+            this.access.Items.AddRange(new object[] {
+            "Доступна",
+            "Не доступна"});
             this.access.Location = new System.Drawing.Point(190, 47);
             this.access.Name = "access";
             this.access.Size = new System.Drawing.Size(135, 24);
             this.access.TabIndex = 14;
+            this.access.SelectedIndexChanged += new System.EventHandler(this.access_SelectedIndexChanged);
             // 
             // label12
             // 
