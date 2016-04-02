@@ -121,7 +121,6 @@ C:\Users\User\Desktop\Текущие проекты\Версия на тести
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.exe
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.pdb
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.AddPartTree.resources
-C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.admin.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.editCPC.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.editPredmet.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.editStudent.resources
@@ -144,7 +143,6 @@ C:\Users\User\Desktop\Текущие проекты\Версия на тести
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\bin\Debug\Prepod.pdb
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.WarningPass.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.ChangePass.resources
-C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.SystemSettings.resources
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\bin\Debug\Prepod.exe.config
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.exe
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.pdb
@@ -174,9 +172,13 @@ D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.t
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.csproj.GenerateResource.Cache
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.DataBlackBox.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.StartForm.resources
-C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.csprojResolveAssemblyReference.cache
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.administrator.resources
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.DataBlackBox.resources
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.editPrepod.resources
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.StartForm.resources
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.menuPrepod.resources
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.administrator.resources
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.editPrepod.resources
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.menuPrepod.resources
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.TestWorkStart.resources
+D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.TestWorkStart.resources

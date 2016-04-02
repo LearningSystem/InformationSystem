@@ -52,14 +52,16 @@ namespace Prepod
         public int NumItems;
         public string NameTest;
         public bool SaveTest = false;
+        int NumTeacher;
         
         string numTest;
-        public TestCreate(XmlTextWriter _writer, string _numTest, string _nameTest)
+        public TestCreate(XmlTextWriter _writer, string _numTest, string _nameTest,int _numTeacher)
         {
             InitializeComponent();
             writer = _writer;
             numTest = _numTest;
             NameTest = _nameTest;
+            NumTeacher = _numTeacher;
             
         }//
 
@@ -589,9 +591,33 @@ namespace Prepod
                 SaveTest = true;
             }
             //ВСЕ РАВНО ПОТОМ ОТКРЫТЬ!
-            //File.Copy(Application.StartupPath + "\\" + NameTest + ".xml", Application.StartupPath + "\\" +"Тесты\\" + NameTest + ".xml");
-            //File.Delete(Application.StartupPath + "\\" + NameTest + ".xml");
+            string pathprepod = "";
+            conn = new SqlConnection(connectionString);
+            using (conn)
+            {
+                conn.Open();
+                SqlCommand comm = new SqlCommand();
+                comm.Connection = conn;
+                try
+                {
+                    comm.CommandText = "select [Путь к папке] from Преподаватель where [№ преподавателя]="+"'"+NumTeacher.ToString()+"'";
+                    comm.ExecuteNonQuery();
+                    SqlDataReader rdr = comm.ExecuteReader();
+                    rdr.Read();
+                    pathprepod = rdr[0].ToString();
+                    rdr.Close();
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            string inputdir = Application.StartupPath + pathprepod + "Тесты\\" + NameTest + ".xml";
+            File.Copy(Application.StartupPath + "\\" + NameTest + ".xml", inputdir);
+            File.Delete(Application.StartupPath + "\\" + NameTest + ".xml");
+            menuPrepod newmenu = new menuPrepod(NumTeacher.ToString());
             this.Hide();
+            newmenu.Show();
         }
 
         public void insertTest()

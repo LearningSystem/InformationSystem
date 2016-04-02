@@ -178,7 +178,7 @@ namespace Prepod
                     }; break;
                 case "Тест":
                     {
-                        //insertTest(listView1.SelectedItems[0].SubItems[2].Text);
+                        insertTest(listView1.SelectedItems[0].Tag.ToString());
                     }; break;                
             }
             listView1.Items.Clear();           
@@ -192,7 +192,14 @@ namespace Prepod
             {
                 //вставляем в таблицу Вершина
                 conn.Open();
-                comm.CommandText = "insert into Вершина ([№ дерева], Текст, [Тип вершины], Ссылка, Доступ, Имя) Values ('" + numTree + "', '" + Text + "', '" + type + " ', '" + Path + ", '" + flag.ToString() + "', '" + Text + "')";
+                if (Text == "Самостоятельная работа")
+                {
+                    comm.CommandText = "insert into Вершина ([№ дерева], Текст, [Тип вершины], Ссылка, Доступ, Имя) Values ('" + numTree + "', '" + Text + "', '" + type + "', '" + Path + "', '" + flag.ToString() + "', '" + Text + "')";
+                }
+                else
+                {
+                    comm.CommandText = "insert into Вершина ([№ дерева], Текст, [Тип вершины], Ссылка, Доступ, Имя) Values ('" + numTree + "', '" + Text + "', '" + type + "', '" + Path + "', '" + flag.ToString() + "', '" + Text + "')";
+                }                
                 comm.ExecuteNonQuery();
                 //находим номер вставленной вершины в БД
                 comm.CommandText = "select SCOPE_IDENTITY()";
@@ -230,16 +237,16 @@ namespace Prepod
                 rdr.Close();
                 comm.CommandText = cmd;
                 comm.ExecuteNonQuery();
-                if (type == "4")
+                if (Text == "Тест")
                 {
-                    comm.CommandText = "Update Тест set [№ вершины] = '" + num + "' where [№ теста] = '" + listView1.SelectedItems[0].SubItems[2].Text + "'";
+                    comm.CommandText = "Update Тест set [№ вершины] = '" + num + "' where [№ теста] = '" + listView1.SelectedItems[0].Tag.ToString() + "'";
                     comm.ExecuteNonQuery();
 
                 }
             }
             catch(Exception exc)
             {
-                MessageBox.Show(exc.Message.ToString());
+                MessageBox.Show(exc.ToString());
             }
             finally
             {
@@ -294,6 +301,7 @@ namespace Prepod
         private void cpc_Click(object sender, EventArgs e)
         {
             string typeNode = _typeNode("Самостоятельная работа");
+
             string numTree = tree.Tag.ToString();
             TreeNode node;
             
@@ -843,6 +851,7 @@ namespace Prepod
                     string numTest = rdr[0].ToString();
                     lv = new ListViewItem(new string[] { tName, type, numTest }, 1);
                     lv.Name = tName;
+                    lv.Tag = numTest;
                     listView1.Items.Add(lv);
                 }
                 rdr.Close();

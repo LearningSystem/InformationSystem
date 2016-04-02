@@ -1,20 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Test>
-  <Discription>-</Discription>
+  <Discription>аываыа</Discription>
   <Author> Ромашкина Татьяна Витальевна</Author>
-  <Theme>-</Theme>
-  <Discipline>Язык C#</Discipline>
-  <Course />
+  <Theme>аав</Theme>
+  <Discipline>C#</Discipline>
   <Questions Number="1">
     <Question1>
       <Text>1</Text>
       <TypeAnswer>One</TypeAnswer>
-      <Answers>1|2|34|4</Answers>
+      <Answers>1|1|1|1</Answers>
       <RightAnswer>1</RightAnswer>
       <Part />
-      <Price>5</Price>
+      <Price>0</Price>
     </Question1>
   </Questions>
-  <Time>80</Time>
+  <Time>0</Time>
   <Report>Да</Report>
 </Test>
