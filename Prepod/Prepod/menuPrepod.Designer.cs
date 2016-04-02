@@ -125,6 +125,7 @@
             this.MaximumSize = new System.Drawing.Size(790, 521);
             this.MinimumSize = new System.Drawing.Size(790, 521);
             this.Name = "menuPrepod";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Преподаватель";
             this.ResumeLayout(false);
 

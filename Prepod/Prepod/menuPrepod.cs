@@ -28,8 +28,11 @@ namespace Prepod
 
         private void button5_Click(object sender, EventArgs e)
         {
-            InfoTest newtest = new InfoTest(Convert.ToInt32(numPrepod));
-            newtest.Show();
+            //InfoTest newtest = new InfoTest(Convert.ToInt32(numPrepod));
+            //newtest.Show();
+            //this.Hide();
+            TestWorkStart testwork = new TestWorkStart(Convert.ToInt32(numPrepod));
+            testwork.Show();
             this.Hide();
         }
 

@@ -180,4 +180,4 @@ D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.m
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.administrator.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.editPrepod.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.menuPrepod.resources
-C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.TestWorkStart.resources
