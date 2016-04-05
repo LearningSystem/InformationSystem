@@ -364,11 +364,7 @@ namespace Prepod
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            if (openCompiler.ShowDialog()==DialogResult.OK)
-            {
-                textBox2.Text = openCompiler.FileName;
-                Settings.CompilerPath = textBox2.Text;
-            }
+
         }
 
         private void administrator_FormClosed(object sender, FormClosedEventArgs e)
@@ -380,12 +376,6 @@ namespace Prepod
         {
             regForm rf = new regForm();
             rf.Show();
-        }
-
-        private void NumCore_ValueChanged(object sender, EventArgs e)
-        {
-            if (Settings.NumberCore != Int32.Parse(NumCore.Value.ToString()))
-                Settings.NumberCore = Int32.Parse(NumCore.Value.ToString());
         }
 
 

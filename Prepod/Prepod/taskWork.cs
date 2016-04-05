@@ -150,8 +150,8 @@ namespace Prepod
                     string numStud = listView1.SelectedItems[0].Tag.ToString(); //номер студента
                     string[] tasks = new string[1];
                     tasks[0] = numTask;
-                    BlackBox box = new BlackBox(tasks, numStud, numPrepod);
-                    box.Show();
+                    //Form1 frm = new Form1(tasks);
+                    //frm.Show();
                     updateData();
                 }
                 else

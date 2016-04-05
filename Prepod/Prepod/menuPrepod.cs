@@ -21,7 +21,7 @@ namespace Prepod
 
         private void button4_Click(object sender, EventArgs e)
         {
-            DataBlackBox dataBlackBox = new DataBlackBox(numPrepod);
+            DataBlackBox dataBlackBox = new DataBlackBox();
             dataBlackBox.Show();
             this.Hide();
         }
@@ -54,6 +54,13 @@ namespace Prepod
         {
             treeWork tw = new treeWork(numPrepod);
             tw.Show();
+            this.Hide();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            taskEditor te = new taskEditor(numPrepod);
+            te.Show();
             this.Hide();
         }
     }

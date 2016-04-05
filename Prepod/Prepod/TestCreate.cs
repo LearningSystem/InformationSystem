@@ -74,8 +74,8 @@ namespace Prepod
             cBOtch.SelectedIndex = 0;
             btnSaveQ.Enabled = false;
             btnAdd.Enabled = true;
-            openFile.InitialDirectory = Settings.TestPath;
-            saveFileDialog1.InitialDirectory = Settings.TestPath;
+            openFile.InitialDirectory = PathDirectory.TestPath;
+            saveFileDialog1.InitialDirectory = PathDirectory.TestPath;
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
