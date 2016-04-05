@@ -182,5 +182,5 @@ C:\Users\User\Desktop\Текущие проекты\Версия на тести
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.menuPrepod.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.TestWorkStart.resources
 D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.TestWorkStart.resources
-D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.addTask.resources
-D:\моя\пгу\Диплом\InformationSystem\Prepod\Prepod\obj\Debug\Prepod.taskEditor.resources
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.DeleteTest.resources
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\Prepod\Prepod\obj\Debug\Prepod.BlackBox.resources

@@ -81,5 +81,21 @@ namespace Prepod
                 txtPath.Text = openPath.FileName;
             }
         }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (radBut1.Checked )
+            {
+                InfoTest inftest = new InfoTest(numTeacher);
+                this.Hide();
+                inftest.Show();
+            }
+            if(radBut3.Checked)
+            {
+                DeleteTest deltest = new DeleteTest(numTeacher);
+                this.Hide();
+                deltest.Show();
+            }
+        }
     }
 }

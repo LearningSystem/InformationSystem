@@ -88,6 +88,7 @@
             this.btnNext.TabIndex = 5;
             this.btnNext.Text = "Далее";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // radBut3
             // 
@@ -153,6 +154,7 @@
             this.ClientSize = new System.Drawing.Size(283, 182);
             this.Controls.Add(this.gb1);
             this.Controls.Add(this.splitContainer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "TestWorkStart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактор тестов";

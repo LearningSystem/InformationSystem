@@ -52,17 +52,17 @@
     <Compile Include="AddPartTree.designer.cs">
       <DependentUpon>AddPartTree.cs</DependentUpon>
     </Compile>
-    <Compile Include="addTask.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="addTask.Designer.cs">
-      <DependentUpon>addTask.cs</DependentUpon>
-    </Compile>
     <Compile Include="administrator.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="administrator.Designer.cs">
       <DependentUpon>administrator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlackBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BlackBox.designer.cs">
+      <DependentUpon>BlackBox.cs</DependentUpon>
     </Compile>
     <Compile Include="ChangePass.cs">
       <SubType>Form</SubType>
@@ -75,6 +75,12 @@
     </Compile>
     <Compile Include="DataBlackBox.Designer.cs">
       <DependentUpon>DataBlackBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteTest.Designer.cs">
+      <DependentUpon>DeleteTest.cs</DependentUpon>
     </Compile>
     <Compile Include="editPrepod.cs">
       <SubType>Form</SubType>
@@ -93,12 +99,6 @@
     </Compile>
     <Compile Include="StartForm.Designer.cs">
       <DependentUpon>StartForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="taskEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="taskEditor.Designer.cs">
-      <DependentUpon>taskEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="TestWorkStart.cs">
       <SubType>Form</SubType>
@@ -147,7 +147,7 @@
     <Compile Include="InfoTest.designer.cs">
       <DependentUpon>InfoTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="PathDirectory.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="prepodWork.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,17 +221,20 @@
     <EmbeddedResource Include="AddPartTree.resx">
       <DependentUpon>AddPartTree.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="addTask.resx">
-      <DependentUpon>addTask.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="administrator.resx">
       <DependentUpon>administrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlackBox.resx">
+      <DependentUpon>BlackBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangePass.resx">
       <DependentUpon>ChangePass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataBlackBox.resx">
       <DependentUpon>DataBlackBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteTest.resx">
+      <DependentUpon>DeleteTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editPrepod.resx">
       <DependentUpon>editPrepod.cs</DependentUpon>
@@ -241,9 +244,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="taskEditor.resx">
-      <DependentUpon>taskEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestWorkStart.resx">
       <DependentUpon>TestWorkStart.cs</DependentUpon>

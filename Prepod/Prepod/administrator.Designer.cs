@@ -36,7 +36,6 @@
             this.addPrepod = new System.Windows.Forms.ToolStripButton();
             this.updPrepod = new System.Windows.Forms.ToolStripButton();
             this.delPrepod = new System.Windows.Forms.ToolStripButton();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dg = new System.Windows.Forms.DataGridView();
@@ -45,6 +44,8 @@
             this.group = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.prepod = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -54,8 +55,7 @@
             this.del = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.groupName = new System.Windows.Forms.ToolStripLabel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.prepod = new System.Windows.Forms.ComboBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.gBCompiler = new System.Windows.Forms.GroupBox();
             this.NumCore = new System.Windows.Forms.NumericUpDown();
             this.lblNumberCore = new System.Windows.Forms.Label();
@@ -65,11 +65,11 @@
             this.btnSelect = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.lblCompilePath = new System.Windows.Forms.Label();
+            this.openCompiler = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPrepod)).BeginInit();
             this.toolStrip2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -80,6 +80,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.gBCompiler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumCore)).BeginInit();
             this.SuspendLayout();
@@ -161,17 +162,6 @@
             this.delPrepod.Size = new System.Drawing.Size(55, 22);
             this.delPrepod.Text = "Удалить";
             this.delPrepod.Click += new System.EventHandler(this.delPrepod_Click);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.gBCompiler);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(699, 282);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Настройки";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
@@ -274,6 +264,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Создать новую группу";
             // 
+            // prepod
+            // 
+            this.prepod.FormattingEnabled = true;
+            this.prepod.Location = new System.Drawing.Point(10, 71);
+            this.prepod.Name = "prepod";
+            this.prepod.Size = new System.Drawing.Size(148, 21);
+            this.prepod.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 55);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(137, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Выберите преподавателя";
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(23, 109);
@@ -357,22 +364,16 @@
             this.groupName.Name = "groupName";
             this.groupName.Size = new System.Drawing.Size(0, 22);
             // 
-            // label2
+            // tabPage3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(137, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Выберите преподавателя";
-            // 
-            // prepod
-            // 
-            this.prepod.FormattingEnabled = true;
-            this.prepod.Location = new System.Drawing.Point(10, 71);
-            this.prepod.Name = "prepod";
-            this.prepod.Size = new System.Drawing.Size(148, 21);
-            this.prepod.TabIndex = 7;
+            this.tabPage3.Controls.Add(this.gBCompiler);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(699, 282);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Настройки";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // gBCompiler
             // 
@@ -408,6 +409,7 @@
             0,
             0,
             0});
+            this.NumCore.ValueChanged += new System.EventHandler(this.NumCore_ValueChanged);
             // 
             // lblNumberCore
             // 
@@ -487,7 +489,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgPrepod)).EndInit();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -501,6 +502,7 @@
             this.groupBox2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
             this.gBCompiler.ResumeLayout(false);
             this.gBCompiler.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumCore)).EndInit();
@@ -546,5 +548,6 @@
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label lblCompilePath;
+        private System.Windows.Forms.OpenFileDialog openCompiler;
     }
 }
