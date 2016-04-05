@@ -52,6 +52,12 @@
     <Compile Include="AddPartTree.designer.cs">
       <DependentUpon>AddPartTree.cs</DependentUpon>
     </Compile>
+    <Compile Include="addTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addTask.Designer.cs">
+      <DependentUpon>addTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="administrator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,12 @@
     </Compile>
     <Compile Include="StartForm.Designer.cs">
       <DependentUpon>StartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="taskEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="taskEditor.Designer.cs">
+      <DependentUpon>taskEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="TestWorkStart.cs">
       <SubType>Form</SubType>
@@ -209,6 +221,9 @@
     <EmbeddedResource Include="AddPartTree.resx">
       <DependentUpon>AddPartTree.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="addTask.resx">
+      <DependentUpon>addTask.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="administrator.resx">
       <DependentUpon>administrator.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="taskEditor.resx">
+      <DependentUpon>taskEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestWorkStart.resx">
       <DependentUpon>TestWorkStart.cs</DependentUpon>

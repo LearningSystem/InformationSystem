@@ -56,5 +56,12 @@ namespace Prepod
             tw.Show();
             this.Hide();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            taskEditor te = new taskEditor(numPrepod);
+            te.Show();
+            this.Hide();
+        }
     }
 }
