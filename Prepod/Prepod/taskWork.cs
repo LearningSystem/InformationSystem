@@ -52,7 +52,7 @@ namespace Prepod
         private void loadInf()
         {
             conn.Open();
-            comm.CommandText = "select * from Группа, [Группы преподавателя] where Группа.[№ группы] = [Группы преподавателя].[№ группы] and [Группы преподавателя].[№ преподавателя] = '" + numPrepod + "'";
+            comm.CommandText = "select * from Группа where [Группа].[№ преподавателя] = '" + numPrepod + "'";
             SqlDataReader rdr = comm.ExecuteReader();
             while (rdr.Read())
             {
@@ -105,7 +105,7 @@ namespace Prepod
         {
             data.Clear();
             conn.Open();
-            comm.CommandText = "Select Задача.[№ задачи], Название, Уровень, [Максимальный балл], [Срок сдачи], Балл, [Дата сдачи], Ссылка, [Ссылка на работу] from Задача, [Выполненная задача] where Задача.[№ задачи] = [Выполненная задача].[№ задачи] and [Выполненная задача].[№ студента] = '" + listView1.SelectedItems[0].Tag.ToString() + "'";
+            comm.CommandText = "Select Задача.[№ задачи], Название, Уровень, [Максимальный балл], [Срок сдачи], Балл, [Дата сдачи], Задача.[Ссылка], [Ссылка на работу] from Задача, [Выполненная задача],Вершина where Задача.[№ задачи] = [Выполненная задача].[№ задачи] and [Выполненная задача].[№ студента] = '" + listView1.SelectedItems[0].Tag.ToString() + "'";
 
             adapter = new SqlDataAdapter(comm);
             adapter.Fill(data);
@@ -150,8 +150,8 @@ namespace Prepod
                     string numStud = listView1.SelectedItems[0].Tag.ToString(); //номер студента
                     string[] tasks = new string[1];
                     tasks[0] = numTask;
-                    //Form1 frm = new Form1(tasks);
-                    //frm.Show();
+                    BlackBox frm = new BlackBox(tasks,numStud,numPrepod);
+                    frm.Show();
                     updateData();
                 }
                 else
@@ -181,8 +181,8 @@ namespace Prepod
                 }
                 updateData();
             }
-            //Form1 frm = new Form1(tasks);
-            //frm.Show();
+            BlackBox frm = new BlackBox(tasks,numStud,numPrepod);
+            frm.Show();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)

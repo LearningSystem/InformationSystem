@@ -14,9 +14,6 @@ using System.IO;
 
 namespace Prepod
 {
-    //работает некрасиво
-    //1- очистка происходит неоптимально
-    //2- lstViewIstochnik имеет модификатор public, что противоречит ООП
     public partial class TestCreate : Form
     {
         SqlConnection conn;

@@ -30,16 +30,18 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.cmB = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.GenMenu = new System.Windows.Forms.MenuStrip();
             this.oToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmB = new System.Windows.Forms.ComboBox();
-            this.lbl1 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.GenMenu.SuspendLayout();
@@ -70,12 +72,46 @@
             this.tabPage1.Text = "Ввод данных";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(9, 112);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(304, 251);
+            this.richTextBox1.TabIndex = 3;
+            this.richTextBox1.Text = "";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 86);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Текст задачи:";
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.Location = new System.Drawing.Point(6, 14);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(59, 13);
+            this.lbl1.TabIndex = 1;
+            this.lbl1.Text = "№ задачи:";
+            // 
+            // cmB
+            // 
+            this.cmB.FormattingEnabled = true;
+            this.cmB.Location = new System.Drawing.Point(6, 40);
+            this.cmB.Name = "cmB";
+            this.cmB.Size = new System.Drawing.Size(121, 21);
+            this.cmB.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(725, 369);
+            this.tabPage2.Size = new System.Drawing.Size(842, 369);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Изменение";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -84,7 +120,7 @@
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(725, 369);
+            this.tabPage3.Size = new System.Drawing.Size(842, 369);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Удаление";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -104,14 +140,15 @@
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 2;
-            this.btnExit.Text = "Выход";
+            this.btnExit.Text = "Назад";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // GenMenu
             // 
             this.GenMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.oToolStripMenuItem});
+            this.oToolStripMenuItem,
+            this.выходToolStripMenuItem});
             this.GenMenu.Location = new System.Drawing.Point(0, 0);
             this.GenMenu.Name = "GenMenu";
             this.GenMenu.Size = new System.Drawing.Size(865, 24);
@@ -123,40 +160,18 @@
             this.oToolStripMenuItem.Name = "oToolStripMenuItem";
             this.oToolStripMenuItem.Size = new System.Drawing.Size(126, 20);
             this.oToolStripMenuItem.Text = "Загрузить из файла";
+            this.oToolStripMenuItem.Click += new System.EventHandler(this.oToolStripMenuItem_Click);
             // 
-            // cmB
+            // выходToolStripMenuItem
             // 
-            this.cmB.FormattingEnabled = true;
-            this.cmB.Location = new System.Drawing.Point(6, 40);
-            this.cmB.Name = "cmB";
-            this.cmB.Size = new System.Drawing.Size(121, 21);
-            this.cmB.TabIndex = 0;
+            this.выходToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.выходToolStripMenuItem.Text = "Выход";
             // 
-            // lbl1
+            // openFileDialog1
             // 
-            this.lbl1.AutoSize = true;
-            this.lbl1.Location = new System.Drawing.Point(6, 14);
-            this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(59, 13);
-            this.lbl1.TabIndex = 1;
-            this.lbl1.Text = "№ задачи:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 86);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Текст задачи:";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(9, 112);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(304, 251);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "";
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // DataBlackBox
             // 
@@ -195,5 +210,7 @@
         private System.Windows.Forms.Label lbl1;
         private System.Windows.Forms.ComboBox cmB;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

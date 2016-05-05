@@ -1141,7 +1141,7 @@ namespace Prepod
 
         private void данныеДляПроверкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataBlackBox dataBlackBox = new DataBlackBox();
+            DataBlackBox dataBlackBox = new DataBlackBox(Convert.ToInt32(numPrepod));
             dataBlackBox.Show();
         }
 
