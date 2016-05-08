@@ -293,7 +293,7 @@ namespace Prepod
                     int p=0;
                     while (dr.Read())
                     {
-                        cmBTest.Items.Add("Тест №" + elem.ToString());
+                        cmBTest.Items.Add("Проверка №" + elem.ToString());
                         index[p] = dr[0].ToString();
                         elem++;
                         p++;
@@ -392,7 +392,7 @@ namespace Prepod
         }
         void Started(bool _select)
         {
-            lblExerText.Enabled = _select;
+            //lblExerText.Enabled = _select;
             rTBText1.Enabled = _select;
             lblnumTest.Enabled = _select;
             cmBTest.Enabled = _select;
@@ -424,6 +424,17 @@ namespace Prepod
             }
             dGVData.DataSource = null;
             ReadTests(cmBExer.SelectedItem.ToString());
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void вводДанныхToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewProverkaBlackBox newprov = new NewProverkaBlackBox(cmBExer.SelectedItem.ToString());
+            newprov.Show();
         }
     }
 }

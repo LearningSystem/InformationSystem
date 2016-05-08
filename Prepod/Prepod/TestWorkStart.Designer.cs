@@ -38,9 +38,12 @@
             this.radBut2 = new System.Windows.Forms.RadioButton();
             this.radBut1 = new System.Windows.Forms.RadioButton();
             this.openPath = new System.Windows.Forms.OpenFileDialog();
+            this.gBChanged = new System.Windows.Forms.GroupBox();
+            this.chBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
             this.gb1.SuspendLayout();
+            this.gBChanged.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -49,12 +52,13 @@
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Panel1Collapsed = true;
-            this.splitContainer1.Size = new System.Drawing.Size(283, 182);
+            this.splitContainer1.Size = new System.Drawing.Size(283, 234);
             this.splitContainer1.SplitterDistance = 94;
             this.splitContainer1.TabIndex = 0;
             // 
             // gb1
             // 
+            this.gb1.Controls.Add(this.gBChanged);
             this.gb1.Controls.Add(this.btnPrev);
             this.gb1.Controls.Add(this.btnNext);
             this.gb1.Controls.Add(this.radBut3);
@@ -65,14 +69,14 @@
             this.gb1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gb1.Location = new System.Drawing.Point(0, 0);
             this.gb1.Name = "gb1";
-            this.gb1.Size = new System.Drawing.Size(283, 182);
+            this.gb1.Size = new System.Drawing.Size(283, 234);
             this.gb1.TabIndex = 1;
             this.gb1.TabStop = false;
             this.gb1.Text = "Режим работы:";
             // 
             // btnPrev
             // 
-            this.btnPrev.Location = new System.Drawing.Point(6, 147);
+            this.btnPrev.Location = new System.Drawing.Point(6, 203);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(75, 23);
             this.btnPrev.TabIndex = 6;
@@ -82,7 +86,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(196, 147);
+            this.btnNext.Location = new System.Drawing.Point(196, 203);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 5;
@@ -93,7 +97,7 @@
             // radBut3
             // 
             this.radBut3.AutoSize = true;
-            this.radBut3.Location = new System.Drawing.Point(12, 122);
+            this.radBut3.Location = new System.Drawing.Point(12, 175);
             this.radBut3.Name = "radBut3";
             this.radBut3.Size = new System.Drawing.Size(106, 17);
             this.radBut3.TabIndex = 4;
@@ -104,7 +108,7 @@
             // 
             // btnPath
             // 
-            this.btnPath.Location = new System.Drawing.Point(196, 87);
+            this.btnPath.Location = new System.Drawing.Point(196, 76);
             this.btnPath.Name = "btnPath";
             this.btnPath.Size = new System.Drawing.Size(75, 23);
             this.btnPath.TabIndex = 3;
@@ -114,7 +118,7 @@
             // 
             // txtPath
             // 
-            this.txtPath.Location = new System.Drawing.Point(12, 90);
+            this.txtPath.Location = new System.Drawing.Point(12, 79);
             this.txtPath.Name = "txtPath";
             this.txtPath.Size = new System.Drawing.Size(155, 20);
             this.txtPath.TabIndex = 2;
@@ -122,7 +126,7 @@
             // radBut2
             // 
             this.radBut2.AutoSize = true;
-            this.radBut2.Location = new System.Drawing.Point(12, 64);
+            this.radBut2.Location = new System.Drawing.Point(12, 53);
             this.radBut2.Name = "radBut2";
             this.radBut2.Size = new System.Drawing.Size(140, 17);
             this.radBut2.TabIndex = 1;
@@ -134,7 +138,7 @@
             // radBut1
             // 
             this.radBut1.AutoSize = true;
-            this.radBut1.Location = new System.Drawing.Point(12, 31);
+            this.radBut1.Location = new System.Drawing.Point(12, 25);
             this.radBut1.Name = "radBut1";
             this.radBut1.Size = new System.Drawing.Size(127, 17);
             this.radBut1.TabIndex = 0;
@@ -147,13 +151,34 @@
             // 
             this.openPath.Filter = "XML-файл (*.xml)|*.xml";
             // 
+            // gBChanged
+            // 
+            this.gBChanged.Controls.Add(this.chBox1);
+            this.gBChanged.Location = new System.Drawing.Point(12, 105);
+            this.gBChanged.Name = "gBChanged";
+            this.gBChanged.Size = new System.Drawing.Size(259, 64);
+            this.gBChanged.TabIndex = 7;
+            this.gBChanged.TabStop = false;
+            this.gBChanged.Text = "Режим редактирования";
+            // 
+            // chBox1
+            // 
+            this.chBox1.AutoSize = true;
+            this.chBox1.Location = new System.Drawing.Point(6, 29);
+            this.chBox1.Name = "chBox1";
+            this.chBox1.Size = new System.Drawing.Size(77, 17);
+            this.chBox1.TabIndex = 0;
+            this.chBox1.Text = "XML-файл";
+            this.chBox1.UseVisualStyleBackColor = true;
+            // 
             // TestWorkStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(283, 182);
+            this.ClientSize = new System.Drawing.Size(283, 234);
             this.Controls.Add(this.gb1);
             this.Controls.Add(this.splitContainer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "TestWorkStart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактор тестов";
@@ -162,6 +187,8 @@
             this.splitContainer1.ResumeLayout(false);
             this.gb1.ResumeLayout(false);
             this.gb1.PerformLayout();
+            this.gBChanged.ResumeLayout(false);
+            this.gBChanged.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -178,5 +205,7 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.OpenFileDialog openPath;
         private System.Windows.Forms.Button btnPrev;
+        private System.Windows.Forms.GroupBox gBChanged;
+        private System.Windows.Forms.CheckBox chBox1;
     }
 }

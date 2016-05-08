@@ -57,12 +57,14 @@ namespace Prepod
             {
                 txtPath.Enabled = false;
                 btnPath.Enabled = false;
+                gBChanged.Enabled = false;
             }
             else
                 if (radBut2.Checked)
                 {
                     txtPath.Enabled = true;
                     btnPath.Enabled = true;
+                    gBChanged.Enabled = true;
                 }
 
         }
@@ -92,7 +94,12 @@ namespace Prepod
             }
             if (radBut2.Checked==true)
             {
-
+                if (chBox1.Checked)
+                {
+                    TestEditXml testedit = new TestEditXml();
+                    this.Hide();
+                    testedit.Show();         
+                }
             }
             if (radBut3.Checked==true)
             {

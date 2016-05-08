@@ -221,3 +221,5 @@ C:\Users\User\Desktop\Текущие проекты\Версия на тести
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\НОВОЕ\Prepod\Prepod\obj\Debug\Prepod.delTest.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\НОВОЕ\Prepod\Prepod\obj\Debug\Prepod.BlackBox.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\НОВОЕ\Prepod\Prepod\obj\Debug\Prepod.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\НОВОЕ\Prepod\Prepod\obj\Debug\Prepod.TestEditXml.resources
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\НОВОЕ\Prepod\Prepod\obj\Debug\Prepod.NewProverkaBlackBox.resources

@@ -100,6 +100,12 @@
     <Compile Include="menuPrepod.Designer.cs">
       <DependentUpon>menuPrepod.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewProverkaBlackBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewProverkaBlackBox.Designer.cs">
+      <DependentUpon>NewProverkaBlackBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="StartForm.cs">
       <SubType>Form</SubType>
@@ -112,6 +118,12 @@
     </Compile>
     <Compile Include="taskEditor.Designer.cs">
       <DependentUpon>taskEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestEditXml.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestEditXml.Designer.cs">
+      <DependentUpon>TestEditXml.cs</DependentUpon>
     </Compile>
     <Compile Include="TestWorkStart.cs">
       <SubType>Form</SubType>
@@ -258,11 +270,17 @@
     <EmbeddedResource Include="menuPrepod.resx">
       <DependentUpon>menuPrepod.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewProverkaBlackBox.resx">
+      <DependentUpon>NewProverkaBlackBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="taskEditor.resx">
       <DependentUpon>taskEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestEditXml.resx">
+      <DependentUpon>TestEditXml.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestWorkStart.resx">
       <DependentUpon>TestWorkStart.cs</DependentUpon>
