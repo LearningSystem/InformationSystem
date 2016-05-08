@@ -16,7 +16,7 @@ namespace Prepod
     public partial class DataBlackBox : Form
     {
         int numPrepod;
-        bool allright;
+        bool allright=true;
         SqlConnection sconn;
         public string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
         string temp = "";
@@ -24,6 +24,7 @@ namespace Prepod
         int i = 1;
         int numTest = -1;
         int NumberProv = 0;
+        string[] index = new string[200];
         //--
         public DataBlackBox(int _numPrepod)
         {
@@ -33,11 +34,8 @@ namespace Prepod
 
         private void DataBlackBox_Load(object sender, EventArgs e)
         {
-            //// TODO: This line of code loads data into the 'viewExitData._ViewExitData' table. You can move, or remove it, as needed.
-            //this.viewExitDataTableAdapter.Fill(this.viewExitData._ViewExitData);
-            //// TODO: This line of code loads data into the 'viewEnterData._ViewEnterData' table. You can move, or remove it, as needed.
-            //this.viewEnterDataTableAdapter.Fill(this.viewEnterData._ViewEnterData);
-
+            LoadExercise();
+            Started(false);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -232,11 +230,174 @@ namespace Prepod
             } sconn.Close();
         }
 
-        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        //private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    menuPrepod menPred = new menuPrepod(numPrepod.ToString());
+        //    this.Hide();
+        //    menPred.Show();
+        //}
+
+        private void изменениеДанныхToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            menuPrepod menPred = new menuPrepod(numPrepod.ToString());
-            this.Hide();
-            menPred.Show();
+
+        }
+
+        void LoadExercise()
+        {
+            sconn = new SqlConnection(connectionString);
+            using (sconn)
+            {
+                sconn.Open();
+                SqlCommand scommand = new SqlCommand();
+                scommand.Connection = sconn;
+                scommand.CommandText = @"SELECT [№ задачи] from [Задача] where [№ преподавателя]='" + numPrepod.ToString() + "'";
+                try
+                {
+                    SqlDataReader dr = scommand.ExecuteReader();
+                    while (dr.Read())
+                        cmBExer.Items.Add(dr[0].ToString());
+                    dr.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            } sconn.Close();
+        }
+
+        private void cmBExer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (dGVData.Enabled == false)
+                Started(true);
+            rTBText1.Text = null;
+            dGVData.DataSource = null;
+            ReadTests(cmBExer.SelectedItem.ToString());
+            LoadTextExer(cmBExer.SelectedItem.ToString());
+        }
+        void ReadTests(string _select)
+        {
+            cmBTest.Items.Clear();
+            sconn = new SqlConnection(connectionString);
+            using (sconn)
+            {
+                sconn.Open();
+                SqlCommand scommand = new SqlCommand();
+                scommand.Connection = sconn;
+                scommand.CommandText = @"SELECT [№ проверки] from [Проверка] where [№ задачи]='"+_select+"'";
+                try
+                {
+                    SqlDataReader dr = scommand.ExecuteReader();
+                    int elem = 1;
+                    //string[] index=new string[200];
+                    int p=0;
+                    while (dr.Read())
+                    {
+                        cmBTest.Items.Add("Тест №" + elem.ToString());
+                        index[p] = dr[0].ToString();
+                        elem++;
+                        p++;
+                    }
+                    dr.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            } sconn.Close();
+        }
+
+        void LoadTextExer(string _select)
+        {
+            string _path=Application.StartupPath;
+            sconn = new SqlConnection(connectionString);
+            bool ok=true;
+            using (sconn)
+            {
+                sconn.Open();
+                SqlCommand scommand = new SqlCommand();
+                scommand.Connection = sconn;
+                scommand.CommandText = @"SELECT [Путь к папке] from [Преподаватель] where [№ преподавателя]='"+numPrepod.ToString()+"'";
+                try
+                {
+                    SqlDataReader dr = scommand.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        _path=_path+dr[0].ToString();
+                    }
+                    if (_path==Application.StartupPath)
+                    {
+                        ok=false;
+                    }
+                    dr.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            } sconn.Close();
+            //------------------------------------------
+            if (ok==true)
+            {
+                sconn = new SqlConnection(connectionString);
+                 using (sconn)
+                {
+                    sconn.Open();
+                    SqlCommand scommand = new SqlCommand();
+                    scommand.Connection = sconn;
+                    scommand.CommandText = @"SELECT [ССылка] from [Задача] where [№ задачи]='"+_select+"'";
+                    try
+                    {
+                        SqlDataReader dr = scommand.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            _path=_path+dr[0].ToString();
+                        }
+                        dr.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                } sconn.Close();
+                //------------------------------------
+                 rTBText1.LoadFile(_path);
+            }
+            else
+            {
+                MessageBox.Show("Ссылка пути преподавателя считалась неверно");
+            }
+        }
+
+        private void cmBTest_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                dGVData.DataSource = null;
+                sconn = new SqlConnection(connectionString);
+                sconn.Open();
+                string query = @"SELECT distinct [Входные данные].[Значение] AS 'Входные данные',[Выходные данные].[Значение] AS 'Выходные данные' from [Входные данные],[Выходные данные],[Проверка] where [Проверка].[№ задачи]='" + cmBExer.SelectedItem.ToString() + "' and [Выходные данные].[№ проверки]='" + index[cmBTest.SelectedIndex] + "' and [Входные данные].[№ проверки]='" + index[cmBTest.SelectedIndex] +"'";
+                SqlDataAdapter sda = new SqlDataAdapter(query, sconn);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                dGVData.DataSource = dt;
+            }
+            catch(Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+            sconn.Close();
+        }
+        void Started(bool _select)
+        {
+            lblExerText.Enabled = _select;
+            rTBText1.Enabled = _select;
+            lblnumTest.Enabled = _select;
+            cmBTest.Enabled = _select;
+            dGVData.Enabled = _select;
+            видИзмененияToolStripMenuItem.Enabled = _select;
         }
     }
 }

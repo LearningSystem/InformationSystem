@@ -30,29 +30,35 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.cmBTest = new System.Windows.Forms.ComboBox();
+            this.lblnumTest = new System.Windows.Forms.Label();
+            this.gBData = new System.Windows.Forms.GroupBox();
+            this.dGVData = new System.Windows.Forms.DataGridView();
+            this.rTBText1 = new System.Windows.Forms.RichTextBox();
+            this.lblExerText = new System.Windows.Forms.Label();
             this.lbl1 = new System.Windows.Forms.Label();
-            this.cmB = new System.Windows.Forms.ComboBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.cmBExer = new System.Windows.Forms.ComboBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.GenMenu = new System.Windows.Forms.MenuStrip();
             this.oToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.видИзмененияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вводДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.изменениеДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалениеДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.gBData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVData)).BeginInit();
             this.GenMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(3, 33);
+            this.tabControl1.Location = new System.Drawing.Point(3, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(850, 395);
@@ -60,34 +66,74 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.richTextBox1);
-            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.cmBTest);
+            this.tabPage1.Controls.Add(this.lblnumTest);
+            this.tabPage1.Controls.Add(this.gBData);
+            this.tabPage1.Controls.Add(this.rTBText1);
+            this.tabPage1.Controls.Add(this.lblExerText);
             this.tabPage1.Controls.Add(this.lbl1);
-            this.tabPage1.Controls.Add(this.cmB);
+            this.tabPage1.Controls.Add(this.cmBExer);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(842, 369);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Ввод данных";
+            this.tabPage1.Text = "Основная вкладка";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
+            // cmBTest
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(9, 112);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(304, 251);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "";
+            this.cmBTest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmBTest.FormattingEnabled = true;
+            this.cmBTest.Location = new System.Drawing.Point(192, 40);
+            this.cmBTest.Name = "cmBTest";
+            this.cmBTest.Size = new System.Drawing.Size(121, 21);
+            this.cmBTest.TabIndex = 6;
+            this.cmBTest.SelectedIndexChanged += new System.EventHandler(this.cmBTest_SelectedIndexChanged);
             // 
-            // label1
+            // lblnumTest
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 86);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Текст задачи:";
+            this.lblnumTest.AutoSize = true;
+            this.lblnumTest.Location = new System.Drawing.Point(189, 14);
+            this.lblnumTest.Name = "lblnumTest";
+            this.lblnumTest.Size = new System.Drawing.Size(85, 13);
+            this.lblnumTest.TabIndex = 5;
+            this.lblnumTest.Text = "Выберите тест:";
+            // 
+            // gBData
+            // 
+            this.gBData.Controls.Add(this.dGVData);
+            this.gBData.Location = new System.Drawing.Point(330, 14);
+            this.gBData.Name = "gBData";
+            this.gBData.Size = new System.Drawing.Size(512, 349);
+            this.gBData.TabIndex = 4;
+            this.gBData.TabStop = false;
+            this.gBData.Text = "Данные:";
+            // 
+            // dGVData
+            // 
+            this.dGVData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGVData.Location = new System.Drawing.Point(3, 16);
+            this.dGVData.Name = "dGVData";
+            this.dGVData.Size = new System.Drawing.Size(506, 327);
+            this.dGVData.TabIndex = 0;
+            // 
+            // rTBText1
+            // 
+            this.rTBText1.Location = new System.Drawing.Point(3, 112);
+            this.rTBText1.Name = "rTBText1";
+            this.rTBText1.Size = new System.Drawing.Size(321, 251);
+            this.rTBText1.TabIndex = 3;
+            this.rTBText1.Text = "";
+            // 
+            // lblExerText
+            // 
+            this.lblExerText.AutoSize = true;
+            this.lblExerText.Location = new System.Drawing.Point(6, 86);
+            this.lblExerText.Name = "lblExerText";
+            this.lblExerText.Size = new System.Drawing.Size(78, 13);
+            this.lblExerText.TabIndex = 2;
+            this.lblExerText.Text = "Текст задачи:";
             // 
             // lbl1
             // 
@@ -98,32 +144,15 @@
             this.lbl1.TabIndex = 1;
             this.lbl1.Text = "№ задачи:";
             // 
-            // cmB
+            // cmBExer
             // 
-            this.cmB.FormattingEnabled = true;
-            this.cmB.Location = new System.Drawing.Point(6, 40);
-            this.cmB.Name = "cmB";
-            this.cmB.Size = new System.Drawing.Size(121, 21);
-            this.cmB.TabIndex = 0;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(842, 369);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Изменение";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(842, 369);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Удаление";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.cmBExer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmBExer.FormattingEnabled = true;
+            this.cmBExer.Location = new System.Drawing.Point(6, 40);
+            this.cmBExer.Name = "cmBExer";
+            this.cmBExer.Size = new System.Drawing.Size(121, 21);
+            this.cmBExer.TabIndex = 0;
+            this.cmBExer.SelectedIndexChanged += new System.EventHandler(this.cmBExer_SelectedIndexChanged);
             // 
             // btnOK
             // 
@@ -148,7 +177,8 @@
             // 
             this.GenMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.oToolStripMenuItem,
-            this.выходToolStripMenuItem});
+            this.выходToolStripMenuItem,
+            this.видИзмененияToolStripMenuItem});
             this.GenMenu.Location = new System.Drawing.Point(0, 0);
             this.GenMenu.Name = "GenMenu";
             this.GenMenu.Size = new System.Drawing.Size(865, 24);
@@ -168,6 +198,36 @@
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // видИзмененияToolStripMenuItem
+            // 
+            this.видИзмененияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.вводДанныхToolStripMenuItem,
+            this.изменениеДанныхToolStripMenuItem,
+            this.удалениеДанныхToolStripMenuItem});
+            this.видИзмененияToolStripMenuItem.Name = "видИзмененияToolStripMenuItem";
+            this.видИзмененияToolStripMenuItem.Size = new System.Drawing.Size(133, 20);
+            this.видИзмененияToolStripMenuItem.Text = "Действие с данными";
+            // 
+            // вводДанныхToolStripMenuItem
+            // 
+            this.вводДанныхToolStripMenuItem.Name = "вводДанныхToolStripMenuItem";
+            this.вводДанныхToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.вводДанныхToolStripMenuItem.Text = "Ввод нового теста";
+            // 
+            // изменениеДанныхToolStripMenuItem
+            // 
+            this.изменениеДанныхToolStripMenuItem.Name = "изменениеДанныхToolStripMenuItem";
+            this.изменениеДанныхToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.изменениеДанныхToolStripMenuItem.Text = "Изменение";
+            this.изменениеДанныхToolStripMenuItem.Click += new System.EventHandler(this.изменениеДанныхToolStripMenuItem_Click);
+            // 
+            // удалениеДанныхToolStripMenuItem
+            // 
+            this.удалениеДанныхToolStripMenuItem.Name = "удалениеДанныхToolStripMenuItem";
+            this.удалениеДанныхToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.удалениеДанныхToolStripMenuItem.Text = "Удаление";
             // 
             // openFileDialog1
             // 
@@ -189,6 +249,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.gBData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dGVData)).EndInit();
             this.GenMenu.ResumeLayout(false);
             this.GenMenu.PerformLayout();
             this.ResumeLayout(false);
@@ -200,17 +262,23 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.MenuStrip GenMenu;
         private System.Windows.Forms.ToolStripMenuItem oToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblExerText;
         private System.Windows.Forms.Label lbl1;
-        private System.Windows.Forms.ComboBox cmB;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ComboBox cmBExer;
+        private System.Windows.Forms.RichTextBox rTBText1;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ComboBox cmBTest;
+        private System.Windows.Forms.Label lblnumTest;
+        private System.Windows.Forms.GroupBox gBData;
+        private System.Windows.Forms.DataGridView dGVData;
+        private System.Windows.Forms.ToolStripMenuItem видИзмененияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вводДанныхToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem изменениеДанныхToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалениеДанныхToolStripMenuItem;
     }
 }
