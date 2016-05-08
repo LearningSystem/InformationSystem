@@ -399,5 +399,31 @@ namespace Prepod
             dGVData.Enabled = _select;
             видИзмененияToolStripMenuItem.Enabled = _select;
         }
+
+        private void удалениеДанныхToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string quest="Вы уверены, что хотите удалить "+cmBTest.SelectedItem.ToString()+"?";
+            if (MessageBox.Show(quest,"Предупреждение",MessageBoxButtons.YesNo)==DialogResult.Yes)
+            {
+                sconn = new SqlConnection(connectionString);
+                using (sconn)
+                {
+                    sconn.Open();
+                    SqlCommand scommand = new SqlCommand();
+                    scommand.Connection = sconn;
+                    scommand.CommandText = @"Delete from [Проверка] where [№ задачи]='"+cmBExer.SelectedItem.ToString()+"' and [№ проверки]='"+index[cmBTest.SelectedIndex]+"'";
+                    try
+                    {
+                        scommand.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                } sconn.Close();
+            }
+            dGVData.DataSource = null;
+            ReadTests(cmBExer.SelectedItem.ToString());
+        }
     }
 }

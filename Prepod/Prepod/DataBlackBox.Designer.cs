@@ -96,9 +96,9 @@
             this.lblnumTest.AutoSize = true;
             this.lblnumTest.Location = new System.Drawing.Point(189, 14);
             this.lblnumTest.Name = "lblnumTest";
-            this.lblnumTest.Size = new System.Drawing.Size(85, 13);
+            this.lblnumTest.Size = new System.Drawing.Size(105, 13);
             this.lblnumTest.TabIndex = 5;
-            this.lblnumTest.Text = "Выберите тест:";
+            this.lblnumTest.Text = "Выберите № теста:";
             // 
             // gBData
             // 
@@ -228,6 +228,7 @@
             this.удалениеДанныхToolStripMenuItem.Name = "удалениеДанныхToolStripMenuItem";
             this.удалениеДанныхToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.удалениеДанныхToolStripMenuItem.Text = "Удаление";
+            this.удалениеДанныхToolStripMenuItem.Click += new System.EventHandler(this.удалениеДанныхToolStripMenuItem_Click);
             // 
             // openFileDialog1
             // 
