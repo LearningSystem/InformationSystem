@@ -96,7 +96,7 @@ namespace Prepod
             {
                 if (chBox1.Checked)
                 {
-                    TestEditXml testedit = new TestEditXml();
+                    TestEditXml testedit = new TestEditXml(numTeacher,txtPath.Text);
                     this.Hide();
                     testedit.Show();         
                 }
