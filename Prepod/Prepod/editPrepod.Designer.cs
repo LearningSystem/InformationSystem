@@ -54,7 +54,7 @@
             this.groupBox1.Size = new System.Drawing.Size(225, 194);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Добавить студента";
+            this.groupBox1.Text = "Добавить преподавателя";
             // 
             // button1
             // 

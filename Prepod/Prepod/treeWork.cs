@@ -21,7 +21,11 @@ namespace Prepod
         string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
         
         DataTable data = new DataTable();
-        TreeNode newNode;        
+        DataTable dataTask = new DataTable();
+        DataTable dataGroup = new DataTable();
+        TreeNode newNode;
+
+        BindingSource bs = new BindingSource();
 
         string numPrepod = "";
         string numTree;
@@ -31,8 +35,76 @@ namespace Prepod
             numPrepod = _numPrepod;
             conn = new SqlConnection(connectionString);
             comm = new SqlCommand();
-            comm.Connection = conn;                                                                      
+            comm.Connection = conn;
+            dgSettings(dg);
+            showGroup();
+            loadGroups();                                                     
         }
+
+        private void loadGroups()
+        {
+            try
+            {
+                conn.Open();
+                comm.Connection = conn;
+                comm.CommandText = "Select Название from Группа";
+
+                SqlDataReader rdr = comm.ExecuteReader();
+                while (rdr.Read())
+                {
+                    groups.Items.Add(rdr[0].ToString());
+                }
+                rdr.Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
+            finally
+            {
+                conn.Close();                
+                bs.DataSource = dataTask;
+                bs.Filter = null;
+                              
+            }
+        }
+        
+
+        private void dgSettings(DataGridView dgv)
+        {
+            dgv.AllowUserToAddRows = false;
+            dgv.AllowUserToDeleteRows = false;
+            dgv.AllowUserToOrderColumns = false;
+            dgv.AllowUserToResizeRows = false;
+            dgv.AllowUserToResizeColumns = true;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        private void showGroup()
+        {
+            try
+            {
+                conn.Open();
+                comm.Connection = conn;
+                comm.CommandText = "Select * from [Варианты студентов]";
+
+                SqlDataAdapter adapter1 = new SqlDataAdapter(comm);
+                dataTask.Clear();
+                adapter1.Fill(dataTask);
+                dg.DataSource = dataTask;
+                dg.Columns[3].Visible = false;
+                dg.Columns[5].Visible = false;                
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
+            }
+            finally
+            {                
+                conn.Close();
+            }
+        }
+
 
         private void showWindow(bool lv1, bool lv2, bool pnl1, bool rtb1)
         {
@@ -59,11 +131,6 @@ namespace Prepod
 
         private void loadNodes(TreeNodeCollection nodes, string numTree)
         {
-            //conn = new SqlConnection(connectionString);
-            //conn.Open();
-            //SqlCommand comm = new SqlCommand();
-            //comm.Connection = conn;
-
             foreach (TreeNode node in nodes)
             {
                 //считываем всех потомков на первом уровне  
@@ -172,7 +239,7 @@ namespace Prepod
                     {
                         string path = getPrepodPath() + listView1.SelectedItems[0].Tag.ToString();
                         rb.LoadFile(path);
-                        tabControl1.SelectedTab = textData;
+                        group.SelectedTab = textData;
                     }; break;
                 case "Курс обучения":
                     {                        
@@ -181,7 +248,7 @@ namespace Prepod
                         LoadTree(numTree);
                         tree.Tag = numTree;
                         tree.Visible = toolsTree.Visible = true;
-                        tabControl1.SelectedTab = property;
+                        group.SelectedTab = property;
                         splitContainer1.Panel1Collapsed = false;
                     }; break;
                 case "Тесты":
@@ -194,10 +261,11 @@ namespace Prepod
                     }; break;
                 case "Выберите задачи":
                     {
-                        insertTask(listView1.SelectedItems[0].Tag.ToString());
+                        this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+                        //insertTask(listView1.SelectedItems[0].Tag.ToString());
                     }; break;
             }
-            listView1.Items.Clear();           
+                      
             
         }
 
@@ -423,7 +491,7 @@ namespace Prepod
                 //вставляем в таблицу Задача
                 conn.Open();
                 //comm.CommandText = "insert into Задача (Название, [№ вершины], Ссылка) Values ('" + name + "', '" + parent +"', '"+ path +"')";
-                comm.CommandText = "Update Задача set [№ вершины] = '" + num + "' where [№ задачи] = '" + listView1.SelectedItems[0].Tag.ToString() + "'";
+                comm.CommandText = "Update Задача set [№ вершины] = '" + num + "' where [№ задачи] = '" + id + "'";
                 comm.ExecuteNonQuery();                                                              
             }
             catch (Exception exc)
@@ -495,7 +563,7 @@ namespace Prepod
 
         private void selectTasks(string commandText)
         {
-            tabControl1.SelectedTab = list;
+            group.SelectedTab = list;
             list.Text = "Выберите задачи";
             listView1.Items.Clear();
             listView1.View = View.Tile;
@@ -581,8 +649,7 @@ namespace Prepod
             {
                 newSection.Enabled = true;
                 cpc.Enabled = false;
-                doc.Enabled = false;
-                task.Enabled = false;
+                doc.Enabled = false;                
                 test.Enabled = false;
             }
             else
@@ -593,32 +660,28 @@ namespace Prepod
                         {
                             newSection.Enabled = false;
                             cpc.Enabled = false;
-                            doc.Enabled = false;
-                            task.Enabled = false;
+                            doc.Enabled = false;                            
                             test.Enabled = false;
                         }; break;
                     case "1":
                         {
                             newSection.Enabled = false;
                             cpc.Enabled = false;
-                            doc.Enabled = true;
-                            task.Enabled = true;
+                            doc.Enabled = true;                            
                             test.Enabled = false;
                         }; break;
                     case "2":
                         {
                             newSection.Enabled = false;
                             cpc.Enabled = false;
-                            doc.Enabled = false;
-                            task.Enabled = false;
+                            doc.Enabled = false;                            
                             test.Enabled = false;
                         }; break;
                     case "3":
                         {
                             newSection.Enabled = true;
                             cpc.Enabled = true;
-                            doc.Enabled = true;
-                            task.Enabled = false;
+                            doc.Enabled = true;                            
                             test.Enabled = true;
 
                         }; break;
@@ -653,31 +716,12 @@ namespace Prepod
             conn.Close();
             return type;
             
-        }
-       
-
-        private string typeNode(string Id)
-        {
-            conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand comm = new SqlCommand();
-            comm.Connection = conn;
-            comm.CommandText = "select Тип from [Тип вершины], Вершина where Вершина.[Тип вершины] = [Тип вершины].Код and [№ вершины] = '" + Id + "'";
-            SqlDataReader rdr = comm.ExecuteReader();
-            string index = "";
-            if (rdr.HasRows)
-            {
-                rdr.Read();
-                index = rdr[0].ToString();
-            }
-            rdr.Close();
-            return index;
-        }
+        }        
 
 
         private void loadTasks(string Id)
         {
-            tabControl1.SelectedTab = list;
+            group.SelectedTab = list;
             listView1.Items.Clear();
             listView1.View = View.Tile;
             list.Text = "Задачи";
@@ -685,7 +729,7 @@ namespace Prepod
             try
             {
                 conn.Open();
-                comm.CommandText = "select * from Задача where [№ вершины] = '" + Id + "'";
+                comm.CommandText = "select * from Задача a  left join [Выполненная задача] b on a.[№ задачи]=b.[№ задачи] where [№ вершины] = '"+ Id +"'";
 
                 SqlDataReader rdr = comm.ExecuteReader();
 
@@ -704,9 +748,12 @@ namespace Prepod
                     string numTask = rdr[0].ToString();
                     string path = rdr[3].ToString();
                     string description = rdr[4].ToString();
+                    string student = rdr[9].ToString();
                     lv = new ListViewItem(new string[] { numTask, tName, description}, 1);
                     lv.Name = tName;
                     lv.Tag = path;
+                    if (student != "")
+                        lv.BackColor = Color.Green;
                     listView1.Items.Add(lv);
                 }
                 rdr.Close();
@@ -746,12 +793,8 @@ namespace Prepod
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {            
-            bool flag = true;
-            if (e.Node.Name != "Задача")
-            {
-                flag = dostup(e.Node.Tag.ToString()); //считываем доступ
-            }
+        {
+            bool flag = dostup(e.Node.Tag.ToString()); //считываем доступ            
             name.Text = e.Node.Text;
             access.SelectedIndex = Convert.ToInt32(!flag);
             
@@ -761,25 +804,25 @@ namespace Prepod
                     {
                         groupBox4.Visible = true;
                         loadTasks(e.Node.Tag.ToString());
-                        loadInf(e.Node.Tag.ToString(),true);                        
-                        tabControl1.SelectedTab = list;
+                        loadInf(e.Node.Tag.ToString());                        
+                        group.SelectedTab = list;
                     }; break;
                 case "Тест":
                     {
                         groupBox4.Visible = true;
-                        loadInf(e.Node.Tag.ToString(), false);
+                        loadInf(e.Node.Tag.ToString());
                         loadTest(e.Node.Tag.ToString());
-                        tabControl1.SelectedTab = list;
+                        group.SelectedTab = list;
                     }; break;
                 case "Новый раздел":
                     {
                         groupBox4.Visible = false;
-                        tabControl1.SelectedTab = property;                      
+                        group.SelectedTab = property;                      
                     }; break;
                 default:
                     {
                         groupBox4.Visible = false;
-                        tabControl1.SelectedTab = textData; 
+                        group.SelectedTab = textData; 
                         openTextFile(e.Node.Tag.ToString());
                         
                     }; break;
@@ -807,39 +850,23 @@ namespace Prepod
             }            
         }
 
-        private void loadInf(string id, bool flag)
+        private void loadInf(string id)
         {
             try
             {
-                conn.Open();
-                if (flag)
+                conn.Open();                
+                comm.CommandText = "select [Максимальный балл], [Срок сдачи] from Вершина where [№ вершины] = '" + id + "'";
+                name.Enabled = true;                    
+                SqlDataReader rdr = comm.ExecuteReader();                                
+                if (rdr.HasRows)
                 {
-                    comm.CommandText = "select [Сколько каждому], Уровень, [Максимальный балл], [Срок сдачи] from Вершина where [№ вершины] = '" + id + "'";
-                    name.Enabled = true;
-                    textBox1.Enabled = true;
-                    SqlDataReader rdr = comm.ExecuteReader();
-                    rdr.Read();                    
-                    textBox1.Text = rdr[0].ToString();
-                    textBox1.Enabled = true;
-                    textBox2.Text = rdr[2].ToString();
-                    textBox3.Text = rdr[1].ToString();
-                    textBox3.Enabled = true;
-                    rdr.Close();
-                }
-                else
-                {
-                    comm.CommandText = "select [Максимальный балл], [Срок сдачи] from Вершина where [№ вершины] = '" + id + "'";                    
-                    textBox1.Enabled = false;
-                    SqlDataReader rdr = comm.ExecuteReader();
                     rdr.Read();
-                    textBox1.Text = "";
-                    textBox1.Enabled = false;
-                    textBox3.Text = "";
-                    textBox3.Enabled = false;
-                    textBox2.Text = rdr[0].ToString();
-                    
-                    rdr.Close();
-                }
+                    maxBall.Text = rdr[0].ToString();
+                    string date = rdr[1].ToString();
+                    if (date != "")
+                        dateTime.Value = DateTime.Parse(date);
+                }                
+                rdr.Close();                                
             }
             catch (Exception exc)
             {
@@ -853,7 +880,7 @@ namespace Prepod
 
         private void loadTest(string id)
         {
-            tabControl1.SelectedTab = list;
+            group.SelectedTab = list;
             listView1.Items.Clear();
             listView1.View = View.Tile;
             list.Text = "Тесты";
@@ -1157,7 +1184,7 @@ namespace Prepod
             tree.Visible = toolsTree.Visible = false;
             rb.Clear();            
             tree.Visible = false;            
-            tabControl1.SelectedTab = list;
+            group.SelectedTab = list;
                         
             listView1.Items.Clear();
             listView1.View = View.Tile;
@@ -1215,7 +1242,7 @@ namespace Prepod
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedTab = list;
+            group.SelectedTab = list;
             listView1.Items.Clear();
             if (listView1.Items.Count > 0)
             {
@@ -1267,14 +1294,169 @@ namespace Prepod
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-            //comm.CommandText = "Update Тест set [№ вершины] = '" + num + "' where [№ теста] = '" + listView1.SelectedItems[0].Tag.ToString() + "'";
-            //comm.ExecuteNonQuery();
+        {                       
+            foreach (ListViewItem item in listView1.SelectedItems)
+            {                
+                insertTask(item.Tag.ToString());
+            }
+            //listView1.SelectedItems[0].ToString();
         }
 
         private void tree_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
 
+        }
+
+        private void delTask(string id)
+        {
+            string num = tree.SelectedNode.Tag.ToString();
+            try
+            {
+                //удаляем из таблицы задача
+                conn.Open();                
+                comm.CommandText = "Update Задача set [№ вершины] = NULL where [№ задачи] = '" + id + "'";
+                comm.ExecuteNonQuery();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
+            finally
+            {
+                conn.Close();
+                loadTasks(num);
+            }
+        }
+
+        private void deleteTask_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listView1.SelectedItems)
+            {
+                
+                delTask(item.SubItems[0].Text);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                comm.CommandText = "update Вершина set [Максимальный балл] = '" + maxBall.Text + "', [Срок сдачи] = '"+ dateTime.Value.ToShortDateString() +"' where [№ вершины] = '" + tree.SelectedNode.Tag.ToString() + "'";
+                comm.ExecuteNonQuery();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();                
+            }                           
+        }
+       
+
+        
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            int countStud = 0;
+            int countTask = 0;
+            try
+            {
+                conn.Open();
+                comm.CommandText = "select count(*) from Студент, Группа where Студент.[№ группы]=Группа.[№ группы] and Группа.Название ='" + groups.Text + "'";
+                SqlDataReader rdr = comm.ExecuteReader();
+                rdr.Read();
+                countStud = Convert.ToInt32(rdr[0]);
+                rdr.Close();
+                comm.CommandText = "select count(*) from Задача where [№ вершины] = '"+ tree.SelectedNode.Tag.ToString() +"'";
+                rdr = comm.ExecuteReader();
+                rdr.Read();
+                countTask = Convert.ToInt32(rdr[0]);
+                rdr.Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+                if (countStud * countTask != 0)
+                    generate(countStud, countTask);
+            } 
+        }
+
+        private void generate(int a, int b)
+        {
+            decimal k = a / b;
+            int l = Convert.ToInt32(Math.Ceiling(k + 2));
+            int[,] array = new int[l, b];
+            try
+            {
+                conn.Open();                
+                for (int m = 0; m < l; m++)
+                    for (int n = 0; n < b; n++)
+                        array[m, n] = 0;
+                comm.CommandText = "select [№ задачи] from Задача where [№ вершины] = '" + tree.SelectedNode.Tag.ToString() + "'";
+                SqlDataReader rdr = comm.ExecuteReader();
+                int i = 0;
+                while (rdr.Read())
+                {
+                    array[0, i] = Convert.ToInt32(rdr[0]);
+                    i++;
+                }
+                rdr.Close();
+
+                comm.CommandText = "select Студент.[№ студента] from Студент, Группа where Студент.[№ группы]=Группа.[№ группы] and Группа.Название ='" + groups.Text + "'";
+                rdr = comm.ExecuteReader();
+                Random rand = new Random();
+                int j = 1;
+                int count = 0;
+                int num;
+                while (rdr.Read())
+                {
+                    if (count > b) //если строка заполнилась
+                        j++;
+                    bool flag = true;
+                    while (flag)
+                    {
+                        num = rand.Next(1, b);
+                        if (array[j, num] == 0)
+                        {
+                            flag = false;
+                            array[j, num] = Convert.ToInt32(rdr[0]);
+                            SqlConnection conn1 = new SqlConnection(connectionString);
+                            SqlCommand comm1 = new SqlCommand();
+                            comm1.Connection = conn1;
+                            conn1.Open();
+                            comm1.CommandText = "insert into [Выполненная задача] ([№ задачи], [№ студента]) Values ('" + array[0, num].ToString() + "', '" + array[j, num].ToString() + "')";
+                            comm1.ExecuteNonQuery();
+                            conn1.Close();
+                        }                            
+                    }                    
+                    count++;
+                }                
+                rdr.Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+                showGroup();
+                bs.DataSource = dataTask;
+                bs.Filter = "Группа = '" + groups.Text + "'";
+            } 
+        }
+
+        private void groups_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bs.DataSource = dataTask;
+            bs.Filter = "Группа = '" + groups.Text + "'";
         }   
     }
 }

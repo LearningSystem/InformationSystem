@@ -113,6 +113,12 @@
     <Compile Include="StartForm.Designer.cs">
       <DependentUpon>StartForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="studentTasks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="studentTasks.Designer.cs">
+      <DependentUpon>studentTasks.cs</DependentUpon>
+    </Compile>
     <Compile Include="taskEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="studentTasks.resx">
+      <DependentUpon>studentTasks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="taskEditor.resx">
       <DependentUpon>taskEditor.cs</DependentUpon>
