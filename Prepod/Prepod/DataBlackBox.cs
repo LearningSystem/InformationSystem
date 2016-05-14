@@ -239,7 +239,8 @@ namespace Prepod
 
         private void изменениеДанныхToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            NewProverkaBlackBox newprov = new NewProverkaBlackBox(cmBExer.SelectedItem.ToString(),index[cmBTest.SelectedIndex]);
+            newprov.Show();
         }
 
         void LoadExercise()
@@ -271,7 +272,7 @@ namespace Prepod
             if (dGVData.Enabled == false)
                 Started(true);
             rTBText1.Text = null;
-            dGVData.DataSource = null;
+            dGVData.Rows.Clear();
             ReadTests(cmBExer.SelectedItem.ToString());
             LoadTextExer(cmBExer.SelectedItem.ToString());
         }
@@ -375,14 +376,35 @@ namespace Prepod
         {
             try
             {
-                dGVData.DataSource = null;
+                dGVData.Rows.Clear();
                 sconn = new SqlConnection(connectionString);
                 sconn.Open();
-                string query = @"SELECT distinct [Входные данные].[Значение] AS 'Входные данные',[Выходные данные].[Значение] AS 'Выходные данные' from [Входные данные],[Выходные данные],[Проверка] where [Проверка].[№ задачи]='" + cmBExer.SelectedItem.ToString() + "' and [Выходные данные].[№ проверки]='" + index[cmBTest.SelectedIndex] + "' and [Входные данные].[№ проверки]='" + index[cmBTest.SelectedIndex] +"'";
-                SqlDataAdapter sda = new SqlDataAdapter(query, sconn);
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-                dGVData.DataSource = dt;
+                //string query = @"SELECT distinct [Входные данные].[Значение] AS 'Входные данные',[Выходные данные].[Значение] AS 'Выходные данные' from [Входные данные],[Выходные данные],[Проверка] where [Проверка].[№ задачи]='" + cmBExer.SelectedItem.ToString() + "' and [Выходные данные].[№ проверки]='" + index[cmBTest.SelectedIndex] + "' and [Входные данные].[№ проверки]='" + index[cmBTest.SelectedIndex] +"'";
+                //SqlDataAdapter sda = new SqlDataAdapter(query, sconn);
+                string query=@"SELECT distinct [Входные данные].[Значение] from [Входные данные],[Проверка] where [Проверка].[№ задачи]='" + cmBExer.SelectedItem.ToString() + "' and [Входные данные].[№ проверки]='" + index[cmBTest.SelectedIndex] +"'";
+                SqlCommand scommand = new SqlCommand(query, sconn);
+                SqlDataReader dr = scommand.ExecuteReader();
+                //DataTable dt = new DataTable();
+                int gridindex = 0;
+                while (dr.Read())
+                {
+                    dGVData.Rows.Add();
+                    dGVData.Rows[gridindex].Cells[0].Value = dr[0].ToString();
+                    gridindex++;
+                }
+                dr.Close();
+                //---
+                query = @"SELECT distinct [Выходные данные].[Значение] from [Выходные данные],[Проверка] where [Проверка].[№ задачи]='" + cmBExer.SelectedItem.ToString() + "' and [Выходные данные].[№ проверки]='" + index[cmBTest.SelectedIndex] + "'";
+                scommand = new SqlCommand(query, sconn);
+                dr = scommand.ExecuteReader();
+                gridindex = 0;
+                while (dr.Read())
+                {
+                    //MessageBox.Show(dr[0].ToString());
+                    dGVData.Rows[gridindex].Cells[1].Value = dr[0].ToString();
+                    gridindex++;
+                }
+                dr.Close();
             }
             catch(Exception error)
             {
@@ -433,7 +455,7 @@ namespace Prepod
 
         private void вводДанныхToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NewProverkaBlackBox newprov = new NewProverkaBlackBox(cmBExer.SelectedItem.ToString());
+            NewProverkaBlackBox newprov = new NewProverkaBlackBox(cmBExer.SelectedItem.ToString(),"");
             newprov.Show();
         }
     }

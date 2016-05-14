@@ -39,6 +39,8 @@
             this.lbl1 = new System.Windows.Forms.Label();
             this.gBData = new System.Windows.Forms.GroupBox();
             this.dGVData = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GenMenu = new System.Windows.Forms.MenuStrip();
             this.oToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,6 +101,7 @@
             this.rTBText1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rTBText1.Location = new System.Drawing.Point(3, 16);
             this.rTBText1.Name = "rTBText1";
+            this.rTBText1.ReadOnly = true;
             this.rTBText1.Size = new System.Drawing.Size(333, 303);
             this.rTBText1.TabIndex = 3;
             this.rTBText1.Text = "";
@@ -168,12 +171,30 @@
             // 
             // dGVData
             // 
+            this.dGVData.AllowUserToAddRows = false;
+            this.dGVData.AllowUserToDeleteRows = false;
             this.dGVData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGVData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2});
             this.dGVData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGVData.Location = new System.Drawing.Point(3, 16);
             this.dGVData.Name = "dGVData";
+            this.dGVData.ReadOnly = true;
             this.dGVData.Size = new System.Drawing.Size(506, 380);
             this.dGVData.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Входные данные";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Выходные данные";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // GenMenu
             // 
@@ -215,22 +236,22 @@
             // вводДанныхToolStripMenuItem
             // 
             this.вводДанныхToolStripMenuItem.Name = "вводДанныхToolStripMenuItem";
-            this.вводДанныхToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.вводДанныхToolStripMenuItem.Text = "Ввод нового теста";
+            this.вводДанныхToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.вводДанныхToolStripMenuItem.Text = "Ввод новой проверки";
             this.вводДанныхToolStripMenuItem.Click += new System.EventHandler(this.вводДанныхToolStripMenuItem_Click);
             // 
             // изменениеДанныхToolStripMenuItem
             // 
             this.изменениеДанныхToolStripMenuItem.Name = "изменениеДанныхToolStripMenuItem";
-            this.изменениеДанныхToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.изменениеДанныхToolStripMenuItem.Text = "Изменение";
+            this.изменениеДанныхToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.изменениеДанныхToolStripMenuItem.Text = "Изменение выбранной проверки";
             this.изменениеДанныхToolStripMenuItem.Click += new System.EventHandler(this.изменениеДанныхToolStripMenuItem_Click);
             // 
             // удалениеДанныхToolStripMenuItem
             // 
             this.удалениеДанныхToolStripMenuItem.Name = "удалениеДанныхToolStripMenuItem";
-            this.удалениеДанныхToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.удалениеДанныхToolStripMenuItem.Text = "Удаление";
+            this.удалениеДанныхToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.удалениеДанныхToolStripMenuItem.Text = "Удаление выбранной проверки";
             this.удалениеДанныхToolStripMenuItem.Click += new System.EventHandler(this.удалениеДанныхToolStripMenuItem_Click);
             // 
             // openFileDialog1
@@ -301,5 +322,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox gBSelect;
         private System.Windows.Forms.GroupBox gBText;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

@@ -30,9 +30,7 @@
         {
             this.gB = new System.Windows.Forms.GroupBox();
             this.gBSettings = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnSaveOne = new System.Windows.Forms.Button();
             this.dgvGeneral = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,9 +54,7 @@
             // 
             // gBSettings
             // 
-            this.gBSettings.Controls.Add(this.button1);
             this.gBSettings.Controls.Add(this.btnClear);
-            this.gBSettings.Controls.Add(this.btnSave);
             this.gBSettings.Controls.Add(this.btnSaveOne);
             this.gBSettings.Dock = System.Windows.Forms.DockStyle.Right;
             this.gBSettings.Location = new System.Drawing.Point(384, 16);
@@ -67,15 +63,6 @@
             this.gBSettings.TabIndex = 1;
             this.gBSettings.TabStop = false;
             this.gBSettings.Text = "Действия:";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(24, 229);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 36);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Назад";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // btnClear
             // 
@@ -86,23 +73,15 @@
             this.btnClear.Text = "Очистить";
             this.btnClear.UseVisualStyleBackColor = true;
             // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(24, 123);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(153, 36);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Сохранить и создать еще";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
             // btnSaveOne
             // 
-            this.btnSaveOne.Location = new System.Drawing.Point(24, 68);
+            this.btnSaveOne.Location = new System.Drawing.Point(24, 125);
             this.btnSaveOne.Name = "btnSaveOne";
             this.btnSaveOne.Size = new System.Drawing.Size(153, 36);
             this.btnSaveOne.TabIndex = 0;
             this.btnSaveOne.Text = "Сохранить";
             this.btnSaveOne.UseVisualStyleBackColor = true;
+            this.btnSaveOne.Click += new System.EventHandler(this.btnSaveOne_Click);
             // 
             // dgvGeneral
             // 
@@ -115,6 +94,9 @@
             this.dgvGeneral.Name = "dgvGeneral";
             this.dgvGeneral.Size = new System.Drawing.Size(373, 342);
             this.dgvGeneral.TabIndex = 0;
+            this.dgvGeneral.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGeneral_CellContentClick);
+            this.dgvGeneral.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvGeneral_RowsAdded);
+            this.dgvGeneral.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvGeneral_RowsRemoved);
             // 
             // Column1
             // 
@@ -135,6 +117,7 @@
             this.Name = "NewProverkaBlackBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Создание новой проверки";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewProverkaBlackBox_FormClosing);
             this.Load += new System.EventHandler(this.NewProverkaBlackBox_Load);
             this.gB.ResumeLayout(false);
             this.gBSettings.ResumeLayout(false);
@@ -150,9 +133,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.GroupBox gBSettings;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnSaveOne;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button button1;
     }
 }

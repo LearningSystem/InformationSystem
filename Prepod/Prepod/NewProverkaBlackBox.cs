@@ -18,13 +18,64 @@ namespace Prepod
         SqlConnection sconn;
         SqlCommand scommand;
         string SelectExer;
-        public NewProverkaBlackBox(string _selectExercise)
+        string SelectNumbProv;
+        string SelectNumbTest;
+        bool changes;
+        public NewProverkaBlackBox(string _selectExercise,string _selectNumberTest)
         {
             InitializeComponent();
             SelectExer = _selectExercise;
+            SelectNumbTest = _selectNumberTest;
         }
-
         private void NewProverkaBlackBox_Load(object sender, EventArgs e)
+        {
+            if (SelectNumbTest == "")
+            {
+                numberProv();
+            }
+            else
+            {
+                this.Text = "Изменение проверки";
+                try
+                {
+                    dgvGeneral.Rows.Clear();
+                    sconn = new SqlConnection(connectionString);
+                    sconn.Open();
+                    //string query = @"SELECT distinct [Входные данные].[Значение] AS 'Входные данные',[Выходные данные].[Значение] AS 'Выходные данные' from [Входные данные],[Выходные данные],[Проверка] where [Проверка].[№ задачи]='" + cmBExer.SelectedItem.ToString() + "' and [Выходные данные].[№ проверки]='" + index[cmBTest.SelectedIndex] + "' and [Входные данные].[№ проверки]='" + index[cmBTest.SelectedIndex] +"'";
+                    //SqlDataAdapter sda = new SqlDataAdapter(query, sconn);
+                    string query = @"SELECT distinct [Входные данные].[Значение] from [Входные данные],[Проверка] where [Проверка].[№ задачи]='" + SelectExer + "' and [Входные данные].[№ проверки]='" + SelectNumbTest + "'";
+                    SqlCommand scommand = new SqlCommand(query, sconn);
+                    SqlDataReader dr = scommand.ExecuteReader();
+                    //DataTable dt = new DataTable();
+                    int gridindex = 0;
+                    while (dr.Read())
+                    {
+                        dgvGeneral.Rows.Add();
+                        dgvGeneral.Rows[gridindex].Cells[0].Value = dr[0].ToString();
+                        gridindex++;
+                    }
+                    dr.Close();
+                    //---
+                    query = @"SELECT distinct [Выходные данные].[Значение] from [Выходные данные],[Проверка] where [Проверка].[№ задачи]='" + SelectExer + "' and [Выходные данные].[№ проверки]='" + SelectNumbTest + "'";
+                    scommand = new SqlCommand(query, sconn);
+                    dr = scommand.ExecuteReader();
+                    gridindex = 0;
+                    while (dr.Read())
+                    {
+                        //MessageBox.Show(dr[0].ToString());
+                        dgvGeneral.Rows[gridindex].Cells[1].Value = dr[0].ToString();
+                        gridindex++;
+                    }
+                    dr.Close();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message);
+                }
+                sconn.Close();
+            }
+        }
+        void numberProv()
         {
             sconn = new SqlConnection(connectionString);
             using (sconn)
@@ -32,25 +83,142 @@ namespace Prepod
                 sconn.Open();
                 scommand = new SqlCommand();
                 scommand.Connection = sconn;
-                scommand.CommandText = @"Insert into Проверка ([№ задачи]) values ('"+SelectExer+"')";
+                scommand.CommandText = @"Insert into Проверка ([№ задачи]) values ('" + SelectExer + "')";
                 try
                 {
                     scommand.ExecuteNonQuery();
                     scommand = new SqlCommand();
                     scommand.Connection = sconn;
-                    scommand.CommandText = @"SELECT [№ проверки] from [Проверка] where [№ задачи]='"+SelectExer+"'";
+                    //scommand.CommandText = @"SELECT [№ проверки] from [Проверка] where [№ задачи]='"+SelectExer+"'";
+                    scommand.CommandText = @"SELECT TOP 1 [№ проверки] from [Проверка] order by [№ проверки] desc";
                     SqlDataReader dr = scommand.ExecuteReader();
-                    while(dr.Read())
+                    while (dr.Read())
                     {
-
+                        SelectNumbProv = dr[0].ToString();
                     }
-                    
+                    dr.Close();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             } sconn.Close();
+        }
+        private void btnSaveOne_Click(object sender, EventArgs e)
+        {
+            if (SelectNumbTest == "")
+            {
+                SaveProv();
+                MessageBox.Show("Проверка успешно внесена в БД!", "Успешное выполнение операции");
+            }
+            else
+            {
+                DeleteRows();
+                numberProv();
+                SaveProv();
+                MessageBox.Show("Проверка успешно изменена в БД!", "Успешное выполнение операции");
+            }
+            dgvGeneral.Rows.Clear();
+            changes = false;
+        }
+        void DeleteRows()
+        {
+            sconn = new SqlConnection(connectionString);
+            using (sconn)
+            {
+                sconn.Open();
+                scommand = new SqlCommand();
+                scommand.Connection = sconn;
+                scommand.CommandText = @"Delete from [Проверка] where [№ задачи]='"+SelectExer+"' and [№ проверки]='"+SelectNumbTest+"'";
+                try
+                {
+                    scommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            } sconn.Close();
+        }
+        void SaveProv()
+        {
+            for (int i=0;i<dgvGeneral.RowCount;i++)
+            {
+                if (dgvGeneral.Rows[i].Cells[0].Value!=null)
+                    InsertZnach(dgvGeneral.Rows[i].Cells[0].Value.ToString(), true);
+                if (dgvGeneral.Rows[i].Cells[1].Value!=null)
+                    InsertZnach(dgvGeneral.Rows[i].Cells[1].Value.ToString(), false);
+            }
+        }
+        void InsertZnach(string _selectznach,bool _table)
+        {
+            if (_table==true)
+            {
+                Insertrun(_selectznach,"[Входные данные] ([Значение],[№ проверки])");
+            }
+            else
+            {
+                Insertrun(_selectznach, "[Выходные данные] ([№ проверки],[Значение])");
+            }
+        }
+        void Insertrun(string _select,string dopquery)
+        {
+            sconn = new SqlConnection(connectionString);
+            using (sconn)
+            {
+                sconn.Open();
+                scommand = new SqlCommand();
+                scommand.Connection = sconn;
+                //if (SelectNumbTest == "")
+                //{
+                    if (dopquery == "[Входные данные] ([Значение],[№ проверки])")
+                        scommand.CommandText = @"Insert into " + dopquery.ToString() + " values ('" + _select + "','" + SelectNumbProv.ToString() + "')";
+                    else
+                        scommand.CommandText = @"Insert into " + dopquery.ToString() + " values ('" + SelectNumbProv.ToString() + "','" + _select + "')";
+                //}
+                //else
+                //{
+                //    if (dopquery == "[Входные данные] ([Значение],[№ проверки])")
+                //        scommand.CommandText = @"Insert into " + dopquery.ToString() + " values ('" + _select + "','" + SelectNumbTest + "')";
+                //    else
+                //        scommand.CommandText = @"Insert into " + dopquery.ToString() + " values ('" + SelectNumbTest + "','" + _select + "')";
+                //}
+                try
+                {
+                    scommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            } sconn.Close();
+        }
+
+        private void dgvGeneral_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            changes = true;
+        }
+
+        private void NewProverkaBlackBox_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (changes==true)
+            {
+                if (MessageBox.Show("Сохранить ваши данные?","Выход",MessageBoxButtons.YesNo)==DialogResult.Yes)
+                {
+                    EventArgs el=new EventArgs();
+                    btnSaveOne_Click(sender,el);
+                }
+            }
+        }
+
+        private void dgvGeneral_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            changes = true;
+        }
+
+        private void dgvGeneral_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            changes = true;
         }
     }
 }
