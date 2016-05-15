@@ -74,6 +74,7 @@ namespace Prepod
                 }
                 sconn.Close();
             }
+            changes = false;
         }
         void numberProv()
         {
@@ -104,23 +105,25 @@ namespace Prepod
                 }
             } sconn.Close();
         }
-        private void btnSaveOne_Click(object sender, EventArgs e)
-        {
-            if (SelectNumbTest == "")
-            {
-                SaveProv();
-                MessageBox.Show("Проверка успешно внесена в БД!", "Успешное выполнение операции");
-            }
-            else
-            {
-                DeleteRows();
-                numberProv();
-                SaveProv();
-                MessageBox.Show("Проверка успешно изменена в БД!", "Успешное выполнение операции");
-            }
-            dgvGeneral.Rows.Clear();
-            changes = false;
-        }
+        
+        //private void btnSaveOne_Click(object sender, EventArgs e)
+        //{
+        //    if (SelectNumbTest == "")
+        //    {
+        //        SaveProv();
+        //        MessageBox.Show("Проверка успешно внесена в БД!", "Успешное выполнение операции");
+        //    }
+        //    else
+        //    {
+        //        DeleteRows();
+        //        numberProv();
+        //        SaveProv();
+        //        MessageBox.Show("Проверка успешно изменена в БД!", "Успешное выполнение операции");
+        //    }
+        //    dgvGeneral.Rows.Clear();
+        //    changes = false;
+        //}
+        
         void DeleteRows()
         {
             sconn = new SqlConnection(connectionString);
@@ -140,6 +143,7 @@ namespace Prepod
                 }
             } sconn.Close();
         }
+        
         void SaveProv()
         {
             for (int i=0;i<dgvGeneral.RowCount;i++)
@@ -150,6 +154,7 @@ namespace Prepod
                     InsertZnach(dgvGeneral.Rows[i].Cells[1].Value.ToString(), false);
             }
         }
+
         void InsertZnach(string _selectznach,bool _table)
         {
             if (_table==true)
@@ -161,6 +166,7 @@ namespace Prepod
                 Insertrun(_selectznach, "[Выходные данные] ([№ проверки],[Значение])");
             }
         }
+
         void Insertrun(string _select,string dopquery)
         {
             sconn = new SqlConnection(connectionString);
@@ -201,12 +207,14 @@ namespace Prepod
 
         private void NewProverkaBlackBox_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Proverka();
             if (changes==true)
             {
                 if (MessageBox.Show("Сохранить ваши данные?","Выход",MessageBoxButtons.YesNo)==DialogResult.Yes)
                 {
                     EventArgs el=new EventArgs();
-                    btnSaveOne_Click(sender,el);
+                    //btnSaveOne_Click(sender,el);
+                    сохранитьToolStripMenuItem1_Click(sender,el);
                 }
             }
         }
@@ -219,6 +227,68 @@ namespace Prepod
         private void dgvGeneral_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             changes = true;
+        }
+
+        private void сохранитьToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (SelectNumbTest == "")
+            {
+                SaveProv();
+                MessageBox.Show("Проверка успешно внесена в БД!", "Успешное выполнение операции");
+                if(MessageBox.Show("Вы хотите добавить еще проверку?","Вставка проверки",MessageBoxButtons.YesNo)==DialogResult.Yes)
+                {
+                    numberProv();
+                }
+            }
+            else
+            {
+                DeleteRows();
+                numberProv();
+                SaveProv();
+                MessageBox.Show("Проверка успешно изменена в БД!", "Успешное выполнение операции");
+            }
+            dgvGeneral.Rows.Clear();
+            changes = false;
+        }
+
+        //private void btnClear_Click(object sender, EventArgs e)
+        //{
+
+        //}
+
+        private void очиститьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dgvGeneral.Rows.Clear();
+            changes = true;
+        }
+
+        void Proverka()
+        {
+            sconn = new SqlConnection(connectionString);
+            using (sconn)
+            {
+                sconn.Open();
+                scommand = new SqlCommand();
+                scommand.Connection = sconn;
+                scommand.CommandText = @"SELECT * from [Входные данные],[Выходные данные] where [Входные данные].[№ проверки]='" + SelectNumbProv + "' and [Выходные данные].[№ проверки]='"+ SelectNumbProv + "'";
+                try
+                {
+                    SqlDataReader dr = scommand.ExecuteReader();
+                    if(dr.HasRows==false)
+                    {
+                        dr.Close();
+                        SqlCommand scomm = new SqlCommand();
+                        scomm.Connection = sconn;
+                        scomm.CommandText = @"DELETE FROM [Проверка] where [№ задачи]='" + SelectExer + "' and [№ проверки]='" + SelectNumbProv+"'" ;
+                        scomm.ExecuteNonQuery();
+                    }
+                    //dr.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            } sconn.Close();
         }
     }
 }
