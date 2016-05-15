@@ -52,8 +52,7 @@ namespace Prepod
             loadInf(); 
 
             loadTask.Enabled = false;            
-            groupBox4.Visible = false;                                                
-            estMenu.Enabled = false;
+            groupBox4.Visible = false;                                                            
             rb.ReadOnly = true;
 
             tab.SelectedTab = textData;
@@ -83,7 +82,10 @@ namespace Prepod
             }
             finally
             {
-                conn.Close();                
+                conn.Close();
+                label4.Text = "";
+                label5.Text = "";
+                label6.Text = "";
             }
         }
 
@@ -512,7 +514,7 @@ namespace Prepod
 
         private void успеваемостьToolStripMenuItem_Click(object sender, EventArgs e)
         {            
-            studEstimates se = new studEstimates(numStudent, numTree);
+            Estimates se = new Estimates(numPrepod, numTree);
             se.Show();
         }
 

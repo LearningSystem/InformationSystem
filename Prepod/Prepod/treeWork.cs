@@ -38,7 +38,8 @@ namespace Prepod
             comm.Connection = conn;
             dgSettings(dg);
             showGroup();
-            loadGroups();                                                     
+            loadGroups();
+            toolStripButton4.Enabled = false;                                   
         }
 
         private void loadGroups()
@@ -47,14 +48,14 @@ namespace Prepod
             {
                 conn.Open();
                 comm.Connection = conn;
-                comm.CommandText = "Select Название from Группа";
-
+                comm.CommandText = "Select Название from Группа";                
                 SqlDataReader rdr = comm.ExecuteReader();
                 while (rdr.Read())
                 {
                     groups.Items.Add(rdr[0].ToString());
                 }
                 rdr.Close();
+                groups.SelectedIndex = 0;
             }
             catch (Exception exc)
             {
@@ -63,9 +64,7 @@ namespace Prepod
             finally
             {
                 conn.Close();                
-                bs.DataSource = dataTask;
-                bs.Filter = null;
-                              
+                bs.DataSource = dataTask;                                              
             }
         }
         
@@ -797,18 +796,24 @@ namespace Prepod
             bool flag = dostup(e.Node.Tag.ToString()); //считываем доступ            
             name.Text = e.Node.Text;
             access.SelectedIndex = Convert.ToInt32(!flag);
+            toolStripButton4.Enabled = false; //нельзя распределить варианты пока не встали на срс
+            bs.Filter = null;
             
             switch (e.Node.Name.ToString())
             {
                 case "Самостоятельная работа":
                     {
+                        toolStrip1.Visible = true;
+                        toolStripButton4.Enabled = true;
                         groupBox4.Visible = true;
                         loadTasks(e.Node.Tag.ToString());
                         loadInf(e.Node.Tag.ToString());                        
-                        group.SelectedTab = list;
+                        group.SelectedTab = listGroup;
+                        groups.SelectedIndex = 0;                        
                     }; break;
                 case "Тест":
                     {
+                        toolStrip1.Visible = true;
                         groupBox4.Visible = true;
                         loadInf(e.Node.Tag.ToString());
                         loadTest(e.Node.Tag.ToString());
@@ -1185,6 +1190,7 @@ namespace Prepod
             rb.Clear();            
             tree.Visible = false;            
             group.SelectedTab = list;
+            toolStrip1.Visible = false;
                         
             listView1.Items.Clear();
             listView1.View = View.Tile;
@@ -1368,7 +1374,7 @@ namespace Prepod
                 comm.CommandText = "select count(*) from Студент, Группа where Студент.[№ группы]=Группа.[№ группы] and Группа.Название ='" + groups.Text + "'";
                 SqlDataReader rdr = comm.ExecuteReader();
                 rdr.Read();
-                countStud = Convert.ToInt32(rdr[0]);
+                countStud = Convert.ToInt32(rdr[0]); //количество студентов в группе
                 rdr.Close();
                 comm.CommandText = "select count(*) from Задача where [№ вершины] = '"+ tree.SelectedNode.Tag.ToString() +"'";
                 rdr = comm.ExecuteReader();
@@ -1409,7 +1415,8 @@ namespace Prepod
                 }
                 rdr.Close();
 
-                comm.CommandText = "select Студент.[№ студента] from Студент, Группа where Студент.[№ группы]=Группа.[№ группы] and Группа.Название ='" + groups.Text + "'";
+                string id = tree.SelectedNode.Tag.ToString();
+                comm.CommandText = "select Студент.[№ студента] from Студент, Группа where Студент.[№ студента] not in (select [Выполненная задача].[№ студента] from [Выполненная задача], Задача Where [Выполненная задача].[№ задачи] = Задача.[№ задачи] and Задача.[№ вершины] = '"+ id +"') and Студент.[№ группы]=Группа.[№ группы] and Группа.Название ='"+ groups.Text +"'";
                 rdr = comm.ExecuteReader();
                 Random rand = new Random();
                 int j = 1;
@@ -1449,14 +1456,23 @@ namespace Prepod
                 conn.Close();
                 showGroup();
                 bs.DataSource = dataTask;
-                bs.Filter = "Группа = '" + groups.Text + "'";
+                bs.Filter = "Группа = '" + groups.Text + "' and [№ вершины] = '"+ tree.SelectedNode.Tag.ToString() +"'";
             } 
         }
 
         private void groups_SelectedIndexChanged(object sender, EventArgs e)
         {
             bs.DataSource = dataTask;
-            bs.Filter = "Группа = '" + groups.Text + "'";
+            if ((tree.SelectedNode != null) && (tree.SelectedNode.Name == "Самостоятельная работа"))
+                bs.Filter = "Группа = '" + groups.Text + "' and [№ вершины] = '" + tree.SelectedNode.Tag.ToString() + "'";
+            else
+                bs.Filter = "Группа = '" + groups.Text + "'";
+        }
+
+        private void открытьКурсToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Estimates se = new Estimates(numPrepod, numTree);
+            se.Show();
         }   
     }
 }

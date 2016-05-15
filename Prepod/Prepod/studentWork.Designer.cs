@@ -39,48 +39,48 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tree = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.tab = new System.Windows.Forms.TabControl();
-            this.info = new System.Windows.Forms.TabPage();
-            this.textData = new System.Windows.Forms.TabPage();
-            this.rb = new System.Windows.Forms.RichTextBox();
-            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
-            this.loadTask = new System.Windows.Forms.ToolStripButton();
-            this.pg = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.name = new System.Windows.Forms.ToolStripLabel();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.bwStream = new System.ComponentModel.BackgroundWorker();
+            this.textData = new System.Windows.Forms.TabPage();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.textTask = new System.Windows.Forms.ToolStripButton();
+            this.textProg = new System.Windows.Forms.ToolStripButton();
+            this.loadTask = new System.Windows.Forms.ToolStripButton();
+            this.pg = new System.Windows.Forms.ToolStripProgressBar();
+            this.rb = new System.Windows.Forms.RichTextBox();
+            this.info = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.textProg = new System.Windows.Forms.ToolStripButton();
-            this.textTask = new System.Windows.Forms.ToolStripButton();
+            this.tab = new System.Windows.Forms.TabControl();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.tab.SuspendLayout();
-            this.info.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.textData.SuspendLayout();
             this.toolStrip3.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.info.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.tab.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -173,82 +173,6 @@
             this.imageList1.Images.SetKeyName(0, "directory_mini.bmp");
             this.imageList1.Images.SetKeyName(1, "Documents_mini.png");
             // 
-            // tab
-            // 
-            this.tab.Controls.Add(this.info);
-            this.tab.Controls.Add(this.textData);
-            this.tab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tab.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tab.Location = new System.Drawing.Point(0, 25);
-            this.tab.Name = "tab";
-            this.tab.SelectedIndex = 0;
-            this.tab.Size = new System.Drawing.Size(616, 298);
-            this.tab.TabIndex = 2;
-            // 
-            // info
-            // 
-            this.info.Controls.Add(this.groupBox1);
-            this.info.Location = new System.Drawing.Point(4, 27);
-            this.info.Name = "info";
-            this.info.Padding = new System.Windows.Forms.Padding(3);
-            this.info.Size = new System.Drawing.Size(519, 267);
-            this.info.TabIndex = 0;
-            this.info.Text = "Свойства";
-            this.info.UseVisualStyleBackColor = true;
-            // 
-            // textData
-            // 
-            this.textData.Controls.Add(this.rb);
-            this.textData.Controls.Add(this.toolStrip3);
-            this.textData.Location = new System.Drawing.Point(4, 27);
-            this.textData.Name = "textData";
-            this.textData.Padding = new System.Windows.Forms.Padding(3);
-            this.textData.Size = new System.Drawing.Size(608, 267);
-            this.textData.TabIndex = 1;
-            this.textData.Text = "Данные";
-            this.textData.UseVisualStyleBackColor = true;
-            // 
-            // rb
-            // 
-            this.rb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rb.Location = new System.Drawing.Point(3, 29);
-            this.rb.Name = "rb";
-            this.rb.Size = new System.Drawing.Size(602, 235);
-            this.rb.TabIndex = 2;
-            this.rb.Text = "";
-            // 
-            // toolStrip3
-            // 
-            this.toolStrip3.BackColor = System.Drawing.Color.LightBlue;
-            this.toolStrip3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.textTask,
-            this.textProg,
-            this.loadTask,
-            this.pg});
-            this.toolStrip3.Location = new System.Drawing.Point(3, 3);
-            this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(602, 26);
-            this.toolStrip3.TabIndex = 2;
-            this.toolStrip3.Text = "toolStrip3";
-            // 
-            // loadTask
-            // 
-            this.loadTask.BackColor = System.Drawing.Color.LightBlue;
-            this.loadTask.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.loadTask.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.loadTask.Image = ((System.Drawing.Image)(resources.GetObject("loadTask.Image")));
-            this.loadTask.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.loadTask.Name = "loadTask";
-            this.loadTask.Size = new System.Drawing.Size(111, 23);
-            this.loadTask.Text = "| Сдать задачу |";
-            this.loadTask.Click += new System.EventHandler(this.loadTask_Click);
-            // 
-            // pg
-            // 
-            this.pg.Name = "pg";
-            this.pg.Size = new System.Drawing.Size(100, 23);
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -281,75 +205,99 @@
             this.bwStream.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwStream_DoWork);
             this.bwStream.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwStream_ProgressChanged);
             // 
+            // textData
+            // 
+            this.textData.Controls.Add(this.rb);
+            this.textData.Controls.Add(this.toolStrip3);
+            this.textData.Location = new System.Drawing.Point(4, 27);
+            this.textData.Name = "textData";
+            this.textData.Padding = new System.Windows.Forms.Padding(3);
+            this.textData.Size = new System.Drawing.Size(608, 267);
+            this.textData.TabIndex = 1;
+            this.textData.Text = "Данные";
+            this.textData.UseVisualStyleBackColor = true;
+            // 
+            // toolStrip3
+            // 
+            this.toolStrip3.BackColor = System.Drawing.Color.LightBlue;
+            this.toolStrip3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.textTask,
+            this.textProg,
+            this.loadTask,
+            this.pg});
+            this.toolStrip3.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.Size = new System.Drawing.Size(602, 26);
+            this.toolStrip3.TabIndex = 2;
+            this.toolStrip3.Text = "toolStrip3";
+            // 
+            // textTask
+            // 
+            this.textTask.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.textTask.Image = ((System.Drawing.Image)(resources.GetObject("textTask.Image")));
+            this.textTask.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.textTask.Name = "textTask";
+            this.textTask.Size = new System.Drawing.Size(80, 23);
+            this.textTask.Text = "| Задание |";
+            this.textTask.Click += new System.EventHandler(this.textTask_Click);
+            // 
+            // textProg
+            // 
+            this.textProg.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.textProg.Image = ((System.Drawing.Image)(resources.GetObject("textProg.Image")));
+            this.textProg.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.textProg.Name = "textProg";
+            this.textProg.Size = new System.Drawing.Size(217, 23);
+            this.textProg.Text = "| Посмотреть текст программы |";
+            this.textProg.Click += new System.EventHandler(this.textProg_Click);
+            // 
+            // loadTask
+            // 
+            this.loadTask.BackColor = System.Drawing.Color.LightBlue;
+            this.loadTask.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.loadTask.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.loadTask.Image = ((System.Drawing.Image)(resources.GetObject("loadTask.Image")));
+            this.loadTask.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.loadTask.Name = "loadTask";
+            this.loadTask.Size = new System.Drawing.Size(111, 23);
+            this.loadTask.Text = "| Сдать задачу |";
+            this.loadTask.Click += new System.EventHandler(this.loadTask_Click);
+            // 
+            // pg
+            // 
+            this.pg.Name = "pg";
+            this.pg.Size = new System.Drawing.Size(100, 23);
+            // 
+            // rb
+            // 
+            this.rb.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rb.Location = new System.Drawing.Point(3, 29);
+            this.rb.Name = "rb";
+            this.rb.Size = new System.Drawing.Size(602, 235);
+            this.rb.TabIndex = 2;
+            this.rb.Text = "";
+            // 
+            // info
+            // 
+            this.info.Controls.Add(this.groupBox1);
+            this.info.Location = new System.Drawing.Point(4, 27);
+            this.info.Name = "info";
+            this.info.Padding = new System.Windows.Forms.Padding(3);
+            this.info.Size = new System.Drawing.Size(608, 267);
+            this.info.TabIndex = 0;
+            this.info.Text = "Свойства";
+            this.info.UseVisualStyleBackColor = true;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(513, 261);
+            this.groupBox1.Size = new System.Drawing.Size(602, 261);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(6, 74);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 16);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Срок сдачи";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(6, 45);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 16);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Максимальный балл";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(6, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 16);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Название";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(200, 18);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 16);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "label4";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(200, 43);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 16);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "label5";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(200, 72);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 16);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "label6";
             // 
             // groupBox2
             // 
@@ -379,6 +327,66 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Основное";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(200, 43);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(45, 16);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "label5";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(6, 45);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(141, 16);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Максимальный балл";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(6, 74);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 16);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Срок сдачи";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(200, 72);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 16);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "label6";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(200, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 16);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "label4";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(6, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 16);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Название";
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.button1);
@@ -395,16 +403,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Дополнительно";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(6, 20);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 16);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Тема";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -415,15 +413,15 @@
             this.label8.TabIndex = 21;
             this.label8.Text = "label8";
             // 
-            // label9
+            // label7
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(6, 46);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(73, 16);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "Описание";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(6, 20);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 16);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Тема";
             // 
             // label10
             // 
@@ -434,6 +432,16 @@
             this.label10.Size = new System.Drawing.Size(73, 16);
             this.label10.TabIndex = 23;
             this.label10.Text = "Описание";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(6, 46);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(73, 16);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Описание";
             // 
             // button1
             // 
@@ -446,25 +454,17 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textProg
+            // tab
             // 
-            this.textProg.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.textProg.Image = ((System.Drawing.Image)(resources.GetObject("textProg.Image")));
-            this.textProg.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.textProg.Name = "textProg";
-            this.textProg.Size = new System.Drawing.Size(217, 23);
-            this.textProg.Text = "| Посмотреть текст программы |";
-            this.textProg.Click += new System.EventHandler(this.textProg_Click);
-            // 
-            // textTask
-            // 
-            this.textTask.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.textTask.Image = ((System.Drawing.Image)(resources.GetObject("textTask.Image")));
-            this.textTask.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.textTask.Name = "textTask";
-            this.textTask.Size = new System.Drawing.Size(80, 23);
-            this.textTask.Text = "| Задание |";
-            this.textTask.Click += new System.EventHandler(this.textTask_Click);
+            this.tab.Controls.Add(this.info);
+            this.tab.Controls.Add(this.textData);
+            this.tab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tab.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tab.Location = new System.Drawing.Point(0, 25);
+            this.tab.Name = "tab";
+            this.tab.SelectedIndex = 0;
+            this.tab.Size = new System.Drawing.Size(616, 298);
+            this.tab.TabIndex = 2;
             // 
             // studentWork
             // 
@@ -487,20 +487,20 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.tab.ResumeLayout(false);
-            this.info.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.textData.ResumeLayout(false);
             this.textData.PerformLayout();
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.info.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.tab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -512,7 +512,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TreeView tree;
-        private System.Windows.Forms.RichTextBox rb;
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem;
@@ -520,21 +519,11 @@
         private System.Windows.Forms.ToolStripMenuItem estMenu;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сменитьПарольToolStripMenuItem;
-        private System.Windows.Forms.TabControl tab;
-        private System.Windows.Forms.TabPage info;
-        private System.Windows.Forms.TabPage textData;
-        private System.Windows.Forms.ToolStrip toolStrip3;
-        private System.Windows.Forms.ToolStripButton loadTask;
-        private System.Windows.Forms.ToolStripProgressBar pg;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel name;
+        private System.Windows.Forms.TabControl tab;
+        private System.Windows.Forms.TabPage info;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button1;
@@ -543,7 +532,18 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ToolStripButton textProg;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TabPage textData;
+        private System.Windows.Forms.RichTextBox rb;
+        private System.Windows.Forms.ToolStrip toolStrip3;
         private System.Windows.Forms.ToolStripButton textTask;
+        private System.Windows.Forms.ToolStripButton textProg;
+        private System.Windows.Forms.ToolStripButton loadTask;
+        private System.Windows.Forms.ToolStripProgressBar pg;
     }
 }

@@ -22,7 +22,8 @@ namespace Prepod
         SqlDataAdapter adapter;
         DataTable dataTasks = new DataTable();
         DataTable dataTests = new DataTable();
-        BindingSource bs = new BindingSource();
+        BindingSource bsTasks = new BindingSource();
+        BindingSource bsTests = new BindingSource();
 
 
         string numPrepod;
@@ -38,108 +39,201 @@ namespace Prepod
             conn = new SqlConnection(connectionString);
             comm = new SqlCommand();
             comm.Connection = conn;
+            dgSettings(tasks);
+            dgSettings(tests);
 
-            loadInf();
-            tableName.SelectedIndex = 0;
-            group.SelectedIndex = 0;
-            
+            loadGroup();
+            loadType("Самостоятельная работа");
+            loadTasks();            
+            tabControl1.SelectedTab = taskPage;           
         }
 
-        private void loadInf()
-        {            
-            conn.Open();
-            comm.CommandText = "Select Название from Группа";
-            SqlDataReader rdr = comm.ExecuteReader();
-            while (rdr.Read())
+        private void dgSettings(DataGridView dgv)
+        {
+            dgv.AllowUserToAddRows = false;
+            dgv.AllowUserToDeleteRows = false;
+            dgv.AllowUserToOrderColumns = false;
+            dgv.AllowUserToResizeRows = false;
+            dgv.AllowUserToResizeColumns = true;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        private void loadGroup()
+        {
+            try
             {
-                group.Items.Add(rdr[0].ToString());
+                conn.Open();
+                comm.CommandText = "Select Название from Группа";
+                SqlDataReader rdr = comm.ExecuteReader();
+                group.Items.Clear();
+                group.Items.Add("Все");
+                while (rdr.Read())
+                {
+                    group.Items.Add(rdr[0].ToString());
+                }
+                rdr.Close();
+                group.SelectedIndex = 0;
+                                
             }
-            rdr.Close();
-
-            //comm.CommandText = "Select Вершина.Текст from Вершина, [Тип вершины] Where Вершина.[Тип вершины] = [Тип вершины].Код and [Тип вершины].Тип = 'Задача' and [№ дерева] = '"+ numTree +"'";
-            //rdr = comm.ExecuteReader();
-            //while (rdr.Read())
-            //{
-            //    typeWork.Items.Add(rdr[0].ToString());
-            //}
-            //rdr.Close();
-
-            //comm.CommandText = "Select Вершина.Текст from Вершина, [Тип вершины] Where Вершина.[Тип вершины] = [Тип вершины].Код and [Тип вершины].Тип = 'Тест' and [№ дерева] = '" + numTree + "'";
-            //rdr = comm.ExecuteReader();
-            //while (rdr.Read())
-            //{
-            //    typeTest.Items.Add(rdr[0].ToString());
-            //}
-            //rdr.Close();
-            conn.Close();
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
+                throw;  
+            }   
+            finally
+            {
+                conn.Close();
+            }                        
                                     
         }
 
-        private void loadDataGrid()
+        private void loadType(string typeTask)
         {
-            conn.Open();
-            comm.CommandText = "Select * from " + viewTable + " where [№ дерева] = '" + numTree + "'";
-            adapter = new SqlDataAdapter(comm);
-
-            if (viewTable == "[Успеваемость по задачам]")
+            try
             {
+                conn.Open();
+                comm.CommandText = "Select Текст from Вершина, [Тип вершины] where [Тип вершины].Код = Вершина.[Тип вершины] and [Тип вершины].Тип = '"+ typeTask +"'";
+                SqlDataReader rdr = comm.ExecuteReader();
+                type.Items.Clear();
+                type.Items.Add("Все");
+                while (rdr.Read())
+                {
+                    type.Items.Add(rdr[0].ToString());
+                }
+                rdr.Close();
+                type.SelectedIndex = 0;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+
+        private void loadTasks()
+        {
+            try
+            {
+                conn.Open();
+                comm.CommandText = "Select * from [Успеваемость по задачам] where [№ дерева] = '" + numTree + "'";
+                adapter = new SqlDataAdapter(comm);
                 dataTasks.Clear();
                 adapter.Fill(dataTasks);
                 tasks.DataSource = dataTasks;
-                tasks.Columns[11].Visible = false;
-                tasks.Columns[12].Visible = false;
-                tasks.ReadOnly = true;
-                tasks.Visible = true;
-                tests.Visible = false;
-                bs.DataSource = dataTasks;
+                tasks.Columns[3].Visible = false;
+                tasks.Columns[4].Visible = false;
+                tasks.Columns[9].Visible = false;
+                tasks.Columns[10].Visible = false;
+                tasks.ReadOnly = true;                
+                bsTasks.DataSource = dataTasks;
+
             }
-            else
+            catch (Exception exc)
             {
+                MessageBox.Show(exc.Message.ToString());
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void loadTests()
+        {
+            try
+            {
+                conn.Open();
+                comm.CommandText = "Select * from [Успеваемость по тестам] where [№ дерева] = '" + numTree + "'";
+                adapter = new SqlDataAdapter(comm);
                 dataTests.Clear();
                 adapter.Fill(dataTests);
                 tests.DataSource = dataTests;
                 tests.Columns[0].Visible = false;
+                tests.Columns[4].Visible = false;
+                tests.Columns[5].Visible = false;
                 tests.Columns[13].Visible = false;
                 tests.ReadOnly = true;
-                tests.Visible = true;
-                tasks.Visible = false;
-                bs.DataSource = dataTests;
-            }            
-            conn.Close();
+                bsTests.DataSource = dataTests;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
+        
 
         private void group_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            bs.Filter = "Группа = '" + group.Text + "'";
-        }
-
-        private void typeWork_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            //bs.Filter = "[Вид работы] = '" + typeWork.Text + "' and Группа = '" + group.Text + "'";           
-        }
-
-        private void tableName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tableName.SelectedIndex == 0)
+            if (tabControl1.SelectedTab == taskPage)
             {
-                //typeWork.Enabled = true;
-                //typeTest.Enabled = false;
-                viewTable = "[Успеваемость по задачам]";
-            }                
+                if ((group.Text != "Все")&&(type.Text != "Все"))
+                {
+                    bsTasks.Filter = "Группа = '" + group.Text + "' and [Вид работы] = '"+ type.Text +"'";
+                }
+                if ((group.Text == "Все") && (type.Text != "Все"))
+                {
+                    bsTasks.Filter = "[Вид работы] = '" + type.Text + "'";
+                }
+                if ((group.Text != "Все") && (type.Text == "Все"))
+                {
+                    bsTasks.Filter = "Группа = '" + group.Text + "'";
+                }
+                if ((group.Text == "Все") && (type.Text == "Все"))
+                {
+                    bsTasks.Filter = null;
+                }                
+            }
             else
             {
-                //typeTest.Enabled = true;
-                //typeWork.Enabled = false;
-                viewTable = "[Успеваемость по тестам]";
-            }
-                
-            loadDataGrid();
+                if ((group.Text != "Все") && (type.Text != "Все"))
+                {
+                    bsTests.Filter = "Группа = '" + group.Text + "' and [Вид работы] = '" + type.Text + "'";
+                }
+                if ((group.Text == "Все") && (type.Text != "Все"))
+                {
+                    bsTests.Filter = "[Вид работы] = '" + type.Text + "'";
+                }
+                if ((group.Text != "Все") && (type.Text == "Все"))
+                {
+                    bsTests.Filter = "Группа = '" + group.Text + "'";
+                }
+                if ((group.Text == "Все") && (type.Text == "Все"))
+                {
+                    bsTests.Filter = null;
+                }                 
+            }            
         }
 
+        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == taskPage)
+                loadType("Самостоятельная работа");
+            else
+                loadType("Тест");
+        }
 
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == taskPage)
+                loadType("Самостоятельная работа");
+            else
+                loadType("Тест");
+        }
 
-       
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }               
     }
 }
