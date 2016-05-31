@@ -56,9 +56,9 @@
             // 
             // lstQuestion
             // 
-            this.lstQuestion.Location = new System.Drawing.Point(12, 33);
+            this.lstQuestion.Location = new System.Drawing.Point(14, 38);
             this.lstQuestion.Name = "lstQuestion";
-            this.lstQuestion.Size = new System.Drawing.Size(193, 394);
+            this.lstQuestion.Size = new System.Drawing.Size(224, 454);
             this.lstQuestion.TabIndex = 0;
             this.lstQuestion.UseCompatibleStateImageBehavior = false;
             this.lstQuestion.View = System.Windows.Forms.View.List;
@@ -66,34 +66,34 @@
             // 
             // rTB
             // 
-            this.rTB.Location = new System.Drawing.Point(221, 32);
+            this.rTB.Location = new System.Drawing.Point(258, 37);
             this.rTB.Name = "rTB";
             this.rTB.ReadOnly = true;
-            this.rTB.Size = new System.Drawing.Size(636, 145);
+            this.rTB.Size = new System.Drawing.Size(742, 167);
             this.rTB.TabIndex = 1;
             this.rTB.Text = "";
             // 
             // pBTime
             // 
-            this.pBTime.Location = new System.Drawing.Point(296, 404);
+            this.pBTime.Location = new System.Drawing.Point(346, 466);
             this.pBTime.Name = "pBTime";
-            this.pBTime.Size = new System.Drawing.Size(458, 23);
+            this.pBTime.Size = new System.Drawing.Size(535, 27);
             this.pBTime.TabIndex = 3;
             // 
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(218, 409);
+            this.lblTime.Location = new System.Drawing.Point(255, 472);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(43, 13);
+            this.lblTime.Size = new System.Drawing.Size(48, 15);
             this.lblTime.TabIndex = 4;
             this.lblTime.Text = "Время:";
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(760, 404);
+            this.btnNext.Location = new System.Drawing.Point(885, 466);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(97, 23);
+            this.btnNext.Size = new System.Drawing.Size(115, 27);
             this.btnNext.TabIndex = 5;
             this.btnNext.Text = "Сдать тест";
             this.btnNext.UseVisualStyleBackColor = true;
@@ -102,36 +102,36 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 24);
+            this.label2.Location = new System.Drawing.Point(13, 28);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.Size = new System.Drawing.Size(57, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "Ответ 1:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(344, 24);
+            this.label3.Location = new System.Drawing.Point(381, 28);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.Size = new System.Drawing.Size(57, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "Ответ 2:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 103);
+            this.label4.Location = new System.Drawing.Point(13, 119);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.Size = new System.Drawing.Size(57, 15);
             this.label4.TabIndex = 6;
             this.label4.Text = "Ответ 3:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(329, 103);
+            this.label5.Location = new System.Drawing.Point(384, 119);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 13);
+            this.label5.Size = new System.Drawing.Size(57, 15);
             this.label5.TabIndex = 7;
             this.label5.Text = "Ответ 4:";
             // 
@@ -147,51 +147,51 @@
             this.gB3.Controls.Add(this.label4);
             this.gB3.Controls.Add(this.label3);
             this.gB3.Controls.Add(this.label2);
-            this.gB3.Location = new System.Drawing.Point(221, 178);
+            this.gB3.Location = new System.Drawing.Point(258, 205);
             this.gB3.Name = "gB3";
-            this.gB3.Size = new System.Drawing.Size(636, 183);
+            this.gB3.Size = new System.Drawing.Size(742, 211);
             this.gB3.TabIndex = 2;
             this.gB3.TabStop = false;
             this.gB3.Text = "Блок ответов:";
             // 
             // txtB4
             // 
-            this.txtB4.Location = new System.Drawing.Point(347, 132);
+            this.txtB4.Location = new System.Drawing.Point(405, 152);
             this.txtB4.Name = "txtB4";
-            this.txtB4.Size = new System.Drawing.Size(278, 35);
+            this.txtB4.Size = new System.Drawing.Size(322, 40);
             this.txtB4.TabIndex = 21;
             this.txtB4.Text = "";
             // 
             // txtB2
             // 
-            this.txtB2.Location = new System.Drawing.Point(346, 53);
+            this.txtB2.Location = new System.Drawing.Point(402, 61);
             this.txtB2.Name = "txtB2";
-            this.txtB2.Size = new System.Drawing.Size(278, 35);
+            this.txtB2.Size = new System.Drawing.Size(322, 40);
             this.txtB2.TabIndex = 20;
             this.txtB2.Text = "";
             // 
             // txtB3
             // 
-            this.txtB3.Location = new System.Drawing.Point(32, 132);
+            this.txtB3.Location = new System.Drawing.Point(38, 152);
             this.txtB3.Name = "txtB3";
-            this.txtB3.Size = new System.Drawing.Size(278, 35);
+            this.txtB3.Size = new System.Drawing.Size(322, 40);
             this.txtB3.TabIndex = 19;
             this.txtB3.Text = "";
             // 
             // txtB1
             // 
-            this.txtB1.Location = new System.Drawing.Point(32, 53);
+            this.txtB1.Location = new System.Drawing.Point(38, 61);
             this.txtB1.Name = "txtB1";
-            this.txtB1.Size = new System.Drawing.Size(278, 35);
+            this.txtB1.Size = new System.Drawing.Size(322, 40);
             this.txtB1.TabIndex = 18;
             this.txtB1.Text = "";
             // 
             // label6
             // 
             this.label6.BackColor = System.Drawing.SystemColors.Window;
-            this.label6.Location = new System.Drawing.Point(311, 149);
+            this.label6.Location = new System.Drawing.Point(363, 172);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 3);
+            this.label6.Size = new System.Drawing.Size(41, 3);
             this.label6.TabIndex = 17;
             this.label6.Text = "     ";
             this.label6.Visible = false;
@@ -199,9 +199,9 @@
             // label7
             // 
             this.label7.BackColor = System.Drawing.SystemColors.Window;
-            this.label7.Location = new System.Drawing.Point(311, 70);
+            this.label7.Location = new System.Drawing.Point(363, 81);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 3);
+            this.label7.Size = new System.Drawing.Size(41, 3);
             this.label7.TabIndex = 16;
             this.label7.Text = "     ";
             this.label7.Visible = false;
@@ -214,17 +214,17 @@
             // lblNumberQuest
             // 
             this.lblNumberQuest.AutoSize = true;
-            this.lblNumberQuest.Location = new System.Drawing.Point(218, 422);
+            this.lblNumberQuest.Location = new System.Drawing.Point(255, 487);
             this.lblNumberQuest.Name = "lblNumberQuest";
-            this.lblNumberQuest.Size = new System.Drawing.Size(0, 13);
+            this.lblNumberQuest.Size = new System.Drawing.Size(0, 15);
             this.lblNumberQuest.TabIndex = 6;
             this.lblNumberQuest.Visible = false;
             // 
             // btnPrevQuestion
             // 
-            this.btnPrevQuestion.Location = new System.Drawing.Point(221, 373);
+            this.btnPrevQuestion.Location = new System.Drawing.Point(258, 430);
             this.btnPrevQuestion.Name = "btnPrevQuestion";
-            this.btnPrevQuestion.Size = new System.Drawing.Size(75, 23);
+            this.btnPrevQuestion.Size = new System.Drawing.Size(87, 27);
             this.btnPrevQuestion.TabIndex = 7;
             this.btnPrevQuestion.Text = "Назад";
             this.btnPrevQuestion.UseVisualStyleBackColor = true;
@@ -232,9 +232,9 @@
             // 
             // btnNextQuestion
             // 
-            this.btnNextQuestion.Location = new System.Drawing.Point(782, 373);
+            this.btnNextQuestion.Location = new System.Drawing.Point(912, 430);
             this.btnNextQuestion.Name = "btnNextQuestion";
-            this.btnNextQuestion.Size = new System.Drawing.Size(75, 23);
+            this.btnNextQuestion.Size = new System.Drawing.Size(87, 27);
             this.btnNextQuestion.TabIndex = 8;
             this.btnNextQuestion.Text = "Вперед";
             this.btnNextQuestion.UseVisualStyleBackColor = true;
@@ -243,27 +243,27 @@
             // lbllistQ
             // 
             this.lbllistQ.AutoSize = true;
-            this.lbllistQ.Location = new System.Drawing.Point(9, 9);
+            this.lbllistQ.Location = new System.Drawing.Point(10, 10);
             this.lbllistQ.Name = "lbllistQ";
-            this.lbllistQ.Size = new System.Drawing.Size(98, 13);
+            this.lbllistQ.Size = new System.Drawing.Size(109, 15);
             this.lbllistQ.TabIndex = 9;
             this.lbllistQ.Text = "Список вопросов:";
             // 
             // lbltextQ
             // 
             this.lbltextQ.AutoSize = true;
-            this.lbltextQ.Location = new System.Drawing.Point(218, 9);
+            this.lbltextQ.Location = new System.Drawing.Point(255, 10);
             this.lbltextQ.Name = "lbltextQ";
-            this.lbltextQ.Size = new System.Drawing.Size(85, 13);
+            this.lbltextQ.Size = new System.Drawing.Size(94, 15);
             this.lbltextQ.TabIndex = 10;
             this.lbltextQ.Text = "Текст вопроса:";
             // 
             // TestStart
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(869, 439);
+            this.ClientSize = new System.Drawing.Size(1008, 507);
             this.Controls.Add(this.lbltextQ);
             this.Controls.Add(this.lbllistQ);
             this.Controls.Add(this.btnNextQuestion);
@@ -275,6 +275,7 @@
             this.Controls.Add(this.gB3);
             this.Controls.Add(this.rTB);
             this.Controls.Add(this.lstQuestion);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "TestStart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

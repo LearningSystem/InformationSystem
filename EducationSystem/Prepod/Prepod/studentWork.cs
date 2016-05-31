@@ -589,10 +589,13 @@ namespace Prepod
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string puthTest = getPrepodPath() + puthXML;
-            TestStart goStart = new TestStart(Int32.Parse(numStudent), puthTest, this);
-            this.Hide();
-            goStart.Show();
+            if (MessageBox.Show("Для начала тестирования нажмите ОК", "Внимание", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                string puthTest = getPrepodPath() + puthXML;
+                TestStart goStart = new TestStart(Int32.Parse(numStudent), puthTest, this);
+                this.Hide();
+                goStart.Show();
+            }
         }
 
         private void textProg_Click(object sender, EventArgs e)

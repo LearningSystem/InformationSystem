@@ -63,19 +63,12 @@ namespace Prepod
 
         private void TestStart_Load(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Для начала тестирования нажмите ОК","Внимание",MessageBoxButtons.OKCancel)==DialogResult.OK)
-            {
                 LoadQuestions();
                 pBTime.Maximum = Time;
                 pBTime.Minimum = 0;
 
                 MouseEventArgs events = new MouseEventArgs(System.Windows.Forms.MouseButtons.Left, 2, lstQuestion.Items[0].Position.X, lstQuestion.Items[0].Position.Y,0);
                 lstQuestion_MouseDoubleClick(lstQuestion.Items[numberTekQuest].Text, events);
-            }
-            else
-            {
-                studworkForm.Show();
-            }
         }
         
         void printAnswers(string type)
@@ -373,12 +366,13 @@ namespace Prepod
                gB3.Controls.Add(rad3);
                //-------------------------
                rad2.Name = "radQuest2";
-               rad2.Location = new Point(332, 61);
+               //rad2.Location = new Point(332, 61);
+               rad2.Location = new Point(380, 62);
                rad2.Size = new Size(14, 13);
                gB3.Controls.Add(rad2);
                //-------------------------
                rad4.Name = "radQuest4";
-               rad4.Location = new Point(332, 144);
+               rad4.Location = new Point(380, 145);
                rad4.Size = new Size(14, 13);
                gB3.Controls.Add(rad4);
                label6.Visible = false;
@@ -572,7 +566,10 @@ namespace Prepod
                 conn.Open();
                 SqlCommand comm = new SqlCommand();
                 comm.Connection = conn;
-                comm.CommandText = "Select [№ теста] from [Тест] where [Ссылка] = '" + XmlPath + "'";
+                int pos1=XmlPath.IndexOf(@"Тесты\");
+                pos1=pos1+6;
+                string referen = XmlPath.Substring(pos1);
+                comm.CommandText = "Select [№ теста] from [Тест] where [Ссылка] = 'Тесты\\"+ referen + "'";
                 SqlDataReader rdr = comm.ExecuteReader();
                 while (rdr.Read())
                 {

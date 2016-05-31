@@ -54,78 +54,87 @@
             // lblStudName
             // 
             this.lblStudName.AutoSize = true;
-            this.lblStudName.Location = new System.Drawing.Point(64, 47);
+            this.lblStudName.Location = new System.Drawing.Point(85, 58);
+            this.lblStudName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStudName.Name = "lblStudName";
-            this.lblStudName.Size = new System.Drawing.Size(37, 13);
+            this.lblStudName.Size = new System.Drawing.Size(46, 17);
             this.lblStudName.TabIndex = 0;
             this.lblStudName.Text = "ФИО:";
             // 
             // lblStudGroup
             // 
             this.lblStudGroup.AutoSize = true;
-            this.lblStudGroup.Location = new System.Drawing.Point(56, 117);
+            this.lblStudGroup.Location = new System.Drawing.Point(75, 144);
+            this.lblStudGroup.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStudGroup.Name = "lblStudGroup";
-            this.lblStudGroup.Size = new System.Drawing.Size(45, 13);
+            this.lblStudGroup.Size = new System.Drawing.Size(59, 17);
             this.lblStudGroup.TabIndex = 1;
             this.lblStudGroup.Text = "Группа:";
             // 
             // lblNameTest
             // 
             this.lblNameTest.AutoSize = true;
-            this.lblNameTest.Location = new System.Drawing.Point(10, 199);
+            this.lblNameTest.Location = new System.Drawing.Point(13, 245);
+            this.lblNameTest.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameTest.Name = "lblNameTest";
-            this.lblNameTest.Size = new System.Drawing.Size(91, 13);
+            this.lblNameTest.Size = new System.Drawing.Size(117, 17);
             this.lblNameTest.TabIndex = 2;
             this.lblNameTest.Text = "Название теста:";
             // 
             // lblStudBall
             // 
             this.lblStudBall.AutoSize = true;
-            this.lblStudBall.Location = new System.Drawing.Point(58, 255);
+            this.lblStudBall.Location = new System.Drawing.Point(77, 314);
+            this.lblStudBall.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStudBall.Name = "lblStudBall";
-            this.lblStudBall.Size = new System.Drawing.Size(43, 13);
+            this.lblStudBall.Size = new System.Drawing.Size(55, 17);
             this.lblStudBall.TabIndex = 3;
             this.lblStudBall.Text = "Баллы:";
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(109, 47);
+            this.lblName.Location = new System.Drawing.Point(145, 58);
+            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(0, 13);
+            this.lblName.Size = new System.Drawing.Size(0, 17);
             this.lblName.TabIndex = 6;
             // 
             // lblGroup
             // 
             this.lblGroup.AutoSize = true;
-            this.lblGroup.Location = new System.Drawing.Point(109, 117);
+            this.lblGroup.Location = new System.Drawing.Point(145, 144);
+            this.lblGroup.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGroup.Name = "lblGroup";
-            this.lblGroup.Size = new System.Drawing.Size(0, 13);
+            this.lblGroup.Size = new System.Drawing.Size(0, 17);
             this.lblGroup.TabIndex = 7;
             // 
             // lblTheme
             // 
             this.lblTheme.AutoSize = true;
-            this.lblTheme.Location = new System.Drawing.Point(109, 199);
+            this.lblTheme.Location = new System.Drawing.Point(145, 245);
+            this.lblTheme.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTheme.Name = "lblTheme";
-            this.lblTheme.Size = new System.Drawing.Size(0, 13);
+            this.lblTheme.Size = new System.Drawing.Size(0, 17);
             this.lblTheme.TabIndex = 8;
             // 
             // lblBall
             // 
             this.lblBall.AutoSize = true;
-            this.lblBall.Location = new System.Drawing.Point(109, 255);
+            this.lblBall.Location = new System.Drawing.Point(145, 314);
+            this.lblBall.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBall.Name = "lblBall";
-            this.lblBall.Size = new System.Drawing.Size(0, 13);
+            this.lblBall.Size = new System.Drawing.Size(0, 17);
             this.lblBall.TabIndex = 9;
             // 
             // treeViewTest
             // 
             this.treeViewTest.BackColor = System.Drawing.SystemColors.Control;
             this.treeViewTest.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewTest.Location = new System.Drawing.Point(3, 16);
+            this.treeViewTest.Location = new System.Drawing.Point(4, 20);
+            this.treeViewTest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.treeViewTest.Name = "treeViewTest";
-            this.treeViewTest.Size = new System.Drawing.Size(340, 322);
+            this.treeViewTest.Size = new System.Drawing.Size(454, 398);
             this.treeViewTest.TabIndex = 10;
             this.treeViewTest.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewTest_NodeMouseDoubleClick);
             this.treeViewTest.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.treeViewTest_MouseDoubleClick);
@@ -133,7 +142,8 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 27);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -143,8 +153,9 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gBTree);
-            this.splitContainer1.Size = new System.Drawing.Size(647, 341);
-            this.splitContainer1.SplitterDistance = 297;
+            this.splitContainer1.Size = new System.Drawing.Size(863, 422);
+            this.splitContainer1.SplitterDistance = 396;
+            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 12;
             // 
             // gBInfo
@@ -159,8 +170,10 @@
             this.gBInfo.Controls.Add(this.lblName);
             this.gBInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gBInfo.Location = new System.Drawing.Point(0, 0);
+            this.gBInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gBInfo.Name = "gBInfo";
-            this.gBInfo.Size = new System.Drawing.Size(297, 341);
+            this.gBInfo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gBInfo.Size = new System.Drawing.Size(396, 422);
             this.gBInfo.TabIndex = 0;
             this.gBInfo.TabStop = false;
             this.gBInfo.Text = "Информация:";
@@ -170,39 +183,46 @@
             this.gBTree.Controls.Add(this.treeViewTest);
             this.gBTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gBTree.Location = new System.Drawing.Point(0, 0);
+            this.gBTree.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gBTree.Name = "gBTree";
-            this.gBTree.Size = new System.Drawing.Size(346, 341);
+            this.gBTree.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gBTree.Size = new System.Drawing.Size(462, 422);
             this.gBTree.TabIndex = 0;
             this.gBTree.TabStop = false;
             this.gBTree.Text = "Дерево теста:";
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.SkyBlue;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.выходToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(647, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(863, 27);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.выходToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(61, 23);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
             // ReportForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 365);
+            this.ClientSize = new System.Drawing.Size(863, 449);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Отчет";

@@ -220,7 +220,7 @@ namespace Prepod
                     if (notRightAnswer[h] == j + 1)
                     {
                         for (int y = 0; y <= 9; y++)
-                            if (Questions[j].part[y] != null)
+                            if (Questions[j].part[y] != null && Questions[j].part[y] != "\n      ")
                             {
                                 int partindex=treeViewTest.Nodes[index].Nodes.Add("Рекомендация №" + bl + ": Изучить раздел: " + Questions[j].part[y]).Index;
                                 treeViewTest.Nodes[index].Nodes[partindex].Tag = Questions[j].part[y];
@@ -252,11 +252,11 @@ namespace Prepod
 
         void Exit()
         {
-            if (MessageBox.Show("Вы уверены, что хотите вернуться в систему?","Подтверждение", MessageBoxButtons.OKCancel) == DialogResult.OK)
-            {
-                this.Hide();
-                studentForm.Show();
-            }
+            //if (MessageBox.Show("Вы уверены, что хотите вернуться в систему?","Подтверждение", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            //{
+            //    this.Hide();
+            //    stu
+            //}
         }
         void DoStart()
         {
@@ -295,15 +295,48 @@ namespace Prepod
             studentForm.BringToFront();
             studentForm.Poisk(treeViewTest.SelectedNode.Tag.ToString());
         }
+        public object SelectPassStud()
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            try { 
+                    conn.Open();
+             }
+            catch(Exception er)
+            {
 
+            }
+                SqlCommand comm = new SqlCommand();
+                comm.Connection = conn;
+                comm.CommandText = "Select [Пароль] from [Студент] where [№ студента]='"+NumStud+"'";
+                SqlDataReader drr = comm.ExecuteReader();
+                string tempstring="";
+                while (drr.Read())
+                {
+                    tempstring = drr[0].ToString();
+                } drr.Close();
+                conn.Close();
+                return tempstring;
+            }
         private void ReportForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Exit();
+            if (MessageBox.Show("Вы уверены, что хотите вернуться в систему?","Подтверждение", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                string pass=(string)SelectPassStud();
+                studentWork studwork = new studentWork(NumStud.ToString(),pass);
+                this.Hide();
+                studwork.Show();
+            }
         }
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Exit();
+            if (MessageBox.Show("Вы уверены, что хотите вернуться в систему?", "Подтверждение", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                string pass = (string)SelectPassStud();
+                studentWork studwork = new studentWork(NumStud.ToString(), pass);
+                this.Hide();
+                studwork.Show();
+            }
         }
 
     }
