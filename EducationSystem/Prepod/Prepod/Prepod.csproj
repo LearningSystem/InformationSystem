@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DBEBE3D0-E775-4A89-85F7-5882D9130962}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Prepod</RootNamespace>
+    <AssemblyName>Prepod</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddPartTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPartTree.designer.cs">
+      <DependentUpon>AddPartTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addTask.Designer.cs">
+      <DependentUpon>addTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="administrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="administrator.Designer.cs">
+      <DependentUpon>administrator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlackBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BlackBox.designer.cs">
+      <DependentUpon>BlackBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePass.Designer.cs">
+      <DependentUpon>ChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataBlackBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataBlackBox.Designer.cs">
+      <DependentUpon>DataBlackBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="delTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="delTest.Designer.cs">
+      <DependentUpon>delTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="editPrepod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editPrepod.Designer.cs">
+      <DependentUpon>editPrepod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="helpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="helpForm.Designer.cs">
+      <DependentUpon>helpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="menuPrepod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="menuPrepod.Designer.cs">
+      <DependentUpon>menuPrepod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewProverkaBlackBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewProverkaBlackBox.Designer.cs">
+      <DependentUpon>NewProverkaBlackBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="StartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartForm.Designer.cs">
+      <DependentUpon>StartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="studentTasks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="studentTasks.Designer.cs">
+      <DependentUpon>studentTasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="taskEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="taskEditor.Designer.cs">
+      <DependentUpon>taskEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestEditXml.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestEditXml.Designer.cs">
+      <DependentUpon>TestEditXml.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestWorkStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestWorkStart.Designer.cs">
+      <DependentUpon>TestWorkStart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WarningPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WarningPass.Designer.cs">
+      <DependentUpon>WarningPass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="editCPC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editCPC.Designer.cs">
+      <DependentUpon>editCPC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="editPredmet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editPredmet.Designer.cs">
+      <DependentUpon>editPredmet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="editStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editStudent.Designer.cs">
+      <DependentUpon>editStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EducationDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EducationDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Estimates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estimates.Designer.cs">
+      <DependentUpon>Estimates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InfoTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoTest.designer.cs">
+      <DependentUpon>InfoTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PathDirectory.cs" />
+    <Compile Include="prepodWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="prepodWork.Designer.cs">
+      <DependentUpon>prepodWork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newTree.Designer.cs">
+      <DependentUpon>newTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="propTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="propTask.Designer.cs">
+      <DependentUpon>propTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportForm.designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="studentWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="studentWork.Designer.cs">
+      <DependentUpon>studentWork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="regForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="regForm.Designer.cs">
+      <DependentUpon>regForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="studEstimates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="studEstimates.Designer.cs">
+      <DependentUpon>studEstimates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="taskWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="taskWork.Designer.cs">
+      <DependentUpon>taskWork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestAnswers.cs" />
+    <Compile Include="TestCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestCreate.designer.cs">
+      <DependentUpon>TestCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestStart.designer.cs">
+      <DependentUpon>TestStart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TextQuestion.cs" />
+    <Compile Include="treeWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="treeWork.Designer.cs">
+      <DependentUpon>treeWork.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddPartTree.resx">
+      <DependentUpon>AddPartTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addTask.resx">
+      <DependentUpon>addTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="administrator.resx">
+      <DependentUpon>administrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlackBox.resx">
+      <DependentUpon>BlackBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePass.resx">
+      <DependentUpon>ChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataBlackBox.resx">
+      <DependentUpon>DataBlackBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="delTest.resx">
+      <DependentUpon>delTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editPrepod.resx">
+      <DependentUpon>editPrepod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="menuPrepod.resx">
+      <DependentUpon>menuPrepod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewProverkaBlackBox.resx">
+      <DependentUpon>NewProverkaBlackBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartForm.resx">
+      <DependentUpon>StartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="studentTasks.resx">
+      <DependentUpon>studentTasks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="taskEditor.resx">
+      <DependentUpon>taskEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestEditXml.resx">
+      <DependentUpon>TestEditXml.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestWorkStart.resx">
+      <DependentUpon>TestWorkStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WarningPass.resx">
+      <DependentUpon>WarningPass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editCPC.resx">
+      <DependentUpon>editCPC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editPredmet.resx">
+      <DependentUpon>editPredmet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editStudent.resx">
+      <DependentUpon>editStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estimates.resx">
+      <DependentUpon>Estimates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoTest.resx">
+      <DependentUpon>InfoTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prepodWork.resx">
+      <DependentUpon>prepodWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newTree.resx">
+      <DependentUpon>newTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="propTask.resx">
+      <DependentUpon>propTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="studentWork.resx">
+      <DependentUpon>studentWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="regForm.resx">
+      <DependentUpon>regForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="studEstimates.resx">
+      <DependentUpon>studEstimates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="taskWork.resx">
+      <DependentUpon>taskWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestCreate.resx">
+      <DependentUpon>TestCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestStart.resx">
+      <DependentUpon>TestStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="treeWork.resx">
+      <DependentUpon>treeWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="EducationDataSet.xsc">
+      <DependentUpon>EducationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="EducationDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EducationDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EducationDataSet.xss">
+      <DependentUpon>EducationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Resources\меню препода.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Resources\Bold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Resources\Center.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Resources\Italic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Resources\Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Resources\Right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Resources\Underline.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,12 @@
+c:\users\user\documents\visual studio 2013\Projects\ConsoleChangeComp\ConsoleChangeComp\bin\Debug\ConsoleChangeComp.exe.config
+c:\users\user\documents\visual studio 2013\Projects\ConsoleChangeComp\ConsoleChangeComp\bin\Debug\ConsoleChangeComp.exe
+c:\users\user\documents\visual studio 2013\Projects\ConsoleChangeComp\ConsoleChangeComp\bin\Debug\ConsoleChangeComp.pdb
+c:\users\user\documents\visual studio 2013\Projects\ConsoleChangeComp\ConsoleChangeComp\obj\Debug\ConsoleChangeComp.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2013\Projects\ConsoleChangeComp\ConsoleChangeComp\obj\Debug\ConsoleChangeComp.exe
+c:\users\user\documents\visual studio 2013\Projects\ConsoleChangeComp\ConsoleChangeComp\obj\Debug\ConsoleChangeComp.pdb
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\ConsoleChangeComp\ConsoleChangeComp\bin\Debug\ConsoleChangeComp.exe.config
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\ConsoleChangeComp\ConsoleChangeComp\obj\Debug\ConsoleChangeComp.exe
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\ConsoleChangeComp\ConsoleChangeComp\obj\Debug\ConsoleChangeComp.pdb
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\ConsoleChangeComp\ConsoleChangeComp\bin\Debug\ConsoleChangeComp.exe
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\ConsoleChangeComp\ConsoleChangeComp\bin\Debug\ConsoleChangeComp.pdb
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\ConsoleChangeComp\ConsoleChangeComp\obj\Debug\ConsoleChangeComp.csprojResolveAssemblyReference.cache

@@ -1,0 +1,50 @@
+﻿<Test>
+  <Discription>Тест</Discription>
+  <Author> Ромашкина Татьяна Витальевна</Author>
+  <Theme>суперТема</Theme>
+  <Discipline>Язык C#</Discipline>
+  <Questions Number="5">
+    <Question1>
+      <Text>Вопрос1</Text>
+      <TypeAnswer>One</TypeAnswer>
+      <Answers>1|2|3|4</Answers>
+      <RightAnswer>1</RightAnswer>
+      <Part>Вызов метода без параметров</Part>
+      <Price>10</Price>
+    </Question1>
+    <Question2>
+      <Text>Вопрос2</Text>
+      <TypeAnswer>Several</TypeAnswer>
+      <Answers>21|22|232|42</Answers>
+      <RightAnswer>232|42</RightAnswer>
+      <Part />
+      <Price>20</Price>
+    </Question2>
+    <Question3>
+      <Text>Вопрос3</Text>
+      <TypeAnswer>Sequence</TypeAnswer>
+      <Answers>Первый|Второй|Третий|Четвертый</Answers>
+      <RightAnswer>Первый|Второй|Третий|Четвертый</RightAnswer>
+      <Part />
+      <Price>30</Price>
+    </Question3>
+    <Question4>
+      <Text>Вопрос4</Text>
+      <TypeAnswer>Writing</TypeAnswer>
+      <Answers>Ответ свободный</Answers>
+      <RightAnswer>Ответ свободный</RightAnswer>
+      <Part />
+      <Price>40</Price>
+    </Question4>
+    <Question5>
+      <Text>Вопрос5</Text>
+      <TypeAnswer>Comparison</TypeAnswer>
+      <Answers>Первый|Второй|Третий|Четвертый</Answers>
+      <RightAnswer>Первый==Второй|Третий==Четвертый</RightAnswer>
+      <Part />
+      <Price>50</Price>
+    </Question5>
+  </Questions>
+  <Time>100</Time>
+  <Report>Да</Report>
+</Test>
