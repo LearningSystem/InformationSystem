@@ -24,6 +24,7 @@ namespace Prepod
         List<TestAnswers> Answers = new List<TestAnswers>();
         int[] notRightAnswer;
         studentWork studentForm;
+        double Summa = 0;//Сумма баллов за весь тест
 
         string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
@@ -59,9 +60,24 @@ namespace Prepod
             lblName.Text = fio;
             lblGroup.Text = group;
             lblTheme.Text = TestTheme;
-            lblBall.Text = StudBall.ToString();
+            SummaBallov();
+            double StudBalls = (double)StudBall;
+            double proc = StudBalls / Summa * 100;
+            lblBall.Text = StudBall.ToString() + " (" + proc.ToString() + "%)";
+            //SummaBallov();
+            if (proc < 40.0)
+                lblRez2.Text = "Увы, тест не сдан.";
+            else
+                lblRez2.Text = "Тест сдан.";
             DoStart();
             CreateTree();
+        }
+        void SummaBallov()
+        {
+            for (int u=0;u<=Questions.Count-1;u++)
+            {
+                Summa += Questions[u].price;
+            }
         }
         void CreateTree()
         {
@@ -202,7 +218,7 @@ namespace Prepod
                 else
                 {
                     m = 1;
-                    treeViewTest.Nodes[index].Nodes.Add("Ваш ответ: Вы ничего не ответили");
+                    treeViewTest.Nodes[index].Nodes.Add("Ваш ответ: Вы ничего не ответили.");
                     //for (int l = 0; l <= 9; l++)
                     //{
                     //    if (Questions[j].part[l] != "")

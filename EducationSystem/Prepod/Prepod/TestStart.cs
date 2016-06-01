@@ -17,8 +17,6 @@ namespace Prepod
     public partial class TestStart : Form
     {
         XmlReader xmlReader;
-        //string XmlPath = "C:\\Users\\User\\Desktop\\Текущие проекты\\CreateTest 2.0\\CreateTest 2.0\\bin\\Debug\\СуперТест3.xml";
-        ////string XmlPath = Application.StartupPath + "\\" + "Математика.xml";
         //ОБЪЕДИНИТЬ МЕТОДЫ Clear и ClearSelectAns!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         string XmlPath=null;
         int numStud = -1;
@@ -209,8 +207,9 @@ namespace Prepod
                             do xmlReader.Read(); while (xmlReader.Name != "Answers");
                             printAnswers("One");
                             do xmlReader.Read(); while (xmlReader.Name != "RightAnswer");
-                            xmlReader.Read();
-                            tq.rightans[0] = xmlReader.Value.ToString();
+                            //MessageBox.Show(xmlReader.Value.ToString());//xmlReader.Read();
+                            //tq.rightans[0] = xmlReader.Value.ToString();
+                            printRightAnswers();
                             do xmlReader.Read(); while (xmlReader.Name != "Part");
                             printPart();
                             do xmlReader.Read(); while (xmlReader.Name != "Price");
@@ -587,6 +586,7 @@ namespace Prepod
                     comm = new SqlCommand();
                     comm.Connection = conn;
                     comm.CommandText = "Insert into [Выполненный тест] ([№ теста],[Балл],[Дата сдачи],[Время выполнения],[№ студента]) values (" + "'" + idTest.ToString() + "'" + "," + "'" + StudBall.ToString() + "'" + "," + "'" + System.DateTime.Today.ToShortDateString() + "'" + "," + "'" + (t / 60000000).ToString() + "'" + "," + "'" + numStud.ToString() + "'" + ")";
+                    //comm.CommandText="Insert into [Выполненный тест] ("
                     comm.ExecuteNonQuery();
                 }
                 catch(Exception ex)
