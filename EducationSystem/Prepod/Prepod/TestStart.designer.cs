@@ -68,7 +68,6 @@
             // 
             this.rTB.Location = new System.Drawing.Point(258, 37);
             this.rTB.Name = "rTB";
-            this.rTB.ReadOnly = true;
             this.rTB.Size = new System.Drawing.Size(742, 167);
             this.rTB.TabIndex = 1;
             this.rTB.Text = "";
@@ -158,6 +157,7 @@
             // 
             this.txtB4.Location = new System.Drawing.Point(405, 152);
             this.txtB4.Name = "txtB4";
+            this.txtB4.ReadOnly = true;
             this.txtB4.Size = new System.Drawing.Size(322, 40);
             this.txtB4.TabIndex = 21;
             this.txtB4.Text = "";
@@ -166,6 +166,7 @@
             // 
             this.txtB2.Location = new System.Drawing.Point(402, 61);
             this.txtB2.Name = "txtB2";
+            this.txtB2.ReadOnly = true;
             this.txtB2.Size = new System.Drawing.Size(322, 40);
             this.txtB2.TabIndex = 20;
             this.txtB2.Text = "";
@@ -174,6 +175,7 @@
             // 
             this.txtB3.Location = new System.Drawing.Point(38, 152);
             this.txtB3.Name = "txtB3";
+            this.txtB3.ReadOnly = true;
             this.txtB3.Size = new System.Drawing.Size(322, 40);
             this.txtB3.TabIndex = 19;
             this.txtB3.Text = "";
@@ -182,6 +184,7 @@
             // 
             this.txtB1.Location = new System.Drawing.Point(38, 61);
             this.txtB1.Name = "txtB1";
+            this.txtB1.ReadOnly = true;
             this.txtB1.Size = new System.Drawing.Size(322, 40);
             this.txtB1.TabIndex = 18;
             this.txtB1.Text = "";

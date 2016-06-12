@@ -47,19 +47,23 @@ namespace Prepod
         public bool Picture = false;
         public string PicturePath = null;
         public int NumItems;
-        public string NameTest;
+        //public string NameTest;
         public bool SaveTest = false;
         int NumTeacher;
         
         string numTest;
-        public TestCreate(XmlTextWriter _writer, string _numTest, string _nameTest,int _numTeacher)
+
+        public string NameTest;
+        public string DescrTest;
+        public string ThemeTest;
+
+        public TestCreate(string _nametest,string _descr, string _theme, int _numTeacher)
         {
             InitializeComponent();
-            writer = _writer;
-            numTest = _numTest;
-            NameTest = _nameTest;
-            NumTeacher = _numTeacher;
-            
+            NameTest = _nametest;
+            DescrTest = _descr;
+            ThemeTest = _theme;
+            NumTeacher = _numTeacher;   
         }//
 
         private void TestCreate_Load(object sender, EventArgs e)
@@ -350,7 +354,7 @@ namespace Prepod
                 if (cBSelect.SelectedIndex == 2 || cBSelect.SelectedIndex == 3 || cBSelect.SelectedIndex == 4)
                     Next();
             }
-            Picture = false;
+            //Picture = false;
             PicturePath = null;
         }
 
@@ -406,215 +410,268 @@ namespace Prepod
         {
             if (SaveTest == false)
             {
-                writer.WriteStartAttribute("Number");
-                int p = Questions.Count;
-                writer.WriteString(p.ToString());
-                writer.WriteEndAttribute();
-                for (int i = 0; i <= Questions.Count - 1; i++)
+                string pathprepod;
+                conn = new SqlConnection(connectionString);
+                using (conn)
                 {
-                    writer.WriteStartElement("Question" + Questions[i].num);
-
-                    writer.WriteStartElement("Text");
-                    writer.WriteString(Questions[i].question);
-                    writer.WriteEndElement();
-
-                    #region TypeAnswer
-                    //writer.WriteStartAttribute("Type Answer");
-                    writer.WriteStartElement("TypeAnswer");
-                    if (Questions[i].type_question == "Один вариант ответа")
+                    conn.Open();
+                    SqlCommand comm = new SqlCommand();
+                    comm.Connection = conn;
+                    try
                     {
-                        writer.WriteString("One");
-                        Questions[i].price = Int32.Parse(numList1.Value.ToString());
+                        comm.CommandText = "select [Путь к папке] from Преподаватель where [№ преподавателя]=" + "'" + NumTeacher.ToString() + "'";
+                        comm.ExecuteNonQuery();
+                        SqlDataReader rdr = comm.ExecuteReader();
+                        rdr.Read();
+                        pathprepod = rdr[0].ToString();
+                        rdr.Close();
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                    if (Picture == true && !System.IO.Directory.Exists(Application.StartupPath + pathprepod + "Тесты\\" + NameTest))
+                    {
+                        System.IO.Directory.CreateDirectory(Application.StartupPath + pathprepod + "Тесты\\" + NameTest);
+                        writer = new XmlTextWriter(Application.StartupPath + pathprepod + "Тесты\\" + NameTest + "\\"+ NameTest + ".xml", Encoding.UTF8);
+                        File.Copy(PicturePath, Application.StartupPath + pathprepod + "Тесты\\" + NameTest); 
                     }
                     else
-                        if (Questions[i].type_question == "Несколько вариантов ответа")
+                    {
+                        writer = new XmlTextWriter(Application.StartupPath + pathprepod + "Тесты\\" + NameTest + ".xml", Encoding.UTF8);
+                        writer.Formatting = Formatting.Indented;
+                        writer.WriteStartDocument();
+                        writer.WriteStartElement("Test");
+
+                        writer.WriteStartElement("Discription");
+                        writer.WriteString(DescrTest);
+                        writer.WriteEndElement();
+
+                        writer.WriteStartElement("Theme");
+                        writer.WriteString(ThemeTest);
+                        writer.WriteEndElement();
+
+                        writer.WriteStartElement("Discipline");
+                        writer.WriteString("C#");
+                        writer.WriteEndElement();
+
+                        writer.WriteStartElement("Questions");
+
+                        //-------
+
+                        writer.WriteStartAttribute("Number");
+                        int p = Questions.Count;
+                        writer.WriteString(p.ToString());
+                        writer.WriteEndAttribute();
+                        for (int i = 0; i <= Questions.Count - 1; i++)
                         {
-                            writer.WriteString("Several");
-                            Questions[i].price = Int32.Parse(numList2.Value.ToString());
-                        }
-                        else
-                            if (Questions[i].type_question == "Выстроить последовательность")
+                            writer.WriteStartElement("Question" + Questions[i].num);
+
+                            writer.WriteStartElement("Text");
+                            writer.WriteString(Questions[i].question);
+                            writer.WriteEndElement();
+
+                            #region TypeAnswer
+                            //writer.WriteStartAttribute("Type Answer");
+                            writer.WriteStartElement("TypeAnswer");
+                            if (Questions[i].type_question == "Один вариант ответа")
                             {
-                                writer.WriteString("Sequence");
-                                Questions[i].price = Int32.Parse(numList3.Value.ToString());
+                                writer.WriteString("One");
+                                Questions[i].price = Int32.Parse(numList1.Value.ToString());
                             }
                             else
-                                if (Questions[i].type_question == "Свободный ответ")
+                                if (Questions[i].type_question == "Несколько вариантов ответа")
                                 {
-                                    writer.WriteString("Writing");
-                                    Questions[i].price = Int32.Parse(numList4.Value.ToString());
+                                    writer.WriteString("Several");
+                                    Questions[i].price = Int32.Parse(numList2.Value.ToString());
                                 }
                                 else
-                                {
-                                    writer.WriteString("Comparison");
-                                    Questions[i].price = Int32.Parse(numList5.Value.ToString());
-                                }
-                    //writer.WriteEndAttribute();
-                    writer.WriteEndElement();
-                    #endregion
+                                    if (Questions[i].type_question == "Выстроить последовательность")
+                                    {
+                                        writer.WriteString("Sequence");
+                                        Questions[i].price = Int32.Parse(numList3.Value.ToString());
+                                    }
+                                    else
+                                        if (Questions[i].type_question == "Свободный ответ")
+                                        {
+                                            writer.WriteString("Writing");
+                                            Questions[i].price = Int32.Parse(numList4.Value.ToString());
+                                        }
+                                        else
+                                        {
+                                            writer.WriteString("Comparison");
+                                            Questions[i].price = Int32.Parse(numList5.Value.ToString());
+                                        }
+                            //writer.WriteEndAttribute();
+                            writer.WriteEndElement();
+                            #endregion
 
-                    #region Answers
-                    //writer.WriteStartAttribute("Answers");
-                    writer.WriteStartElement("Answers");
-                    if (Questions[i].answ2 != null)
-                        writer.WriteString(Questions[i].answ1 + "|" + Questions[i].answ2 + "|" + Questions[i].answ3 + "|" + Questions[i].answ4);
-                    else
-                        writer.WriteString(Questions[i].answ1);
-                    //writer.WriteEndAttribute();
-                    writer.WriteEndElement();
-                    #endregion
+                            #region Answers
+                            //writer.WriteStartAttribute("Answers");
+                            writer.WriteStartElement("Answers");
+                            if (Questions[i].answ2 != null)
+                                writer.WriteString(Questions[i].answ1 + "|" + Questions[i].answ2 + "|" + Questions[i].answ3 + "|" + Questions[i].answ4);
+                            else
+                                writer.WriteString(Questions[i].answ1);
+                            //writer.WriteEndAttribute();
+                            writer.WriteEndElement();
+                            #endregion
 
-                    #region RightAnswer
-                    //Записываем правильный ответ в атрибут Right answer
-                    //writer.WriteStartAttribute("Right answer");
-                    writer.WriteStartElement("RightAnswer");
-                    if (Questions[i].type_question == "Один вариант ответа")
-                    {
-                        for (int h = 0; h <= 3; h++)
-                        {
-                            if (Questions[i].rightans[h] != null)
-                                writer.WriteString(Questions[i].rightans[h]);
-                        }
-                    }
-                    else
-                        if (Questions[i].type_question == "Несколько вариантов ответа")
-                        {
-                            string tmp = null;
-                            for (int h = 0; h <= 3; h++)
+                            #region RightAnswer
+                            //Записываем правильный ответ в атрибут Right answer
+                            //writer.WriteStartAttribute("Right answer");
+                            writer.WriteStartElement("RightAnswer");
+                            if (Questions[i].type_question == "Один вариант ответа")
                             {
-                                if (Questions[i].rightans[h] != null)
-                                {
-                                    tmp = tmp + Questions[i].rightans[h];
-                                    tmp = tmp + "|";
-                                }
-                            }
-                            for (int h = 0; h <= 3; h++)
-                            {
-                                if (tmp != null)
-                                    if (tmp.LastIndexOf("|") == tmp.Length - 1)
-                                        tmp = tmp.Remove(tmp.Length - 1, 1);
-                            }
-                            writer.WriteString(tmp);
-
-                        }
-
-                        else
-                            if (Questions[i].type_question == "Выстроить последовательность")
-                            {
-                                string tmp = null;
                                 for (int h = 0; h <= 3; h++)
                                 {
                                     if (Questions[i].rightans[h] != null)
-                                    {
-                                        tmp = tmp + Questions[i].rightans[h];
-                                        tmp = tmp + "|";
-                                    }
+                                        writer.WriteString(Questions[i].rightans[h]);
                                 }
-                                if (tmp.LastIndexOf("|") == tmp.Length - 1)
-                                    tmp = tmp.Remove(tmp.Length - 1, 1);
-                                writer.WriteString(tmp);
                             }
                             else
-                                if (Questions[i].type_question == "Свободный ответ")
-                                    writer.WriteString(Questions[i].rightans[0]);
-                                else
+                                if (Questions[i].type_question == "Несколько вариантов ответа")
                                 {
                                     string tmp = null;
-                                    tmp = Questions[i].rightans[0] + "==" + Questions[i].rightans[1];
-                                    tmp = tmp + "|" + Questions[i].rightans[2] + "==" + Questions[i].rightans[3];
+                                    for (int h = 0; h <= 3; h++)
+                                    {
+                                        if (Questions[i].rightans[h] != null)
+                                        {
+                                            tmp = tmp + Questions[i].rightans[h];
+                                            tmp = tmp + "|";
+                                        }
+                                    }
+                                    for (int h = 0; h <= 3; h++)
+                                    {
+                                        if (tmp != null)
+                                            if (tmp.LastIndexOf("|") == tmp.Length - 1)
+                                                tmp = tmp.Remove(tmp.Length - 1, 1);
+                                    }
                                     writer.WriteString(tmp);
+
                                 }
-                    //writer.WriteEndAttribute();
-                    writer.WriteEndElement();
-                    #endregion
 
-                    #region Part
-                    //writer.WriteStartAttribute("Part");
-                    writer.WriteStartElement("Part");
-                    string temp = null;
-                    for (int u = 0; u <= 9; u++)
-                    {
-                        if (Questions[i].part[u] != null)
-                        {
-                            temp = temp + Questions[i].part[u];
-                            temp = temp + "|";
+                                else
+                                    if (Questions[i].type_question == "Выстроить последовательность")
+                                    {
+                                        string tmp = null;
+                                        for (int h = 0; h <= 3; h++)
+                                        {
+                                            if (Questions[i].rightans[h] != null)
+                                            {
+                                                tmp = tmp + Questions[i].rightans[h];
+                                                tmp = tmp + "|";
+                                            }
+                                        }
+                                        if (tmp.LastIndexOf("|") == tmp.Length - 1)
+                                            tmp = tmp.Remove(tmp.Length - 1, 1);
+                                        writer.WriteString(tmp);
+                                    }
+                                    else
+                                        if (Questions[i].type_question == "Свободный ответ")
+                                            writer.WriteString(Questions[i].rightans[0]);
+                                        else
+                                        {
+                                            string tmp = null;
+                                            tmp = Questions[i].rightans[0] + "==" + Questions[i].rightans[1];
+                                            tmp = tmp + "|" + Questions[i].rightans[2] + "==" + Questions[i].rightans[3];
+                                            writer.WriteString(tmp);
+                                        }
+                            //writer.WriteEndAttribute();
+                            writer.WriteEndElement();
+                            #endregion
+
+                            #region Part
+                            //writer.WriteStartAttribute("Part");
+                            writer.WriteStartElement("Part");
+                            string temp = null;
+                            for (int u = 0; u <= 9; u++)
+                            {
+                                if (Questions[i].part[u] != null)
+                                {
+                                    temp = temp + Questions[i].part[u];
+                                    temp = temp + "|";
+                                }
+                            }
+                            //if(temp!=null)
+                            //  if (temp.LastIndexOf("|") == temp.Length - 1)
+                            //    temp.Remove(temp.Length - 1, 1);
+                            for (int h = 0; h <= 9; h++)
+                            {
+                                if (temp != null)
+                                    if (temp.LastIndexOf("|") == temp.Length - 1)
+                                        temp.Remove(temp.Length - 1, 1);
+                            }
+                            if (temp == null)
+                                temp = "";
+                            writer.WriteString(temp);
+                            //writer.WriteEndAttribute();
+                            writer.WriteEndElement();
+                            #endregion
+
+                            #region Price
+                            //writer.WriteStartAttribute("Price");
+                            writer.WriteStartElement("Price");
+                            writer.WriteString(Questions[i].price.ToString());
+                            //writer.WriteEndAttribute();
+                            writer.WriteEndElement();
+                            #endregion
+
+                            writer.WriteEndElement();
                         }
-                    }
-                    //if(temp!=null)
-                    //  if (temp.LastIndexOf("|") == temp.Length - 1)
-                    //    temp.Remove(temp.Length - 1, 1);
-                    for (int h = 0; h <= 9; h++)
-                    {
-                        if (temp != null)
-                            if (temp.LastIndexOf("|") == temp.Length - 1)
-                                temp.Remove(temp.Length - 1, 1);
-                    }
-                    if (temp == null)
-                        temp = "";
-                    writer.WriteString(temp);
-                    //writer.WriteEndAttribute();
-                    writer.WriteEndElement();
-                    #endregion
+                        writer.WriteEndElement();
+                        //Завершение записи
+                        writer.WriteStartElement("Time");
 
-                    #region Price
-                    //writer.WriteStartAttribute("Price");
-                    writer.WriteStartElement("Price");
-                    writer.WriteString(Questions[i].price.ToString());
-                    //writer.WriteEndAttribute();
-                    writer.WriteEndElement();
-                    #endregion
+                        writer.WriteString(numTime.Value.ToString());
+                        writer.WriteEndElement();
 
-                    writer.WriteEndElement();
+                        writer.WriteStartElement("Report");
+                        writer.WriteString(cBOtch.Text);
+                        writer.WriteEndElement();
+
+                        //Завершаем написание документа
+                        writer.WriteEndElement(); //Закрывем основной тэг - test
+                        writer.WriteEndDocument(); //Закрываем документ
+
+                        writer.Close();
+
+                        MessageBox.Show("Тест был успешно создан!", "Выход");
+                        insertTask();
+                        insertTest();
+                        SaveTest = true;
+                    }
+                    menuPrepod newmenu = new menuPrepod(NumTeacher.ToString());
+                    this.Hide();
+                    newmenu.Show();
                 }
-                writer.WriteEndElement();
-                //Завершение записи
-                writer.WriteStartElement("Time");
-
-                writer.WriteString(numTime.Value.ToString());
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("Report");
-                writer.WriteString(cBOtch.Text);
-                writer.WriteEndElement();
-
-                //Завершаем написание документа
-                writer.WriteEndElement(); //Закрывем основной тэг - test
-                writer.WriteEndDocument(); //Закрываем документ
-
-                writer.Close();
-
-                MessageBox.Show("Тест был успешно создан!", "Выход");
-                insertTest();
-                SaveTest = true;
             }
-            //ВСЕ РАВНО ПОТОМ ОТКРЫТЬ!
-            string pathprepod = "";
-            conn = new SqlConnection(connectionString);
-            using (conn)
+            else
             {
-                conn.Open();
-                SqlCommand comm = new SqlCommand();
-                comm.Connection = conn;
-                try
-                {
-                    comm.CommandText = "select [Путь к папке] from Преподаватель where [№ преподавателя]="+"'"+NumTeacher.ToString()+"'";
-                    comm.ExecuteNonQuery();
-                    SqlDataReader rdr = comm.ExecuteReader();
-                    rdr.Read();
-                    pathprepod = rdr[0].ToString();
-                    rdr.Close();
-                }
-                finally
-                {
-                    conn.Close();
-                }
+                MessageBox.Show("Тест уже сохранен.", "Ошибка!");
             }
-            string inputdir = Application.StartupPath + pathprepod + "Тесты\\" + NameTest + ".xml";
-            File.Copy(Application.StartupPath + "\\" + NameTest + ".xml", inputdir);
-            File.Delete(Application.StartupPath + "\\" + NameTest + ".xml");
-            menuPrepod newmenu = new menuPrepod(NumTeacher.ToString());
-            this.Hide();
-            newmenu.Show();
+        }
+        private void insertTask()
+        {
+            conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+
+            try
+            {
+                comm.CommandText = "Insert into Тест ([№ преподавателя], [Описание], [Тема], [Название], [Ссылка]) Values('" + NumTeacher.ToString() + "', '" + DescrTest + "', '" + ThemeTest + "', '" + NameTest + "','Тесты\\" + NameTest + ".xml')";
+                comm.ExecuteNonQuery();
+                comm.CommandText = "select SCOPE_IDENTITY()";
+                SqlDataReader rdr = comm.ExecuteReader();
+                rdr.Read();
+                    numTest = rdr[0].ToString();
+                rdr.Close();
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         public void insertTest()
@@ -625,7 +682,7 @@ namespace Prepod
             comm.Connection = conn;
 
             string date = dateTimePicker1.Value.ToShortDateString();
-            //int maxBall = Convert.ToInt32(numList1.Value) + Convert.ToInt32(numList2.Value) + Convert.ToInt32(numList3.Value) + Convert.ToInt32(numList4.Value) + Convert.ToInt32(numList5.Value);
+           
             int maxBall = 0;
             for (int g = 0; g <= Questions.Count - 1; g++)
             {
@@ -1172,8 +1229,10 @@ namespace Prepod
             {
                 //string temp = openFile.InitialDirectory + openFile.FileName;
                 string temp = openFilePicture.InitialDirectory + openFilePicture.FileName;
+                //PictureName = openFilePicture.FileName;
                 PicturePath = temp;
                 img = Image.FromFile(temp);
+                //File.Copy()
                 if (img.Width > 635)
                     MessageBox.Show("Картинка слишком большая!");
                 else

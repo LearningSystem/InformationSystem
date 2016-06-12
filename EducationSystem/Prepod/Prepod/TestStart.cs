@@ -304,6 +304,7 @@ namespace Prepod
                 int numbQuest = pos-1;
                 int index2=lstQuestion.Items.Add("Вопрос " + numbQuest).Index;
                 lstQuestion.Items[index2].Tag = index;
+                lstQuestion.Items[index2].BackColor = Color.Red;
                 testAns = new TestAnswers();
                 testAns.NumberQuestion = index;
                 Answers.Add(testAns);
@@ -512,7 +513,7 @@ namespace Prepod
            }
            else
               rTB.Text = Questions[_ind].question;
-
+           rTB.ReadOnly = true;
         }
         
         public void Clear()
@@ -545,6 +546,9 @@ namespace Prepod
             {
                 MyTimer.Enabled = true;
                 MyTimer.Start();
+                //if (rad1.Checked || rad2.Checked || rad3.Checked || rad4.Checked || cB1.Checked || cB2.Checked || rad3.Checked || rad3.Checked)
+                //if (rad1!=null)
+                //    if (rad1.Checked || rad2.Checked || rad3.Checked || rad4.Checked)
                 NextQuest(0);
                 First = true;
             }
@@ -634,6 +638,7 @@ namespace Prepod
 
         void SaveAnswers(int _ind)
         {
+            lstQuestion.Items[_ind].BackColor = Color.GreenYellow;
             ClearAnswers(_ind);
             if (rad1 != null)
             {
@@ -822,6 +827,7 @@ namespace Prepod
             {
                 num = _id;
                 numberTekQuest = num;
+                lbltextQ.Text = "Текст вопроса № " + (numberTekQuest+1).ToString();
                 num2 = Int32.Parse(lblNumberQuest.Text);
                 SaveAnswers(num2);
                 CreateElement(num);
@@ -833,6 +839,7 @@ namespace Prepod
             {
                     lblNumberQuest.Text = "0";
                     CreateElement(Int32.Parse(lblNumberQuest.Text));
+                    lbltextQ.Text = "Текст вопроса № 1";
             }
         }
 

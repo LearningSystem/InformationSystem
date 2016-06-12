@@ -66,9 +66,9 @@ namespace Prepod
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            regForm rf = new regForm();
-            rf.Show();
-            this.Hide();
+        //    regForm rf = new regForm();
+        //    rf.Show();
+        //    this.Hide();
         }
     }
 }

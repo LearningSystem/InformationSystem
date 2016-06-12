@@ -384,7 +384,7 @@
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(369, 31);
+            this.btnSelect.Location = new System.Drawing.Point(561, 30);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(75, 23);
             this.btnSelect.TabIndex = 2;
@@ -396,7 +396,7 @@
             // 
             this.txtExe.Location = new System.Drawing.Point(9, 32);
             this.txtExe.Name = "txtExe";
-            this.txtExe.Size = new System.Drawing.Size(342, 20);
+            this.txtExe.Size = new System.Drawing.Size(523, 20);
             this.txtExe.TabIndex = 1;
             // 
             // lblCompilePath
