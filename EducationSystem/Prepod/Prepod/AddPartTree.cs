@@ -9,109 +9,65 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.IO;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Prepod
 {
     public partial class AddPartTree : Form
     {
         TestCreate form;
-        public AddPartTree(TestCreate _form)
+        TreeNode newNode;
+        string numTree = "";
+        SqlConnection conn;
+        SqlCommand comm;
+        string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+        string NumPrepod;
+        public AddPartTree(TestCreate _form, string _numTeacher)
         {
             InitializeComponent();
             form = _form;
+            conn = new SqlConnection(connectionString);
+            comm = new SqlCommand();
+            comm.Connection = conn;
+            NumPrepod = _numTeacher;
         }
 
         private void AddPartTree_Load(object sender, EventArgs e)
         {
             openFileDialog1.InitialDirectory = Application.StartupPath;
+            SelectNumTree(NumPrepod);
+            LoadTree(numTree);
         }
 
-        public void Add(object sender,String fileName,EventArgs e)
+        private void SelectNumTree(string _numprepod)
         {
-            treeView1.Nodes.Clear();
-            XmlTextReader reader = null;
-            //string fileName = "example.xml";
-
             try
             {
-                treeView1.BeginUpdate();
-                reader = new XmlTextReader(fileName);
-                TreeNode parentNode = null;
-                while (reader.Read())
+                conn.Open();
+                //загружаем корневую вершину
+                comm.CommandText = "select [№ дерева] from [Дерево] where [№ преподавателя]='"+_numprepod+"'";
+                SqlDataReader rdr = comm.ExecuteReader();
+                if (rdr.HasRows)
                 {
-                    if (reader.NodeType == XmlNodeType.Element)
-                    {
-                        if (reader.Name == "Вершина")
-                        {
-                            TreeNode newNode = new TreeNode();
-                            bool isEmptyElement = reader.IsEmptyElement;
-
-                            int attributeCount = reader.AttributeCount;
-                            if (attributeCount > 0)
-                            {
-                                for (int i = 0; i < attributeCount; i++)
-                                {
-                                    if (i == 0)
-                                    {
-                                        reader.MoveToAttribute(i);
-                                        // SetAttributeValue(newNode, reader.Name, reader.Value);
-                                        newNode.Text = reader.Value;
-                                    }
-                                    else
-                                    {
-                                        reader.MoveToAttribute(i);
-                                        newNode.Tag = reader.Value;
-                                    }
-
-                                }
-                            }
-                            // add new node to Parent Node or TreeView
-                            if (parentNode != null)
-                                parentNode.Nodes.Add(newNode);
-                            else
-                                treeView1.Nodes.Add(newNode);
-
-                            // making current node 'ParentNode' if its not empty
-                            if (!isEmptyElement)
-                            {
-                                parentNode = newNode;
-                            }
-                        }
-                    }
-                    // moving up to in TreeView if end tag is encountered
-                    else if (reader.NodeType == XmlNodeType.EndElement)
-                    {
-                        if (reader.Name == "Вершина")
-                        {
-                            parentNode = parentNode.Parent;
-                        }
-                    }
-                    else if (reader.NodeType == XmlNodeType.XmlDeclaration)
-                    {
-                        //Ignore Xml Declaration                    
-                    }
-                    else if (reader.NodeType == XmlNodeType.None)
-                    {
-                        return;
-                    }
-                    else if (reader.NodeType == XmlNodeType.Text)
-                    {
-                        parentNode.Nodes.Add(reader.Value);
-                    }
-
-                }
+                    rdr.Read();
+                    numTree = rdr[0].ToString();
+                    rdr.Close();
+                };
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
             }
             finally
             {
-                // enabling redrawing of treeview after all nodes are added
-                treeView1.EndUpdate();
-                reader.Close();
+                conn.Close();
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TreeNodeCollection collect = treeView1.Nodes;
+            TreeNodeCollection collect = tree.Nodes;
             Poisk(collect);
             this.Hide();
 
@@ -141,11 +97,73 @@ namespace Prepod
             }
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void loadNodes(TreeNodeCollection nodes, string numTree)
         {
-            if (openFileDialog1.ShowDialog()==DialogResult.OK)
+            foreach (TreeNode node in nodes)
             {
-                Add(sender, openFileDialog1.FileName, e);
+                //считываем всех потомков на первом уровне  
+                comm.CommandText = "SELECT Вершина.[№ вершины], Текст, [Тип вершины], Имя FROM Вершина JOIN Связи ON (Вершина.[№ вершины] = Связи.[№ потомка]) WHERE (Связи.[№ вершины] = " + node.Tag + ") AND (Связи.Уровень = 1) and (Вершина.[№ дерева] = " + numTree + ") and (Связи.[№ вершины] <> Связи.[№ потомка])";
+                SqlDataReader rdr = comm.ExecuteReader();
+                rdr.Read();
+
+                if (rdr.HasRows)
+                {
+                    do
+                    {
+                        newNode = new TreeNode(rdr[1].ToString());
+                        newNode.Tag = rdr[0].ToString();
+                        newNode.Name = rdr[3].ToString();
+                        if ((rdr[3].ToString() == "Учебные материалы"))
+                        {
+                            newNode.ImageIndex = 1;
+                        }
+                        else { newNode.ImageIndex = 0; };
+                        node.Nodes.Add(newNode);
+                        //treeView1.SelectedNode.Nodes.Add(rdr[1].ToString()).Tag = rdr[0].ToString();
+                        //treeView1.Update();                        
+
+                    } while (rdr.Read());
+                }
+                rdr.Close();
+                loadNodes(node.Nodes, numTree);
+            }
+            //conn.Close();
+        }
+
+        private void LoadTree(string numTree)
+        {
+            try
+            {
+                conn.Open();
+                //загружаем корневую вершину
+                comm.CommandText = "select Вершина.[№ вершины], Текст, [Тип вершины], Имя from Вершина where Вершина.[№ вершины] in  (select Связи.[№ вершины] from Связи where [№ потомка] = 0) and [№ дерева] = " + numTree + "";
+                SqlDataReader rdr = comm.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    rdr.Read();
+                    string root = rdr[0].ToString();
+                    if (tree.SelectedNode == null)
+                    {
+                        newNode = new TreeNode(rdr[1].ToString());
+                        newNode.Tag = rdr[0].ToString();
+                        newNode.ImageIndex = 0;
+                        newNode.Name = rdr[3].ToString();
+                        tree.Nodes.Add(newNode);
+                        tree.Update();
+                        //treeView1.Select();
+                    }
+                    //загрузка всех потомков
+                    rdr.Close();
+                    loadNodes(tree.Nodes, numTree);
+                };
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
             }
         }
     }

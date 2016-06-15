@@ -263,6 +263,8 @@ namespace Prepod
             }
             rb.Visible = true;
             tree.SelectedImageIndex = tree.SelectedNode.ImageIndex;
+
+            
         }
 
         private void openFileTask()

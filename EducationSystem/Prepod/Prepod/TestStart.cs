@@ -513,7 +513,7 @@ namespace Prepod
            }
            else
               rTB.Text = Questions[_ind].question;
-           rTB.ReadOnly = true;
+           //rTB.ReadOnly = true;
         }
         
         public void Clear()
@@ -638,7 +638,14 @@ namespace Prepod
 
         void SaveAnswers(int _ind)
         {
-            lstQuestion.Items[_ind].BackColor = Color.GreenYellow;
+            if ((rad1!=null)&&(rad1.Checked||rad2.Checked||rad3.Checked||rad4.Checked))
+                lstQuestion.Items[_ind].BackColor = Color.GreenYellow;
+            if ((cB1!=null)&&(cB1.Checked||cB2.Checked||cB3.Checked||cB4.Checked))
+                lstQuestion.Items[_ind].BackColor = Color.GreenYellow;
+            if (txtB2.Visible==false && txtB1.Text!="")
+                lstQuestion.Items[_ind].BackColor = Color.GreenYellow;
+            if (txtB1 != null && txtB2 != null && txtB3 != null && txtB4 != null && txtB1.Text != "" && txtB2.Text != "" && txtB3.Text != "" && txtB4.Text != "")
+                lstQuestion.Items[_ind].BackColor = Color.GreenYellow;
             ClearAnswers(_ind);
             if (rad1 != null)
             {

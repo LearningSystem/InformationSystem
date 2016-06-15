@@ -309,7 +309,8 @@ namespace Prepod
             this.SendToBack();
             studentForm.Show();
             studentForm.BringToFront();
-            studentForm.Poisk(treeViewTest.SelectedNode.Tag.ToString());
+            if (treeViewTest.SelectedNode.Tag!=null)
+                studentForm.Poisk(treeViewTest.SelectedNode.Tag.ToString());
         }
         public object SelectPassStud()
         {

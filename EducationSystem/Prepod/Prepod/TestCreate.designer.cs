@@ -86,6 +86,14 @@
             this.завершениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.тестГотовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFilePicture = new System.Windows.Forms.OpenFileDialog();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.gBOzenka = new System.Windows.Forms.GroupBox();
+            this.lblGb1 = new System.Windows.Forms.Label();
+            this.lblGb2 = new System.Windows.Forms.Label();
+            this.lblGb3 = new System.Windows.Forms.Label();
+            this.numerOz5 = new System.Windows.Forms.NumericUpDown();
+            this.numerOzenka4 = new System.Windows.Forms.NumericUpDown();
+            this.numerOzenka3 = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumberList)).BeginInit();
@@ -106,12 +114,16 @@
             this.gBTime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numTime)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.gBOzenka.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numerOz5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numerOzenka4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numerOzenka3)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(12, 26);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -416,6 +428,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.gBOzenka);
+            this.tabPage2.Controls.Add(this.btnNext);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.btnDone1);
             this.tabPage2.Controls.Add(this.groupBox1);
@@ -432,7 +446,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dateTimePicker1);
-            this.groupBox2.Location = new System.Drawing.Point(416, 126);
+            this.groupBox2.Location = new System.Drawing.Point(416, 119);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(381, 68);
             this.groupBox2.TabIndex = 2;
@@ -448,7 +462,8 @@
             // 
             // btnDone1
             // 
-            this.btnDone1.Location = new System.Drawing.Point(572, 258);
+            this.btnDone1.Enabled = false;
+            this.btnDone1.Location = new System.Drawing.Point(351, 384);
             this.btnDone1.Name = "btnDone1";
             this.btnDone1.Size = new System.Drawing.Size(104, 33);
             this.btnDone1.TabIndex = 3;
@@ -468,16 +483,16 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(13, 126);
+            this.groupBox1.Location = new System.Drawing.Point(13, 109);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(375, 224);
+            this.groupBox1.Size = new System.Drawing.Size(375, 252);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Разбаловка (По умолчанию):";
             // 
             // numList5
             // 
-            this.numList5.Location = new System.Drawing.Point(238, 175);
+            this.numList5.Location = new System.Drawing.Point(238, 203);
             this.numList5.Name = "numList5";
             this.numList5.Size = new System.Drawing.Size(120, 23);
             this.numList5.TabIndex = 9;
@@ -485,7 +500,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(55, 181);
+            this.label5.Location = new System.Drawing.Point(68, 205);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(157, 17);
             this.label5.TabIndex = 8;
@@ -493,7 +508,7 @@
             // 
             // numList4
             // 
-            this.numList4.Location = new System.Drawing.Point(238, 138);
+            this.numList4.Location = new System.Drawing.Point(238, 166);
             this.numList4.Name = "numList4";
             this.numList4.Size = new System.Drawing.Size(120, 23);
             this.numList4.TabIndex = 7;
@@ -501,7 +516,7 @@
             // 
             // numList3
             // 
-            this.numList3.Location = new System.Drawing.Point(238, 101);
+            this.numList3.Location = new System.Drawing.Point(238, 125);
             this.numList3.Name = "numList3";
             this.numList3.Size = new System.Drawing.Size(120, 23);
             this.numList3.TabIndex = 6;
@@ -509,7 +524,7 @@
             // 
             // numList2
             // 
-            this.numList2.Location = new System.Drawing.Point(238, 60);
+            this.numList2.Location = new System.Drawing.Point(238, 84);
             this.numList2.Name = "numList2";
             this.numList2.Size = new System.Drawing.Size(120, 23);
             this.numList2.TabIndex = 5;
@@ -517,7 +532,7 @@
             // 
             // numList1
             // 
-            this.numList1.Location = new System.Drawing.Point(238, 23);
+            this.numList1.Location = new System.Drawing.Point(238, 46);
             this.numList1.Name = "numList1";
             this.numList1.Size = new System.Drawing.Size(120, 23);
             this.numList1.TabIndex = 4;
@@ -526,7 +541,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(68, 144);
+            this.label4.Location = new System.Drawing.Point(89, 168);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(136, 17);
             this.label4.TabIndex = 3;
@@ -535,7 +550,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1, 107);
+            this.label3.Location = new System.Drawing.Point(1, 127);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(224, 17);
             this.label3.TabIndex = 2;
@@ -544,7 +559,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 66);
+            this.label2.Location = new System.Drawing.Point(21, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(204, 17);
             this.label2.TabIndex = 1;
@@ -553,7 +568,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(58, 29);
+            this.label1.Location = new System.Drawing.Point(71, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(154, 17);
             this.label1.TabIndex = 0;
@@ -649,13 +664,86 @@
             // тестГотовToolStripMenuItem
             // 
             this.тестГотовToolStripMenuItem.Name = "тестГотовToolStripMenuItem";
-            this.тестГотовToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.тестГотовToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.тестГотовToolStripMenuItem.Text = "Тест готов";
             this.тестГотовToolStripMenuItem.Click += new System.EventHandler(this.тестГотовToolStripMenuItem_Click);
             // 
             // openFilePicture
             // 
             this.openFilePicture.Title = "Выберите картинку";
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(696, 384);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(86, 33);
+            this.btnNext.TabIndex = 4;
+            this.btnNext.Text = "Далее";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // gBOzenka
+            // 
+            this.gBOzenka.Controls.Add(this.numerOzenka3);
+            this.gBOzenka.Controls.Add(this.numerOzenka4);
+            this.gBOzenka.Controls.Add(this.numerOz5);
+            this.gBOzenka.Controls.Add(this.lblGb3);
+            this.gBOzenka.Controls.Add(this.lblGb2);
+            this.gBOzenka.Controls.Add(this.lblGb1);
+            this.gBOzenka.Location = new System.Drawing.Point(416, 198);
+            this.gBOzenka.Name = "gBOzenka";
+            this.gBOzenka.Size = new System.Drawing.Size(381, 163);
+            this.gBOzenka.TabIndex = 5;
+            this.gBOzenka.TabStop = false;
+            this.gBOzenka.Text = "Шкала оценивания (%):";
+            // 
+            // lblGb1
+            // 
+            this.lblGb1.AutoSize = true;
+            this.lblGb1.Location = new System.Drawing.Point(14, 38);
+            this.lblGb1.Name = "lblGb1";
+            this.lblGb1.Size = new System.Drawing.Size(42, 17);
+            this.lblGb1.TabIndex = 0;
+            this.lblGb1.Text = "На 5:";
+            // 
+            // lblGb2
+            // 
+            this.lblGb2.AutoSize = true;
+            this.lblGb2.Location = new System.Drawing.Point(14, 77);
+            this.lblGb2.Name = "lblGb2";
+            this.lblGb2.Size = new System.Drawing.Size(42, 17);
+            this.lblGb2.TabIndex = 1;
+            this.lblGb2.Text = "На 4:";
+            // 
+            // lblGb3
+            // 
+            this.lblGb3.AutoSize = true;
+            this.lblGb3.Location = new System.Drawing.Point(14, 116);
+            this.lblGb3.Name = "lblGb3";
+            this.lblGb3.Size = new System.Drawing.Size(42, 17);
+            this.lblGb3.TabIndex = 2;
+            this.lblGb3.Text = "На 3:";
+            // 
+            // numerOz5
+            // 
+            this.numerOz5.Location = new System.Drawing.Point(97, 38);
+            this.numerOz5.Name = "numerOz5";
+            this.numerOz5.Size = new System.Drawing.Size(186, 23);
+            this.numerOz5.TabIndex = 3;
+            // 
+            // numerOzenka4
+            // 
+            this.numerOzenka4.Location = new System.Drawing.Point(97, 74);
+            this.numerOzenka4.Name = "numerOzenka4";
+            this.numerOzenka4.Size = new System.Drawing.Size(186, 23);
+            this.numerOzenka4.TabIndex = 4;
+            // 
+            // numerOzenka3
+            // 
+            this.numerOzenka3.Location = new System.Drawing.Point(97, 110);
+            this.numerOzenka3.Name = "numerOzenka3";
+            this.numerOzenka3.Size = new System.Drawing.Size(186, 23);
+            this.numerOzenka3.TabIndex = 5;
             // 
             // TestCreate
             // 
@@ -696,6 +784,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.numTime)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.gBOzenka.ResumeLayout(false);
+            this.gBOzenka.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numerOz5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numerOzenka4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numerOzenka3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -760,6 +853,14 @@
         private System.Windows.Forms.ToolStripMenuItem завершениеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem тестГотовToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFilePicture;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.GroupBox gBOzenka;
+        private System.Windows.Forms.NumericUpDown numerOzenka3;
+        private System.Windows.Forms.NumericUpDown numerOzenka4;
+        private System.Windows.Forms.NumericUpDown numerOz5;
+        private System.Windows.Forms.Label lblGb3;
+        private System.Windows.Forms.Label lblGb2;
+        private System.Windows.Forms.Label lblGb1;
     }
 }
 

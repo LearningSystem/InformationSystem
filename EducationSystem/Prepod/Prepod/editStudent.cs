@@ -99,6 +99,8 @@ namespace Prepod
                         DirectoryInfo drInfo = new DirectoryInfo(oldFolder.Remove(oldFolder.Length - 1));
                         drInfo.MoveTo(newFolder);
                         comm.CommandText = "update Студент set Фамилия = '" + textBox1.Text + "', Имя = '" + textBox2.Text + "', Отчество = '" + textBox3.Text + "', [№ группы] = '" + group.SelectedValue.ToString() + "', [Ссылка на работы] = 'Работы студентов\\" + textBox1.Text + " " + textBox2.Text + " " + textBox3.Text + "\\' where [№ студента] = '" + id + "'";
+                        //--------------------------------------добавка с файлом history.txt
+                        //if (!File.Exists())
                     }
                     else
                     {
@@ -108,7 +110,10 @@ namespace Prepod
 
                         DirectoryInfo drInfo = new DirectoryInfo(Application.StartupPath + dir + "Работы студентов\\" + textBox1.Text + " " + textBox2.Text + " " + textBox3.Text);
                         drInfo.Create();
-                    }                    
+                        //-----------------------------добавка с файлом history.txt---------------------
+                        string temp=textBox1.Text + " " + textBox2.Text + " " + textBox3.Text;
+                        File.Create(Application.StartupPath + dir + "Работы студентов\\" + temp + "\\" + temp + ".txt");
+                    }   //-------------------------------------------------------------------------------                 
                     comm.ExecuteNonQuery();                   
                 }
                 catch (Exception exc)
