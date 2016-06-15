@@ -70,7 +70,11 @@ namespace Prepod
         private void легендаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (splitContainer1.Panel2Collapsed == true)
+            {
                 splitContainer1.Panel2Collapsed = false;
+                rTBLegend.LoadFile(Application.StartupPath+"\\Resources\\Legend.rtf");
+                rTBLegend.ReadOnly = true;
+            }
             else
                 splitContainer1.Panel2Collapsed = true;
         }

@@ -347,4 +347,3 @@ C:\Users\User\Desktop\Текущие проекты\Версия на тести
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\EducationSystem\Prepod\Prepod\obj\Debug\Prepod.treeWork.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\EducationSystem\Prepod\Prepod\obj\Debug\Prepod.csproj.GenerateResource.Cache
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\EducationSystem\Prepod\Prepod\obj\Debug\Prepod.csproj.ResolveComReference.cache
-C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\EducationSystem\Prepod\Prepod\obj\Debug\Prepod.csprojResolveAssemblyReference.cache

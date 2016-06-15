@@ -40,12 +40,15 @@
             this.openFile = new System.Windows.Forms.OpenFileDialog();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gBLegend = new System.Windows.Forms.GroupBox();
+            this.rTBLegend = new System.Windows.Forms.RichTextBox();
+            this.lblLegend = new System.Windows.Forms.Label();
             this.gBText.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.gBLegend.SuspendLayout();
             this.SuspendLayout();
             // 
             // rTB
@@ -54,7 +57,7 @@
             this.rTB.Location = new System.Drawing.Point(4, 20);
             this.rTB.Margin = new System.Windows.Forms.Padding(4);
             this.rTB.Name = "rTB";
-            this.rTB.Size = new System.Drawing.Size(646, 423);
+            this.rTB.Size = new System.Drawing.Size(510, 423);
             this.rTB.TabIndex = 0;
             this.rTB.Text = "";
             this.rTB.TextChanged += new System.EventHandler(this.rTB_TextChanged);
@@ -67,7 +70,7 @@
             this.gBText.Margin = new System.Windows.Forms.Padding(4);
             this.gBText.Name = "gBText";
             this.gBText.Padding = new System.Windows.Forms.Padding(4);
-            this.gBText.Size = new System.Drawing.Size(654, 447);
+            this.gBText.Size = new System.Drawing.Size(518, 447);
             this.gBText.TabIndex = 1;
             this.gBText.TabStop = false;
             this.gBText.Text = "Текст XML-файла:";
@@ -131,7 +134,7 @@
             // легендаToolStripMenuItem
             // 
             this.легендаToolStripMenuItem.Name = "легендаToolStripMenuItem";
-            this.легендаToolStripMenuItem.Size = new System.Drawing.Size(129, 24);
+            this.легендаToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.легендаToolStripMenuItem.Text = "Легенда";
             this.легендаToolStripMenuItem.Click += new System.EventHandler(this.легендаToolStripMenuItem_Click);
             // 
@@ -154,21 +157,42 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gBLegend);
             this.splitContainer1.Size = new System.Drawing.Size(983, 447);
-            this.splitContainer1.SplitterDistance = 654;
+            this.splitContainer1.SplitterDistance = 518;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 1;
             // 
             // gBLegend
             // 
+            this.gBLegend.Controls.Add(this.rTBLegend);
+            this.gBLegend.Controls.Add(this.lblLegend);
             this.gBLegend.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gBLegend.Location = new System.Drawing.Point(0, 0);
             this.gBLegend.Margin = new System.Windows.Forms.Padding(4);
             this.gBLegend.Name = "gBLegend";
             this.gBLegend.Padding = new System.Windows.Forms.Padding(4);
-            this.gBLegend.Size = new System.Drawing.Size(324, 447);
+            this.gBLegend.Size = new System.Drawing.Size(460, 447);
             this.gBLegend.TabIndex = 0;
             this.gBLegend.TabStop = false;
             this.gBLegend.Text = "Легенда:";
+            // 
+            // rTBLegend
+            // 
+            this.rTBLegend.BackColor = System.Drawing.Color.LightBlue;
+            this.rTBLegend.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rTBLegend.Location = new System.Drawing.Point(4, 20);
+            this.rTBLegend.Name = "rTBLegend";
+            this.rTBLegend.Size = new System.Drawing.Size(452, 423);
+            this.rTBLegend.TabIndex = 1;
+            this.rTBLegend.Text = "";
+            // 
+            // lblLegend
+            // 
+            this.lblLegend.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblLegend.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblLegend.Location = new System.Drawing.Point(4, 20);
+            this.lblLegend.Name = "lblLegend";
+            this.lblLegend.Size = new System.Drawing.Size(452, 423);
+            this.lblLegend.TabIndex = 0;
             // 
             // TestEditXml
             // 
@@ -183,6 +207,7 @@
             this.Name = "TestEditXml";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактирование теста";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.TestEditXml_Load);
             this.gBText.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
@@ -191,6 +216,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.gBLegend.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,5 +236,7 @@
         private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem легендаToolStripMenuItem;
         private System.Windows.Forms.GroupBox gBLegend;
+        private System.Windows.Forms.Label lblLegend;
+        private System.Windows.Forms.RichTextBox rTBLegend;
     }
 }
