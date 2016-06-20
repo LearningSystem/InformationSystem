@@ -104,5 +104,10 @@ namespace Prepod
 
             } sconn.Close();
         }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

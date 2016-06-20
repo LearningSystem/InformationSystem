@@ -46,9 +46,9 @@
             this.gB.Controls.Add(this.dgvGeneral);
             this.gB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gB.Location = new System.Drawing.Point(0, 27);
-            this.gB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gB.Margin = new System.Windows.Forms.Padding(4);
             this.gB.Name = "gB";
-            this.gB.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gB.Padding = new System.Windows.Forms.Padding(4);
             this.gB.Size = new System.Drawing.Size(531, 417);
             this.gB.TabIndex = 0;
             this.gB.TabStop = false;
@@ -62,7 +62,7 @@
             this.Column2});
             this.dgvGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvGeneral.Location = new System.Drawing.Point(4, 20);
-            this.dgvGeneral.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvGeneral.Margin = new System.Windows.Forms.Padding(4);
             this.dgvGeneral.Name = "dgvGeneral";
             this.dgvGeneral.Size = new System.Drawing.Size(523, 393);
             this.dgvGeneral.TabIndex = 0;
@@ -105,14 +105,14 @@
             // сохранитьToolStripMenuItem1
             // 
             this.сохранитьToolStripMenuItem1.Name = "сохранитьToolStripMenuItem1";
-            this.сохранитьToolStripMenuItem1.Size = new System.Drawing.Size(152, 24);
+            this.сохранитьToolStripMenuItem1.Size = new System.Drawing.Size(145, 24);
             this.сохранитьToolStripMenuItem1.Text = "Сохранить";
             this.сохранитьToolStripMenuItem1.Click += new System.EventHandler(this.сохранитьToolStripMenuItem1_Click);
             // 
             // очиститьToolStripMenuItem
             // 
             this.очиститьToolStripMenuItem.Name = "очиститьToolStripMenuItem";
-            this.очиститьToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.очиститьToolStripMenuItem.Size = new System.Drawing.Size(145, 24);
             this.очиститьToolStripMenuItem.Text = "Очистить";
             this.очиститьToolStripMenuItem.Click += new System.EventHandler(this.очиститьToolStripMenuItem_Click);
             // 
@@ -125,10 +125,10 @@
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "NewProverkaBlackBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Создание новой проверки";
+            this.Text = "Создание нового теста";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewProverkaBlackBox_FormClosing);
             this.Load += new System.EventHandler(this.NewProverkaBlackBox_Load);
             this.gB.ResumeLayout(false);

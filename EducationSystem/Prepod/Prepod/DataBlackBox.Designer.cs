@@ -144,9 +144,9 @@
             this.lblnumTest.Location = new System.Drawing.Point(260, 24);
             this.lblnumTest.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblnumTest.Name = "lblnumTest";
-            this.lblnumTest.Size = new System.Drawing.Size(162, 17);
+            this.lblnumTest.Size = new System.Drawing.Size(137, 17);
             this.lblnumTest.TabIndex = 5;
-            this.lblnumTest.Text = "Выберите № проверки:";
+            this.lblnumTest.Text = "Выберите № теста:";
             // 
             // cmBExer
             // 
@@ -228,8 +228,8 @@
             // 
             this.oToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.oToolStripMenuItem.Name = "oToolStripMenuItem";
-            this.oToolStripMenuItem.Size = new System.Drawing.Size(158, 23);
-            this.oToolStripMenuItem.Text = "| Загрузить из файла |";
+            this.oToolStripMenuItem.Size = new System.Drawing.Size(197, 23);
+            this.oToolStripMenuItem.Text = "| Загрузить тесты из файла |";
             this.oToolStripMenuItem.Click += new System.EventHandler(this.oToolStripMenuItem_Click);
             // 
             // выходToolStripMenuItem
@@ -254,22 +254,22 @@
             // вводДанныхToolStripMenuItem
             // 
             this.вводДанныхToolStripMenuItem.Name = "вводДанныхToolStripMenuItem";
-            this.вводДанныхToolStripMenuItem.Size = new System.Drawing.Size(290, 24);
-            this.вводДанныхToolStripMenuItem.Text = "Ввод новой проверки";
+            this.вводДанныхToolStripMenuItem.Size = new System.Drawing.Size(266, 24);
+            this.вводДанныхToolStripMenuItem.Text = "Ввод нового теста";
             this.вводДанныхToolStripMenuItem.Click += new System.EventHandler(this.вводДанныхToolStripMenuItem_Click);
             // 
             // изменениеДанныхToolStripMenuItem
             // 
             this.изменениеДанныхToolStripMenuItem.Name = "изменениеДанныхToolStripMenuItem";
-            this.изменениеДанныхToolStripMenuItem.Size = new System.Drawing.Size(290, 24);
-            this.изменениеДанныхToolStripMenuItem.Text = "Изменение выбранной проверки";
+            this.изменениеДанныхToolStripMenuItem.Size = new System.Drawing.Size(266, 24);
+            this.изменениеДанныхToolStripMenuItem.Text = "Изменение выбранного теста";
             this.изменениеДанныхToolStripMenuItem.Click += new System.EventHandler(this.изменениеДанныхToolStripMenuItem_Click);
             // 
             // удалениеДанныхToolStripMenuItem
             // 
             this.удалениеДанныхToolStripMenuItem.Name = "удалениеДанныхToolStripMenuItem";
-            this.удалениеДанныхToolStripMenuItem.Size = new System.Drawing.Size(290, 24);
-            this.удалениеДанныхToolStripMenuItem.Text = "Удаление выбранной проверки";
+            this.удалениеДанныхToolStripMenuItem.Size = new System.Drawing.Size(266, 24);
+            this.удалениеДанныхToolStripMenuItem.Text = "Удаление выбранного теста";
             this.удалениеДанныхToolStripMenuItem.Click += new System.EventHandler(this.удалениеДанныхToolStripMenuItem_Click);
             // 
             // openFileDialog1

@@ -94,6 +94,36 @@
     <Compile Include="editPrepod.Designer.cs">
       <DependentUpon>editPrepod.cs</DependentUpon>
     </Compile>
+    <Compile Include="GeneratorOne.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneratorOne.Designer.cs">
+      <DependentUpon>GeneratorOne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneratorThree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneratorThree.Designer.cs">
+      <DependentUpon>GeneratorThree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneratorTwo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneratorTwo.Designer.cs">
+      <DependentUpon>GeneratorTwo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneratorWorkData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneratorWorkData.Designer.cs">
+      <DependentUpon>GeneratorWorkData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneratorWorkToMethods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneratorWorkToMethods.Designer.cs">
+      <DependentUpon>GeneratorWorkToMethods.cs</DependentUpon>
+    </Compile>
     <Compile Include="helpForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +142,7 @@
     <Compile Include="NewProverkaBlackBox.Designer.cs">
       <DependentUpon>NewProverkaBlackBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="OneExercise.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="StartForm.cs">
       <SubType>Form</SubType>
@@ -278,6 +309,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="editPrepod.resx">
       <DependentUpon>editPrepod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneratorOne.resx">
+      <DependentUpon>GeneratorOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneratorThree.resx">
+      <DependentUpon>GeneratorThree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneratorTwo.resx">
+      <DependentUpon>GeneratorTwo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneratorWorkData.resx">
+      <DependentUpon>GeneratorWorkData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneratorWorkToMethods.resx">
+      <DependentUpon>GeneratorWorkToMethods.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="menuPrepod.resx">
       <DependentUpon>menuPrepod.cs</DependentUpon>

@@ -50,7 +50,7 @@ namespace Prepod
             }
             else
             {
-                this.Text = "Изменение проверки";
+                this.Text = "Изменение теста";
                 try
                 {
                     dgvGeneral.Rows.Clear();
@@ -249,8 +249,8 @@ namespace Prepod
             if (SelectNumbTest == "")
             {
                 SaveProv();
-                MessageBox.Show("Проверка успешно внесена в БД!", "Успешное выполнение операции");
-                if(MessageBox.Show("Вы хотите добавить еще проверку?","Вставка проверки",MessageBoxButtons.YesNo)==DialogResult.Yes)
+                MessageBox.Show("Тест успешно внесена в БД!", "Успешное выполнение операции");
+                if(MessageBox.Show("Вы хотите добавить еще тест?","Вставка теста",MessageBoxButtons.YesNo)==DialogResult.Yes)
                 {
                     numberProv();
                 }
@@ -260,7 +260,7 @@ namespace Prepod
                 DeleteRows();
                 numberProv();
                 SaveProv();
-                MessageBox.Show("Проверка успешно изменена в БД!", "Успешное выполнение операции");
+                MessageBox.Show("Тест успешно изменена в БД!", "Успешное выполнение операции");
             }
             dgvGeneral.Rows.Clear();
             changes = false;

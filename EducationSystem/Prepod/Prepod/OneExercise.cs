@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
-using Word=Microsoft.Office.Interop.Word;
+//using Word=Microsoft.Office.Interop.Word;
 
 namespace Prepod
 {
@@ -442,14 +442,13 @@ namespace Prepod
         }
         public void ExerciseInWord()
         {
-            var WordApp = new Word.Application();
-            WordApp.Visible = true;
-            WordApp.Documents.Add();
-            WordApp.Selection.Text = Exercise;
-            object fileName = Path +  NamePon +".docx";
+            //var WordApp = new Word.Application();
+            //WordApp.Visible = true;
+            //WordApp.Documents.Add();
+            //WordApp.Selection.Text = Exercise;
+            //object fileName = Path +  NamePon +".docx";
             //WordApp.ActiveDocument.SaveAs(ref fileName);
-            WordApp.ActiveDocument.SaveAs(ref fileName);
-            WordApp.Quit();
+            //WordApp.Quit();
         }
         public void InsertProverka()
         {

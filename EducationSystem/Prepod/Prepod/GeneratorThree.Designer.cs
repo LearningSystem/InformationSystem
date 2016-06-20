@@ -52,7 +52,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 27);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -75,9 +75,9 @@
             this.gBGeneral.Controls.Add(this.lblKol);
             this.gBGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gBGeneral.Location = new System.Drawing.Point(0, 0);
-            this.gBGeneral.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gBGeneral.Margin = new System.Windows.Forms.Padding(4);
             this.gBGeneral.Name = "gBGeneral";
-            this.gBGeneral.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gBGeneral.Padding = new System.Windows.Forms.Padding(4);
             this.gBGeneral.Size = new System.Drawing.Size(549, 198);
             this.gBGeneral.TabIndex = 0;
             this.gBGeneral.TabStop = false;
@@ -96,7 +96,7 @@
             // pgBar
             // 
             this.pgBar.Location = new System.Drawing.Point(136, 153);
-            this.pgBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pgBar.Margin = new System.Windows.Forms.Padding(4);
             this.pgBar.Name = "pgBar";
             this.pgBar.Size = new System.Drawing.Size(283, 28);
             this.pgBar.TabIndex = 5;
@@ -104,17 +104,18 @@
             // btnSelect
             // 
             this.btnSelect.Location = new System.Drawing.Point(440, 102);
-            this.btnSelect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSelect.Margin = new System.Windows.Forms.Padding(4);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(100, 28);
             this.btnSelect.TabIndex = 4;
             this.btnSelect.Text = "Выбрать";
             this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // txtPath
             // 
             this.txtPath.Location = new System.Drawing.Point(135, 106);
-            this.txtPath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPath.Margin = new System.Windows.Forms.Padding(4);
             this.txtPath.Name = "txtPath";
             this.txtPath.Size = new System.Drawing.Size(281, 23);
             this.txtPath.TabIndex = 3;
@@ -132,7 +133,7 @@
             // KolNum
             // 
             this.KolNum.Location = new System.Drawing.Point(136, 47);
-            this.KolNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.KolNum.Margin = new System.Windows.Forms.Padding(4);
             this.KolNum.Name = "KolNum";
             this.KolNum.Size = new System.Drawing.Size(283, 23);
             this.KolNum.TabIndex = 1;
@@ -185,7 +186,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GeneratorThree";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Генератор. Шаг третий.";

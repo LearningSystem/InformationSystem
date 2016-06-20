@@ -200,10 +200,10 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.lstPon);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(528, 441);
+            this.tabPage3.Size = new System.Drawing.Size(528, 438);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "Список созданных понятий";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -215,7 +215,7 @@
             this.lstPon.Location = new System.Drawing.Point(0, 0);
             this.lstPon.Margin = new System.Windows.Forms.Padding(4);
             this.lstPon.Name = "lstPon";
-            this.lstPon.Size = new System.Drawing.Size(528, 441);
+            this.lstPon.Size = new System.Drawing.Size(528, 438);
             this.lstPon.TabIndex = 0;
             this.lstPon.UseCompatibleStateImageBehavior = false;
             this.lstPon.View = System.Windows.Forms.View.List;

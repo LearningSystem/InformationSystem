@@ -295,7 +295,7 @@ namespace Prepod
                     int p=0;
                     while (dr.Read())
                     {
-                        cmBTest.Items.Add("Проверка №" + elem.ToString());
+                        cmBTest.Items.Add("Тест №" + elem.ToString());
                         index[p] = dr[0].ToString();
                         elem++;
                         p++;

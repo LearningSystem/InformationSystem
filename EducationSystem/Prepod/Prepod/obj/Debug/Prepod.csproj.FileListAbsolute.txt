@@ -347,3 +347,9 @@ C:\Users\User\Desktop\Текущие проекты\Версия на тести
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\EducationSystem\Prepod\Prepod\obj\Debug\Prepod.treeWork.resources
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\EducationSystem\Prepod\Prepod\obj\Debug\Prepod.csproj.GenerateResource.Cache
 C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\EducationSystem\Prepod\Prepod\obj\Debug\Prepod.csproj.ResolveComReference.cache
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\EducationSystem\Prepod\Prepod\obj\Debug\Prepod.GeneratorOne.resources
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\EducationSystem\Prepod\Prepod\obj\Debug\Prepod.GeneratorThree.resources
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\EducationSystem\Prepod\Prepod\obj\Debug\Prepod.GeneratorTwo.resources
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\EducationSystem\Prepod\Prepod\obj\Debug\Prepod.GeneratorWorkData.resources
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\EducationSystem\Prepod\Prepod\obj\Debug\Prepod.GeneratorWorkToMethods.resources
+C:\Users\User\Desktop\Текущие проекты\Версия на тестирование\EducationSystem\Prepod\Prepod\obj\Debug\Prepod.csprojResolveAssemblyReference.cache
