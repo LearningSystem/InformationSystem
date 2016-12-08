@@ -1,0 +1,15 @@
+C:\Users\User\Documents\Visual Studio 2013\Projects\NewBlackBox\NewBlackBox\bin\Debug\NewBlackBox.exe.config
+C:\Users\User\Documents\Visual Studio 2013\Projects\NewBlackBox\NewBlackBox\bin\Debug\NewBlackBox.exe
+C:\Users\User\Documents\Visual Studio 2013\Projects\NewBlackBox\NewBlackBox\bin\Debug\NewBlackBox.pdb
+C:\Users\User\Documents\Visual Studio 2013\Projects\NewBlackBox\NewBlackBox\obj\Debug\NewBlackBox.AddExercise.resources
+C:\Users\User\Documents\Visual Studio 2013\Projects\NewBlackBox\NewBlackBox\obj\Debug\NewBlackBox.BlackBox.resources
+C:\Users\User\Documents\Visual Studio 2013\Projects\NewBlackBox\NewBlackBox\obj\Debug\NewBlackBox.Edit.resources
+C:\Users\User\Documents\Visual Studio 2013\Projects\NewBlackBox\NewBlackBox\obj\Debug\NewBlackBox.MainPrepod.resources
+C:\Users\User\Documents\Visual Studio 2013\Projects\NewBlackBox\NewBlackBox\obj\Debug\NewBlackBox.Properties.Resources.resources
+C:\Users\User\Documents\Visual Studio 2013\Projects\NewBlackBox\NewBlackBox\obj\Debug\NewBlackBox.regForm.resources
+C:\Users\User\Documents\Visual Studio 2013\Projects\NewBlackBox\NewBlackBox\obj\Debug\NewBlackBox.Settings.resources
+C:\Users\User\Documents\Visual Studio 2013\Projects\NewBlackBox\NewBlackBox\obj\Debug\NewBlackBox.csproj.GenerateResource.Cache
+C:\Users\User\Documents\Visual Studio 2013\Projects\NewBlackBox\NewBlackBox\obj\Debug\NewBlackBox.exe
+C:\Users\User\Documents\Visual Studio 2013\Projects\NewBlackBox\NewBlackBox\obj\Debug\NewBlackBox.pdb
+C:\Users\User\Documents\Visual Studio 2013\Projects\NewBlackBox\NewBlackBox\obj\Debug\NewBlackBox.helpForm.resources
+C:\Users\User\Documents\Visual Studio 2013\Projects\NewBlackBox\NewBlackBox\obj\Debug\NewBlackBox.csprojResolveAssemblyReference.cache
